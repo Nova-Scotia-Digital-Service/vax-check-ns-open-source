@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="ProofOfVaccine.Mobile.Views.LoadingPage"
+			 xmlns:vm="clr-namespace:ProofOfVaccine.Mobile.ViewModels"
+			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+			 ios:Page.UseSafeArea="True"
+			 Shell.NavBarIsVisible="True"
+			 Shell.NavBarHasShadow="False">
+
+	<ContentPage.BindingContext>
+		<vm:LoadingViewModel x:Name="vm" />
+	</ContentPage.BindingContext>
+
+	<ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

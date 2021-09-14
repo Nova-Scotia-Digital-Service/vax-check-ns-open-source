@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="ProofOfVaccine.Mobile.Views.ScanPage"
+			 xmlns:vm="clr-namespace:ProofOfVaccine.Mobile.ViewModels"
+			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+			 xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+			 ios:Page.UseSafeArea="True"
+			 Shell.NavBarIsVisible="True"
+			 Shell.NavBarHasShadow="False">
+
+	<ContentPage.BindingContext>
+		<vm:ScanViewModel x:Name="vm" />
+	</ContentPage.BindingContext>
+
+	<ContentPage.Content>
+        <StackLayout>
+
+			<zxing:ZXingScannerView IsScanning="True"
+									OnScanResult="OnScanResult"/>
+
+
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>
