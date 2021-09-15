@@ -17,7 +17,7 @@
         <StackLayout>
 
 			<zxing:ZXingScannerView IsScanning="True"
-									OnScanResult="OnScanResult"/>
+                                    Result="{Binding ScanResult, Mode=OneWayToSource}"/>
 
 
 		</StackLayout>

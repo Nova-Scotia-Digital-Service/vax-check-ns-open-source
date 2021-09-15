@@ -17,14 +17,5 @@ namespace ProofOfVaccine.Mobile.Views
             InitializeComponent();
         }
 
-        void OnScanResult(ZXing.Result result)
-        {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await Shell.Current.GoToAsync("../BusinessPage");
-
-                //scanResultText.Text = result.Text + " (type: " + result.BarcodeFormat.ToString() + ")";
-            });
-        }
     }
 }
