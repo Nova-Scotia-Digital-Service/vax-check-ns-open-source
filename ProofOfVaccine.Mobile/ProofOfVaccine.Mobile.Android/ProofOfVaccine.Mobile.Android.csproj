@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -91,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProofOfVaccine.Mobile\ProofOfVaccine.Mobile.csproj">
-      <Project>{17353579-9054-44AC-B34D-600916FB1A8B}</Project>
+      <Project>{B6CF8822-F092-49E2-A32E-CD939EF88892}</Project>
       <Name>ProofOfVaccine.Mobile</Name>
     </ProjectReference>
   </ItemGroup>
