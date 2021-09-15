@@ -1,5 +1,4 @@
 ﻿using ProofOfVaccine.Mobile.Helpers;
-using ProofOfVaccine.Mobile.Models;
 using ProofOfVaccine.Mobile.Services;
 using System;
 using System.Collections.Generic;

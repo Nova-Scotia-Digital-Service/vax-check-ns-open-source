@@ -8,28 +8,55 @@
 			 Shell.NavBarIsVisible="True"
 			 Shell.NavBarHasShadow="False">
 
-	<ContentPage.BindingContext>
-		<vm:HomeViewModel x:Name="vm" />
-	</ContentPage.BindingContext>
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
 
-	<ContentPage.Content>
-		<ScrollView>
-			<StackLayout>
-				
-				<Button Text="Scan"
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="0"
+                         Padding="0">
+
+                <BoxView HeightRequest="200"
+                         Color="Gray"/>
+
+                <BoxView HeightRequest="300"
+                         Color="Gray"/>
+
+                <StackLayout Spacing="15"
+                             Margin="40" >
+
+                    <Button Text="Scan"
 						FontSize="16"
 						FontAttributes="Bold"
-						CornerRadius="24"
+						CornerRadius="16"
 						BackgroundColor="{StaticResource ActiveColor}"
 						TextColor="{StaticResource AltTextColor}"
 						Command="{Binding ScanCommand}"
-						VerticalOptions="StartAndExpand"
-						HorizontalOptions="Center"
+						VerticalOptions="EndAndExpand"
+						HorizontalOptions="Fill"
+						WidthRequest="300"
+						HeightRequest="60"/>
+
+                    <Button Text="View Guidlines"
+						FontSize="16"
+						FontAttributes="Bold"
+						CornerRadius="16"
+                        BorderWidth="1"
+                        BorderColor="{StaticResource PrimaryColor}"
+						BackgroundColor="{StaticResource BackgroundColor}"
+						TextColor="{StaticResource PrimaryColor}"
+						Command="{Binding ViewGuidCommand}"
+						VerticalOptions="Start"
+						HorizontalOptions="Fill"
 						WidthRequest="300"
 						HeightRequest="60">
-				</Button>
-			</StackLayout>
-			
-		</ScrollView>
-	</ContentPage.Content>
+                    </Button>
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
