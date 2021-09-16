@@ -6,20 +6,36 @@
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 			 xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
 			 ios:Page.UseSafeArea="True"
-			 Shell.NavBarIsVisible="True"
+			 Shell.NavBarIsVisible="False"
 			 Shell.NavBarHasShadow="False">
 
-	<ContentPage.BindingContext>
-		<vm:ScanViewModel x:Name="vm" />
-	</ContentPage.BindingContext>
+    <ContentPage.BindingContext>
+        <vm:ScanViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
 
-	<ContentPage.Content>
-        <StackLayout>
+    <ContentPage.Content>
+        <Grid>
 
-			<zxing:ZXingScannerView IsScanning="True"
+            <zxing:ZXingScannerView IsScanning="True"
                                     Result="{Binding ScanResult, Mode=OneWayToSource}"/>
 
 
-		</StackLayout>
+            <Button Text="Cancel"
+						FontSize="16"
+						FontAttributes="Bold"
+						CornerRadius="16"
+                        BorderWidth="1"
+                        BorderColor="{StaticResource BackgroundColor}"
+						BackgroundColor="#43FFFFFF"
+						TextColor="{StaticResource BackgroundColor}"
+						Command="{Binding GoBackCommand}"
+						VerticalOptions="EndAndExpand"
+						Margin="20,40"
+						HorizontalOptions="Fill"
+						WidthRequest="300"
+						HeightRequest="60">
+            </Button>
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

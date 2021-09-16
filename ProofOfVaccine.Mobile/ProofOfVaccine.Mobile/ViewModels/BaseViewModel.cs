@@ -26,8 +26,8 @@ namespace ProofOfVaccine.Mobile.ViewModels
         {
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
 
-            GoBackCommand = new Command(async () => await Shell.Current.GoToAsync(".."));
-            ScanCommand = new Command(async () => await Shell.Current.GoToAsync("ScanPage"));
+            GoBackCommand = new Command(async () => await Shell.Current.GoToAsync("..", true));
+            ScanCommand = new Command(async () => await Shell.Current.GoToAsync("ScanPage", true));
         }
 
         #region Busy Mechanism

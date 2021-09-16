@@ -31,8 +31,8 @@ namespace ProofOfVaccine.Mobile.ViewModels
                 if (!IsBusy)
                     using (Busy())
                     {
-                        //TODO: Save Result in a service,
-                        //use SCHService to analyse and return result,
+                        //TODO: Save Result in a service (save on RAM),
+                        //use SHCService to analyse and return result,
                         //Based on result, navigate to ScanResultPage
 
 
