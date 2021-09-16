@@ -16,11 +16,22 @@ namespace ProofOfVaccine.Mobile.ViewModels
             get { return _result; }
             set
             {
-                if (value != null)
-                {
-                    AnalyseScanResultCommand.Execute(value);
-                    SetProperty(ref _result, value);
-                }
+                if (!IsBusy)
+                    using (Busy())
+                    {
+                        if (value != null)
+                        {
+                            if (value == _result)
+                            {
+                                AnalyseScanResultCommand.Execute(value);
+                            }
+                            else
+                            {
+                                _result = value;
+                                AnalyseScanResultCommand.Execute(value);
+                            }
+                        }
+                    }
             }
         }
 
@@ -37,7 +48,7 @@ namespace ProofOfVaccine.Mobile.ViewModels
 
         private async Task AnalyseScan(ZXing.Result result)
         {
-            if (!IsBusy)
+
                 using (Busy())
                 {
                     try
@@ -48,13 +59,11 @@ namespace ProofOfVaccine.Mobile.ViewModels
 
                             if (SHCdata == null)
                             {
-
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    using (Busy())
-                                        await Application.Current.MainPage.DisplayAlert("Scan Error", "Not a valid QR Code", "Try Again");
-                                });
-
+                                //Device.BeginInvokeOnMainThread(async () =>
+                                //{
+                                //    using (Busy())
+                                //        await Application.Current.MainPage.DisplayAlert("Scan Error", "Not a valid QR Code", "Try Again");
+                                //});
                             }
                             else
                             {

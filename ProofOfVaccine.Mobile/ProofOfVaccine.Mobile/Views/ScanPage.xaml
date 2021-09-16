@@ -4,11 +4,18 @@
 			 x:Class="ProofOfVaccine.Mobile.Views.ScanPage"
 			 xmlns:vm="clr-namespace:ProofOfVaccine.Mobile.ViewModels"
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-			 xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
-			 ios:Page.UseSafeArea="True"
+			 xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
+             xmlns:converters="clr-namespace:ProofOfVaccine.Mobile.Converters"
+             ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="False"
 			 Shell.NavBarHasShadow="False">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.BindingContext>
         <vm:ScanViewModel x:Name="vm" />
     </ContentPage.BindingContext>
@@ -16,8 +23,18 @@
     <ContentPage.Content>
         <Grid>
 
-            <zxing:ZXingScannerView IsScanning="True"
+            <zxing:ZXingScannerView IsScanning="{Binding IsBusy,Converter={StaticResource InvertedBoolConverter}}"
+                                    
                                     Result="{Binding ScanResult, Mode=OneWayToSource}"/>
+
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"
+                               IsEnabled="{Binding IsBusy}"
+                               WidthRequest="300"
+                               HeightRequest="300"
+                               Color="{StaticResource PrimaryColor}"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"/>
 
 
             <Button Text="Cancel"
