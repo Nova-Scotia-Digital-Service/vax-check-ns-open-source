@@ -13,10 +13,52 @@
 	</ContentPage.BindingContext>
 
 	<ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+
+        <Grid>
+
+            <StackLayout>
+                <BoxView HeightRequest="200"
+                         Color="Gray"/>
+
+                <BoxView HeightRequest="300"
+                         Color="Gray"/>
+            </StackLayout>
+            
+            
+            
+            <StackLayout Spacing="15"
+                         Margin="40" 
+                         VerticalOptions="EndAndExpand">
+
+                <Button Text="New Scan"
+						FontSize="16"
+						FontAttributes="Bold"
+						CornerRadius="16"
+						BackgroundColor="{StaticResource ActiveColor}"
+						TextColor="{StaticResource AltTextColor}"
+						Command="{Binding NewScanCommand}"
+						VerticalOptions="EndAndExpand"
+						HorizontalOptions="Fill"
+						WidthRequest="300"
+						HeightRequest="60"/>
+
+                <Button Text="View Guidlines"
+						FontSize="16"
+						FontAttributes="Bold"
+						CornerRadius="16"
+                        BorderWidth="1"
+                        BorderColor="{StaticResource PrimaryColor}"
+						BackgroundColor="{StaticResource BackgroundColor}"
+						TextColor="{StaticResource PrimaryColor}"
+						Command="{Binding ViewGuidCommand}"
+						VerticalOptions="Start"
+						HorizontalOptions="Fill"
+						WidthRequest="300"
+						HeightRequest="60">
+                </Button>
+
+            </StackLayout>
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>
