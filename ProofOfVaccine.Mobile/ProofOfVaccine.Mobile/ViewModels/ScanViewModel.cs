@@ -48,7 +48,6 @@ namespace ProofOfVaccine.Mobile.ViewModels
 
         private async Task AnalyseScan(ZXing.Result result)
         {
-
                 using (Busy())
                 {
                     try

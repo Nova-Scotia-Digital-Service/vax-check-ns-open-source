@@ -23,8 +23,7 @@
     <ContentPage.Content>
         <Grid>
 
-            <zxing:ZXingScannerView IsScanning="{Binding IsBusy,Converter={StaticResource InvertedBoolConverter}}"
-                                    
+            <zxing:ZXingScannerView IsScanning="{Binding IsBusy,Converter={StaticResource InvertedBoolConverter}}"                          
                                     Result="{Binding ScanResult, Mode=OneWayToSource}"/>
 
             <ActivityIndicator IsVisible="{Binding IsBusy}"
