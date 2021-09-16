@@ -11,11 +11,11 @@ namespace ProofOfVaccine.Mobile.ViewModels
 {
     public class BaseViewModel : BaseBindable
     {
-        string title = string.Empty;
+        private string _title = string.Empty;
         public string Title
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
         }
 
         public Command GoBackCommand { get; set; }

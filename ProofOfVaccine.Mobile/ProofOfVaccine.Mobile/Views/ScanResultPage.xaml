@@ -17,8 +17,11 @@
         <Grid>
 
             <StackLayout>
-                <BoxView HeightRequest="200"
-                         Color="Gray"/>
+                <Label Text="{Binding SCHValidationData.Name}"
+                       HorizontalOptions="Center"
+                       TextColor="Black"
+                       FontSize="24"
+                       Padding="20"/>
 
                 <BoxView HeightRequest="300"
                          Color="Gray"/>

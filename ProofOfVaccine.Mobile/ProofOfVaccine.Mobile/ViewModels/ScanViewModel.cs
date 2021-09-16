@@ -26,11 +26,11 @@ namespace ProofOfVaccine.Mobile.ViewModels
 
         public ICommand AnalyseScanResultCommand;
 
-        protected readonly ISHCService _SHCService;
+        protected readonly ISHCService _shcService;
         public ScanViewModel()
         {
 
-            _SHCService = DependencyService.Resolve<ISHCService>();
+            _shcService = DependencyService.Resolve<ISHCService>();
 
             AnalyseScanResultCommand = new Command<ZXing.Result>(async result => await AnalyseScan(result));
         }
@@ -44,7 +44,7 @@ namespace ProofOfVaccine.Mobile.ViewModels
                     {
                         if (result.BarcodeFormat == ZXing.BarcodeFormat.QR_CODE)
                         {
-                            var SHCdata = _SHCService.ValidateQRCode(result.Text);
+                            var SHCdata = _shcService.ValidateQRCode(result.Text);
 
                             if (SHCdata == null)
                             {
