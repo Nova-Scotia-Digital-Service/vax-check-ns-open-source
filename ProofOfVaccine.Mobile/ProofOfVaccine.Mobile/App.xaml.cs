@@ -16,6 +16,7 @@ namespace ProofOfVaccine.Mobile
             DependencyService.RegisterSingleton<IErrorManagementService>(new ErrorManagementService());
             DependencyService.RegisterSingleton<ILocalDataService>(new LocalDataService());
             DependencyService.RegisterSingleton<ICoreService>(new CoreService());
+            DependencyService.RegisterSingleton<ISHCService>(new SHCService());
 
             MainPage = new AppShell();
         }

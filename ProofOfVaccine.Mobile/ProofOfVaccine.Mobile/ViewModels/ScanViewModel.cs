@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ProofOfVaccine.Mobile.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -24,25 +26,52 @@ namespace ProofOfVaccine.Mobile.ViewModels
 
         public ICommand AnalyseScanResultCommand;
 
+        protected readonly ISHCService _SHCService;
         public ScanViewModel()
         {
-            AnalyseScanResultCommand = new Command<ZXing.Result>(async result =>
-            {
-                if (!IsBusy)
-                    using (Busy())
+
+            _SHCService = DependencyService.Resolve<ISHCService>();
+
+            AnalyseScanResultCommand = new Command<ZXing.Result>(async result => await AnalyseScan(result));
+        }
+
+        private async Task AnalyseScan(ZXing.Result result)
+        {
+            if (!IsBusy)
+                using (Busy())
+                {
+                    try
                     {
-                        //TODO: Save Result in a service (save on RAM),
-                        //use SHCService to analyse and return result,
-                        //Based on result, navigate to ScanResultPage
-
-
-                        Device.BeginInvokeOnMainThread(async () =>
+                        if (result.BarcodeFormat == ZXing.BarcodeFormat.QR_CODE)
                         {
-                            await Shell.Current.GoToAsync("../ScanResultPage");
-                        });
-                    }
+                            var SHCdata = _SHCService.ValidateQRCode(result.Text);
 
-            });
+                            if (SHCdata == null)
+                            {
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    using (Busy())
+                                        await Application.Current.MainPage.DisplayAlert("Scan Error", "Not a valid QR Code", "Try Again");
+                                });
+
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    using (Busy())
+                                        await Shell.Current.GoToAsync("../ScanResultPage");
+                                });
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        if (_errorManagementService != null)
+                            _errorManagementService.HandleError(ex);
+                    }
+                }
         }
     }
 }

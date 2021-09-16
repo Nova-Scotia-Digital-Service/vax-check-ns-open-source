@@ -21,7 +21,7 @@ namespace ProofOfVaccine.Mobile.ViewModels
         public Command GoBackCommand { get; set; }
         public Command ScanCommand { get; set; }
 
-        private readonly IErrorManagementService _errorManagementService;
+        protected readonly IErrorManagementService _errorManagementService;
         public BaseViewModel()
         {
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
@@ -54,11 +54,13 @@ namespace ProofOfVaccine.Mobile.ViewModels
         }
 
         protected BusyHelper Busy() => new BusyHelper(this);
-
-        private void ForceUnlock()
+        
+        protected void ForceUnlock()
         {
             _busyLocks = new List<Guid>();
         }
+
+        protected bool IsThreadLocked = false;
 
         protected sealed class BusyHelper : IDisposable
         {

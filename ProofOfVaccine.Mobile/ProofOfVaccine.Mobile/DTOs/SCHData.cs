@@ -8,5 +8,6 @@ namespace ProofOfVaccine.Mobile.DTOs
     {
         public string Name { get; set; }
         public bool IsValidProof { get; set; }
+        public string SHCCode { get; set; }
     }
 }
