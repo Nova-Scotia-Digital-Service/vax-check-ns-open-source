@@ -19,16 +19,16 @@
 						Value="#B4FFFFFF" />
 				<Setter Property="Shell.UnselectedColor"
 						Value="#B4B4BA" />
-				<Setter Property="Shell.TabBarBackgroundColor"
+				<!--<Setter Property="Shell.TabBarBackgroundColor"
 						Value="{StaticResource TabBarBackground}" />
-				<!--<Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource TabIconSelected}" />-->
+				<Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource TabIconSelected}" />
 				<Setter Property="Shell.TabBarUnselectedColor"
 						Value="{StaticResource TabIconUnselected}" />
 				<Setter Property="Shell.TabBarTitleColor"
-						Value="{StaticResource TabIconSelected}" />
+						Value="{StaticResource TabIconSelected}" />-->
 			</Style>
-			<Style BasedOn="{StaticResource BaseStyle}"
-				   TargetType="TabBar" />
+			<!--<Style BasedOn="{StaticResource BaseStyle}"
+				   TargetType="TabBar" />-->
 			<Style BasedOn="{StaticResource BaseStyle}"
 				   TargetType="FlyoutItem" />
 
@@ -36,7 +36,7 @@
 	</Shell.Resources>
 
 
-    <FlyoutItem Title="Home" Icon="icon_about.png">
+    <FlyoutItem Title="Home">
         <ShellContent Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
     </FlyoutItem>
 

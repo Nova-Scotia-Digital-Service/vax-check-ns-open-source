@@ -2,21 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="ProofOfVaccine.Mobile.Views.ScanResultPage"
+             xmlns:fonts="clr-namespace:ProofOfVaccine.Mobile.Themes.Fonts"
 			 xmlns:vm="clr-namespace:ProofOfVaccine.Mobile.ViewModels"
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 			 ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="True"
 			 Shell.NavBarHasShadow="False">
 
-	<ContentPage.BindingContext>
-		<vm:ScanResultViewModel x:Name="vm" />
-	</ContentPage.BindingContext>
+    <ContentPage.BindingContext>
+        <vm:ScanResultViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
 
-	<ContentPage.Content>
+    <ContentPage.Content>
 
         <Grid>
 
             <StackLayout>
+                <Label Padding="20"
+                       Text="{x:Static fonts:FontAwesomeSolid.Home}"
+                       FontFamily="{StaticResource FontAwesomeSolid}"
+                       TextColor="{DynamicResource PrimaryColor}"
+                       FontSize="32"
+                       WidthRequest="200"
+                       VerticalOptions="Start"
+                       VerticalTextAlignment="Start"
+                       HorizontalTextAlignment="Start"/>
+
                 <Label Text="{Binding SCHValidationData.Name}"
                        HorizontalOptions="Center"
                        TextColor="Black"
@@ -26,9 +37,9 @@
                 <BoxView HeightRequest="300"
                          Color="Gray"/>
             </StackLayout>
-            
-            
-            
+
+
+
             <StackLayout Spacing="15"
                          Margin="40" 
                          VerticalOptions="EndAndExpand">
