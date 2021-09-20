@@ -4,9 +4,11 @@
 			 x:Class="ProofOfVaccine.Mobile.Views.HomePage"
 			 xmlns:vm="clr-namespace:ProofOfVaccine.Mobile.ViewModels"
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:helpers="clr-namespace:ProofOfVaccine.Mobile.Helpers"
 			 ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="True"
-			 Shell.NavBarHasShadow="False">
+			 Shell.NavBarHasShadow="False"
+             Title="{helpers:TranslationHelper AppName}">
 
     <ContentPage.BindingContext>
         <vm:HomeViewModel x:Name="vm" />

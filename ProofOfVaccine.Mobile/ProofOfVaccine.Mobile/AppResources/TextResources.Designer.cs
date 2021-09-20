@@ -59,5 +59,14 @@ namespace ProofOfVaccine.Mobile.AppResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proof of Vaccine.
+        /// </summary>
+        internal static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
     }
 }

@@ -46,5 +46,7 @@
 
   <ItemGroup>
     <Folder Include="BindableModels\" />
+    <Folder Include="Themes\Fonts\" />
+    <Folder Include="Themes\LightTheme\" />
   </ItemGroup>
 </Project>
