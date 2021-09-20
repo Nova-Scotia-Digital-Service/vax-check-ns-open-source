@@ -28,11 +28,12 @@
                 <StackLayout Spacing="15"
                              Margin="40" >
 
+                    <!--TODO: Text from translator, add style to ThemeProperties-->
                     <Button Text="Scan"
 						FontSize="16"
 						FontAttributes="Bold"
 						CornerRadius="16"
-						BackgroundColor="{StaticResource ActiveColor}"
+						BackgroundColor="{StaticResource PrimaryColor}"
 						TextColor="{StaticResource AltTextColor}"
 						Command="{Binding ScanCommand}"
 						VerticalOptions="EndAndExpand"
