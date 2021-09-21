@@ -7,7 +7,7 @@ using Android.OS;
 
 namespace ProofOfVaccine.Mobile.Droid
 {
-    [Activity(Label = "ProofOfVaccine.Mobile", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, 
+    [Activity(Label = "Proof Of Vaccine", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, 
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity

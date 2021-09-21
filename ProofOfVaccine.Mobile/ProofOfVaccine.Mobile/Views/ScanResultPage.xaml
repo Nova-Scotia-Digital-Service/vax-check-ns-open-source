@@ -16,7 +16,7 @@
     <ContentPage.Content>
 
         <Grid>
-
+            
             <StackLayout>
                 <Label Padding="20"
                        Text="{x:Static fonts:FontAwesomeSolid.Home}"
