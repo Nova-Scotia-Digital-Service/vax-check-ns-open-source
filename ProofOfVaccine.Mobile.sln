@@ -7,15 +7,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfVaccine.Mobile.Andro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfVaccine.Mobile.iOS", "ProofOfVaccine.Mobile\ProofOfVaccine.Mobile.iOS\ProofOfVaccine.Mobile.iOS.csproj", "{4DA03629-B4D2-42B8-8929-312006375B4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfVaccine.Mobile", "ProofOfVaccine.Mobile\ProofOfVaccine.Mobile\ProofOfVaccine.Mobile.csproj", "{B6CF8822-F092-49E2-A32E-CD939EF88892}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfVaccine.Mobile", "ProofOfVaccine.Mobile\ProofOfVaccine.Mobile\ProofOfVaccine.Mobile.csproj", "{B6CF8822-F092-49E2-A32E-CD939EF88892}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfVaccine.Decode", "PoV.Decode\ProofOfVaccine.Decode.csproj", "{5EF82DC4-25A8-4434-AD02-BD77F861BF34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfVaccine.Decode", "PoV.Decode\ProofOfVaccine.Decode.csproj", "{5EF82DC4-25A8-4434-AD02-BD77F861BF34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfVaccine.Decode.Tests", "PoV.Decode.Tests\ProofOfVaccine.Decode.Tests.csproj", "{7414F268-C502-4BA5-A1CC-5F2A4AAFA7DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfVaccine.Decode.Tests", "PoV.Decode.Tests\ProofOfVaccine.Decode.Tests.csproj", "{7414F268-C502-4BA5-A1CC-5F2A4AAFA7DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfVaccine.Token", "SmartHealthCard.Token\ProofOfVaccine.Token.csproj", "{AA7E70A2-93F6-4346-8C03-74FFF6BE5929}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfVaccine.Token", "SmartHealthCard.Token\ProofOfVaccine.Token.csproj", "{AA7E70A2-93F6-4346-8C03-74FFF6BE5929}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfVaccine.Token.Tests", "ProofOfVaccine.Token.Tests\ProofOfVaccine.Token.Tests.csproj", "{E29D9546-02B5-4833-9843-317083DEEC1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfVaccine.Token.Tests", "ProofOfVaccine.Token.Tests\ProofOfVaccine.Token.Tests.csproj", "{E29D9546-02B5-4833-9843-317083DEEC1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Decode", "Decode", "{4C6C8482-2018-4327-A180-5BC417B005C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Token", "Token", "{099340F2-7B97-4247-83F3-4EAB1767A47A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -132,6 +136,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5EF82DC4-25A8-4434-AD02-BD77F861BF34} = {4C6C8482-2018-4327-A180-5BC417B005C3}
+		{7414F268-C502-4BA5-A1CC-5F2A4AAFA7DF} = {4C6C8482-2018-4327-A180-5BC417B005C3}
+		{AA7E70A2-93F6-4346-8C03-74FFF6BE5929} = {099340F2-7B97-4247-83F3-4EAB1767A47A}
+		{E29D9546-02B5-4833-9843-317083DEEC1D} = {099340F2-7B97-4247-83F3-4EAB1767A47A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9B0BB07-64BA-4134-BD2D-8897A5E48E02}
