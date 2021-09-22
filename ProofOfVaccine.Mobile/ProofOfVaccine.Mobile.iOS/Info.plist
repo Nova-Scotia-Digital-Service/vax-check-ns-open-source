@@ -21,7 +21,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>ProofOfVaccine.Mobile</string>
+	<string>Proof Of Vaccine</string>
 	<key>CFBundleIdentifier</key>
 	<string>ca.ns.proofofvaccine.mobile</string>
 	<key>CFBundleVersion</key>
