@@ -156,7 +156,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\ProofOfVaccine.Mobile\ProofOfVaccine.Mobile.csproj">
-      <Project>{17353579-9054-44AC-B34D-600916FB1A8B}</Project>
+      <Project>{B6CF8822-F092-49E2-A32E-CD939EF88892}</Project>
       <Name>ProofOfVaccine.Mobile</Name>
     </ProjectReference>
   </ItemGroup>

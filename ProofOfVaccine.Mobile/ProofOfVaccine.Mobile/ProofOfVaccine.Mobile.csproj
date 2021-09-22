@@ -43,6 +43,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="DataStore\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="Views\ScanResultPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
@@ -50,5 +53,9 @@
 
   <ItemGroup>
     <Folder Include="BindableModels\" />
+    <Folder Include="DataStore\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PoV.Decode\ProofOfVaccine.Decode.csproj" />
   </ItemGroup>
 </Project>
