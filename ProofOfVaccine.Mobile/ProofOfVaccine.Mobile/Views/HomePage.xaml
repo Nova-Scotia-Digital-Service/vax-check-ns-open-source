@@ -49,7 +49,7 @@
                         BorderColor="{StaticResource PrimaryColor}"
 						BackgroundColor="{StaticResource BackgroundColor}"
 						TextColor="{StaticResource PrimaryColor}"
-						Command="{Binding ViewGuidCommand}"
+						Clicked="CrashApp_Clicked"
 						VerticalOptions="Start"
 						HorizontalOptions="Fill"
 						WidthRequest="300"

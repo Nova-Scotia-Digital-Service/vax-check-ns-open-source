@@ -43,7 +43,7 @@ namespace ProofOfVaccine.Mobile
         {
             AppCenter.Start("android=c8da9da7-50dd-42a8-b7f4-312370215d5a;" +
                             "ios=b680b5fc-214c-49a1-9bce-5decfe8b445a;",
-                            typeof(Analytics), typeof(Crashes), typeof(Distribute));
+                            typeof(Analytics), typeof(Crashes));
         }
     }
 }
