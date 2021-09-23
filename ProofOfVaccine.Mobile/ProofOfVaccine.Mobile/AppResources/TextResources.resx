@@ -120,4 +120,13 @@
   <data name="AppName" xml:space="preserve">
     <value>Proof of Vaccine</value>
   </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Proof of Vaccination</value>
+  </data>
+  <data name="ScanButtonText" xml:space="preserve">
+    <value>Scan Code</value>
+  </data>
+  <data name="ViewGuideButtonText" xml:space="preserve">
+    <value>View Guidlines</value>
+  </data>
 </root>

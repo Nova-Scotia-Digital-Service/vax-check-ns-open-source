@@ -7,60 +7,92 @@
              xmlns:helpers="clr-namespace:ProofOfVaccine.Mobile.Helpers"
 			 ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="True"
-			 Shell.NavBarHasShadow="False"
-             Title="{helpers:TranslationHelper AppName}">
+			 Shell.NavBarHasShadow="False">
+    
+    <Shell.TitleView>
+        <Image Source="Headerbg.png"
+               TranslationX="80"
+               HorizontalOptions="End"
+               VerticalOptions="Center" />
+    </Shell.TitleView>
 
     <ContentPage.BindingContext>
         <vm:HomeViewModel x:Name="vm" />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Margin="0"
-                         Padding="0">
 
-                <Image Source="nsflag_colour.png" />
-                <BoxView HeightRequest="200"
-                         Color="Gray"/>
 
-                <BoxView HeightRequest="300"
-                         Color="Gray"/>
+        <ScrollView Margin="0">
+            <StackLayout Margin="0" 
+                         BackgroundColor="{StaticResource BackgroundColor}">
+
+                <BoxView Color="{StaticResource PrimaryColor}"
+                         HeightRequest="20"
+                         HorizontalOptions="Fill"/>
+
+                <Image Source="nsflag_colour.png" 
+                       HeightRequest="115"
+                       Aspect="AspectFit"/>
+
+                <Label Text="{helpers:TranslationHelper AppTitle}"
+                       TextColor="{StaticResource PrimaryColor}"
+                       HorizontalOptions="Center"
+                       FontSize="20"
+                       TranslationY="-20"
+                       FontAttributes="Bold"/>
+
+                <Image Source="VaccineBottle.png" 
+                       HeightRequest="232"
+                       Aspect="AspectFit"
+                       HorizontalOptions="Center"
+                       Margin="0,32"/>
 
                 <StackLayout Spacing="15"
                              Margin="40" >
 
                     <!--TODO: Text from translator, add style to ThemeProperties-->
-                    <Button Text="Scan"
-						FontSize="16"
-						FontAttributes="Bold"
-						CornerRadius="16"
-						BackgroundColor="{StaticResource PrimaryColor}"
-						TextColor="{StaticResource AltTextColor}"
-						Command="{Binding ScanCommand}"
-						VerticalOptions="EndAndExpand"
-						HorizontalOptions="Fill"
-						WidthRequest="300"
-						HeightRequest="60"/>
 
-                    <Button Text="View Guidlines"
-						FontSize="16"
-						FontAttributes="Bold"
-						CornerRadius="16"
-                        BorderWidth="1"
-                        BorderColor="{StaticResource PrimaryColor}"
-						BackgroundColor="{StaticResource BackgroundColor}"
-						TextColor="{StaticResource PrimaryColor}"
-						Clicked="CrashApp_Clicked"
-						VerticalOptions="Start"
-						HorizontalOptions="Fill"
-						WidthRequest="300"
-						HeightRequest="60">
+                    <Button Text="{helpers:TranslationHelper ScanButtonText}"
+                            Image="metroqrcode.png"  
+                            ContentLayout="Left,0"
+                            Padding="20,10"
+						    FontSize="16"
+						    FontAttributes="Bold"
+						    CornerRadius="16"
+						    BackgroundColor="{StaticResource PrimaryColor}"
+						    TextColor="{StaticResource AltTextColor}"
+						    Command="{Binding ScanCommand}"
+						    VerticalOptions="EndAndExpand"
+						    HorizontalOptions="Fill"
+						    WidthRequest="300"
+						    HeightRequest="60"/>
+
+                    <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
+                            Image="notesmedical.png"  
+                            ContentLayout="Left,0"
+                            Padding="20,10"
+						    FontSize="16"
+						    FontAttributes="Bold"
+						    CornerRadius="16"
+                            BorderWidth="1"
+                            BorderColor="{StaticResource PrimaryColor}"
+						    BackgroundColor="{StaticResource BackgroundColor}"
+						    TextColor="{StaticResource PrimaryColor}"
+						    Clicked="CrashApp_Clicked"
+						    VerticalOptions="Start"
+						    HorizontalOptions="Fill"
+						    WidthRequest="300"
+						    HeightRequest="60">
                     </Button>
 
                 </StackLayout>
 
-            </StackLayout>
+                <BoxView Color="{StaticResource PrimaryColor}"
+                         HeightRequest="20"
+                         HorizontalOptions="Fill"/>
 
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

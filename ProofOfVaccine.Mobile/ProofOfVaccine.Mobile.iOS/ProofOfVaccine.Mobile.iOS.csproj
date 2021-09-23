@@ -313,4 +313,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\VaccineBottle%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Headerbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Headerbg%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Headerbg%403x.png" />
+  </ItemGroup>
 </Project>

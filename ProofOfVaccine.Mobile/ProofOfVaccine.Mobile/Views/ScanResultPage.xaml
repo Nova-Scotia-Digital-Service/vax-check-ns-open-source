@@ -7,6 +7,7 @@
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 			 ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="True"
+             Shell.PresentationMode="Modal"
 			 Shell.NavBarHasShadow="False">
 
     <ContentPage.BindingContext>
