@@ -27,7 +27,12 @@
                        WidthRequest="200"
                        VerticalOptions="Start"
                        VerticalTextAlignment="Start"
-                       HorizontalTextAlignment="Start"/>
+                       HorizontalTextAlignment="Start"
+                       >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
 
                 <Label Text="{Binding SCHValidationData.Name}"
                        HorizontalOptions="Center"

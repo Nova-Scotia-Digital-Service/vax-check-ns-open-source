@@ -14,6 +14,8 @@ namespace ProofOfVaccine.Mobile.Services
     public interface ISHCService
     {
         SCHData LastScanData { get; }
+        
+        SCHData InvaidScan(string message, string code);
         Task<SCHData> ValidateQRCode(string QRCode);
         Task<SCHData> ValidateSCHCode(string SHCCode);
     }
@@ -32,6 +34,16 @@ namespace ProofOfVaccine.Mobile.Services
 
         public SCHData LastScanData { get; internal set; }
 
+        public SCHData InvaidScan(string message, string code)
+        {
+            return LastScanData = new SCHData()
+            {
+                IsValidProof = false,
+                Code = code,
+                Message = message           
+            };
+        }
+
         public async Task<SCHData> ValidateQRCode(string QRCode)
         {
             try
@@ -41,7 +53,10 @@ namespace ProofOfVaccine.Mobile.Services
                 if (IsSCHCode)
                     return await ValidateSCHCode(QRCode);
                 else
-                    return null;
+                {
+                    //TODO: Get from code to message dictionary 
+                    return InvaidScan("Invalid Code Scan", "400");
+                }
             }
             catch (Exception ex)
             {

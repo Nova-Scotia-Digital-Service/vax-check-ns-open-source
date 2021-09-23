@@ -16,16 +16,30 @@
             <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <ContentPage.BindingContext>
         <vm:ScanViewModel x:Name="vm" />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <Grid>
+        <Grid Padding="0"
+              Margin="0"
+              ColumnSpacing="0"
+              RowSpacing="0">
 
             <zxing:ZXingScannerView IsScanning="{Binding IsBusy,Converter={StaticResource InvertedBoolConverter}}"                          
                                     Result="{Binding ScanResult, Mode=OneWayToSource}"/>
+
+            <Image Source="ScanFrame"
+                   Aspect="AspectFit"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   Margin="20,100"/>
+
+            <Label Text="{Binding CountdownText}"
+                   TextColor="{StaticResource BackgroundColor}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
 
             <ActivityIndicator IsVisible="{Binding IsBusy}"
                                IsRunning="{Binding IsBusy}"
@@ -45,7 +59,7 @@
                         BorderColor="{StaticResource BackgroundColor}"
 						BackgroundColor="#43FFFFFF"
 						TextColor="{StaticResource BackgroundColor}"
-						Command="{Binding GoBackCommand}"
+						Command="{Binding LeaveCommand}"
 						VerticalOptions="EndAndExpand"
 						Margin="20,40"
 						HorizontalOptions="Fill"
