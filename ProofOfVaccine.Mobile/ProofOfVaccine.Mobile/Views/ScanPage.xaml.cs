@@ -19,7 +19,8 @@ namespace ProofOfVaccine.Mobile.Views
 
         protected override bool OnBackButtonPressed()
         {
-            return false;
+            vm.LeaveCommand.Execute(null);
+            return true;
         }
     }
 }
