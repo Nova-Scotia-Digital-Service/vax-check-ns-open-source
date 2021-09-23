@@ -160,4 +160,157 @@
       <Name>ProofOfVaccine.Mobile</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-Portrait.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Group 12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Group 12%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Group 12%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon awesome-check-circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon awesome-check-circle%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon awesome-check-circle%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon awesome-notes-medical-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon awesome-notes-medical-1%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon awesome-notes-medical-1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon awesome-notes-medical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon awesome-notes-medical%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon awesome-notes-medical%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon feather-arrow-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon feather-arrow-left%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon feather-arrow-left%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon ionic-md-home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon ionic-md-home%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon ionic-md-home%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon material-cake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon material-cake%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon material-cake%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon material-cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon material-cancel%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon material-cancel%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-cancel%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-cancel%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-qrcode-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-qrcode-1%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-qrcode-1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-qrcode-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-qrcode-2%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-qrcode-2%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-qrcode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-qrcode%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon metro-qrcode%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nsflag_colour.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nsflag_colour.tiff" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nsflag_colour%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nsflag_colour%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ScanFrame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ScanFrame%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ScanFrame%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\VaccineBottle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\VaccineBottle%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\VaccineBottle%403x.png" />
+  </ItemGroup>
 </Project>
