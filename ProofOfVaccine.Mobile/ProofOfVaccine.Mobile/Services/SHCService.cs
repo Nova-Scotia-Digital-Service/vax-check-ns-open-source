@@ -7,6 +7,7 @@ using ProofOfVaccine.Mobile.DTOs;
 using Xamarin.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Xamarin.Forms.Internals;
 
 namespace ProofOfVaccine.Mobile.Services
 {
@@ -42,7 +43,7 @@ namespace ProofOfVaccine.Mobile.Services
                 else
                     return null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (_errorManagementService != null)
                     _errorManagementService.HandleError(ex);
@@ -53,21 +54,39 @@ namespace ProofOfVaccine.Mobile.Services
 
         public async Task<SCHData> ValidateSCHCode(string SHCCode)
         {
-            //TODO: Decode SHC code and return data
-
             try
             {
                 var compactJWS = ShcToCompactJws(SHCCode);
                 var smartHealthCardModel = await _decoder.DecodeAsync(compactJWS);
-                var fhirJsonObj = JObject.Parse(smartHealthCardModel.VerifiableCredential.CredentialSubject.FhirBundle);
-                string familyName = fhirJsonObj.SelectToken("$....family").ToString();
-                var givenName = fhirJsonObj.SelectToken("$....given").FirstOrDefault().ToString();
+                var FHIRJsonObj = JObject.Parse(smartHealthCardModel.VerifiableCredential.CredentialSubject.FhirBundle);
+
+                var givenName = FHIRJsonObj.SelectToken("$....given").FirstOrDefault().ToString();
+                string familyName = FHIRJsonObj.SelectToken("$....family").ToString();
+                var birthDate = FHIRJsonObj.SelectToken("$....birthDate").ToString();
+
+                //var givenNameToken = FHIRJsonObj.SelectToken("$....given");
+                //if (givenNameToken.HasValues)
+                //{
+                //    if (givenNameToken.Type == JTokenType.Array)
+                //    {
+                //        givenName = string.Empty;
+                //        foreach (var name in givenNameToken)
+                //            givenName += givenNameToken + " ";
+                //    }
+                //    else
+                //    {
+
+                //    }
+                //}
+
 
                 return LastScanData = new SCHData()
                 {
-                    IsValidProof = true,
+                    IsValidProof = IsVaildProof(FHIRJsonObj),
                     SHCCode = SHCCode,
-                    Name = $"{givenName} {familyName}"
+                    GivenName = givenName,
+                    FamilyName = familyName,
+                    DateOfBirth = birthDate
                 };
             }
             catch (Exception ex)
@@ -75,14 +94,9 @@ namespace ProofOfVaccine.Mobile.Services
                 if (_errorManagementService != null)
                     _errorManagementService.HandleError(ex);
                 return null;
-            }        
+            }
         }
 
-        /// <summary>
-        /// Converts the SHC code to the compact JWS format.
-        /// </summary>
-        /// <param name="SHCCode"></param>
-        /// <returns></returns>
         private string ShcToCompactJws(string SHCCode)
         {
             Regex rx = new Regex(@"(\d\d?)");
@@ -90,6 +104,14 @@ namespace ProofOfVaccine.Mobile.Services
             return digitPairs
                 .Select(m => Convert.ToChar(int.Parse(m.Value) + B64_OFFSET).ToString())
                 .Aggregate((chain, block) => $"{chain}{block}");
+        }
+
+        private bool IsVaildProof(JObject FIHRJsonObjt)
+        {
+            //TODO: Retrieve validation rules
+            //      Apply rules to data
+
+            return true;
         }
     }
 }
