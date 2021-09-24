@@ -120,4 +120,28 @@
   <data name="AppName" xml:space="preserve">
     <value>Preuve De Vaccin</value>
   </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Preuve De Vaccination</value>
+  </data>
+  <data name="NewScanButtonText" xml:space="preserve">
+    <value>Nouveau scan</value>
+  </data>
+  <data name="ScanButtonText" xml:space="preserve">
+    <value>Scanner le code</value>
+  </data>
+  <data name="ScanErrorMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ScanErrorTitleText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ScanSuccessDetailText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ScanSuccessTitleText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ViewGuideButtonText" xml:space="preserve">
+    <value>Voir les directives</value>
+  </data>
 </root>
