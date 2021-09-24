@@ -19,6 +19,7 @@
             <StackLayout Margin="0"
                          Padding="0">
 
+                <Image Source="nsflag_colour.png" />
                 <BoxView HeightRequest="200"
                          Color="Gray"/>
 
