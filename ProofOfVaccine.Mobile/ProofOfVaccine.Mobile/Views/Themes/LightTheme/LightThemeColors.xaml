@@ -9,6 +9,7 @@
 
 
     <Color x:Key="BackgroundColor">#FFFFFF</Color>
+    <Color x:Key="TransparentBackgroundColor">#33FFFFFF</Color>
     <Color x:Key="AltBackgroundColor">#F9F9FA</Color>
 
     <Color x:Key="PrimaryColor">#0A5EA1</Color>
@@ -16,10 +17,8 @@
     <Color x:Key="TertiaryColor">#55C8D331</Color>
 
     <Color x:Key="HighlightColor">#408334</Color>
-    <Color x:Key="PositiveColor">#A6D5BC</Color>
-    <Color x:Key="PositiveStrongColor">#37AF5A</Color>
-    <Color x:Key="NegativeColor">#E96863</Color>
-    <Color x:Key="NegativeStrongColor">#AC0105</Color>
+    <Color x:Key="PositiveColor">#408334</Color>
+    <Color x:Key="NegativeColor">#DE3333</Color>
 
 
     <Color x:Key="PrimaryTextColor">#150961</Color>

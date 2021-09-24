@@ -123,8 +123,23 @@
   <data name="AppTitle" xml:space="preserve">
     <value>Proof of Vaccination</value>
   </data>
+  <data name="NewScanButtonText" xml:space="preserve">
+    <value>New Scan</value>
+  </data>
   <data name="ScanButtonText" xml:space="preserve">
     <value>Scan Code</value>
+  </data>
+  <data name="ScanErrorMessage" xml:space="preserve">
+    <value>Unable to Confirm</value>
+  </data>
+  <data name="ScanErrorTitleText" xml:space="preserve">
+    <value>Sorry!</value>
+  </data>
+  <data name="ScanSuccessDetailText" xml:space="preserve">
+    <value>Thank you</value>
+  </data>
+  <data name="ScanSuccessTitleText" xml:space="preserve">
+    <value>Confirmed!</value>
   </data>
   <data name="ViewGuideButtonText" xml:space="preserve">
     <value>View Guidlines</value>

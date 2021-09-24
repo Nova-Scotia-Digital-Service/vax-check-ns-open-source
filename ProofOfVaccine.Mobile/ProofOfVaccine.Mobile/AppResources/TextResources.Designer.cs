@@ -79,11 +79,56 @@ namespace ProofOfVaccine.Mobile.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Scan.
+        /// </summary>
+        internal static string NewScanButtonText {
+            get {
+                return ResourceManager.GetString("NewScanButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scan Code.
         /// </summary>
         internal static string ScanButtonText {
             get {
                 return ResourceManager.GetString("ScanButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to Confirm.
+        /// </summary>
+        internal static string ScanErrorMessage {
+            get {
+                return ResourceManager.GetString("ScanErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry!.
+        /// </summary>
+        internal static string ScanErrorTitleText {
+            get {
+                return ResourceManager.GetString("ScanErrorTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you.
+        /// </summary>
+        internal static string ScanSuccessDetailText {
+            get {
+                return ResourceManager.GetString("ScanSuccessDetailText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmed!.
+        /// </summary>
+        internal static string ScanSuccessTitleText {
+            get {
+                return ResourceManager.GetString("ScanSuccessTitleText", resourceCulture);
             }
         }
         
