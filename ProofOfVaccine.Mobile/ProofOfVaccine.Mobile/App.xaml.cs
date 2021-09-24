@@ -19,32 +19,10 @@ namespace ProofOfVaccine.Mobile
 {
     public partial class App : Application
     {
-        private readonly IPersistentJwksProvider<IJwksDataStore> _persistentJwksProvider;
-        private bool _jwksLoaded = false;
-
-        //TODO: Remove once we start loading from the resources.
-        private readonly List<Uri> _whiteList = new List<Uri>
-        {
-            new Uri("https://spec.smarthealth.cards/examples/issuer/.well-known/jwks.json"),
-        };
-
         public App()
         {
             InitializeComponent();
 
-            //TODO: Remove once we start loading from the resources.
-            var defaultCache = new JwksCache(TimeSpan.FromDays(365));
-            defaultCache.Set(
-                new Uri("https://spec.smarthealth.cards/examples/issuer/.well-known/jwks.json"),
-                new JsonWebKeySet(new List<JsonWebKey>
-                    {
-                        new JsonWebKey("EC", "3Kfdg-XwP-7gXyywtUfUADwBumDOPKMQx-iELL11W9s", "sig", "ES256", "P-256", "11XvRWy1I2S0EyJlyf_bWfw_TQ5CJJNLw78bHXNxcgw", "eZXwxvO1hvCY0KucrPfKo7yAyMT6Ajc3N7OkAB6VYy8"),
-                    }));
-
-            _persistentJwksProvider = new PersistentJwksProvider(new SecureStore(), _whiteList, defaultCache);
-
-            DependencyService.RegisterSingleton<IPersistentJwksProvider<IJwksDataStore>>(_persistentJwksProvider);
-            DependencyService.RegisterSingleton<IDecoder>(new PersistentSmartHealthCardDecoder(_persistentJwksProvider));
             DependencyService.RegisterSingleton<IErrorManagementService>(new ErrorManagementService());
             DependencyService.RegisterSingleton<ILocalDataService>(new LocalDataService());
             DependencyService.RegisterSingleton<ICoreService>(new CoreService());
@@ -53,33 +31,9 @@ namespace ProofOfVaccine.Mobile
             MainPage = new AppShell();
         }
 
-        protected override async void OnStart()
+        protected override void OnStart()
         {
             InitializeAppCenter();
-            var hasConnectivity = Connectivity.NetworkAccess == NetworkAccess.Internet;
-            await Task.Run(async() => await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity));
-            //Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
-        }
-
-        private async void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
-        {
-            await OnConnected(e.NetworkAccess);
-        }
-
-        private async Task OnConnected(NetworkAccess networkAccess)
-        {
-            // if already load, don't load again.
-            if (_jwksLoaded)
-            {
-                return;
-            }
-
-            var hasConnectivity = networkAccess == NetworkAccess.Internet;
-            if (hasConnectivity)
-            {
-                await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity);
-                _jwksLoaded = true;
-            }
         }
 
         protected override void OnSleep()

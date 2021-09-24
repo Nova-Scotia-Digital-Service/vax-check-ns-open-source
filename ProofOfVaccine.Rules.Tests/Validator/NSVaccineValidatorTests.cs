@@ -1,0 +1,760 @@
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using ProofOfVaccine.Rules.Validator;
+using Xunit;
+
+namespace ProofOfVaccine.Rules.Tests.Validator
+{
+    public class NSVaccineValidatorTests
+    {
+        private const string invalidCodeMessage = "Invalid Code";
+        private const string invalidDateMessage = "Invalid Date";
+        private const string invalidDosageMessage = "Invalid Dosage";
+        private const string invalidFormatMessage = "Invalid Format";
+
+        private const string fhirBundleWithTwoValidDoubleDosageWithMinimumWait =
+        @"{'fhirBundle':{
+             'resourceType':'Bundle',
+             'type':'collection',
+             'entry':[
+                {
+                   'fullUrl':'resource:0',
+                   'resource':{
+                      'resourceType':'Patient',
+                      'name':[
+                         {
+                            'family':'Smith',
+                            'given':[
+                               'Jon'
+                            ]
+                         }
+                      ],
+                      'birthDate':'1942-04-10'
+                   }
+                },
+                {
+                   'fullUrl':'resource:1',
+                   'resource':{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{
+                         'coding':[
+                            {
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'208'
+                            }
+                         ]
+                      },
+                      'patient':{
+                         'reference':'resource:0'
+                      },
+                      'occurrenceDateTime':'2021-03-03',
+                      'performer':[
+                         {
+                            'actor':{
+                               'display':'Nova Scotia, Canada'
+                            }
+                         }
+                      ],
+                      'lotNumber':'EL1404',
+                      'manufacturer':{
+                         'identifier':{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }
+                      }
+                   }
+                },
+                {
+                   'fullUrl':'resource:2',
+                   'resource':{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{
+                         'coding':[
+                            {
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'208'
+                            }
+                         ]
+                      },
+                      'patient':{
+                         'reference':'resource:0'
+                      },
+                      'occurrenceDateTime':'2021-03-28',
+                      'performer':[
+                         {
+                            'actor':{
+                               'display':'Nova Scotia, Canada'
+                            }
+                         }
+                      ],
+                      'lotNumber':'EP6775',
+                      'manufacturer':{
+                         'identifier':{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }
+                      }
+                   }
+                }
+             ]
+            }}";
+
+        private const string fhirBundleWithOneValidSingleDosageWithMinimumWait =
+        @"{'fhirBundle':{
+             'resourceType':'Bundle',
+             'type':'collection',
+             'entry':[
+                {
+                   'fullUrl':'resource:0',
+                   'resource':{
+                      'resourceType':'Patient',
+                      'name':[
+                         {
+                            'family':'Smith',
+                            'given':[
+                               'Jon'
+                            ]
+                         }
+                      ],
+                      'birthDate':'1942-04-10'
+                   }
+                },
+                {
+                   'fullUrl':'resource:1',
+                   'resource':{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{
+                         'coding':[
+                            {
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'212'
+                            }
+                         ]
+                      },
+                      'patient':{
+                         'reference':'resource:0'
+                      },
+                      'occurrenceDateTime':'2021-03-03',
+                      'performer':[
+                         {
+                            'actor':{
+                               'display':'Nova Scotia, Canada'
+                            }
+                         }
+                      ],
+                      'lotNumber':'EL1404',
+                      'manufacturer':{
+                         'identifier':{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }
+                      }
+                   }
+                }
+             ]}}";
+
+        private const string fhirBundleWithoutTwoValidDoubleDosageWithMinimumWait =
+        @"{'fhirBundle':{
+             'resourceType':'Bundle',
+             'type':'collection',
+             'entry':[
+                {
+                   'fullUrl':'resource:0',
+                   'resource':{
+                      'resourceType':'Patient',
+                      'name':[
+                         {
+                            'family':'Smith',
+                            'given':[
+                               'Jon'
+                            ]
+                         }
+                      ],
+                      'birthDate':'1942-04-10'
+                   }
+                },
+                {
+                   'fullUrl':'resource:1',
+                   'resource':{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{
+                         'coding':[
+                            {
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'208'
+                            }
+                         ]
+                      },
+                      'patient':{
+                         'reference':'resource:0'
+                      },
+                      'occurrenceDateTime':'2021-03-03',
+                      'performer':[
+                         {
+                            'actor':{
+                               'display':'Nova Scotia, Canada'
+                            }
+                         }
+                      ],
+                      'lotNumber':'EL1404',
+                      'manufacturer':{
+                         'identifier':{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }
+                      }
+                   }
+                }
+             ]}}";
+
+        private const string fhirBundleWithSingleInvalidSingeDosageWithMinimumWait =
+        @"{'fhirBundle':{
+             'resourceType':'Bundle',
+             'type':'collection',
+             'entry':[
+                {
+                   'fullUrl':'resource:0',
+                   'resource':{
+                      'resourceType':'Patient',
+                      'name':[
+                         {
+                            'family':'Smith',
+                            'given':[
+                               'Jon'
+                            ]
+                         }
+                      ],
+                      'birthDate':'1942-04-10'
+                   }
+                },
+                {
+                   'fullUrl':'resource:1',
+                   'resource':{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{
+                         'coding':[
+                            {
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'500'
+                            }
+                         ]
+                      },
+                      'patient':{
+                         'reference':'resource:0'
+                      },
+                      'occurrenceDateTime':'2021-03-03',
+                      'performer':[
+                         {
+                            'actor':{
+                               'display':'Nova Scotia, Canada'
+                            }
+                         }
+                      ],
+                      'lotNumber':'EL1404',
+                      'manufacturer':{
+                         'identifier':{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }
+                      }
+                   }
+                }
+             ]}}";
+
+        private const string fhirBundleWithTwoInvalidDoubleDosageWithMinimumWait =
+        @"{'fhirBundle':{
+             'resourceType':'Bundle',
+             'type':'collection',
+             'entry':[
+                {
+                   'fullUrl':'resource:0',
+                   'resource':{
+                      'resourceType':'Patient',
+                      'name':[
+                         {
+                            'family':'Smith',
+                            'given':[
+                               'Jon'
+                            ]
+                         }
+                      ],
+                      'birthDate':'1942-04-10'
+                   }
+                },
+                {
+                   'fullUrl':'resource:1',
+                   'resource':{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{
+                         'coding':[
+                            {
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'501'
+                            }
+                         ]
+                      },
+                      'patient':{
+                         'reference':'resource:0'
+                      },
+                      'occurrenceDateTime':'2021-03-03',
+                      'performer':[
+                         {
+                            'actor':{
+                               'display':'Nova Scotia, Canada'
+                            }
+                         }
+                      ],
+                      'lotNumber':'EL1404',
+                      'manufacturer':{
+                         'identifier':{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }
+                      }
+                   }
+                },
+                {
+                   'fullUrl':'resource:2',
+                   'resource':{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{
+                         'coding':[
+                            {
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'501'
+                            }
+                         ]
+                      },
+                      'patient':{
+                         'reference':'resource:0'
+                      },
+                      'occurrenceDateTime':'2021-03-28',
+                      'performer':[
+                         {
+                            'actor':{
+                               'display':'Nova Scotia, Canada'
+                            }
+                         }
+                      ],
+                      'lotNumber':'EP6775',
+                      'manufacturer':{
+                         'identifier':{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }
+                      }
+                   }
+                }
+             ]}}";
+
+        private string fhirBundleWithTwoValidDoubleDosageWithoutMinimumWait =
+            @$"{{'fhirBundle':{{
+             'resourceType':'Bundle',
+             'type':'collection',
+             'entry':[
+                {{
+                   'fullUrl':'resource:0',
+                   'resource':{{
+                      'resourceType':'Patient',
+                      'name':[
+                         {{
+                            'family':'Smith',
+                            'given':[
+                               'Jon'
+                            ]
+                         }}
+                      ],
+                      'birthDate':'1942-04-10'
+                   }}
+                }},
+                {{
+                   'fullUrl':'resource:1',
+                   'resource':{{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{{
+                         'coding':[
+                            {{
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'208'
+                            }}
+                         ]
+                      }},
+                      'patient':{{
+                         'reference':'resource:0'
+                      }},
+                      'occurrenceDateTime':'2021-03-03',
+                      'performer':[
+                         {{
+                            'actor':{{
+                               'display':'Nova Scotia, Canada'
+                            }}
+                         }}
+                      ],
+                      'lotNumber':'EL1404',
+                      'manufacturer':{{
+                         'identifier':{{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }}
+                      }}
+                   }}
+                }},
+                {{
+                   'fullUrl':'resource:2',
+                   'resource':{{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{{
+                         'coding':[
+                            {{
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'208'
+                            }}
+                         ]
+                      }},
+                      'patient':{{
+                         'reference':'resource:0'
+                      }},
+                      'occurrenceDateTime':'{DateTimeOffset.Now.Subtract(TimeSpan.FromDays(1)):yyyy-MM-dd}',
+                      'performer':[
+                         {{
+                            'actor':{{
+                               'display':'Nova Scotia, Canada'
+                            }}
+                         }}
+                      ],
+                      'lotNumber':'EP6775',
+                      'manufacturer':{{
+                         'identifier':{{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }}
+                      }}
+                   }}
+                }}
+             ]}}}}";
+
+        private string fhirBundleWithOneValidSingleDosageWithoutMinimumWait =
+            @$"{{'fhirBundle':{{
+             'resourceType':'Bundle',
+             'type':'collection',
+             'entry':[
+                {{
+                   'fullUrl':'resource:0',
+                   'resource':{{
+                      'resourceType':'Patient',
+                      'name':[
+                         {{
+                            'family':'Smith',
+                            'given':[
+                               'Jon'
+                            ]
+                         }}
+                      ],
+                      'birthDate':'1942-04-10'
+                   }}
+                }},
+                {{
+                   'fullUrl':'resource:2',
+                   'resource':{{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{{
+                         'coding':[
+                            {{
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'208'
+                            }}
+                         ]
+                      }},
+                      'patient':{{
+                         'reference':'resource:0'
+                      }},
+                      'occurrenceDateTime':'{DateTimeOffset.Now.Subtract(TimeSpan.FromDays(1)):yyyy-MM-dd}',
+                      'performer':[
+                         {{
+                            'actor':{{
+                               'display':'Nova Scotia, Canada'
+                            }}
+                         }}
+                      ],
+                      'lotNumber':'EP6775',
+                      'manufacturer':{{
+                         'identifier':{{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }}
+                      }}
+                   }}
+                }}
+             ]}}}}";
+
+        private string fhirBundleWithValidDosageWithExactMinimumWait =
+            @$"{{'fhirBundle':{{
+             'resourceType':'Bundle',
+             'type':'collection',
+             'entry':[
+                {{
+                   'fullUrl':'resource:0',
+                   'resource':{{
+                      'resourceType':'Patient',
+                      'name':[
+                         {{
+                            'family':'Smith',
+                            'given':[
+                               'Jon'
+                            ]
+                         }}
+                      ],
+                      'birthDate':'1942-04-10'
+                   }}
+                }},
+                {{
+                   'fullUrl':'resource:2',
+                   'resource':{{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{{
+                         'coding':[
+                            {{
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'212'
+                            }}
+                         ]
+                      }},
+                      'patient':{{
+                         'reference':'resource:0'
+                      }},
+                      'occurrenceDateTime':'{DateTimeOffset.Now.Subtract(TimeSpan.FromDays(14)):yyyy-MM-dd}',
+                      'performer':[
+                         {{
+                            'actor':{{
+                               'display':'Nova Scotia, Canada'
+                            }}
+                         }}
+                      ],
+                      'lotNumber':'EP6775',
+                      'manufacturer':{{
+                         'identifier':{{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }}
+                      }}
+                   }}
+                }}
+             ]}}}}";
+
+        private const string fhirBundleWithoutTwoValidDoubleDosageWithBotchedOccuranceDate =
+        @"{'fhirBundle':{
+             'resourceType':'Bundle',
+             'type':'collection',
+             'entry':[
+                {
+                   'fullUrl':'resource:0',
+                   'resource':{
+                      'resourceType':'Patient',
+                      'name':[
+                         {
+                            'family':'Smith',
+                            'given':[
+                               'Jon'
+                            ]
+                         }
+                      ],
+                      'birthDate':'1942-04-10'
+                   }
+                },
+                {
+                   'fullUrl':'resource:1',
+                   'resource':{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{
+                         'coding':[
+                            {
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'208'
+                            }
+                         ]
+                      },
+                      'patient':{
+                         'reference':'resource:0'
+                      },
+                      'occurrenceDateTime':'20S21-0233-00923',
+                      'performer':[
+                         {
+                            'actor':{
+                               'display':'Nova Scotia, Canada'
+                            }
+                         }
+                      ],
+                      'lotNumber':'EL1404',
+                      'manufacturer':{
+                         'identifier':{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }
+                      }
+                   }
+                }
+             ]}}";
+
+        private readonly IList<string> _validVaccineCodes
+            = new List<string>
+            {
+                "207", //Moderna
+                "208", // Pfizer
+                "210", // AZ
+                "212"  // J&J
+            };
+        private readonly IList<string> _singleDosageVaccineCodes
+            = new List<string>
+            {
+                "212", // J&J
+            };
+
+        private JObject _fhirBundleObj;
+
+        public NSVaccineValidatorTests()
+        {
+            // Default.
+            _fhirBundleObj = JObject.Parse(fhirBundleWithTwoValidDoubleDosageWithMinimumWait);
+        }
+
+        [Fact]
+        public void CanInstantiate()
+        {
+            // Arrange, Act, Assert
+            Assert.NotNull(new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage));
+        }
+
+        [Fact]
+        public void Validate_GivenTwoValidDoseAdministeredAndAtLeastMinimumDaysVaccinated_ResultIsSuccess()
+        {
+            // Arrange,
+            _fhirBundleObj = JObject.Parse(fhirBundleWithTwoValidDoubleDosageWithMinimumWait);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            // Act,
+            var result = vaccineValidator.Validate();
+            // Assert
+            Assert.True(result.Success);
+        }
+
+        [Fact]
+        public void Validate_GivenTwoValidDoseAdministeredButMinimumDaysVaccinatedNotMet_ResultIsFailure()
+        {
+            // Arrange,
+            _fhirBundleObj = JObject.Parse(fhirBundleWithTwoValidDoubleDosageWithoutMinimumWait);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            // Act,
+            var result = vaccineValidator.Validate();
+            // Assert
+            Assert.True(result.Failure && result.Message == invalidDateMessage);
+        }
+
+        [Fact]
+        public void Validate_GivenTwoValidDoseAdministeredButExactlyMinimumDaysVaccinatedMet_ResultIsSuccess()
+        {
+            // Arrange,
+            _fhirBundleObj = JObject.Parse(fhirBundleWithValidDosageWithExactMinimumWait);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            // Act,
+            var result = vaccineValidator.Validate();
+            // Assert
+            Assert.True(result.Success);
+        }
+
+        [Fact]
+        public void Validate_GivenOnlyOneValidDoseAdministeredForNonSingleDoseAndAtLeastMinimumDaysVaccinated_ResultIsFailure()
+        {
+            // Arrange,
+            _fhirBundleObj = JObject.Parse(fhirBundleWithoutTwoValidDoubleDosageWithMinimumWait);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            // Act,
+            var result = vaccineValidator.Validate();
+            // Assert
+            Assert.True(result.Failure && result.Message == invalidDosageMessage);
+        }
+
+        [Fact]
+        public void Validate_GivenOneValidDoseAdministeredForSingleDoseAndAtLeastMinimumDaysVaccinated_ResultIsSuccess()
+        {
+            // Arrange,
+            _fhirBundleObj = JObject.Parse(fhirBundleWithOneValidSingleDosageWithMinimumWait);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            // Act,
+            var result = vaccineValidator.Validate();
+            // Assert
+            Assert.True(result.Success);
+        }
+
+        [Fact]
+        public void Validate_GivenOneValidDoseAdministeredForSingleDoseButMinimumDaysVaccinatedNotMet_ResultIsFailure()
+        {
+            // Arrange,
+            _fhirBundleObj = JObject.Parse(fhirBundleWithOneValidSingleDosageWithoutMinimumWait);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            // Act,
+            var result = vaccineValidator.Validate();
+            // Assert
+            Assert.True(result.Failure && result.Message == invalidDateMessage);
+        }
+
+        [Fact]
+        public void Validate_GivenTwoInvalidDoseAdministeredAndAtLeastMinimumDaysVaccinated_ResultIsSuccess()
+        {
+            // Arrange,
+            _fhirBundleObj = JObject.Parse(fhirBundleWithTwoInvalidDoubleDosageWithMinimumWait);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            // Act,
+            var result = vaccineValidator.Validate();
+            // Assert
+            Assert.True(result.Failure && result.Message == invalidCodeMessage);
+        }
+
+        [Fact]
+        public void Validate_GivenOneInvalidSingleDoseAdministeredAndAtLeastMinimumDaysVaccinated_ResultIsSuccess()
+        {
+            // Arrange,
+            _fhirBundleObj = JObject.Parse(fhirBundleWithSingleInvalidSingeDosageWithMinimumWait);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            // Act,
+            var result = vaccineValidator.Validate();
+            // Assert
+            Assert.True(result.Failure && result.Message == invalidCodeMessage);
+        }
+
+        [Fact]
+        public void Validate_GivenBotchedOccurenceDate_ResultIsSuccess()
+        {
+            // Arrange,
+            _fhirBundleObj = JObject.Parse(fhirBundleWithoutTwoValidDoubleDosageWithBotchedOccuranceDate);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            // Act,
+            var result = vaccineValidator.Validate();
+            // Assert
+            Assert.True(result.Failure && result.Message == invalidFormatMessage);
+        }
+    }
+}

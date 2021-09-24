@@ -44,6 +44,7 @@
 
   <ItemGroup>
     <None Remove="DataStore\" />
+    <None Remove="Animations\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Views\ScanResultPage.xaml">
@@ -54,8 +55,10 @@
   <ItemGroup>
     <Folder Include="BindableModels\" />
     <Folder Include="DataStore\" />
+    <Folder Include="Animations\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\PoV.Decode\ProofOfVaccine.Decode.csproj" />
+    <ProjectReference Include="..\..\ProofOfVaccine.Rules\ProofOfVaccine.Rules.csproj" />
   </ItemGroup>
 </Project>

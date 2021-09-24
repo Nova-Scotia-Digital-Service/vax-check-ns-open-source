@@ -28,10 +28,16 @@
                        VerticalTextAlignment="Start"
                        HorizontalTextAlignment="Start"/>
 
-                <Label Text="{Binding SCHValidationData.Name}"
+                <Label Text="{Binding ProofOfVaccineData.Name}"
                        HorizontalOptions="Center"
                        TextColor="Black"
                        FontSize="24"
+                       Padding="20"/>
+
+                <Label Text="{Binding ProofOfVaccineData.ValidationMessage}"
+                       HorizontalOptions="Center"
+                       TextColor="Black"
+                       FontSize="16"
                        Padding="20"/>
 
                 <BoxView HeightRequest="300"

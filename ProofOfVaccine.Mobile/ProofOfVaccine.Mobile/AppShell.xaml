@@ -35,11 +35,12 @@
 		</ResourceDictionary>
 	</Shell.Resources>
 
+	<TabBar>
+		<ShellContent Route="LoadingPage" FlyoutItemIsVisible="False" ContentTemplate="{DataTemplate local:InitializationPage}"/>
+	</TabBar>
 
     <FlyoutItem Title="Home">
         <ShellContent Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
     </FlyoutItem>
-
-
 
 </Shell>

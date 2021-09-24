@@ -9,11 +9,11 @@ namespace ProofOfVaccine.Mobile.ViewModels
 {
     public class ScanResultViewModel : BaseViewModel
     {
-        private SCHData _shcData = null;
-        public SCHData SCHValidationData
+        private ProofOfVaccinationModel _proofOfVaccine = null;
+        public ProofOfVaccinationModel ProofOfVaccineData
         {
-            get { return _shcData; }
-            set { SetProperty(ref _shcData, value); }
+            get { return _proofOfVaccine; }
+            set { SetProperty(ref _proofOfVaccine, value); }
         }
 
         public Command NewScanCommand { get; set; }
@@ -30,7 +30,7 @@ namespace ProofOfVaccine.Mobile.ViewModels
 
         private void LoadScanData()
         {
-            SCHValidationData = _shcService.LastScanData;
+            ProofOfVaccineData = _shcService.LastScanData;
         }
     }
 }

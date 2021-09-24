@@ -17,10 +17,10 @@ namespace ProofOfVaccine.Mobile
 
         private void RegisterPages()
         {
+            Routing.RegisterRoute(nameof(InitializationPage), typeof(InitializationPage));
             Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
             Routing.RegisterRoute(nameof(ScanPage), typeof(ScanPage));
             Routing.RegisterRoute(nameof(ScanResultPage), typeof(ScanResultPage));
-
         }
     }
 }
