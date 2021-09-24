@@ -1,8 +1,5 @@
 ﻿using ProofOfVaccine.Mobile.DTOs;
 using ProofOfVaccine.Mobile.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace ProofOfVaccine.Mobile.ViewModels

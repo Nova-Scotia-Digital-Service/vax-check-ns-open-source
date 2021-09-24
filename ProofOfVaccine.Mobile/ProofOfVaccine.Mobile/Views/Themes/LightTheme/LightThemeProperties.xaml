@@ -19,24 +19,15 @@
 						Value="#B4FFFFFF" />
         <Setter Property="Shell.UnselectedColor"
 						Value="#B4B4BA" />
-        <Setter Property="Shell.TabBarBackgroundColor"
-						Value="{StaticResource TabBarBackground}" />
-        <!--<Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource TabIconSelected}" />-->
-        <Setter Property="Shell.TabBarUnselectedColor"
-						Value="{StaticResource TabIconUnselected}" />
-        <Setter Property="Shell.TabBarTitleColor"
-						Value="{StaticResource TabIconSelected}" />
     </Style>
 
-    <Style BasedOn="{StaticResource BaseStyle}"
-				   TargetType="TabBar" />
+
     <Style BasedOn="{StaticResource BaseStyle}"
 				   TargetType="FlyoutItem" />
 
-
     <Style TargetType="Button">
         <Setter Property="TextColor"
-						Value="White"></Setter>
+						Value="White"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -101,6 +92,13 @@
                 Value="{DynamicResource PrimaryColor}" />
         <Setter Property="BarTextColor"
                 Value="{DynamicResource AltTextColor}" />
+        <!--<Setter Property="Shell.TitleView">
+            
+            <Image Source="nsflag_colour.png"
+               TranslationX="80"
+               HorizontalOptions="End"
+               VerticalOptions="Center" />
+        </Setter>-->
     </Style>
 
     <Style x:Key="PrimaryButtonStyle"

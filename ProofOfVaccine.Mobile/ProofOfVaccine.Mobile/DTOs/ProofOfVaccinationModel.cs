@@ -12,6 +12,10 @@ namespace ProofOfVaccine.Mobile.DTOs
         public string DateOfBirth { get; set; }
 
         public bool IsValidProof { get; set; }
-        public string ValidationMessage { get; set; }
+        public string SHCCode { get; set; }
+
+        public string Code { get; set; }
+        public string Message { get; set; }
+
     }
 }

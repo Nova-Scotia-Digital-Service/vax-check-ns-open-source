@@ -19,6 +19,8 @@ namespace ProofOfVaccine.Mobile
 {
     public partial class App : Application
     {
+        private readonly ISHCService _shcService;
+
         public App()
         {
             InitializeComponent();
@@ -26,22 +28,26 @@ namespace ProofOfVaccine.Mobile
             DependencyService.RegisterSingleton<IErrorManagementService>(new ErrorManagementService());
             DependencyService.RegisterSingleton<ILocalDataService>(new LocalDataService());
             DependencyService.RegisterSingleton<ICoreService>(new CoreService());
-            DependencyService.RegisterSingleton<ISHCService>(new SHCService());
+
+            _shcService = new SHCService();
+            DependencyService.RegisterSingleton(_shcService);
 
             MainPage = new AppShell();
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
             InitializeAppCenter();
+            await _shcService.InitializeAsync();
         }
 
         protected override void OnSleep()
         {
         }
 
-        protected override void OnResume()
+        protected override async void OnResume()
         {
+            await _shcService.InitializeAsync();
         }
 
         private void InitializeAppCenter()

@@ -1,8 +1,7 @@
 ﻿using ProofOfVaccine.Mobile.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -10,6 +9,16 @@ namespace ProofOfVaccine.Mobile.ViewModels
 {
     public class ScanViewModel : BaseViewModel
     {
+        private int _timeOutSeconds = 10;
+        private Timer _timer;
+
+        private string _countdownText = string.Empty;
+        public string CountdownText
+        {
+            get { return _countdownText; }
+            set { SetProperty(ref _countdownText, value); }
+        }
+
         ZXing.Result _result = null;
         public ZXing.Result ScanResult
         {
@@ -36,50 +45,69 @@ namespace ProofOfVaccine.Mobile.ViewModels
         }
 
         public ICommand AnalyseScanResultCommand;
+        public Command LeaveCommand { get; set; }
 
         protected readonly ISHCService _shcService;
         public ScanViewModel()
         {
-
             _shcService = DependencyService.Resolve<ISHCService>();
 
-            AnalyseScanResultCommand = new Command<ZXing.Result>(async result => await AnalyseScan(result));
+            LeaveCommand = new Command(GoBack);
+            AnalyseScanResultCommand = new Command<ZXing.Result>(async result => await AnalyseScanAsync(result));
+
+            StartTimer();
         }
 
-        private async Task AnalyseScan(ZXing.Result result)
+        protected override void GoBack()
         {
-                using (Busy())
-                {
-                    try
-                    {
-                        if (result.BarcodeFormat == ZXing.BarcodeFormat.QR_CODE)
-                        {
-                            var SHCdata = _shcService.ValidateQRCode(result.Text);
+            _timer.Elapsed -= UpdateCount;
+            base.GoBack();
+        }
 
-                            if (SHCdata == null)
-                            {
-                                //Device.BeginInvokeOnMainThread(async () =>
-                                //{
-                                //    using (Busy())
-                                //        await Application.Current.MainPage.DisplayAlert("Scan Error", "Not a valid QR Code", "Try Again");
-                                //});
-                            }
-                            else
-                            {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    using (Busy())
-                                        await Shell.Current.GoToAsync("../ScanResultPage");
-                                });
-                            }
-                        }
-                    }
-                    catch (Exception ex)
+        protected override void Navigate(string page)
+        {
+            _timer.Elapsed -= UpdateCount;
+            base.Navigate(page);
+        }
+
+        private void StartTimer()
+        {
+            _timer = new Timer(1000);
+            _timer.Elapsed += UpdateCount;
+            _timer.Start();
+        }
+
+        private void UpdateCount(object sender, ElapsedEventArgs e)
+        {
+            _timeOutSeconds--;
+            CountdownText = _timeOutSeconds.ToString();
+
+            if (_timeOutSeconds <= 0)
+                GoBack();
+        }
+
+        private async Task AnalyseScanAsync(ZXing.Result result)
+        {
+            using (Busy())
+            {
+                try
+                {
+                    if (result.BarcodeFormat == ZXing.BarcodeFormat.QR_CODE)
                     {
-                        if (_errorManagementService != null)
-                            _errorManagementService.HandleError(ex);
+                        var SHCdata = await _shcService.ValidateQRCode(result.Text);
+
+                        if (SHCdata == null) return;
+
+                        Navigate("ScanResultPage");
                     }
+
                 }
+                catch (Exception ex)
+                {
+                    if (_errorManagementService != null)
+                        _errorManagementService.HandleError(ex);
+                }
+            }
         }
     }
 }

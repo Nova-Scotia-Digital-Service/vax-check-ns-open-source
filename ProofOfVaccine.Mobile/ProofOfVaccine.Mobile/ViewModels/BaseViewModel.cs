@@ -26,8 +26,35 @@ namespace ProofOfVaccine.Mobile.ViewModels
         {
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
 
-            GoBackCommand = new Command(async () => await Shell.Current.GoToAsync("..", true));
-            ScanCommand = new Command(async () => await Shell.Current.GoToAsync("ScanPage", true));
+            GoBackCommand = new Command(GoBack);
+            ScanCommand = new Command(Scan);
+        }
+
+        protected virtual void GoBack()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                using (Busy())
+                    await Shell.Current.GoToAsync("..", true);
+            });
+        }
+
+        protected void Scan()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                using (Busy())
+                    await Shell.Current.GoToAsync("ScanPage", true);
+            });
+        }
+
+        protected virtual void Navigate(string page)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                using (Busy())
+                    await Shell.Current.GoToAsync("../" + page);
+            });
         }
 
         #region Busy Mechanism
@@ -54,7 +81,7 @@ namespace ProofOfVaccine.Mobile.ViewModels
         }
 
         protected BusyHelper Busy() => new BusyHelper(this);
-        
+
         protected void ForceUnlock()
         {
             _busyLocks = new List<Guid>();

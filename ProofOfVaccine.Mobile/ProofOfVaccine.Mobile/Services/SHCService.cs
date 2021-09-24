@@ -14,24 +14,28 @@ using ProofOfVaccine.Token.Model.Jwks;
 using ProofOfVaccine.Token.Providers;
 using ProofOfVaccine.Mobile.DataStore;
 using ProofOfVaccine.Rules.Validator;
-using ProofOfVaccine.Rules.Support;
+using ProofOfVaccine.Mobile.AppResources;
 
 namespace ProofOfVaccine.Mobile.Services
 {
     public interface ISHCService
     {
-        ProofOfVaccinationModel LastScanData { get; }
         Task InitializeAsync();
         Task<ProofOfVaccinationModel> ValidateQRCode(string QRCode);
         Task<ProofOfVaccinationModel> ValidateVaccination(string SHCCode);
+        ProofOfVaccinationModel LastScanData { get; }
+        ProofOfVaccinationModel InvaidScan(string message, string code);
     }
 
     public class SHCService : ISHCService
     {
         private const int B64_OFFSET = 45;
 
-        //TODO: Remove once we start loading from the resources.
-        private readonly string _invalidMessage = "Unable to confirm - Does not meet public health guidelines";
+        private readonly string _invalidVaccineCodeResource = TextResources.VaccineCodeInvalidText;
+        private readonly string _invalidVaccineDateResource = TextResources.VaccineDateInvalidText;
+        private readonly string _invalidVaccineDosageResource = TextResources.VaccineDosageInvalidText;
+        private readonly string _invalidFhirFormatResource = TextResources.FhirFormatInvalidText;
+        private readonly string _invalidScanResource = TextResources.InvalidScanText;
 
         protected readonly IErrorManagementService _errorManagementService;
         protected readonly IDecoder _decoder;
@@ -85,7 +89,6 @@ namespace ProofOfVaccine.Mobile.Services
         {
             var hasConnectivity = Connectivity.NetworkAccess == NetworkAccess.Internet;
             await Task.Run(async () => await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity));
-            //Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
         }
 
         public async Task<ProofOfVaccinationModel> ValidateQRCode(string QRCode)
@@ -97,7 +100,9 @@ namespace ProofOfVaccine.Mobile.Services
                 if (IsSCHCode)
                     return await ValidateVaccination(QRCode);
                 else
-                    return null;
+                {
+                    return InvaidScan(_invalidScanResource, "400");
+                }
             }
             catch (Exception ex)
             {
@@ -106,6 +111,16 @@ namespace ProofOfVaccine.Mobile.Services
                 return null;
             }
 
+        }
+
+        public ProofOfVaccinationModel InvaidScan(string message, string code)
+        {
+            return LastScanData = new ProofOfVaccinationModel()
+            {
+                IsValidProof = false,
+                Code = code,
+                Message = message
+            };
         }
 
         public async Task<ProofOfVaccinationModel> ValidateVaccination(string SHCCode)
@@ -136,59 +151,32 @@ namespace ProofOfVaccine.Mobile.Services
 
         private ProofOfVaccinationModel CreateProofOfVaccineModel(JObject fhir)
         {
-            var givenName = fhir.SelectToken("$....given").FirstOrDefault().ToString();
-            string familyName = fhir.SelectToken("$....family").ToString();
-            var birthDate = fhir.SelectToken("$....birthDate").ToString();
-
-            //var givenNameToken = FHIRJsonObj.SelectToken("$....given");
-            //if (givenNameToken.HasValues)
-            //{
-            //    if (givenNameToken.Type == JTokenType.Array)
-            //    {
-            //        givenName = string.Empty;
-            //        foreach (var name in givenNameToken)
-            //            givenName += givenNameToken + " ";
-            //    }
-            //    else
-            //    {
-
-            //    }
-            //}
+            var givenName = fhir
+                .SelectToken("$....given")
+                .FirstOrDefault()
+                .ToString();
+            string familyName = fhir
+                .SelectToken("$....family")
+                .ToString();
+            var birthDate = fhir
+                .SelectToken("$....birthDate")
+                .ToString();
 
             using (var vaccineValidator = new NSVaccineValidator(fhir,
                 _validVaccineCodes, _singleDosageVaccineCodes,
-                _invalidMessage, _invalidMessage, _invalidMessage, _invalidMessage))
+                _invalidVaccineCodeResource, _invalidVaccineDateResource,
+                _invalidVaccineDosageResource, _invalidFhirFormatResource))
             {
                 var result = vaccineValidator.Validate();
                 return LastScanData = new ProofOfVaccinationModel()
                 {
                     IsValidProof = result.Success,
-                    ValidationMessage = result.Message,
+                    Message = result.Message,
                     GivenName = givenName,
                     FamilyName = familyName,
-                    DateOfBirth = birthDate
+                    DateOfBirth = birthDate,
+                    Code = result.Success ? "200" : "400"
                 };
-            }
-        }
-
-        private async void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
-        {
-            await OnConnected(e.NetworkAccess);
-        }
-
-        private async Task OnConnected(NetworkAccess networkAccess)
-        {
-            // if already load, don't load again.
-            if (_jwksLoaded)
-            {
-                return;
-            }
-
-            var hasConnectivity = networkAccess == NetworkAccess.Internet;
-            if (hasConnectivity)
-            {
-                await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity);
-                _jwksLoaded = true;
             }
         }
     }

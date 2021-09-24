@@ -52,5 +52,83 @@ namespace ProofOfVaccine.Mobile.AppResources {
                 return ResourceManager.GetString("AppName", resourceCulture);
             }
         }
+        
+        internal static string AppTitle {
+            get {
+                return ResourceManager.GetString("AppTitle", resourceCulture);
+            }
+        }
+        
+        internal static string NewScanButtonText {
+            get {
+                return ResourceManager.GetString("NewScanButtonText", resourceCulture);
+            }
+        }
+        
+        internal static string ScanButtonText {
+            get {
+                return ResourceManager.GetString("ScanButtonText", resourceCulture);
+            }
+        }
+        
+        internal static string ScanErrorMessage {
+            get {
+                return ResourceManager.GetString("ScanErrorMessage", resourceCulture);
+            }
+        }
+        
+        internal static string ScanErrorTitleText {
+            get {
+                return ResourceManager.GetString("ScanErrorTitleText", resourceCulture);
+            }
+        }
+        
+        internal static string ScanSuccessDetailText {
+            get {
+                return ResourceManager.GetString("ScanSuccessDetailText", resourceCulture);
+            }
+        }
+        
+        internal static string ScanSuccessTitleText {
+            get {
+                return ResourceManager.GetString("ScanSuccessTitleText", resourceCulture);
+            }
+        }
+        
+        internal static string ViewGuideButtonText {
+            get {
+                return ResourceManager.GetString("ViewGuideButtonText", resourceCulture);
+            }
+        }
+        
+        internal static string VaccineCodeInvalidText {
+            get {
+                return ResourceManager.GetString("VaccineCodeInvalidText", resourceCulture);
+            }
+        }
+        
+        internal static string VaccineDateInvalidText {
+            get {
+                return ResourceManager.GetString("VaccineDateInvalidText", resourceCulture);
+            }
+        }
+        
+        internal static string VaccineDosageInvalidText {
+            get {
+                return ResourceManager.GetString("VaccineDosageInvalidText", resourceCulture);
+            }
+        }
+        
+        internal static string FhirFormatInvalidText {
+            get {
+                return ResourceManager.GetString("FhirFormatInvalidText", resourceCulture);
+            }
+        }
+        
+        internal static string InvalidScanText {
+            get {
+                return ResourceManager.GetString("InvalidScanText", resourceCulture);
+            }
+        }
     }
 }
