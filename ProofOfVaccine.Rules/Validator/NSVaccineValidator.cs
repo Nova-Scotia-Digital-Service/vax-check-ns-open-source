@@ -16,7 +16,11 @@ namespace ProofOfVaccine.Rules.Validator
         private const string VaccineStatusKey = "@..status";
         private const string VaccineStatusValue = "'completed'";
 
-        private const string VaccineCodeKey = "$..vaccineCode..code";
+        //TODO: If we ever decide to support other coding system, system/list of codes as dictionary parameter.
+        private const string VaccineCodingSystemKey = "@.system";
+        private const string VaccineCodingSystemValue = "'http://hl7.org/fhir/sid/cvx'";
+        private readonly string VaccineCodeKey
+            = $"$..vaccineCode.coding[?({VaccineCodingSystemKey}=={VaccineCodingSystemValue})].code";
 
         private readonly string EntryKey
             = $"$..entry[?({VaccineResourceTypeKey}=={VaccineResourceTypeValue} && {VaccineStatusKey}=={VaccineStatusValue})]";
