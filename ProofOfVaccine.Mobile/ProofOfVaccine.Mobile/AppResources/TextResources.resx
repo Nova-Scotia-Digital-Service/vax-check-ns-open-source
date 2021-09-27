@@ -144,4 +144,19 @@
   <data name="ViewGuideButtonText" xml:space="preserve">
     <value>View Guidlines</value>
   </data>
+  <data name="VaccineCodeInvalidText" xml:space="preserve">
+    <value>Does not meet public health guidelines</value>
+  </data>
+  <data name="VaccineDateInvalidText" xml:space="preserve">
+    <value>Does not meet public health guidelines</value>
+  </data>
+  <data name="VaccineDosageInvalidText" xml:space="preserve">
+    <value>Does not meet public health guidelines</value>
+  </data>
+  <data name="FhirFormatInvalidText" xml:space="preserve">
+    <value>Does not meet public health guidelines</value>
+  </data>
+  <data name="InvalidScanText" xml:space="preserve">
+    <value>Invalid QR code</value>
+  </data>
 </root>

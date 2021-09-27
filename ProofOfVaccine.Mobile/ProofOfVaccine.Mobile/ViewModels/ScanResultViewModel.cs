@@ -1,19 +1,16 @@
 ﻿using ProofOfVaccine.Mobile.DTOs;
 using ProofOfVaccine.Mobile.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace ProofOfVaccine.Mobile.ViewModels
 {
     public class ScanResultViewModel : BaseViewModel
     {
-        private SCHData _shcData = null;
-        public SCHData SCHValidationData
+        private ProofOfVaccinationData _proofOfVaccine = null;
+        public ProofOfVaccinationData ProofOfVaccineData
         {
-            get { return _shcData; }
-            set { SetProperty(ref _shcData, value); }
+            get { return _proofOfVaccine; }
+            set { SetProperty(ref _proofOfVaccine, value); }
         }
 
         public Command NewScanCommand { get; set; }
@@ -30,7 +27,7 @@ namespace ProofOfVaccine.Mobile.ViewModels
 
         private void LoadScanData()
         {
-            SCHValidationData = _shcService.LastScanData;
+            ProofOfVaccineData = _shcService.LastScanData;
         }
     }
 }

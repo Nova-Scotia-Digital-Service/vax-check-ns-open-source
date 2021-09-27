@@ -1,7 +1,5 @@
 ﻿using ProofOfVaccine.Mobile.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;

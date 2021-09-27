@@ -37,25 +37,19 @@
     <EmbeddedResource Update="Views\ScanPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ScanResultPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="DataStore\" />
+    <None Remove="Animations\" />
   </ItemGroup>
-  <ItemGroup>
-    <None Update="Views\ScanResultPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>
-
   <ItemGroup>
     <Folder Include="BindableModels\" />
     <Folder Include="DataStore\" />
+    <Folder Include="Animations\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\PoV.Decode\ProofOfVaccine.Decode.csproj" />
+    <ProjectReference Include="..\..\ProofOfVaccine.Rules\ProofOfVaccine.Rules.csproj" />
   </ItemGroup>
 </Project>

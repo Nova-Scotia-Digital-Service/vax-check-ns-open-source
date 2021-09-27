@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProofOfVaccine.Mobile.DTOs
 {
-    public class SCHData
+    public class ProofOfVaccinationData
     {
         public string Name => string.Join(" ", GivenName, FamilyName);
         public string GivenName { get; set; }
