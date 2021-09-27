@@ -34,7 +34,8 @@
                    Aspect="AspectFit"
                    HorizontalOptions="FillAndExpand"
                    VerticalOptions="FillAndExpand"
-                   Margin="20,100"/>
+                   Margin="20,100"/> 
+            
 
             <Label Text="{Binding CountdownText}"
                    TextColor="{StaticResource BackgroundColor}"
