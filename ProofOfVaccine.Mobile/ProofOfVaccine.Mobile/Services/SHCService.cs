@@ -15,6 +15,7 @@ using ProofOfVaccine.Token.Providers;
 using ProofOfVaccine.Mobile.DataStore;
 using ProofOfVaccine.Rules.Validator;
 using ProofOfVaccine.Mobile.AppResources;
+using ProofOfVaccine.Token.Exceptions;
 
 namespace ProofOfVaccine.Mobile.Services
 {
@@ -46,6 +47,7 @@ namespace ProofOfVaccine.Mobile.Services
         {
             new Uri("https://sync-cf2-1.qa.canimmunize.ca/.well-known/jwks.json"),
             new Uri("https://spec.smarthealth.cards/examples/issuer/.well-known/jwks.json"),
+            new Uri("https://pvc-dev.novascotia.ca/issuer/.well-known/jwks.json"),
             // If we connect to the internet, we can scan the examples on the smart health card website.
             // Not included in the default data.
         };
@@ -130,12 +132,16 @@ namespace ProofOfVaccine.Mobile.Services
                 var compactJWS = ShcToCompactJws(SHCCode);
                 var smartHealthCardModel = await _decoder.DecodeAsync(compactJWS);
                 var fhirBundle = JObject.Parse(smartHealthCardModel.VerifiableCredential.CredentialSubject.FhirBundle);
-                return CreateProofOfVaccineModel(fhirBundle);
+                return CreateProofOfVaccineData(fhirBundle);
             }
             catch (Exception ex)
             {
                 if (_errorManagementService != null)
                     _errorManagementService.HandleError(ex);
+                if (ex is SmartHealthCardDecoderException)
+                {
+                    return InvaidScan(_invalidScanResource, "400");
+                }
                 return null;
             }
         }
@@ -149,7 +155,7 @@ namespace ProofOfVaccine.Mobile.Services
                 .Aggregate((chain, block) => $"{chain}{block}");
         }
 
-        private ProofOfVaccinationData CreateProofOfVaccineModel(JObject fhir)
+        private ProofOfVaccinationData CreateProofOfVaccineData(JObject fhir)
         {
             var givenName = fhir
                 .SelectToken("$....given")
