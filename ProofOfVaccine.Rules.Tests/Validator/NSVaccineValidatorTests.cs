@@ -620,6 +620,66 @@ namespace ProofOfVaccine.Rules.Tests.Validator
                 }
              ]}}";
 
+        private const string fhirBundleWithMultipleVaccineSystemCodings =
+        @"{'fhirBundle':{
+             'resourceType':'Bundle',
+             'type':'collection',
+             'entry':[
+                {
+                   'fullUrl':'resource:0',
+                   'resource':{
+                      'resourceType':'Patient',
+                      'name':[
+                         {
+                            'family':'Smith',
+                            'given':[
+                               'Jon'
+                            ]
+                         }
+                      ],
+                      'birthDate':'1942-04-10'
+                   }
+                },
+                {
+                   'fullUrl':'resource:1',
+                   'resource':{
+                      'isSubpotent':true,
+                      'resourceType':'Immunization',
+                      'status':'completed',
+                      'vaccineCode':{
+                         'coding':[
+                            {
+                               'system':'http://hl7.org/fhir/sid/cvx',
+                               'code':'212'
+                            },
+                            {
+                                'system':'http://snomed.info/sct',
+                                'code':'2896100087105'
+                            }
+                         ]
+                      },
+                      'patient':{
+                         'reference':'resource:0'
+                      },
+                      'occurrenceDateTime':'2021-03-03',
+                      'performer':[
+                         {
+                            'actor':{
+                               'display':'Nova Scotia, Canada'
+                            }
+                         }
+                      ],
+                      'lotNumber':'EL1404',
+                      'manufacturer':{
+                         'identifier':{
+                            'system':'http://hl7.org/fhir/sid/mvx',
+                            'value':'PFR'
+                         }
+                      }
+                   }
+                }
+             ]}}";
+
         private readonly IList<string> _validVaccineCodes
             = new List<string>
             {
@@ -755,6 +815,18 @@ namespace ProofOfVaccine.Rules.Tests.Validator
             var result = vaccineValidator.Validate();
             // Assert
             Assert.True(result.Failure && result.Message == invalidFormatMessage);
+        }
+
+        [Fact]
+        public void Validate_GivenMultipleVaccineCodingTypes_CrxIsUsedAndResultIsSuccess()
+        {
+            // Arrange,
+            _fhirBundleObj = JObject.Parse(fhirBundleWithMultipleVaccineSystemCodings);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            // Act,
+            var result = vaccineValidator.Validate();
+            // Assert
+            Assert.True(result.Success);
         }
     }
 }

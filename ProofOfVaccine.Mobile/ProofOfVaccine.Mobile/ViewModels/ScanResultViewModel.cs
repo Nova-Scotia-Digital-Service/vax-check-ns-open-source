@@ -6,8 +6,8 @@ namespace ProofOfVaccine.Mobile.ViewModels
 {
     public class ScanResultViewModel : BaseViewModel
     {
-        private ProofOfVaccinationModel _proofOfVaccine = null;
-        public ProofOfVaccinationModel ProofOfVaccineData
+        private ProofOfVaccinationData _proofOfVaccine = null;
+        public ProofOfVaccinationData ProofOfVaccineData
         {
             get { return _proofOfVaccine; }
             set { SetProperty(ref _proofOfVaccine, value); }

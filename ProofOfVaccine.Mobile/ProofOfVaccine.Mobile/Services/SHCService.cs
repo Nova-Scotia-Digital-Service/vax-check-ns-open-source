@@ -21,10 +21,10 @@ namespace ProofOfVaccine.Mobile.Services
     public interface ISHCService
     {
         Task InitializeAsync();
-        Task<ProofOfVaccinationModel> ValidateQRCode(string QRCode);
-        Task<ProofOfVaccinationModel> ValidateVaccination(string SHCCode);
-        ProofOfVaccinationModel LastScanData { get; }
-        ProofOfVaccinationModel InvaidScan(string message, string code);
+        Task<ProofOfVaccinationData> ValidateQRCode(string QRCode);
+        Task<ProofOfVaccinationData> ValidateVaccination(string SHCCode);
+        ProofOfVaccinationData LastScanData { get; }
+        ProofOfVaccinationData InvaidScan(string message, string code);
     }
 
     public class SHCService : ISHCService
@@ -83,7 +83,7 @@ namespace ProofOfVaccine.Mobile.Services
             _decoder = new PersistentSmartHealthCardDecoder(_persistentJwksProvider);
         }
 
-        public ProofOfVaccinationModel LastScanData { get; internal set; }
+        public ProofOfVaccinationData LastScanData { get; internal set; }
 
         public async Task InitializeAsync()
         {
@@ -91,7 +91,7 @@ namespace ProofOfVaccine.Mobile.Services
             await Task.Run(async () => await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity));
         }
 
-        public async Task<ProofOfVaccinationModel> ValidateQRCode(string QRCode)
+        public async Task<ProofOfVaccinationData> ValidateQRCode(string QRCode)
         {
             try
             {
@@ -113,9 +113,9 @@ namespace ProofOfVaccine.Mobile.Services
 
         }
 
-        public ProofOfVaccinationModel InvaidScan(string message, string code)
+        public ProofOfVaccinationData InvaidScan(string message, string code)
         {
-            return LastScanData = new ProofOfVaccinationModel()
+            return LastScanData = new ProofOfVaccinationData()
             {
                 IsValidProof = false,
                 Code = code,
@@ -123,7 +123,7 @@ namespace ProofOfVaccine.Mobile.Services
             };
         }
 
-        public async Task<ProofOfVaccinationModel> ValidateVaccination(string SHCCode)
+        public async Task<ProofOfVaccinationData> ValidateVaccination(string SHCCode)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace ProofOfVaccine.Mobile.Services
                 .Aggregate((chain, block) => $"{chain}{block}");
         }
 
-        private ProofOfVaccinationModel CreateProofOfVaccineModel(JObject fhir)
+        private ProofOfVaccinationData CreateProofOfVaccineModel(JObject fhir)
         {
             var givenName = fhir
                 .SelectToken("$....given")
@@ -168,7 +168,7 @@ namespace ProofOfVaccine.Mobile.Services
                 _invalidVaccineDosageResource, _invalidFhirFormatResource))
             {
                 var result = vaccineValidator.Validate();
-                return LastScanData = new ProofOfVaccinationModel()
+                return LastScanData = new ProofOfVaccinationData()
                 {
                     IsValidProof = result.Success,
                     Message = result.Message,
