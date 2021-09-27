@@ -44,8 +44,8 @@
             <ActivityIndicator IsVisible="{Binding IsBusy}"
                                IsRunning="{Binding IsBusy}"
                                IsEnabled="{Binding IsBusy}"
-                               WidthRequest="300"
-                               HeightRequest="300"
+                               WidthRequest="200"
+                               HeightRequest="200"
                                Color="{StaticResource PrimaryColor}"
                                VerticalOptions="CenterAndExpand"
                                HorizontalOptions="CenterAndExpand"/>
