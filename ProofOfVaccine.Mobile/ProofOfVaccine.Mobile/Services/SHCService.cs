@@ -48,6 +48,7 @@ namespace ProofOfVaccine.Mobile.Services
             new Uri("https://sync-cf2-1.qa.canimmunize.ca/.well-known/jwks.json"),
             new Uri("https://spec.smarthealth.cards/examples/issuer/.well-known/jwks.json"),
             new Uri("https://pvc-dev.novascotia.ca/issuer/.well-known/jwks.json"),
+            new Uri("https://pvc.novascotia.ca/issuer/.well-known/jwks.json"),
             // If we connect to the internet, we can scan the examples on the smart health card website.
             // Not included in the default data.
         };
