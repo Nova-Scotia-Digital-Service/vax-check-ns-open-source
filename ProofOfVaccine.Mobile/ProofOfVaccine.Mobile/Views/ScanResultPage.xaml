@@ -21,12 +21,11 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-
         <ScrollView>
 
             <Grid>
                 <Grid BackgroundColor="{StaticResource NegativeColor}"
-                      IsVisible="{Binding SCHValidationData.IsValidProof, Converter={StaticResource InvertedBoolConverter}}">
+                      IsVisible="{Binding ProofOfVaccineData.IsValidProof, Converter={StaticResource InvertedBoolConverter}}">
                     <StackLayout>
                         <Label Padding="24"
                                Text="{x:Static fonts:FontAwesomeSolid.Home}"
@@ -60,7 +59,7 @@
                                FontSize="36"
                                Padding="20,0"/>
 
-                        <Label Text="{Binding SCHValidationData.Message}"
+                        <Label Text="{Binding ProofOfVaccineData.Message}"
                                HorizontalOptions="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="20"
@@ -108,7 +107,7 @@
                 </Grid>
 
                 <Grid BackgroundColor="{StaticResource PositiveColor}"
-                      IsVisible="{Binding SCHValidationData.IsValidProof}">
+                      IsVisible="{Binding ProofOfVaccineData.IsValidProof}">
                     <StackLayout>
                         <Label Padding="24"
                                Text="{x:Static fonts:FontAwesomeSolid.Home}"
@@ -124,7 +123,7 @@
                             </Label.GestureRecognizers>
                         </Label>
 
-                        <Label Text="{Binding SCHValidationData.Name}"
+                        <Label Text="{Binding ProofOfVaccineData.Name}"
                                HorizontalOptions="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="36"
@@ -185,7 +184,6 @@
 						        WidthRequest="300"
 						        HeightRequest="60">
                         </Button>
-
                     </StackLayout>
                 </Grid>
             </Grid>

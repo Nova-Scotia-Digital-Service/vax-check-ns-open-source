@@ -12,7 +12,6 @@
         </ResourceDictionary>
 	</Shell.Resources>
 
-
     <FlyoutItem Title="Home">
         <ShellContent Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
     </FlyoutItem>
