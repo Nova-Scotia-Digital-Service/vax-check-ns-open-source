@@ -3,36 +3,13 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:ProofOfVaccine.Mobile.Views"
        Title="ProofOfVaccine.Mobile"
-       x:Class="ProofOfVaccine.Mobile.AppShell">
+       x:Class="ProofOfVaccine.Mobile.AppShell"
+        xmlns:sys="clr-namespace:System;assembly=netstandard">
 
 	<Shell.Resources>
 		<ResourceDictionary>
-			<Style x:Key="BaseStyle"
-				   TargetType="Element">
-				<Setter Property="Shell.BackgroundColor"
-						Value="{StaticResource BackgroundColor}" />
-				<Setter Property="Shell.ForegroundColor"
-						Value="{StaticResource PrimaryColor}" />
-				<Setter Property="Shell.TitleColor"
-						Value="{StaticResource PrimaryColor}" />
-				<Setter Property="Shell.DisabledColor"
-						Value="#B4FFFFFF" />
-				<Setter Property="Shell.UnselectedColor"
-						Value="#B4B4BA" />
-				<!--<Setter Property="Shell.TabBarBackgroundColor"
-						Value="{StaticResource TabBarBackground}" />
-				<Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource TabIconSelected}" />
-				<Setter Property="Shell.TabBarUnselectedColor"
-						Value="{StaticResource TabIconUnselected}" />
-				<Setter Property="Shell.TabBarTitleColor"
-						Value="{StaticResource TabIconSelected}" />-->
-			</Style>
-			<!--<Style BasedOn="{StaticResource BaseStyle}"
-				   TargetType="TabBar" />-->
-			<Style BasedOn="{StaticResource BaseStyle}"
-				   TargetType="FlyoutItem" />
 
-		</ResourceDictionary>
+        </ResourceDictionary>
 	</Shell.Resources>
 
 
@@ -41,5 +18,18 @@
     </FlyoutItem>
 
 
+
+    
+    <Shell.FlyoutFooter>
+        <StackLayout HeightRequest="200">
+            <Label Text="Xaminals"
+               TextColor="Black"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+            <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
+               TextColor="Black"
+               HorizontalOptions="Center" />
+        </StackLayout>
+    </Shell.FlyoutFooter>
 
 </Shell>
