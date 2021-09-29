@@ -1,0 +1,24 @@
+{
+    "https://pvc-dev.novascotia.ca/issuer/.well-known/jwks.json": {
+        "keys": [{
+            "kty": "EC",
+            "kid": "CU6MaED3OeY0Ea-cLKp8ZKFAnFq0wQVUoTKs-v93ChI",
+            "use": "sig",
+            "alg": "ES256",
+            "crv": "P-256",
+            "x": "Rh7UprYqo70VL3Q6hFXFViaiuvK5H0VgvCiiE0dwvXo",
+            "y": "ziM1-uAHBZ0SBV-vCeUiL_Au4TKGoTYz7lyJF2ToeQ8"
+        }]
+    },
+    "https://pvc.novascotia.ca/issuer/.well-known/jwks.json": {
+        "keys": [{
+            "kty": "EC",
+            "kid": "E8D04HBFoefP8wvO87_ru1d6ggNh_SIIVWtuZq7CFHQ",
+            "use": "sig",
+            "alg": "ES256",
+            "crv": "P-256",
+            "x": "OeFlo72gXmxVITD7mnBzHdcZXeqIYoR01GBQPhjcKvk",
+            "y": "Eot9qd8XQ2atYJs7FTHh8UImP8X0CFTnqukFciqXxpw"
+        }]
+    }
+}

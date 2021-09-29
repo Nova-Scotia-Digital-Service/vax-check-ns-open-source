@@ -1,6 +1,7 @@
 ﻿using ProofOfVaccine.Token.Model.Jwks;
 using ProofOfVaccine.Token.Support;
 using System;
+using System.Collections.Generic;
 
 namespace ProofOfVaccine.Token.Providers
 {
@@ -8,5 +9,6 @@ namespace ProofOfVaccine.Token.Providers
   {
     Result<JsonWebKeySet> Get(Uri WellKnownUrl);
     void Set(Uri WellKnownUrl, JsonWebKeySet JsonWebKeySet);
+    IList<Result<JsonWebKeySet>> ClearStale(IList<Uri> WellKnownUrls);
   }
 }

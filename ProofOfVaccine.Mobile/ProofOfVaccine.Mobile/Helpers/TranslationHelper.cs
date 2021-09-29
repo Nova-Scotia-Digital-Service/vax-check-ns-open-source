@@ -39,6 +39,27 @@ namespace ProofOfVaccine.Mobile.Helpers
             }
             return translation;
         }
+
+        public object ProvideValue(string text)
+        {
+            if (text == null) return "";
+
+            var currentCI = Thread.CurrentThread.CurrentUICulture;
+            var translation = _manager.Value.GetString(text, currentCI);
+
+            if (translation == null)
+            {
+
+#if DEBUG
+                throw new ArgumentException(
+                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", text, _resourceId, currentCI.Name),
+                    "Text");
+#else
+				translation = text;
+#endif
+            }
+            return translation;
+        }
     }
 }
 

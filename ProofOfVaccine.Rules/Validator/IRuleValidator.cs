@@ -3,8 +3,8 @@ using ProofOfVaccine.Rules.Support;
 
 namespace ProofOfVaccine.Rules.Validator
 {
-    public interface IRuleValidator : IDisposable
+    public interface IRuleValidator<T> : IDisposable
     {
-        Result Validate();
+        Result<T> Validate();
     }
 }

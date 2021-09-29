@@ -25,11 +25,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Rule\" />
-    <None Remove="Validator\" />
     <None Remove="Newtonsoft.Json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rule\" />
-    <Folder Include="Validator\" />
   </ItemGroup>
 </Project>

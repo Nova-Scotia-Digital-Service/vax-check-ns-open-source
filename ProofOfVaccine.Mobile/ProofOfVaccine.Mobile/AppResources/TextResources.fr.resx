@@ -144,4 +144,19 @@
   <data name="ViewGuideButtonText" xml:space="preserve">
     <value>Voir les directives</value>
   </data>
+    <data name="VaccineCodeInvalidText" xml:space="preserve">
+    <value>Ne respecte pas les directives de santé publique</value>
+  </data>
+  <data name="VaccineDateInvalidText" xml:space="preserve">
+    <value>Ne respecte pas les directives de santé publique</value>
+  </data>
+  <data name="VaccineDosageInvalidText" xml:space="preserve">
+    <value>Ne respecte pas les directives de santé publique</value>
+  </data>
+  <data name="FhirFormatInvalidText" xml:space="preserve">
+    <value>Ne respecte pas les directives de santé publique</value>
+  </data>
+  <data name="InvalidScanText" xml:space="preserve">
+    <value>Code QR invalide</value>
+  </data>
 </root>

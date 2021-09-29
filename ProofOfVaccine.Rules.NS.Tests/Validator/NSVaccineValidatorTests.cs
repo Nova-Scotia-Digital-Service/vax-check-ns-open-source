@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
-using ProofOfVaccine.Rules.Validator;
+using ProofOfVaccine.Rules.NS.Model;
+using ProofOfVaccine.Rules.NS.Models;
+using ProofOfVaccine.Rules.NS.Validator;
 using Xunit;
 
-namespace ProofOfVaccine.Rules.Tests.Validator
+namespace ProofOfVaccine.Rules.NS.Tests.Validator
 {
     public class NSVaccineValidatorTests
     {
-        private const string invalidCodeMessage = "Invalid Code";
-        private const string invalidDateMessage = "Invalid Date";
-        private const string invalidDosageMessage = "Invalid Dosage";
-        private const string invalidFormatMessage = "Invalid Format";
-
         private const string fhirBundleWithTwoValidDoubleDosageWithMinimumWait =
         @"{'fhirBundle':{
              'resourceType':'Bundle',
@@ -680,19 +677,13 @@ namespace ProofOfVaccine.Rules.Tests.Validator
                 }
              ]}}";
 
-        private readonly IList<string> _validVaccineCodes
-            = new List<string>
-            {
-                "207", //Moderna
-                "208", // Pfizer
-                "210", // AZ
-                "212"  // J&J
-            };
-        private readonly IList<string> _singleDosageVaccineCodes
-            = new List<string>
-            {
-                "212", // J&J
-            };
+        private readonly IList<ValidVaccine> _vaccineList = new List<ValidVaccine>
+        {
+            new ValidVaccine("Moderna", "207", 2),
+            new ValidVaccine("Pfizer", "208", 2),
+            new ValidVaccine("AstraZenica", "210", 2),
+            new ValidVaccine("Moderna", "212", 1),
+        };
 
         private JObject _fhirBundleObj;
 
@@ -706,7 +697,7 @@ namespace ProofOfVaccine.Rules.Tests.Validator
         public void CanInstantiate()
         {
             // Arrange, Act, Assert
-            Assert.NotNull(new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage));
+            Assert.NotNull(new NSVaccineValidator(_fhirBundleObj, _vaccineList));
         }
 
         [Fact]
@@ -714,7 +705,7 @@ namespace ProofOfVaccine.Rules.Tests.Validator
         {
             // Arrange,
             _fhirBundleObj = JObject.Parse(fhirBundleWithTwoValidDoubleDosageWithMinimumWait);
-            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _vaccineList);
             // Act,
             var result = vaccineValidator.Validate();
             // Assert
@@ -726,11 +717,11 @@ namespace ProofOfVaccine.Rules.Tests.Validator
         {
             // Arrange,
             _fhirBundleObj = JObject.Parse(fhirBundleWithTwoValidDoubleDosageWithoutMinimumWait);
-            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _vaccineList);
             // Act,
             var result = vaccineValidator.Validate();
             // Assert
-            Assert.True(result.Failure && result.Message == invalidDateMessage);
+            Assert.True(result.Failure && result.Message == VaccineStatus.InvalidOccuranceDate);
         }
 
         [Fact]
@@ -738,7 +729,7 @@ namespace ProofOfVaccine.Rules.Tests.Validator
         {
             // Arrange,
             _fhirBundleObj = JObject.Parse(fhirBundleWithValidDosageWithExactMinimumWait);
-            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _vaccineList);
             // Act,
             var result = vaccineValidator.Validate();
             // Assert
@@ -750,11 +741,11 @@ namespace ProofOfVaccine.Rules.Tests.Validator
         {
             // Arrange,
             _fhirBundleObj = JObject.Parse(fhirBundleWithoutTwoValidDoubleDosageWithMinimumWait);
-            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _vaccineList);
             // Act,
             var result = vaccineValidator.Validate();
             // Assert
-            Assert.True(result.Failure && result.Message == invalidDosageMessage);
+            Assert.True(result.Failure && result.Message == VaccineStatus.InvalidDosageCount);
         }
 
         [Fact]
@@ -762,7 +753,7 @@ namespace ProofOfVaccine.Rules.Tests.Validator
         {
             // Arrange,
             _fhirBundleObj = JObject.Parse(fhirBundleWithOneValidSingleDosageWithMinimumWait);
-            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _vaccineList);
             // Act,
             var result = vaccineValidator.Validate();
             // Assert
@@ -774,55 +765,55 @@ namespace ProofOfVaccine.Rules.Tests.Validator
         {
             // Arrange,
             _fhirBundleObj = JObject.Parse(fhirBundleWithOneValidSingleDosageWithoutMinimumWait);
-            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _vaccineList);
             // Act,
             var result = vaccineValidator.Validate();
             // Assert
-            Assert.True(result.Failure && result.Message == invalidDateMessage);
+            Assert.True(result.Failure && result.Message == VaccineStatus.InvalidOccuranceDate);
         }
 
         [Fact]
-        public void Validate_GivenTwoInvalidDoseAdministeredAndAtLeastMinimumDaysVaccinated_ResultIsSuccess()
+        public void Validate_GivenTwoInvalidDoseAdministeredAndAtLeastMinimumDaysVaccinated_ResultIsFailure()
         {
             // Arrange,
             _fhirBundleObj = JObject.Parse(fhirBundleWithTwoInvalidDoubleDosageWithMinimumWait);
-            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _vaccineList);
             // Act,
             var result = vaccineValidator.Validate();
             // Assert
-            Assert.True(result.Failure && result.Message == invalidCodeMessage);
+            Assert.True(result.Failure && result.Message == VaccineStatus.InvalidVaccineCode);
         }
 
         [Fact]
-        public void Validate_GivenOneInvalidSingleDoseAdministeredAndAtLeastMinimumDaysVaccinated_ResultIsSuccess()
+        public void Validate_GivenOneInvalidSingleDoseAdministeredAndAtLeastMinimumDaysVaccinated_ResultIsFailure()
         {
             // Arrange,
             _fhirBundleObj = JObject.Parse(fhirBundleWithSingleInvalidSingeDosageWithMinimumWait);
-            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _vaccineList);
             // Act,
             var result = vaccineValidator.Validate();
             // Assert
-            Assert.True(result.Failure && result.Message == invalidCodeMessage);
+            Assert.True(result.Failure && result.Message == VaccineStatus.InvalidVaccineCode);
         }
 
         [Fact]
-        public void Validate_GivenBotchedOccurenceDate_ResultIsSuccess()
+        public void Validate_GivenBotchedOccurenceDate_ResultIsFailure()
         {
             // Arrange,
             _fhirBundleObj = JObject.Parse(fhirBundleWithoutTwoValidDoubleDosageWithBotchedOccuranceDate);
-            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _vaccineList);
             // Act,
             var result = vaccineValidator.Validate();
             // Assert
-            Assert.True(result.Failure && result.Message == invalidFormatMessage);
+            Assert.True(result.Failure && result.Message == VaccineStatus.InvalidFormat);
         }
 
         [Fact]
-        public void Validate_GivenMultipleVaccineCodingTypes_CrxIsUsedAndResultIsSuccess()
+        public void Validate_GivenMultipleVaccineCodingTypes_CvxIsUsedAndResultIsSuccess()
         {
             // Arrange,
             _fhirBundleObj = JObject.Parse(fhirBundleWithMultipleVaccineSystemCodings);
-            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _validVaccineCodes, _singleDosageVaccineCodes, invalidCodeMessage, invalidDateMessage, invalidDosageMessage, invalidFormatMessage);
+            var vaccineValidator = new NSVaccineValidator(_fhirBundleObj, _vaccineList);
             // Act,
             var result = vaccineValidator.Validate();
             // Assert

@@ -125,6 +125,11 @@ namespace PoV.Decode.Providers
             if ((await DataStore.LoadJWKS()) is JwksCache retrievedJwkCache)
             {
                 JwksCache = retrievedJwkCache;
+                foreach(var result in JwksCache.ClearStale(WhiteListedUriSet))
+                {
+                    result.ExpandOnMessage($"JWKS was removed from the cache due to no longer being whitelisted.");
+                    loadedJwksResults.Add(result);
+                }
             }
 
             if (!HasConnectivity)

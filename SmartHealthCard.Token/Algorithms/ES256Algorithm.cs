@@ -55,7 +55,7 @@ namespace ProofOfVaccine.Token.Algorithms
       if (Key is null)
         return Result<IAlgorithm>.Fail($"No key matching the token's header kid value of: {Kid} could be found in the sourced Jason Web Key Set (JWKS) file.");
 
-      // TODO: Add support for Trust (). Focusing on White-List approach for now.
+      // TODO: Add support for Trust. Focusing on White-List approach for now.
       try
       {
         var ecParams = NistNamedCurves.GetByName(CurveName);
