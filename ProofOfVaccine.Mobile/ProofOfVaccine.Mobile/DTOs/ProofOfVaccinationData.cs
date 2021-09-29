@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ProofOfVaccine.Rules.NS.Models;
 
 namespace ProofOfVaccine.Mobile.DTOs
 {
@@ -14,8 +15,6 @@ namespace ProofOfVaccine.Mobile.DTOs
         public bool IsValidProof { get; set; }
         public string SHCCode { get; set; }
 
-        public string Code { get; set; }
-        public string Message { get; set; }
-
+        public VaccineStatus Code { get; set; }
     }
 }

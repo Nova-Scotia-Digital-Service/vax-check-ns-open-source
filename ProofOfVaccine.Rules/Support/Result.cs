@@ -1,9 +1,9 @@
 ﻿using System;
 namespace ProofOfVaccine.Rules.Support
 {
-    public class Result
+    public class Result<T>
     {
-        protected Result(bool Success, bool Retryable, string Message)
+        protected Result(bool Success, bool Retryable, T Message)
         {
             this.Success = Success;
             this.Message = Message;
@@ -28,16 +28,16 @@ namespace ProofOfVaccine.Rules.Support
         /// <summary>
         /// An message that gives details on the result.
         /// </summary>
-        public string Message { get; private set; }
+        public T Message { get; private set; }
 
-        public static Result Ok(string message = "")
+        public static Result<T> Ok(T message)
         {
-            return new Result(Success: true, Retryable: false, Message: message);
+            return new Result<T>(Success: true, Retryable: false, Message: message);
         }
 
-        public static Result Fail(string message)
+        public static Result<T> Fail(T message)
         {
-            return new Result(Success: false, Retryable: false, Message: message);
+            return new Result<T>(Success: false, Retryable: false, Message: message);
         }
     }
 }

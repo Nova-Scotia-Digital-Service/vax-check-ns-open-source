@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using ProofOfVaccine.Rules.Extensions;
+using ProofOfVaccine.Rules.NS.Models;
 using ProofOfVaccine.Rules.Rule;
 using ProofOfVaccine.Rules.Support;
+using ProofOfVaccine.Rules.Validator;
 
-namespace ProofOfVaccine.Rules.Validator
+namespace ProofOfVaccine.Rules.NS.Validator
 {
-    public class NSVaccineValidator : IRuleValidator
+    public class NSVaccineValidator : IRuleValidator<VaccineStatus>
     {
         private const string VaccineResourceTypeKey = "@..resourceType";
         private const string VaccineResourceTypeValue = "'Immunization'";
@@ -28,45 +30,37 @@ namespace ProofOfVaccine.Rules.Validator
         private const int MinimumDaysVaccinated = 14;
         private const string OccuranceDateTimeKey = "$..occurrenceDateTime";
 
-        private readonly Rule<List<JToken>> _vaccinationRule;
-        private readonly IList<string> _validVaccineCodes;
-        private readonly IList<string> _singleDosageCodes;
+        private readonly IList<ValidVaccine> _vaccineList;
 
-        private readonly string _invalidFormatMessage;
+        private readonly RuleSet<List<JToken>, VaccineStatus> _vaccinationRuleSet;
             
         public NSVaccineValidator(JObject fhirBundle,
-            IList<string> validVaccineCodes,
-            IList<string> singleDosageCodes,
-            string invalidVaccineMessage,
-            string invalidVaccineDateMessage,
-            string invalidVaccineCountMessage,
-            string invalidFormatMessage)
+            IList<ValidVaccine> vaccineList)
         {
-            _validVaccineCodes = validVaccineCodes;
-            _singleDosageCodes = singleDosageCodes;
-            _invalidFormatMessage = invalidFormatMessage;
-
             // TODO: Add check for the fhir versioning so multiple versions can be used at the same time.
+
+            _vaccineList = vaccineList;
 
             // Find tokens where type is immunization.
             var completedImmunizationResources = fhirBundle.SelectTokens(EntryKey)
                 .ToList();
 
-            _vaccinationRule = completedImmunizationResources
-               .CreateRule(r => ValidateVaccineCode(r), invalidVaccineMessage)
-               .AppendRule(r => ValidateVaccineDate(r), invalidVaccineDateMessage)
-               .AppendRule(r => ValidateVaccineCount(r), invalidVaccineCountMessage);
+            _vaccinationRuleSet = completedImmunizationResources
+               .CreateRuleSet(r => ValidateVaccineCode(r), VaccineStatus.InvalidVaccineCode)
+               .AppendRule(r => ValidateVaccineDate(r), VaccineStatus.InvalidOccuranceDate)
+               .AppendRule(r => ValidateVaccineCount(r), VaccineStatus.InvalidDosageCount);
         }
 
         /// <summary>
         /// Validate all codes are valid in NS.
         /// </summary>
-        /// <param name="completedImmunizationResources">Each of the immunization resources.</param>
+        /// <param name="completedImmunizationResources">Each of the immunization entries.</param>
         /// <returns></returns>
         private bool ValidateVaccineCode(List<JToken> completedImmunizationResources)
         {
             return completedImmunizationResources
-                .All(j => _validVaccineCodes
+                .All(j => _vaccineList
+                    .Select(v => v.Code)
                     .Contains(j
                         .SelectToken(VaccineCodeKey)
                         .ToString()));
@@ -75,7 +69,7 @@ namespace ProofOfVaccine.Rules.Validator
         /// <summary>
         /// Validate the that both the vaccine dates are greater than or equal to 14 days old.
         /// </summary>
-        /// <param name="completedImmunizationResources">Each of the immunization resources.</param>
+        /// <param name="completedImmunizationResources">Each of the immunization entries.</param>
         /// <returns></returns>
         private bool ValidateVaccineDate(List<JToken> completedImmunizationResources)
         {
@@ -88,35 +82,40 @@ namespace ProofOfVaccine.Rules.Validator
         /// <summary>
         /// Validate the number of vaccinations matches the product.
         /// </summary>
-        ///  /// <param name="completedImmunizationResources">Each of the immunization resources.</param>
+        /// <param name="completedImmunizationResources">Each of the immunization entries.</param>
         /// <returns></returns>
         private bool ValidateVaccineCount(List<JToken> completedImmunizationResources) {
 
-            bool isSingleDose = _singleDosageCodes
-                .Contains(completedImmunizationResources
-                    .First()
-                    .SelectToken(VaccineCodeKey)
-                    .ToString());
+            var vaccinesCodes = completedImmunizationResources
+                .Select(j => j.SelectToken(VaccineCodeKey).ToString());
+
+            var singleDosageVaccineCodes = _vaccineList
+                .Where(v => v.DosageCountRequirement == 1)
+                .Select(v => v.Code);
+
+            bool isSingleDose = singleDosageVaccineCodes
+                .Intersect(vaccinesCodes)
+                .Count() > 0;
 
             // If is a single dose vaccine, return true, otherwise check if it has at least 2.
             return isSingleDose || completedImmunizationResources.Count >= 2;  
         }
 
-        public Result Validate()
+        public Result<VaccineStatus> Validate()
         {
             try
             {
-                return _vaccinationRule.Validate();
+                return _vaccinationRuleSet.Validate(VaccineStatus.RulesNotInitialized);
             }
             catch
             {
-                return Result.Fail(_invalidFormatMessage);
+                return Result<VaccineStatus>.Fail(VaccineStatus.InvalidFormat);
             }
         }
 
         public void Dispose()
         {
-            _vaccinationRule.Dispose();
+            _vaccinationRuleSet.Dispose();
         }
     }
 }

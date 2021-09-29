@@ -12,7 +12,7 @@ namespace PoV.Decode.Providers
     /// A <see cref="IJwksProvider"/> that loads the JWKS in from a persistent store of type <typeparamref name="T"/>.
     /// This allows for the JWKS to be stored locally and loaded regardless of internet connectivity.
     /// </summary>
-    /// <typeparam name="T">The type of data store that contains the <see cref="JwksCache"/>.</typeparam>
+    /// <typeparam name="T">The type of data store that contains the <see cref="IJwksCache"/>.</typeparam>
     public interface IPersistentJwksProvider<T> : IJwksProvider
     {
         /// <summary>

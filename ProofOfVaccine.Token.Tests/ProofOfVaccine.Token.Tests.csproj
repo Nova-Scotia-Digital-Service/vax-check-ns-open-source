@@ -23,9 +23,11 @@
   <ItemGroup>
     <None Remove="Algorithms\" />
     <None Remove="Moq" />
+    <None Remove="Providers\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Algorithms\" />
+    <Folder Include="Providers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmartHealthCard.Token\ProofOfVaccine.Token.csproj" />

@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 
 namespace ProofOfVaccine.Mobile.DataStore
 {
-    // TODO: Add the necessary permission for android and ios.
     public class SecureStore : IJwksDataStore
     {
         public async Task<IJwksCache> LoadJWKS()
