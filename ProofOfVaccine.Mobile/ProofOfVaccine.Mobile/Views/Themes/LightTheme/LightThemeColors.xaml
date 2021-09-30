@@ -16,7 +16,7 @@
     <Color x:Key="SecondaryColor">#40C6F180</Color>
     <Color x:Key="TertiaryColor">#55C8D331</Color>
 
-    <Color x:Key="HighlightColor">#408334</Color>
+    <Color x:Key="HighlightColor">#FDBF31</Color>
     <Color x:Key="PositiveColor">#408334</Color>
     <Color x:Key="NegativeColor">#DE3333</Color>
 

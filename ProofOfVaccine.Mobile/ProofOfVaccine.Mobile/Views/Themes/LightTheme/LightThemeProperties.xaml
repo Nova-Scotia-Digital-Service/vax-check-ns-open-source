@@ -8,7 +8,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="BaseStyle"
-				   TargetType="Element">
+		   TargetType="Element">
         <Setter Property="Shell.BackgroundColor"
 						Value="{StaticResource BackgroundColor}" />
         <Setter Property="Shell.ForegroundColor"
@@ -20,44 +20,13 @@
 						Value="#B4FFFFFF" />
         <Setter Property="Shell.UnselectedColor"
 						Value="#B4B4BA" />
-        <!--<Setter Property="Shell.TabBarBackgroundColor"
-						Value="{StaticResource TabBarBackground}" />
-				<Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource TabIconSelected}" />
-				<Setter Property="Shell.TabBarUnselectedColor"
-						Value="{StaticResource TabIconUnselected}" />
-				<Setter Property="Shell.TabBarTitleColor"
-						Value="{StaticResource TabIconSelected}" />-->
     </Style>
-    <!--<Style BasedOn="{StaticResource BaseStyle}"
-				   TargetType="TabBar" />-->
-    <Style BasedOn="{StaticResource BaseStyle}"
-				   TargetType="FlyoutItem" />
-
-    <Style TargetType="FlyoutPage"
-                   BasedOn="{StaticResource BaseStyle}">
-        <Setter Property="Shell.FlyoutBackground"
-                        Value="Green"/>
-    </Style>
-    
-    <!--<Style x:Key="BaseStyle"
-				   TargetType="Element">
-        <Setter Property="Shell.BackgroundColor"
-						Value="{StaticResource BackgroundColor}" />
-        <Setter Property="Shell.ForegroundColor"
-						Value="{StaticResource PrimaryColor}" />
-        <Setter Property="Shell.TitleColor"
-						Value="Red" />
-        <Setter Property="Shell.FlyoutBackgroundColor"
-						Value="{StaticResource PrimaryColor}" />
-        <Setter Property="Shell.DisabledColor"
-						Value="#B4FFFFFF" />
-        <Setter Property="Shell.UnselectedColor"
-						Value="#B4B4BA" />
-    </Style>
-
 
     <Style BasedOn="{StaticResource BaseStyle}"
-				   TargetType="FlyoutItem" />-->
+				   TargetType="FlyoutItem" >
+
+    </Style>
+
 
     <Style TargetType="Button">
         <Setter Property="TextColor"
@@ -98,9 +67,9 @@
         <Setter Property="VerticalOptions"
                 Value="CenterAndExpand" />
         <Setter Property="HeightRequest"
-                Value="44" />
+                Value="100" />
         <Setter Property="WidthRequest"
-                Value="44" />
+                Value="100" />
         <Setter Property="Margin"
                 Value="24" />
     </Style>
@@ -114,9 +83,9 @@
         <Setter Property="VerticalOptions"
                 Value="CenterAndExpand" />
         <Setter Property="HeightRequest"
-                Value="44" />
+                Value="100" />
         <Setter Property="WidthRequest"
-                Value="44" />
+                Value="100" />
         <Setter Property="Margin"
                 Value="24" />
     </Style>
@@ -126,13 +95,6 @@
                 Value="{DynamicResource PrimaryColor}" />
         <Setter Property="BarTextColor"
                 Value="{DynamicResource AltTextColor}" />
-        <!--<Setter Property="Shell.TitleView">
-            
-            <Image Source="nsflag_colour.png"
-               TranslationX="80"
-               HorizontalOptions="End"
-               VerticalOptions="Center" />
-        </Setter>-->
     </Style>
 
     <Style x:Key="PrimaryButtonStyle"

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ProofOfVaccine.Mobile.ViewModels
@@ -17,9 +19,12 @@ namespace ProofOfVaccine.Mobile.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
+        public string VersionNumber => VersionTracking.CurrentVersion;
 
         public Command GoBackCommand { get; set; }
+        public Command<string> GoToCommand { get; set; }
         public Command ScanCommand { get; set; }
+        public Command<string> OpenInBroswerCommand { get; set; }
 
         protected readonly IErrorManagementService _errorManagementService;
         public BaseViewModel()
@@ -27,19 +32,24 @@ namespace ProofOfVaccine.Mobile.ViewModels
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
 
             GoBackCommand = new Command(GoBack);
+            GoToCommand = new Command<string>(pagePath => GoTo(pagePath));
             ScanCommand = new Command(Scan);
+            OpenInBroswerCommand = new Command<string>(async url => await OpenInBrowserAsync(new Uri(url)));
         }
 
-        protected virtual void GoBack()
+        public async Task OpenInBrowserAsync(Uri uri)
         {
-            Device.BeginInvokeOnMainThread(async () =>
+            try
             {
-                using (Busy())
-                    await Shell.Current.GoToAsync("..", true);
-            });
+                await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                _errorManagementService.HandleError(ex);
+            }
         }
 
-        protected void Scan()
+        public virtual void Scan()
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
@@ -47,13 +57,32 @@ namespace ProofOfVaccine.Mobile.ViewModels
                     await Shell.Current.GoToAsync("ScanPage", true);
             });
         }
-
-        protected virtual void Navigate(string page)
+        public virtual void GoBack()
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
                 using (Busy())
-                    await Shell.Current.GoToAsync("../" + page);
+                    await Shell.Current.GoToAsync("..", true);
+            });
+        }
+        public virtual void GoTo(string pagePath, bool hasAnimation = true)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                using (Busy())
+                {
+                    Shell.Current.FlyoutIsPresented = false;
+                    await Shell.Current.GoToAsync(pagePath, hasAnimation);
+                }
+                    
+            });
+        }
+        public virtual void BackAndNavigateTo(string page, bool hasAnimation = true)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                using (Busy())
+                    await Shell.Current.GoToAsync("../" + page, hasAnimation);
             });
         }
 

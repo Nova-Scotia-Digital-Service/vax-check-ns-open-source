@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:helpers="clr-namespace:ProofOfVaccine.Mobile.Helpers" 
+             xmlns:vm="clr-namespace:ProofOfVaccine.Mobile.ViewModels"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+			 ios:Page.UseSafeArea="True"
+			 Shell.NavBarIsVisible="True"
+			 Shell.NavBarHasShadow="False"
+             x:Class="ProofOfVaccine.Mobile.Views.AboutPage">
+
+    <Shell.TitleView>
+        <Image Source="Headerbg.png"
+               TranslationX="84"
+               HorizontalOptions="End"
+               VerticalOptions="Center" />
+    </Shell.TitleView>
+    
+    <ContentPage.BindingContext>
+        <vm:BaseViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView Margin="0">
+            <StackLayout Margin="0" 
+                         Spacing="0"
+                         BackgroundColor="{StaticResource BackgroundColor}">
+
+                <BoxView Color="{StaticResource PrimaryColor}"
+                         HeightRequest="20"
+                         HorizontalOptions="Fill"/>
+
+
+                <Label Text="{helpers:TranslationHelper AboutPageTitle}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       FontSize="30"
+                       Padding="32,20"/>
+
+                <Label Text="{helpers:TranslationHelper AboutPageContent}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       FontSize="16"
+                       Padding="32,20"/>
+
+
+
+
+                <Image Source="nsflag_colour.png" 
+                       HeightRequest="115"
+                       Aspect="AspectFit"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="EndAndExpand"
+                       Margin="0,0"/>
+                
+                <Label Text="{helpers:TranslationHelper AppTitle}"
+                       TextColor="{StaticResource PrimaryColor}"
+                       HorizontalOptions="Center"
+                       FontSize="20"
+                       TranslationY="-20"
+                       FontAttributes="Bold"/>
+
+
+                <Label TextColor="{StaticResource PrimaryTextColor}"
+                       HorizontalOptions="Center"
+                       FontSize="16"
+                       TranslationY="-15">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Version" />
+                            <Span Text=" " />
+                            <Span Text="{Binding VersionNumber}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                
+                
+                
+                <BoxView Color="{StaticResource PrimaryColor}"
+                         HeightRequest="20"
+                         HorizontalOptions="Fill"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    
+</ContentPage>

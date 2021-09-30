@@ -117,11 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutMenuTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AboutPageContent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AboutPageTitle" xml:space="preserve">
+    <value />
+  </data>
   <data name="AppName" xml:space="preserve">
     <value>Preuve De Vaccin</value>
   </data>
   <data name="AppTitle" xml:space="preserve">
     <value>Preuve De Vaccination</value>
+  </data>
+  <data name="FAQMenuTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FeedbackMenuTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GuideMenuTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="HomeMenuTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InvalidScanText" xml:space="preserve">
+    <value />
   </data>
   <data name="NewScanButtonText" xml:space="preserve">
     <value>Nouveau scan</value>
@@ -135,10 +159,28 @@
   <data name="ScanErrorTitleText" xml:space="preserve">
     <value />
   </data>
+  <data name="ScanMenuTitle" xml:space="preserve">
+    <value />
+  </data>
   <data name="ScanSuccessDetailText" xml:space="preserve">
     <value />
   </data>
   <data name="ScanSuccessTitleText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TermsMenuTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TutorialMenuTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="VaccineCodeInvalidText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="VaccineDateInvalidText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="VaccineDosageInvalidText" xml:space="preserve">
     <value />
   </data>
   <data name="ViewGuideButtonText" xml:space="preserve">

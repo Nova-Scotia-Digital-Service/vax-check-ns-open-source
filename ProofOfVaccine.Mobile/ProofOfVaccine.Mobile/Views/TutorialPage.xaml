@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProofOfVaccine.Mobile.Views.TutorialPage" 
+             xmlns:fonts="clr-namespace:ProofOfVaccine.Mobile.Themes.Fonts"
+			 xmlns:vm="clr-namespace:ProofOfVaccine.Mobile.ViewModels"
+			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:helpers="clr-namespace:ProofOfVaccine.Mobile.Helpers" xmlns:converters="clr-namespace:ProofOfVaccine.Mobile.Converters"
+             ios:Page.UseSafeArea="True"
+			 Shell.NavBarIsVisible="True"
+             Shell.PresentationMode="Modal"
+			 Shell.NavBarHasShadow="False">
+
+    <ContentPage.BindingContext>
+        <vm:BaseViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                
+                <StackLayout>
+                    <Label Padding="24"
+                               Text="{x:Static fonts:FontAwesomeSolid.Home}"
+                               FontFamily="{StaticResource FontAwesomeSolid}"
+                               TextColor="{DynamicResource PrimaryColor}"
+                               FontSize="32"
+                               WidthRequest="200"
+                               VerticalOptions="Start"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Start">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToCommand}"
+                                                  CommandParameter="//HomePage"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

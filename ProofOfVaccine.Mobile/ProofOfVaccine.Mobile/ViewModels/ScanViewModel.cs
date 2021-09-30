@@ -58,16 +58,18 @@ namespace ProofOfVaccine.Mobile.ViewModels
             StartTimer();
         }
 
-        protected override void GoBack()
+        public override void GoBack()
         {
             _timer.Elapsed -= UpdateCount;
+
             base.GoBack();
+            Shell.Current.FlyoutIsPresented = false;
         }
 
-        protected override void Navigate(string page)
+        public override void BackAndNavigateTo(string page, bool hasAnimation = true)
         {
             _timer.Elapsed -= UpdateCount;
-            base.Navigate(page);
+            base.BackAndNavigateTo(page);
         }
 
         private void StartTimer()
@@ -98,7 +100,7 @@ namespace ProofOfVaccine.Mobile.ViewModels
 
                         if (SHCdata == null) return;
 
-                        Navigate("ScanResultPage");
+                        BackAndNavigateTo("ScanResultPage");
                     }
 
                 }
