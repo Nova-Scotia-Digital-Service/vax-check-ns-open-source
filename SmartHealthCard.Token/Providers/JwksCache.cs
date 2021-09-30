@@ -62,5 +62,15 @@ namespace ProofOfVaccine.Token.Providers
       }
       return Result<JsonWebKeySet>.Fail("Not found in cache");
     }
+    public IList<Result<JsonWebKeySet>> ClearStale(IList<Uri> WellKnownUrls)
+    {
+      IList<Result<JsonWebKeySet>> results = new List<Result<JsonWebKeySet>>();
+      foreach (Uri nonWhitelistUri in JsonWebKeySetDictionaryCache.Keys.Except(WellKnownUrls))
+      {
+        results.Add(Result<JsonWebKeySet>.Ok(JsonWebKeySetDictionaryCache[nonWhitelistUri].JsonWebKeySet));
+        JsonWebKeySetDictionaryCache.Remove(nonWhitelistUri);
+      }
+      return results;
+    }
   }
 }

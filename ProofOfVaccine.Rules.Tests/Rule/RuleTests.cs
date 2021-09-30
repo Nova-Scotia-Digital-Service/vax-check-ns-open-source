@@ -14,7 +14,7 @@ namespace ProofOfVaccine.Rules.Tests.Rule
         public void CanCreateRule()
         {
             // Arrange, Act, Assert
-            Assert.NotNull(TestData.CreateRule(s => s.Contains("Hello"), ""));
+            Assert.NotNull(TestData.CreateRuleSet(s => s.Contains("Hello"), ""));
         }
 
         [Fact]
@@ -22,7 +22,7 @@ namespace ProofOfVaccine.Rules.Tests.Rule
         {
             // Arrange, Act, Assert
             Assert.NotNull(TestData
-                .CreateRule(s => s.Contains("Hello"), "")
+                .CreateRuleSet(s => s.Contains("Hello"), "")
                 .AppendRule(s => s.Contains("Hello"), ""));
         }
 
@@ -30,9 +30,9 @@ namespace ProofOfVaccine.Rules.Tests.Rule
         public void GivenSingleValidRuleStatement_RuleIsValid()
         {
             // Arrange,
-            var rule = TestData.CreateRule(s => s.Contains("Hello"), FailMessage);
+            var rule = TestData.CreateRuleSet(s => s.Contains("Hello"), FailMessage);
             // Act,
-            var result = rule.Validate();
+            var result = rule.Validate(FailMessage);
             // Assert
             Assert.True(result.Success);
         }
@@ -41,9 +41,9 @@ namespace ProofOfVaccine.Rules.Tests.Rule
         public void GivenSingleInvalidRuleStatement_RuleIsInvalid()
         {
             // Arrange,
-            var rule = TestData.CreateRule(s => s.Contains("Hejjo"), FailMessage);
+            var rule = TestData.CreateRuleSet(s => s.Contains("Hejjo"), FailMessage);
             // Act,
-            var result = rule.Validate();
+            var result = rule.Validate(FailMessage);
             // Assert
             Assert.True(result.Failure);
         }
@@ -52,10 +52,10 @@ namespace ProofOfVaccine.Rules.Tests.Rule
         public void GivenMultipleRuleStatementWithAllRuleStatementValid_RuleIsValid()
         {
             // Arrange,
-            var rule = TestData.CreateRule(s => s.Contains("Hello"), FailMessage)
+            var rule = TestData.CreateRuleSet(s => s.Contains("Hello"), FailMessage)
                 .AppendRule(s => s.Contains("computer"), SecondFailMessage);
             // Act,
-            var result = rule.Validate();
+            var result = rule.Validate(FailMessage);
             // Assert
             Assert.True(result.Success);
         }
@@ -64,10 +64,10 @@ namespace ProofOfVaccine.Rules.Tests.Rule
         public void GivenMultipleRuleStatementWithInitialRuleStatementInvalid_RuleIsInvalidAndContainsCorrectFailMessage()
         {
             // Arrange,
-            var rule = TestData.CreateRule(s => s.Contains("Hejjo"), FailMessage)
+            var rule = TestData.CreateRuleSet(s => s.Contains("Hejjo"), FailMessage)
                 .AppendRule(s => s.Contains("computer"), SecondFailMessage);
             // Act,
-            var result = rule.Validate();
+            var result = rule.Validate(FailMessage);
             // Assert
             Assert.True(result.Failure && result.Message == FailMessage);
         }
@@ -76,10 +76,10 @@ namespace ProofOfVaccine.Rules.Tests.Rule
         public void GivenMultipleRuleStatementWithAppendedRuleStatementInvalid_RuleIsInvalidAndContainsCorrectFailMessage()
         {
             // Arrange,
-            var rule = TestData.CreateRule(s => s.Contains("Hello"), FailMessage)
+            var rule = TestData.CreateRuleSet(s => s.Contains("Hello"), FailMessage)
                 .AppendRule(s => s.Contains("compuuuuuter"), SecondFailMessage);
             // Act,
-            var result = rule.Validate();
+            var result = rule.Validate(FailMessage);
             // Assert
             Assert.True(result.Failure && result.Message == SecondFailMessage);
         }
@@ -88,10 +88,10 @@ namespace ProofOfVaccine.Rules.Tests.Rule
         public void GivenMultipleRuleStatementWithBothRuleStatementInvalid_RuleIsInvalidAndContainsFirstFailsMessage()
         {
             // Arrange,
-            var rule = TestData.CreateRule(s => s.Contains("Hejjo"), FailMessage)
+            var rule = TestData.CreateRuleSet(s => s.Contains("Hejjo"), FailMessage)
                 .AppendRule(s => s.Contains("compuuuuuter"), SecondFailMessage);
             // Act,
-            var result = rule.Validate();
+            var result = rule.Validate(FailMessage);
             // Assert
             Assert.True(result.Failure && result.Message == FailMessage);
         }
@@ -100,14 +100,14 @@ namespace ProofOfVaccine.Rules.Tests.Rule
         public void GivenLongRuleStatementWithAllRuleStatementValid_RuleIsValid()
         {
             // Arrange,
-            var rule = TestData.CreateRule(s => s.Contains("Hello"), FailMessage)
+            var rule = TestData.CreateRuleSet(s => s.Contains("Hello"), FailMessage)
                 .AppendRule(s => s.Contains("computer"), SecondFailMessage)
                 .AppendRule(s => s.Contains("name"), "")
                 .AppendRule(s => s.Contains(" "), "")
                 .AppendRule(s => s.Contains("name"), "")
                 .AppendRule(s => s.Contains("computer"), "");
             // Act,
-            var result = rule.Validate();
+            var result = rule.Validate(FailMessage);
             // Assert
             Assert.True(result.Success);
         }
@@ -116,14 +116,14 @@ namespace ProofOfVaccine.Rules.Tests.Rule
         public void GivenLongRuleStatementWithOneRuleStatementInvalid_RuleIsInvalid()
         {
             // Arrange,
-            var rule = TestData.CreateRule(s => s.Contains("Hello"), FailMessage)
+            var rule = TestData.CreateRuleSet(s => s.Contains("Hello"), FailMessage)
                 .AppendRule(s => s.Contains("computer"), SecondFailMessage)
                 .AppendRule(s => s.Contains("name"), "")
                 .AppendRule(s => s.Contains(" "), "")
                 .AppendRule(s => s.Contains("compute device"), "")
                 .AppendRule(s => s.Contains("name"), "");
             // Act,
-            var result = rule.Validate();
+            var result = rule.Validate(FailMessage);
             // Assert
             Assert.True(result.Failure);
         }

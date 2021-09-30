@@ -13,9 +13,12 @@ using System.Collections.Generic;
 using ProofOfVaccine.Token.Model.Jwks;
 using ProofOfVaccine.Token.Providers;
 using ProofOfVaccine.Mobile.DataStore;
-using ProofOfVaccine.Rules.Validator;
-using ProofOfVaccine.Mobile.AppResources;
 using ProofOfVaccine.Token.Exceptions;
+using ProofOfVaccine.Rules.NS.Validator;
+using ProofOfVaccine.Rules.NS.Models;
+using Newtonsoft.Json;
+using System.Reflection;
+using System.IO;
 
 namespace ProofOfVaccine.Mobile.Services
 {
@@ -25,63 +28,26 @@ namespace ProofOfVaccine.Mobile.Services
         Task<ProofOfVaccinationData> ValidateQRCode(string QRCode);
         Task<ProofOfVaccinationData> ValidateVaccination(string SHCCode);
         ProofOfVaccinationData LastScanData { get; }
-        ProofOfVaccinationData InvaidScan(string message, string code);
+        ProofOfVaccinationData InvalidScan();
     }
 
     public class SHCService : ISHCService
     {
         private const int B64_OFFSET = 45;
 
-        private readonly string _invalidVaccineCodeResource = TextResources.VaccineCodeInvalidText;
-        private readonly string _invalidVaccineDateResource = TextResources.VaccineDateInvalidText;
-        private readonly string _invalidVaccineDosageResource = TextResources.VaccineDosageInvalidText;
-        private readonly string _invalidFhirFormatResource = TextResources.FhirFormatInvalidText;
-        private readonly string _invalidScanResource = TextResources.InvalidScanText;
-
         protected readonly IErrorManagementService _errorManagementService;
         protected readonly IDecoder _decoder;
         private readonly IPersistentJwksProvider<IJwksDataStore> _persistentJwksProvider;
 
-        //TODO: Remove once we start loading from the resources.
-        private readonly List<Uri> _whiteList = new List<Uri>
-        {
-            new Uri("https://sync-cf2-1.qa.canimmunize.ca/.well-known/jwks.json"),
-            new Uri("https://spec.smarthealth.cards/examples/issuer/.well-known/jwks.json"),
-            new Uri("https://pvc-dev.novascotia.ca/issuer/.well-known/jwks.json"),
-            // If we connect to the internet, we can scan the examples on the smart health card website.
-            // Not included in the default data.
-        };
-
-        //TODO: Remove once we start loading from the resources.
-        private readonly IList<string> _validVaccineCodes= new List<string>
-        {
-            "207", //Moderna
-            "208", // Pfizer
-            "210", // AZ
-            "212"  // J&J
-        };
-
-        //TODO: Remove once we start loading from the resources.
-        private readonly IList<string> _singleDosageVaccineCodes = new List<string>
-        {
-            "212", // J&J
-        };
-
-        private bool _jwksLoaded = false;
+        private Dictionary<Uri, JsonWebKeySet> _whiteListedJwks;
+        private IList<ValidVaccine> _validVaccines;
+        private JwksCache _defaultCache;
 
         public SHCService()
         {
-            //TODO: Remove once we start loading from the resources.
-            var defaultCache = new JwksCache(TimeSpan.FromDays(365));
-            defaultCache.Set(
-                new Uri("https://sync-cf2-1.qa.canimmunize.ca/.well-known/jwks.json"),
-                new JsonWebKeySet(new List<JsonWebKey>
-                    {
-                        new JsonWebKey("EC", "rgJPTaK1nTu897OmUz3oPoeyeReXRMHakf1Dtruu6Z0", "sig", "ES256", "P-256", "ZxJq20yzaU-5-aZZ18FxsVvmlit8DkKnb6UDIIFkWi0", "Oh_I2bHBK4Ex8BOKS1Iw0vYiO1Zf9E3-RZlA9T0r2Lw"),
-                    }));
-
+            LoadEmbeddedData();
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
-            _persistentJwksProvider = new PersistentJwksProvider(new SecureStore(), _whiteList, defaultCache);
+            _persistentJwksProvider = new PersistentJwksProvider(new SecureStore(), _whiteListedJwks.Keys.ToList(), _defaultCache);
             _decoder = new PersistentSmartHealthCardDecoder(_persistentJwksProvider);
         }
 
@@ -103,7 +69,7 @@ namespace ProofOfVaccine.Mobile.Services
                     return await ValidateVaccination(QRCode);
                 else
                 {
-                    return InvaidScan(_invalidScanResource, "400");
+                    return InvalidScan();
                 }
             }
             catch (Exception ex)
@@ -115,13 +81,12 @@ namespace ProofOfVaccine.Mobile.Services
 
         }
 
-        public ProofOfVaccinationData InvaidScan(string message, string code)
+        public ProofOfVaccinationData InvalidScan()
         {
             return LastScanData = new ProofOfVaccinationData()
             {
                 IsValidProof = false,
-                Code = code,
-                Message = message
+                Code = VaccineStatus.InvalidFormat,
             };
         }
 
@@ -140,7 +105,7 @@ namespace ProofOfVaccine.Mobile.Services
                     _errorManagementService.HandleError(ex);
                 if (ex is SmartHealthCardDecoderException)
                 {
-                    return InvaidScan(_invalidScanResource, "400");
+                    return InvalidScan();
                 }
                 return null;
             }
@@ -168,22 +133,54 @@ namespace ProofOfVaccine.Mobile.Services
                 .SelectToken("$....birthDate")
                 .ToString();
 
-            using (var vaccineValidator = new NSVaccineValidator(fhir,
-                _validVaccineCodes, _singleDosageVaccineCodes,
-                _invalidVaccineCodeResource, _invalidVaccineDateResource,
-                _invalidVaccineDosageResource, _invalidFhirFormatResource))
+            using (var vaccineValidator = new NSVaccineValidator(fhir, _validVaccines))
             {
                 var result = vaccineValidator.Validate();
                 return LastScanData = new ProofOfVaccinationData()
                 {
                     IsValidProof = result.Success,
-                    Message = result.Message,
                     GivenName = givenName,
                     FamilyName = familyName,
                     DateOfBirth = birthDate,
-                    Code = result.Success ? "200" : "400"
+                    Code = result.Message
                 };
             }
+        }
+
+        private void LoadEmbeddedData()
+        {
+            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(SHCService)).Assembly;
+
+            Stream stream = assembly.GetManifestResourceStream("ProofOfVaccine.Mobile.AppResources.WhiteList.json");
+
+            using (var reader = new StreamReader(stream))
+            {
+                _whiteListedJwks = LoadWhiteListedJwks(reader.ReadToEnd());
+            }
+
+            _defaultCache = new JwksCache(TimeSpan.MaxValue);
+
+            foreach (var set in _whiteListedJwks)
+            {
+                _defaultCache.Set(set.Key, set.Value);
+            }
+
+            stream = assembly.GetManifestResourceStream("ProofOfVaccine.Mobile.AppResources.ValidVaccines.json");
+
+            using (var reader = new StreamReader(stream))
+            {
+                _validVaccines = LoadValidVaccines(reader.ReadToEnd());
+            }
+        }
+
+        private IList<ValidVaccine> LoadValidVaccines(string validVaccinesJson)
+        {
+            return JsonConvert.DeserializeObject<List<ValidVaccine>>(validVaccinesJson);
+        }
+
+        private Dictionary<Uri, JsonWebKeySet> LoadWhiteListedJwks(string whiteListJson)
+        {
+            return JsonConvert.DeserializeObject<Dictionary<Uri, JsonWebKeySet>>(whiteListJson);
         }
     }
 }

@@ -305,6 +305,7 @@ namespace PoV.Decode.Tests.Providers
 
             // Assert
             Assert.Collection(results,
+                r => Assert.True(r.Success),
                 r => Assert.True(r.Success));
         }
 
@@ -354,7 +355,7 @@ namespace PoV.Decode.Tests.Providers
                     var jwksCache = new JwksCache(TimeSpan.FromDays(30));
                     jwksCache.Set(URI_1, new JsonWebKeySet(new List<JsonWebKey>
                     {
-                            new JsonWebKey("EC", "_IY9W2kRRFUigDfSB9r8jHgMRrT0w4p5KN93nGThdH8", "sig", "ES256", "P-256", "7xbC_9ZmFwKqOHpwX6-LnlhIh5SMIuNwl0PW1yVI_sk", "7k2fdIRNDHdf93vL76wxdXEPtj_GiMTTyecm7EUUMQo")
+                        new JsonWebKey("EC", "_IY9W2kRRFUigDfSB9r8jHgMRrT0w4p5KN93nGThdH8", "sig", "ES256", "P-256", "7xbC_9ZmFwKqOHpwX6-LnlhIh5SMIuNwl0PW1yVI_sk", "7k2fdIRNDHdf93vL76wxdXEPtj_GiMTTyecm7EUUMQo")
                     }));
                     return jwksCache;
                 });
@@ -382,6 +383,44 @@ namespace PoV.Decode.Tests.Providers
             // Assert
             Assert.Collection(results,
                 r => Assert.True(r.Success && r.Message.Length > 100));
+        }
+
+        [Fact]
+        public async Task TryInitializeJwksAsync_GivenAUriIsRemovedFromTheWhiteList_TheCorrespondingCachedJwksIsRemoved()
+        {
+            // Arrange
+            // Override default to have URI_2 missing from cache.
+            _jwksDataStore
+                .Setup(jwkds => jwkds.LoadJWKS())
+                .ReturnsAsync(() =>
+                {
+                    var jwksCache = new JwksCache(TimeSpan.FromDays(30));
+                    jwksCache.Set(URI_1, new JsonWebKeySet(new List<JsonWebKey>
+                    {
+                        new JsonWebKey("EC", "_IY9W2kRRFUigDfSB9r8jHgMRrT0w4p5KN93nGThdH8", "sig", "ES256", "P-256", "7xbC_9ZmFwKqOHpwX6-LnlhIh5SMIuNwl0PW1yVI_sk", "7k2fdIRNDHdf93vL76wxdXEPtj_GiMTTyecm7EUUMQo")
+                    }));
+                    jwksCache.Set(URI_2, new JsonWebKeySet(new List<JsonWebKey>
+                    {
+                        new JsonWebKey("EC", "_IY9W2kRRFUigDfSB9r8jHgMRrT0w4p5KN93nGThdH8", "sig", "ES256", "P-256", "7xbC_9ZmFwKqOHpwX6-LnlhIh5SMIuNwl0PW1yVI_sk", "7k2fdIRNDHdf93vL76wxdXEPtj_GiMTTyecm7EUUMQo")
+                    }));
+                    return jwksCache;
+                });
+
+            List<Uri> whiteList = new List<Uri>()
+            {
+                URI_1,
+            };
+
+            PersistentJwksProvider persistentJwksProvider = new PersistentJwksProvider(_httpClient.Object, _jsonSerializer, _defaultTimeSpan, _jwksDataStore.Object, whiteList, _defaultCache);
+
+            // Act
+            IList<Result<JsonWebKeySet>> results = await persistentJwksProvider.TryInitializeJwksAsync(false);
+
+            // Assert
+            Assert.Collection(results,
+                r => Assert.True(r.Success && r.Message == "JWKS was removed from the cache due to no longer being whitelisted."),
+                r => Assert.True(r.Success));
+            Assert.True((await persistentJwksProvider.GetJwksAsync(URI_2)).Failure);
         }
 
         [Fact]

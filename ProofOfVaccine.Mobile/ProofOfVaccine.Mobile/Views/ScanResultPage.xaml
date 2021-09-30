@@ -13,6 +13,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+            <converters:VaccineStatusToResourceConverter x:Key="vaccineStatusToResourceConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -60,7 +61,7 @@
                                FontSize="36"
                                Padding="20,0"/>
 
-                        <Label Text="{Binding ProofOfVaccineData.Message}"
+                        <Label Text="{Binding ProofOfVaccineData.Code, Converter={StaticResource vaccineStatusToResourceConverter}}"
                                HorizontalOptions="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="20"

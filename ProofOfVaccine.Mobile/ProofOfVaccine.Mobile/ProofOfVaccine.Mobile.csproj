@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="AppResources\ValidVaccines.json" />
+    <EmbeddedResource Include="AppResources\WhiteList.json" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Update="AppResources\TextResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
@@ -48,6 +52,8 @@
   <ItemGroup>
     <None Remove="DataStore\" />
     <None Remove="Animations\" />
+    <None Remove="AppResources\ValidVaccines.json" />
+    <None Remove="AppResources\WhiteList.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BindableModels\" />
@@ -57,5 +63,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\PoV.Decode\ProofOfVaccine.Decode.csproj" />
     <ProjectReference Include="..\..\ProofOfVaccine.Rules\ProofOfVaccine.Rules.csproj" />
+    <ProjectReference Include="..\..\ProofOfVaccine.Rules.NS\ProofOfVaccine.Rules.NS.csproj" />
   </ItemGroup>
 </Project>
