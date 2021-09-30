@@ -25,6 +25,7 @@ namespace ProofOfVaccine.Mobile.Services
     public interface ISHCService
     {
         Task InitializeAsync();
+        Task TryUpdateKeyset();
         Task<ProofOfVaccinationData> ValidateQRCode(string QRCode);
         Task<ProofOfVaccinationData> ValidateVaccination(string SHCCode);
         ProofOfVaccinationData LastScanData { get; }
@@ -56,7 +57,20 @@ namespace ProofOfVaccine.Mobile.Services
         public async Task InitializeAsync()
         {
             var hasConnectivity = Connectivity.NetworkAccess == NetworkAccess.Internet;
-            await Task.Run(async () => await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity));
+            //await Task.Run(async () => await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity));
+        }
+
+        public async Task TryUpdateKeyset()
+        {
+            //TODO: Implement logic
+            // Check network connection
+            // if there is a connection, fetch Keysets from online
+            // if keys are changed or cache is empty, update cache
+            // if no connection, look for cache, and fallback to hardcoded KeySet
+
+            //TODO: Make sure all storage access is piped through localDataService only.
+            //Remove storage access from all other class and make it a dependancy for SHCService
+            
         }
 
         public async Task<ProofOfVaccinationData> ValidateQRCode(string QRCode)
@@ -150,37 +164,47 @@ namespace ProofOfVaccine.Mobile.Services
         private void LoadEmbeddedData()
         {
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(SHCService)).Assembly;
+            _whiteListedJwks = LoadWhiteListedJwks(assembly);
+            _validVaccines = LoadValidVaccines(assembly);
+            
+            CacheWhitelistJWKS(_whiteListedJwks);
+        }
 
+        private IList<ValidVaccine> LoadValidVaccines(Assembly assembly)
+        {
+            Stream stream = assembly.GetManifestResourceStream("ProofOfVaccine.Mobile.AppResources.ValidVaccines.json");
+
+            using (var reader = new StreamReader(stream))
+            {
+                _validVaccines = JsonConvert.DeserializeObject<List<ValidVaccine>>(reader.ReadToEnd());
+            }
+
+            return _validVaccines;
+        }
+
+        private Dictionary<Uri, JsonWebKeySet> LoadWhiteListedJwks(Assembly assembly)
+        {
             Stream stream = assembly.GetManifestResourceStream("ProofOfVaccine.Mobile.AppResources.WhiteList.json");
 
             using (var reader = new StreamReader(stream))
             {
-                _whiteListedJwks = LoadWhiteListedJwks(reader.ReadToEnd());
+                _whiteListedJwks = JsonConvert.DeserializeObject<Dictionary<Uri, JsonWebKeySet>>(reader.ReadToEnd());
             }
+
+            return _whiteListedJwks;
+        }
+
+        private JwksCache CacheWhitelistJWKS(Dictionary<Uri, JsonWebKeySet>  whiteListedJwks)
+        {
 
             _defaultCache = new JwksCache(TimeSpan.MaxValue);
 
-            foreach (var set in _whiteListedJwks)
+            foreach (var set in whiteListedJwks)
             {
                 _defaultCache.Set(set.Key, set.Value);
             }
 
-            stream = assembly.GetManifestResourceStream("ProofOfVaccine.Mobile.AppResources.ValidVaccines.json");
-
-            using (var reader = new StreamReader(stream))
-            {
-                _validVaccines = LoadValidVaccines(reader.ReadToEnd());
-            }
-        }
-
-        private IList<ValidVaccine> LoadValidVaccines(string validVaccinesJson)
-        {
-            return JsonConvert.DeserializeObject<List<ValidVaccine>>(validVaccinesJson);
-        }
-
-        private Dictionary<Uri, JsonWebKeySet> LoadWhiteListedJwks(string whiteListJson)
-        {
-            return JsonConvert.DeserializeObject<Dictionary<Uri, JsonWebKeySet>>(whiteListJson);
+            return _defaultCache;
         }
     }
 }

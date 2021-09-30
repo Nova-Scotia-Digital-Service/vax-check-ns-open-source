@@ -23,7 +23,7 @@
               CommandParameter="TutorialPage" />
     <MenuItem Text="{helpers:TranslationHelper GuideMenuTitle}"
               Command="{Binding OpenInBroswerCommand}"
-              CommandParameter="https://novascotia.ca/reopening-plan/phase-five" />
+              CommandParameter="https://novascotia.ca/reopening-plan/" />
     <MenuItem Text="{helpers:TranslationHelper TermsMenuTitle}"
               Command="{Binding OpenInBroswerCommand}"
               CommandParameter="https://novascotia.ca/reopening-plan/phase-five" />

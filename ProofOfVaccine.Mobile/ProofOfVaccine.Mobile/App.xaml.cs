@@ -47,7 +47,7 @@ namespace ProofOfVaccine.Mobile
 
         protected override async void OnResume()
         {
-            await _shcService.InitializeAsync();
+            await _shcService.TryUpdateKeyset();
         }
 
         private void InitializeAppCenter()
