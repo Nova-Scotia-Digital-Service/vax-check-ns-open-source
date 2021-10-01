@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-	--><!--<item>
+	<item>
 		<color android:color="#0A5EA1"/>”
 	</item>
 	
@@ -13,19 +13,13 @@
 		
 	</item>
 
-	<item>
-		<bitmap
-			android:src="@drawable/vaccinebottle"
-			android:tileMode="disabled"
-			android:gravity="center"/>
-
-	</item>--><!--
 
 
 
-</layer-list>-->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+</layer-list>
+
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -55,5 +49,5 @@
 
 
 
-</RelativeLayout>
+</RelativeLayout>-->
 

@@ -57,14 +57,14 @@ namespace ProofOfVaccine.Mobile.Services
         public async Task InitializeAsync()
         {
             var hasConnectivity = Connectivity.NetworkAccess == NetworkAccess.Internet;
-            //await Task.Run(async () => await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity));
+            await Task.Run(async () => await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity));
         }
 
         public async Task TryUpdateKeyset()
         {
             //TODO: Implement logic
             // Check network connection
-            // if there is a connection, fetch Keysets from online
+            // if there is a connection, fetch JWKeysets from online
             // if keys are changed or cache is empty, update cache
             // if no connection, look for cache, and fallback to hardcoded KeySet
 
