@@ -7,13 +7,15 @@ using Android.OS;
 
 namespace ProofOfVaccine.Mobile.Droid
 {
-    [Activity(Label = "Proof Of Vaccine", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, 
+    [Activity(Label = "Proof Of Vaccine", Icon = "@mipmap/icon", Theme = "@style/Theme.Splash", MainLauncher = true, 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, 
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            base.SetTheme(Resource.Style.MainTheme);
+
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
