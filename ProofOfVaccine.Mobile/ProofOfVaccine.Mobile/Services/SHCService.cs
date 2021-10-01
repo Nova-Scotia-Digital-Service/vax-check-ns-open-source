@@ -10,7 +10,6 @@ using Xamarin.Essentials;
 using PoV.Decode.Providers;
 using PoV.Decode.DataStore;
 using System.Collections.Generic;
-using ProofOfVaccine.Token.Model.Jwks;
 using ProofOfVaccine.Token.Providers;
 using ProofOfVaccine.Mobile.DataStore;
 using ProofOfVaccine.Token.Exceptions;
@@ -19,6 +18,7 @@ using ProofOfVaccine.Rules.NS.Models;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.IO;
+using ProofOfVaccine.Token.Model.Jwks;
 
 namespace ProofOfVaccine.Mobile.Services
 {
@@ -40,7 +40,7 @@ namespace ProofOfVaccine.Mobile.Services
         protected readonly IDecoder _decoder;
         private readonly IPersistentJwksProvider<IJwksDataStore> _persistentJwksProvider;
 
-        private Dictionary<Uri, JsonWebKeySet> _whiteListedJwks;
+        private Dictionary<Uri, Token.Model.Jwks.JsonWebKeySet> _whiteListedJwks;
         private IList<ValidVaccine> _validVaccines;
         private JwksCache _defaultCache;
 
@@ -58,19 +58,30 @@ namespace ProofOfVaccine.Mobile.Services
         {
             var hasConnectivity = Connectivity.NetworkAccess == NetworkAccess.Internet;
             await Task.Run(async () => await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity));
+
+            //TODO: Implement logic
+
+            // Load whitelist of issuer and keys from json resource (embedded) 
+            // Check network connection
+            // if online, get JWkeyset for whitelisted issuers and locally store via DataService
+            // else -> Load Previously Stored JWKeyset
+            // if no previous stored JWKeyset -> Load JWKetset from json resource (embedded) 
+            // initillize SmartHealthCardDecoder with new JWKeyset
         }
 
         public async Task TryUpdateKeyset()
         {
             //TODO: Implement logic
-            // Check network connection
-            // if there is a connection, fetch JWKeysets from online
-            // if keys are changed or cache is empty, update cache
-            // if no connection, look for cache, and fallback to hardcoded KeySet
 
-            //TODO: Make sure all storage access is piped through localDataService only.
-            //Remove storage access from all other class and make it a dependancy for SHCService
-            
+            // Load whitelist of issuer and keys from RAM (should be handdled in DataService, so load from DataService)
+            // Check network connection
+            // if online, get JWkeyset for whitelisted issuers
+            // Load previously stored JWKeyset from disk (should be handdled in DataService, so load from DataService)
+            // check if KID matches for each issuer 
+            // if the two KIDs does not match
+            // Locally store new KID
+            // re-initillize SmartHealthCardDecoder with new JWKeyset
+
         }
 
         public async Task<ProofOfVaccinationData> ValidateQRCode(string QRCode)
@@ -188,7 +199,7 @@ namespace ProofOfVaccine.Mobile.Services
 
             using (var reader = new StreamReader(stream))
             {
-                _whiteListedJwks = JsonConvert.DeserializeObject<Dictionary<Uri, JsonWebKeySet>>(reader.ReadToEnd());
+                _whiteListedJwks = JsonConvert.DeserializeObject<Dictionary<Uri, Token.Model.Jwks.JsonWebKeySet>>(reader.ReadToEnd());
             }
 
             return _whiteListedJwks;
@@ -206,5 +217,6 @@ namespace ProofOfVaccine.Mobile.Services
 
             return _defaultCache;
         }
+
     }
 }

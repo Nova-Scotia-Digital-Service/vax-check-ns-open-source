@@ -23,13 +23,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Token", "Token", "{099340F2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{88F877D2-3091-4BE9-8DC4-B441A27310A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfVaccine.Rules", "ProofOfVaccine.Rules\ProofOfVaccine.Rules.csproj", "{15D2874A-1192-44F7-B6AC-DCFE3A1FD16A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfVaccine.Rules", "ProofOfVaccine.Rules\ProofOfVaccine.Rules.csproj", "{15D2874A-1192-44F7-B6AC-DCFE3A1FD16A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfVaccine.Rules.Tests", "ProofOfVaccine.Rules.Tests\ProofOfVaccine.Rules.Tests.csproj", "{641A4569-50AA-4B8A-9189-1AB7703A78F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfVaccine.Rules.Tests", "ProofOfVaccine.Rules.Tests\ProofOfVaccine.Rules.Tests.csproj", "{641A4569-50AA-4B8A-9189-1AB7703A78F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfVaccine.Rules.NS", "ProofOfVaccine.Rules.NS\ProofOfVaccine.Rules.NS.csproj", "{00388F58-C236-433A-AF71-F614A7492BE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfVaccine.Rules.NS", "ProofOfVaccine.Rules.NS\ProofOfVaccine.Rules.NS.csproj", "{00388F58-C236-433A-AF71-F614A7492BE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfVaccine.Rules.NS.Tests", "ProofOfVaccine.Rules.NS.Tests\ProofOfVaccine.Rules.NS.Tests.csproj", "{9715C664-DCEB-4D39-9485-288B9FE428FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfVaccine.Rules.NS.Tests", "ProofOfVaccine.Rules.NS.Tests\ProofOfVaccine.Rules.NS.Tests.csproj", "{9715C664-DCEB-4D39-9485-288B9FE428FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules.NS", "Rules.NS", "{D77C0ABD-2C9D-4AF6-BB4B-FA01927D6E18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -155,18 +157,6 @@ Global
 		{15D2874A-1192-44F7-B6AC-DCFE3A1FD16A}.Release|iPhone.Build.0 = Release|Any CPU
 		{15D2874A-1192-44F7-B6AC-DCFE3A1FD16A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{15D2874A-1192-44F7-B6AC-DCFE3A1FD16A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Release|iPhone.Build.0 = Release|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{37A32CB2-7E18-4352-B5B8-CCA41D752DE0}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{641A4569-50AA-4B8A-9189-1AB7703A78F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{641A4569-50AA-4B8A-9189-1AB7703A78F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{641A4569-50AA-4B8A-9189-1AB7703A78F5}.Debug|iPhone.ActiveCfg = Debug|Any CPU
@@ -214,6 +204,8 @@ Global
 		{E29D9546-02B5-4833-9843-317083DEEC1D} = {099340F2-7B97-4247-83F3-4EAB1767A47A}
 		{15D2874A-1192-44F7-B6AC-DCFE3A1FD16A} = {88F877D2-3091-4BE9-8DC4-B441A27310A1}
 		{641A4569-50AA-4B8A-9189-1AB7703A78F5} = {88F877D2-3091-4BE9-8DC4-B441A27310A1}
+		{00388F58-C236-433A-AF71-F614A7492BE9} = {D77C0ABD-2C9D-4AF6-BB4B-FA01927D6E18}
+		{9715C664-DCEB-4D39-9485-288B9FE428FD} = {D77C0ABD-2C9D-4AF6-BB4B-FA01927D6E18}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9B0BB07-64BA-4134-BD2D-8897A5E48E02}
