@@ -46,6 +46,7 @@ namespace ProofOfVaccine.Mobile.Services
 
         public SHCService()
         {
+            //TODO: Load all data via DataService
             LoadEmbeddedData();
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
             _localDataService = DependencyService.Resolve<ILocalDataService>();

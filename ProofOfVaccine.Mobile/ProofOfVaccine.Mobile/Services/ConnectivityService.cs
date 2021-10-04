@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProofOfVaccine.Mobile.DTOs;
+using ProofOfVaccine.Mobile.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Essentials;
@@ -94,24 +96,12 @@ namespace ProofOfVaccine.Mobile.Services
                 _dataService.LastOnlineDate = DateTime.UtcNow;
             }
 
-            NetworkConnectivityChanged?.Invoke(this,
-                new NetworkInfo(IsNetworkAvailable, _dataService.LastOnlineDate, _dataService.LastJWKSUpdateDate));
+            var lastUpdatedSpan = _dataService.LastJWKSUpdateDate - DateTime.UtcNow;
+            var needsJWKSUpdate = lastUpdatedSpan.Value > AppSettings.JWKSUpdateThreshold;
+                NetworkConnectivityChanged?.Invoke(this,
+                    new NetworkInfo(IsNetworkAvailable, _dataService.LastOnlineDate, _dataService.LastJWKSUpdateDate, needsJWKSUpdate));
         }
 
     }
-
-    public class NetworkInfo : EventArgs
-    {
-        public bool IsNetworkAvailable { get; }
-        public DateTime? LastOnline { get;  }
-        public DateTime? LastJWKSUpdate { get; }
-
-        public NetworkInfo(bool isNetworkAvailable, DateTime? lastOnline, DateTime? lastJWKSUpdate)
-        {
-            IsNetworkAvailable = isNetworkAvailable;
-            LastOnline = lastOnline;
-            LastJWKSUpdate = LastJWKSUpdate;
-        }
-    }
-
+    
 }

@@ -8,5 +8,10 @@ namespace ProofOfVaccine.Mobile.Helpers
     {
         public static string AppPublicKey = "";
         public static string AppPrivateKey = "";
+
+        public static string AppCenterAndroidKey = "";
+        public static string AppCenteriOSKey = "";
+
+        public static TimeSpan JWKSUpdateThreshold => new TimeSpan(0, 0, 1, 0, 0);
     }
 }

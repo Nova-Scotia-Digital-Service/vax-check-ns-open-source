@@ -1,4 +1,5 @@
-﻿using ProofOfVaccine.Mobile.Helpers;
+﻿using ProofOfVaccine.Mobile.DTOs;
+using ProofOfVaccine.Mobile.Helpers;
 using ProofOfVaccine.Mobile.Services;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace ProofOfVaccine.Mobile.ViewModels
             set { SetProperty(ref _title, value); }
         }
         public string VersionNumber => VersionTracking.CurrentVersion;
+        public NetworkInfo CurrentNetworkInfo => _connectivityService.GetNetworkInfo;
 
         public Command GoBackCommand { get; set; }
         public Command<string> GoToCommand { get; set; }
@@ -27,9 +29,11 @@ namespace ProofOfVaccine.Mobile.ViewModels
         public Command<string> OpenInBroswerCommand { get; set; }
 
         protected readonly IErrorManagementService _errorManagementService;
+        protected readonly IConnectivityService _connectivityService;
         public BaseViewModel()
         {
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
+            _connectivityService = DependencyService.Resolve<IConnectivityService>();
 
             GoBackCommand = new Command(GoBack);
             GoToCommand = new Command<string>(pagePath => GoTo(pagePath));
