@@ -10,6 +10,7 @@ using Xamarin.Forms;
 
 namespace ProofOfVaccine.Mobile.Services
 {
+    //TODO: integrate into DataService and Remove 
     public interface ILocalDataService : IJwksDataStore
     {
         event EventHandler LastOnlineDateChanged;
