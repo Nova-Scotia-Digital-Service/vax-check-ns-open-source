@@ -11,7 +11,6 @@ using PoV.Decode.Providers;
 using PoV.Decode.DataStore;
 using System.Collections.Generic;
 using ProofOfVaccine.Token.Providers;
-using ProofOfVaccine.Mobile.DataStore;
 using ProofOfVaccine.Token.Exceptions;
 using ProofOfVaccine.Rules.NS.Validator;
 using ProofOfVaccine.Rules.NS.Models;
@@ -39,6 +38,7 @@ namespace ProofOfVaccine.Mobile.Services
         protected readonly IErrorManagementService _errorManagementService;
         protected readonly IDecoder _decoder;
         private readonly IPersistentJwksProvider<IJwksDataStore> _persistentJwksProvider;
+        private readonly ILocalDataService _localDataService;
 
         private Dictionary<Uri, Token.Model.Jwks.JsonWebKeySet> _whiteListedJwks;
         private IList<ValidVaccine> _validVaccines;
@@ -48,7 +48,8 @@ namespace ProofOfVaccine.Mobile.Services
         {
             LoadEmbeddedData();
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
-            _persistentJwksProvider = new PersistentJwksProvider(new SecureStore(), _whiteListedJwks.Keys.ToList(), _defaultCache);
+            _localDataService = DependencyService.Resolve<ILocalDataService>();
+            _persistentJwksProvider = new PersistentJwksProvider(_localDataService, _whiteListedJwks.Keys.ToList(), _defaultCache);
             _decoder = new PersistentSmartHealthCardDecoder(_persistentJwksProvider);
         }
 
@@ -57,6 +58,10 @@ namespace ProofOfVaccine.Mobile.Services
         public async Task InitializeAsync()
         {
             var hasConnectivity = Connectivity.NetworkAccess == NetworkAccess.Internet;
+            if (hasConnectivity)
+            {
+                _localDataService.SetLastOnlineDate();
+            }
             await Task.Run(async () => await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity));
 
             //TODO: Implement logic
