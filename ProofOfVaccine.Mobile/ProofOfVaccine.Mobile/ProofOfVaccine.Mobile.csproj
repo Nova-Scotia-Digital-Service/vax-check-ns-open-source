@@ -44,14 +44,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="DataStore\" />
     <None Remove="Animations\" />
     <None Remove="AppResources\ValidVaccines.json" />
     <None Remove="AppResources\WhiteList.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BindableModels\" />
-    <Folder Include="DataStore\" />
     <Folder Include="Animations\" />
   </ItemGroup>
   <ItemGroup>

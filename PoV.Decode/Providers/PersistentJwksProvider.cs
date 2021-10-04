@@ -177,7 +177,6 @@ namespace PoV.Decode.Providers
 
             }
 
-
             // Store the updated cache in the data store for next time they are loaded.
             await TrySaveJwksToPersistentStore();
 
