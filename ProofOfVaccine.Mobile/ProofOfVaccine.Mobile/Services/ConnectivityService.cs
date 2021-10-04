@@ -96,12 +96,17 @@ namespace ProofOfVaccine.Mobile.Services
                 _dataService.LastOnlineDate = DateTime.UtcNow;
             }
 
-            var lastUpdatedSpan = _dataService.LastJWKSUpdateDate - DateTime.UtcNow;
-            var needsJWKSUpdate = lastUpdatedSpan.Value > AppSettings.JWKSUpdateThreshold;
-                NetworkConnectivityChanged?.Invoke(this,
-                    new NetworkInfo(IsNetworkAvailable, _dataService.LastOnlineDate, _dataService.LastJWKSUpdateDate, needsJWKSUpdate));
+            bool needsJWKSUpdate = false;
+            if (_dataService.LastJWKSUpdateDate.HasValue)
+            {
+                var lastUpdatedSpan = _dataService.LastJWKSUpdateDate - DateTime.UtcNow;
+                needsJWKSUpdate = lastUpdatedSpan.Value > AppSettings.JWKSUpdateThreshold;
+            }
+
+            NetworkConnectivityChanged?.Invoke(this,
+                new NetworkInfo(IsNetworkAvailable, _dataService.LastOnlineDate, _dataService.LastJWKSUpdateDate, needsJWKSUpdate));
         }
 
     }
-    
+
 }
