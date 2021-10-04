@@ -4,50 +4,27 @@
 	<item>
 		<color android:color="#0A5EA1"/>”
 	</item>
+
 	
 	<item>
-		<bitmap
+		<bitmap 
 			android:src="@drawable/nsflag_white"
 			android:tileMode="disabled"
 			android:gravity="center"/>
 		
 	</item>
 
+	<item android:top="100dp">
+		<bitmap
+			android:src="@drawable/nsflag_white"
+			android:tileMode="disabled"
+			android:gravity="center"/>
+
+	</item>
 
 
 
 
 </layer-list>
 
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:background="@drawable/nsflag_white"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-	<ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:src="@drawable/nsflag_white"/>
-
-	<customfonts.MyTextView_Roboto_Medium
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:gravity="center"
-        android:fontFamily="sans-serif-medium"
-        android:textStyle="normal"
-        android:textColor="#474559"
-        android:lineSpacingExtra="31sp"
-        android:layout_marginBottom="175dp"
-        android:layout_alignParentBottom="true"
-        android:text="Please wait..."
-        />
-
-
-
-</RelativeLayout>-->
 
