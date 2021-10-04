@@ -18,5 +18,10 @@ namespace ProofOfVaccine.Mobile.Services
         Dictionary<Uri, JWKeySet> GetWhitelistedIssuerKeySets(bool forceLoadfromfile = false);
         List<Vaccine> GetValidVaccines(bool forceLoadfromfile = false);
 
+        DateTime? LastOnlineDate { get; set; }
+        TimeSpan? SinceLastOnline();
+        DateTime? LastJWKSUpdateDate { get; }
+
+
     }
 }

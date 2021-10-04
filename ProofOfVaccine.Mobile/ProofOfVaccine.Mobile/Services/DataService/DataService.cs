@@ -16,6 +16,79 @@ namespace ProofOfVaccine.Mobile.Services
 {
     public class DataService : IDataService
     {
+        private DateTime? _lastOnlineDate = null;
+        public DateTime? LastOnlineDate
+        {
+            get
+            {
+                if (_lastOnlineDate == null)
+                {
+                    if(Preferences.ContainsKey(nameof(_lastOnlineDate)))
+                    {
+                        var lastOnlineString = Preferences.Get(nameof(_lastOnlineDate), "");
+                        if(!string.IsNullOrWhiteSpace(lastOnlineString))
+                        {
+                            _lastOnlineDate = JsonConvert.DeserializeObject<DateTime?>(lastOnlineString);
+                        }
+                    }
+                }
+
+                return _lastOnlineDate;
+            }
+            set
+            {
+                if (value == null) return;
+
+                if(Preferences.ContainsKey(nameof(_lastOnlineDate)))
+                {
+                    Preferences.Remove(nameof(_lastOnlineDate));
+                }
+
+                var dateString = JsonConvert.SerializeObject(value);
+                Preferences.Set(nameof(_lastOnlineDate), dateString);
+            }
+        }
+
+        public TimeSpan? SinceLastOnline()
+        {
+            if(_lastOnlineDate == null) return null;
+
+            return (DateTime.UtcNow - _lastOnlineDate.Value);
+        }
+
+        private DateTime? _lastJWKSUpdateDate = null;
+        public DateTime? LastJWKSUpdateDate
+        {
+            get
+            {
+                if (_lastJWKSUpdateDate == null)
+                {
+                    if (Preferences.ContainsKey(nameof(_lastJWKSUpdateDate)))
+                    {
+                        var resultString = Preferences.Get(nameof(_lastJWKSUpdateDate), "");
+                        if (!string.IsNullOrWhiteSpace(resultString))
+                        {
+                            _lastJWKSUpdateDate = JsonConvert.DeserializeObject<DateTime?>(resultString);
+                        }
+                    }
+                }
+
+                return _lastJWKSUpdateDate;
+            }
+            internal set
+            {
+                if (value == null) return;
+
+                if (Preferences.ContainsKey(nameof(_lastJWKSUpdateDate)))
+                {
+                    Preferences.Remove(nameof(_lastJWKSUpdateDate));
+                }
+
+                var dateString = JsonConvert.SerializeObject(value);
+                Preferences.Set(nameof(_lastJWKSUpdateDate), dateString);
+            }
+        }
+
         private Assembly _assembly;
         public DataService(Assembly assembly = null)
         {
@@ -28,6 +101,10 @@ namespace ProofOfVaccine.Mobile.Services
         private Dictionary<Uri, JWKeySet> _jsonWebKeySets;
         public async Task<Dictionary<Uri, JWKeySet>> LoadJWKSFromOnlineAsync(Dictionary<Uri, JWKeySet> uriKeys)
         {//TODO
+
+            LastJWKSUpdateDate = DateTime.UtcNow;
+
+
             //var request = new HttpRequestMessage(HttpMethod.Get, WellKnownUrl);
             //try
             //{
@@ -136,6 +213,7 @@ namespace ProofOfVaccine.Mobile.Services
         }
 
         private Dictionary<Uri, JWKeySet> _whitelistedIssuerKeySets;
+
         public Dictionary<Uri, JWKeySet> GetWhitelistedIssuerKeySets(bool forceLoadfromfile = false)
         {
             if (_whitelistedIssuerKeySets == null)

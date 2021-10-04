@@ -16,6 +16,7 @@ namespace ProofOfVaccine.Mobile
 
             DependencyService.RegisterSingleton<IErrorManagementService>(new ErrorManagementService());
             DependencyService.RegisterSingleton<IDataService>(new DataService());
+            DependencyService.RegisterSingleton<IConnectivityService>(new ConnectivityService());
             //TODO: integrate into DataService and Remove 
             DependencyService.RegisterSingleton<ILocalDataService>(new LocalDataService());
 

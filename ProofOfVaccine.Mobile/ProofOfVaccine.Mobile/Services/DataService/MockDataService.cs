@@ -8,6 +8,12 @@ namespace ProofOfVaccine.Mobile.Services
 {
     public class MockDataService : IDataService
     {
+        public DateTime? LastOnlineDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public int? DaysSinceLastOnline => throw new NotImplementedException();
+
+        public DateTime? LastJWKSUpdateDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public Task<Dictionary<Uri, JWKeySet>> GetJWKSLocallyAsync()
         {
             throw new NotImplementedException();
@@ -34,6 +40,11 @@ namespace ProofOfVaccine.Mobile.Services
         }
 
         public Task<Dictionary<Uri, JWKeySet>> SaveJWKSAsync(Dictionary<Uri, JWKeySet> keySets)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TimeSpan? SinceLastOnline()
         {
             throw new NotImplementedException();
         }
