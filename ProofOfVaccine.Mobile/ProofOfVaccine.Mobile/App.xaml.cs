@@ -1,18 +1,7 @@
-using PoV.Decode.DataStore;
-using PoV.Decode.Providers;
-using ProofOfVaccine.Decode.Decoder;
-using ProofOfVaccine.Mobile.DataStore;
 using ProofOfVaccine.Mobile.Services;
-using ProofOfVaccine.Token.Model.Jwks;
-using ProofOfVaccine.Token.Providers;
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Distribute;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ProofOfVaccine.Mobile

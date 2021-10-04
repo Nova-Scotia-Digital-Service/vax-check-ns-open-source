@@ -60,7 +60,7 @@ namespace ProofOfVaccine.Mobile.Services
         {
             try
             {
-                return JsonConvert.DeserializeObject<JwksCache>(await SecureStorage.GetAsync("jwks_cache"));
+                return JsonConvert.DeserializeObject<JwksCache>(await SecureStorage.GetAsync(jwksKey));
 
             }
             catch
@@ -74,7 +74,7 @@ namespace ProofOfVaccine.Mobile.Services
         {
             try
             {
-                await SecureStorage.SetAsync("jwks_cache", JsonConvert.SerializeObject(cache));
+                await SecureStorage.SetAsync(jwksKey, JsonConvert.SerializeObject(cache));
                 return true;
             }
             catch
