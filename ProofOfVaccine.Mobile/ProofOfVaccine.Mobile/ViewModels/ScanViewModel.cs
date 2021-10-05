@@ -19,31 +19,6 @@ namespace ProofOfVaccine.Mobile.ViewModels
             set { SetProperty(ref _countdownText, value); }
         }
 
-        //ZXing.Result _result = null;
-        //public ZXing.Result ScanResult
-        //{
-        //    get { return _result; }
-        //    set
-        //    {
-        //        if (!IsBusy)
-        //            using (Busy())
-        //            {
-        //                if (value != null)
-        //                {
-        //                    if (value == _result)
-        //                    {
-        //                        AnalyseScanResultCommand.Execute(value);
-        //                    }
-        //                    else
-        //                    {
-        //                        _result = value;
-        //                        AnalyseScanResultCommand.Execute(value);
-        //                    }
-        //                }
-        //            }
-        //    }
-        //}
-
         public Command AnalyseScanResultCommand { get; set; }
         public Command LeaveCommand { get; set; }
 
