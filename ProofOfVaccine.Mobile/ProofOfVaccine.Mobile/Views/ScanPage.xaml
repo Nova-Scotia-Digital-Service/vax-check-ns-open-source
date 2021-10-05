@@ -28,7 +28,7 @@
               RowSpacing="0">
 
             <zxing:ZXingScannerView IsScanning="{Binding IsBusy,Converter={StaticResource InvertedBoolConverter}}"                          
-                                    Result="{Binding ScanResult, Mode=OneWayToSource}"/>
+                                    ScanResultCommand="{Binding AnalyseScanResultCommand}"/>
 
             <Image Source="ScanFrame"
                    Aspect="AspectFit"

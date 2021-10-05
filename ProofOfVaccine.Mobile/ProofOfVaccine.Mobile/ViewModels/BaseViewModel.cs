@@ -71,22 +71,27 @@ namespace ProofOfVaccine.Mobile.ViewModels
         }
         public virtual void GoTo(string pagePath, bool hasAnimation = true)
         {
+
             Device.BeginInvokeOnMainThread(async () =>
             {
-                using (Busy())
-                {
-                    Shell.Current.FlyoutIsPresented = false;
-                    await Shell.Current.GoToAsync(pagePath, hasAnimation);
-                }
-                    
+                IsBusy = true;
+                //using (Busy())
+                //{
+                Shell.Current.FlyoutIsPresented = false;
+                await Shell.Current.GoToAsync(pagePath, hasAnimation);
+                //}
+                IsBusy = false;
+
             });
         }
         public virtual void BackAndNavigateTo(string page, bool hasAnimation = true)
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                using (Busy())
-                    await Shell.Current.GoToAsync("../" + page, hasAnimation);
+                //using (Busy())
+                IsBusy = true;
+                await Shell.Current.GoToAsync("../" + page, hasAnimation);
+                IsBusy = false;
             });
         }
 

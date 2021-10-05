@@ -6,15 +6,15 @@
 	</item>
 
 	
-	<item>
+	<!--<item android:top="100dp">
 		<bitmap 
 			android:src="@drawable/nsflag_white"
 			android:tileMode="disabled"
 			android:gravity="center"/>
 		
-	</item>
+	</item>-->
 
-	<item android:top="100dp">
+	<item android:bottom="100dp">
 		<bitmap
 			android:src="@drawable/nsflag_white"
 			android:tileMode="disabled"
