@@ -28,7 +28,7 @@ namespace ProofOfVaccine.Mobile.Services
         Task<ProofOfVaccinationData> ValidateQRCode(string QRCode);
         Task<ProofOfVaccinationData> ValidateVaccination(string SHCCode);
         ProofOfVaccinationData LastScanData { get; }
-        ProofOfVaccinationData InvalidScan();
+        ProofOfVaccinationData InvalidScan(VaccineStatus? code);
     }
 
     public class SHCService : ISHCService
@@ -112,12 +112,12 @@ namespace ProofOfVaccine.Mobile.Services
 
         }
 
-        public ProofOfVaccinationData InvalidScan()
+        public ProofOfVaccinationData InvalidScan(VaccineStatus? code = null)
         {
             return LastScanData = new ProofOfVaccinationData()
             {
                 IsValidProof = false,
-                Code = VaccineStatus.InvalidFormat,
+                Code = code == null ? VaccineStatus.InvalidFormat : code.Value,
             };
         }
 
@@ -134,13 +134,18 @@ namespace ProofOfVaccine.Mobile.Services
             {
                 if (_errorManagementService != null)
                     _errorManagementService.HandleError(ex);
+
                 if (ex is SmartHealthCardDecoderException)
                 {
                     return InvalidScan();
                 }
                 else if(ex is SmartHealthCardException)
                 {
-                    return InvalidScan();
+                    return InvalidScan(VaccineStatus.InvalidIssuer);
+                }
+                else if (ex is SmartHealthCardPayloadException)
+                {
+                    return InvalidScan(VaccineStatus.InvalidIssuer);
                 }
                 return null;
             }

@@ -189,4 +189,7 @@
   <data name="TutorialMenuTitle" xml:space="preserve">
     <value>Tutorial</value>
   </data>
+  <data name="VaccineInvalidSHCCodeText" xml:space="preserve">
+    <value>Could not validate code issuer</value>
+  </data>
 </root>

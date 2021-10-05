@@ -9,14 +9,16 @@
 			 Shell.NavBarHasShadow="False">
 
 	<ContentPage.BindingContext>
-		<vm:LoadingViewModel x:Name="vm" />
+		<vm:BaseViewModel x:Name="vm" />
 	</ContentPage.BindingContext>
 
 	<ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ActivityIndicator IsVisible="True"
+							IsRunning="True"
+							IsEnabled="True"
+							Style="{StaticResource LoadingIndicator}"
+							VerticalOptions="CenterAndExpand"
+							HorizontalOptions="CenterAndExpand"/>
+
     </ContentPage.Content>
 </ContentPage>

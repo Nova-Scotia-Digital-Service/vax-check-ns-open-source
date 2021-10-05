@@ -26,6 +26,9 @@ namespace ProofOfVaccine.Mobile.Converters
                     case VaccineStatus.InvalidFormat:
                         return new TranslationHelper()
                             .ProvideValue(nameof(AppResources.TextResources.FhirFormatInvalidText));
+                    case VaccineStatus.InvalidIssuer:
+                        return new TranslationHelper()
+                            .ProvideValue(nameof(AppResources.TextResources.VaccineInvalidSHCCodeText));
                     case VaccineStatus.ValidVaccine:
                     case VaccineStatus.RulesNotInitialized:
                     default:
