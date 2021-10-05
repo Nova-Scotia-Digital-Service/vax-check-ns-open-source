@@ -32,5 +32,7 @@
 	<string>ProofOfVaccine.Mobile</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>NSCameraUsageDescription</key>
+	<string></string>
 </dict>
 </plist>
