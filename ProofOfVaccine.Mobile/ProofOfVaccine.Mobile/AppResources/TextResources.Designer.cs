@@ -277,7 +277,7 @@ namespace ProofOfVaccine.Mobile.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View Guidlines.
+        ///   Looks up a localized string similar to View Guidelines.
         /// </summary>
         internal static string ViewGuideButtonText {
             get {

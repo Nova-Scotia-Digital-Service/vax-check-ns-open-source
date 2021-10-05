@@ -47,9 +47,9 @@
                                HorizontalOptions="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="36"
-                               Padding="20"/>       
+                               Padding="20"/>
 
-                        <Image Source="checkcircle.png" 
+                        <Image Source="cancel.png" 
                                HeightRequest="200"
                                Aspect="AspectFit"
                                HorizontalOptions="Center"
