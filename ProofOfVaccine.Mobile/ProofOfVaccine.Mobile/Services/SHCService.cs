@@ -138,6 +138,10 @@ namespace ProofOfVaccine.Mobile.Services
                 {
                     return InvalidScan();
                 }
+                else if(ex is SmartHealthCardException)
+                {
+                    return InvalidScan();
+                }
                 return null;
             }
         }
