@@ -16,12 +16,12 @@
     <Color x:Key="SecondaryColor">#40C6F180</Color>
     <Color x:Key="TertiaryColor">#55C8D331</Color>
 
-    <Color x:Key="HighlightColor">#408334</Color>
+    <Color x:Key="HighlightColor">#FDBF31</Color>
     <Color x:Key="PositiveColor">#408334</Color>
     <Color x:Key="NegativeColor">#DE3333</Color>
 
 
-    <Color x:Key="PrimaryTextColor">#150961</Color>
+    <Color x:Key="PrimaryTextColor">#1A1A1A</Color>
     <Color x:Key="SecondaryTextColor">#9C9C9C</Color>
     <Color x:Key="TertiaryTextColor">#565454</Color>
     <Color x:Key="AltTextColor">#FFFFFF</Color>

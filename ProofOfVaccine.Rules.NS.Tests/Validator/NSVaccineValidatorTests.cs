@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
-using ProofOfVaccine.Rules.NS.Model;
 using ProofOfVaccine.Rules.NS.Models;
 using ProofOfVaccine.Rules.NS.Validator;
 using Xunit;

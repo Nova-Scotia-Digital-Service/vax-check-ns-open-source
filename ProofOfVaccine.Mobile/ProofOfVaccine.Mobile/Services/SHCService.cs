@@ -10,21 +10,21 @@ using Xamarin.Essentials;
 using PoV.Decode.Providers;
 using PoV.Decode.DataStore;
 using System.Collections.Generic;
-using ProofOfVaccine.Token.Model.Jwks;
 using ProofOfVaccine.Token.Providers;
-using ProofOfVaccine.Mobile.DataStore;
 using ProofOfVaccine.Token.Exceptions;
 using ProofOfVaccine.Rules.NS.Validator;
 using ProofOfVaccine.Rules.NS.Models;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.IO;
+using ProofOfVaccine.Token.Model.Jwks;
 
 namespace ProofOfVaccine.Mobile.Services
 {
     public interface ISHCService
     {
         Task InitializeAsync();
+        Task TryUpdateKeyset();
         Task<ProofOfVaccinationData> ValidateQRCode(string QRCode);
         Task<ProofOfVaccinationData> ValidateVaccination(string SHCCode);
         ProofOfVaccinationData LastScanData { get; }
@@ -38,16 +38,19 @@ namespace ProofOfVaccine.Mobile.Services
         protected readonly IErrorManagementService _errorManagementService;
         protected readonly IDecoder _decoder;
         private readonly IPersistentJwksProvider<IJwksDataStore> _persistentJwksProvider;
+        private readonly ILocalDataService _localDataService;
 
-        private Dictionary<Uri, JsonWebKeySet> _whiteListedJwks;
+        private Dictionary<Uri, Token.Model.Jwks.JsonWebKeySet> _whiteListedJwks;
         private IList<ValidVaccine> _validVaccines;
         private JwksCache _defaultCache;
 
         public SHCService()
         {
+            //TODO: Load all data via DataService
             LoadEmbeddedData();
             _errorManagementService = DependencyService.Resolve<IErrorManagementService>();
-            _persistentJwksProvider = new PersistentJwksProvider(new SecureStore(), _whiteListedJwks.Keys.ToList(), _defaultCache);
+            _localDataService = DependencyService.Resolve<ILocalDataService>();
+            _persistentJwksProvider = new PersistentJwksProvider(_localDataService, _whiteListedJwks.Keys.ToList(), _defaultCache);
             _decoder = new PersistentSmartHealthCardDecoder(_persistentJwksProvider);
         }
 
@@ -56,7 +59,35 @@ namespace ProofOfVaccine.Mobile.Services
         public async Task InitializeAsync()
         {
             var hasConnectivity = Connectivity.NetworkAccess == NetworkAccess.Internet;
+            if (hasConnectivity)
+            {
+                _localDataService.SetLastOnlineDate();
+            }
             await Task.Run(async () => await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity));
+
+            //TODO: Implement logic
+
+            // Load whitelist of issuer and keys from json resource (embedded) 
+            // Check network connection
+            // if online, get JWkeyset for whitelisted issuers and locally store via DataService
+            // else -> Load Previously Stored JWKeyset
+            // if no previous stored JWKeyset -> Load JWKetset from json resource (embedded) 
+            // initillize SmartHealthCardDecoder with new JWKeyset
+        }
+
+        public async Task TryUpdateKeyset()
+        {
+            //TODO: Implement logic
+
+            // Load whitelist of issuer and keys from RAM (should be handdled in DataService, so load from DataService)
+            // Check network connection
+            // if online, get JWkeyset for whitelisted issuers
+            // Load previously stored JWKeyset from disk (should be handdled in DataService, so load from DataService)
+            // check if KID matches for each issuer 
+            // if the two KIDs does not match
+            // Locally store new KID
+            // re-initillize SmartHealthCardDecoder with new JWKeyset
+
         }
 
         public async Task<ProofOfVaccinationData> ValidateQRCode(string QRCode)
@@ -150,37 +181,48 @@ namespace ProofOfVaccine.Mobile.Services
         private void LoadEmbeddedData()
         {
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(SHCService)).Assembly;
+            _whiteListedJwks = LoadWhiteListedJwks(assembly);
+            _validVaccines = LoadValidVaccines(assembly);
+            
+            CacheWhitelistJWKS(_whiteListedJwks);
+        }
 
+        private IList<ValidVaccine> LoadValidVaccines(Assembly assembly)
+        {
+            Stream stream = assembly.GetManifestResourceStream("ProofOfVaccine.Mobile.AppResources.ValidVaccines.json");
+
+            using (var reader = new StreamReader(stream))
+            {
+                _validVaccines = JsonConvert.DeserializeObject<List<ValidVaccine>>(reader.ReadToEnd());
+            }
+
+            return _validVaccines;
+        }
+
+        private Dictionary<Uri, JsonWebKeySet> LoadWhiteListedJwks(Assembly assembly)
+        {
             Stream stream = assembly.GetManifestResourceStream("ProofOfVaccine.Mobile.AppResources.WhiteList.json");
 
             using (var reader = new StreamReader(stream))
             {
-                _whiteListedJwks = LoadWhiteListedJwks(reader.ReadToEnd());
+                _whiteListedJwks = JsonConvert.DeserializeObject<Dictionary<Uri, Token.Model.Jwks.JsonWebKeySet>>(reader.ReadToEnd());
             }
+
+            return _whiteListedJwks;
+        }
+
+        private JwksCache CacheWhitelistJWKS(Dictionary<Uri, JsonWebKeySet>  whiteListedJwks)
+        {
 
             _defaultCache = new JwksCache(TimeSpan.MaxValue);
 
-            foreach (var set in _whiteListedJwks)
+            foreach (var set in whiteListedJwks)
             {
                 _defaultCache.Set(set.Key, set.Value);
             }
 
-            stream = assembly.GetManifestResourceStream("ProofOfVaccine.Mobile.AppResources.ValidVaccines.json");
-
-            using (var reader = new StreamReader(stream))
-            {
-                _validVaccines = LoadValidVaccines(reader.ReadToEnd());
-            }
+            return _defaultCache;
         }
 
-        private IList<ValidVaccine> LoadValidVaccines(string validVaccinesJson)
-        {
-            return JsonConvert.DeserializeObject<List<ValidVaccine>>(validVaccinesJson);
-        }
-
-        private Dictionary<Uri, JsonWebKeySet> LoadWhiteListedJwks(string whiteListJson)
-        {
-            return JsonConvert.DeserializeObject<Dictionary<Uri, JsonWebKeySet>>(whiteListJson);
-        }
     }
 }

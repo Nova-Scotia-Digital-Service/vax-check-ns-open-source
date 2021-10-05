@@ -322,4 +322,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\Headerbg%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nsflag_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nsflag_white%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nsflag_white%403x.png" />
+  </ItemGroup>
 </Project>

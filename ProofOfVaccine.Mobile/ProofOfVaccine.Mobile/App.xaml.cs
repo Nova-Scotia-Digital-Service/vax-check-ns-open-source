@@ -1,18 +1,7 @@
-using PoV.Decode.DataStore;
-using PoV.Decode.Providers;
-using ProofOfVaccine.Decode.Decoder;
-using ProofOfVaccine.Mobile.DataStore;
 using ProofOfVaccine.Mobile.Services;
-using ProofOfVaccine.Token.Model.Jwks;
-using ProofOfVaccine.Token.Providers;
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Distribute;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ProofOfVaccine.Mobile
@@ -26,8 +15,10 @@ namespace ProofOfVaccine.Mobile
             InitializeComponent();
 
             DependencyService.RegisterSingleton<IErrorManagementService>(new ErrorManagementService());
+            DependencyService.RegisterSingleton<IDataService>(new DataService());
+            DependencyService.RegisterSingleton<IConnectivityService>(new ConnectivityService());
+            //TODO: integrate into DataService and Remove 
             DependencyService.RegisterSingleton<ILocalDataService>(new LocalDataService());
-            DependencyService.RegisterSingleton<ICoreService>(new CoreService());
 
             _shcService = new SHCService();
             DependencyService.RegisterSingleton(_shcService);
@@ -47,7 +38,7 @@ namespace ProofOfVaccine.Mobile
 
         protected override async void OnResume()
         {
-            await _shcService.InitializeAsync();
+            await _shcService.TryUpdateKeyset();
         }
 
         private void InitializeAppCenter()

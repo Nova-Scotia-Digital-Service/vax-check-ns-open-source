@@ -19,32 +19,7 @@ namespace ProofOfVaccine.Mobile.ViewModels
             set { SetProperty(ref _countdownText, value); }
         }
 
-        ZXing.Result _result = null;
-        public ZXing.Result ScanResult
-        {
-            get { return _result; }
-            set
-            {
-                if (!IsBusy)
-                    using (Busy())
-                    {
-                        if (value != null)
-                        {
-                            if (value == _result)
-                            {
-                                AnalyseScanResultCommand.Execute(value);
-                            }
-                            else
-                            {
-                                _result = value;
-                                AnalyseScanResultCommand.Execute(value);
-                            }
-                        }
-                    }
-            }
-        }
-
-        public ICommand AnalyseScanResultCommand;
+        public Command AnalyseScanResultCommand { get; set; }
         public Command LeaveCommand { get; set; }
 
         protected readonly ISHCService _shcService;
@@ -58,16 +33,18 @@ namespace ProofOfVaccine.Mobile.ViewModels
             StartTimer();
         }
 
-        protected override void GoBack()
+        public override void GoBack()
         {
             _timer.Elapsed -= UpdateCount;
+
             base.GoBack();
+            Shell.Current.FlyoutIsPresented = false;
         }
 
-        protected override void Navigate(string page)
+        public override void BackAndNavigateTo(string page, bool hasAnimation = true)
         {
             _timer.Elapsed -= UpdateCount;
-            base.Navigate(page);
+            base.BackAndNavigateTo(page);
         }
 
         private void StartTimer()
@@ -98,7 +75,7 @@ namespace ProofOfVaccine.Mobile.ViewModels
 
                         if (SHCdata == null) return;
 
-                        Navigate("ScanResultPage");
+                        BackAndNavigateTo("ScanResultPage");
                     }
 
                 }

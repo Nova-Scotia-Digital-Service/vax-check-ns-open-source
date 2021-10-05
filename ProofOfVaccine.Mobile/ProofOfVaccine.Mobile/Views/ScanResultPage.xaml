@@ -38,7 +38,8 @@
                                VerticalTextAlignment="Start"
                                HorizontalTextAlignment="Start">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                                <TapGestureRecognizer Command="{Binding GoToCommand}"
+                                                      CommandParameter="//HomePage"/>
                             </Label.GestureRecognizers>
                         </Label>
 

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item>
+		<color android:color="#0A5EA1"/>”
+	</item>
+
+	
+	<!--<item android:top="100dp">
+		<bitmap 
+			android:src="@drawable/nsflag_white"
+			android:tileMode="disabled"
+			android:gravity="center"/>
+		
+	</item>-->
+
+	<item android:bottom="100dp">
+		<bitmap
+			android:src="@drawable/nsflag_white"
+			android:tileMode="disabled"
+			android:gravity="center"/>
+
+	</item>
+
+
+
+
+</layer-list>
+
+

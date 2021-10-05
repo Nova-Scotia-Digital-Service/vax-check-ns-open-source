@@ -159,4 +159,34 @@
   <data name="InvalidScanText" xml:space="preserve">
     <value>Invalid QR code</value>
   </data>
+  <data name="AboutMenuTitle" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutPageContent" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh.</value>
+  </data>
+  <data name="AboutPageTitle" xml:space="preserve">
+    <value>About this App</value>
+  </data>
+  <data name="FAQMenuTitle" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="FeedbackMenuTitle" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="GuideMenuTitle" xml:space="preserve">
+    <value>Guidelines</value>
+  </data>
+  <data name="HomeMenuTitle" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="ScanMenuTitle" xml:space="preserve">
+    <value>New Scan</value>
+  </data>
+  <data name="TermsMenuTitle" xml:space="preserve">
+    <value>Terms &amp; Conditions</value>
+  </data>
+  <data name="TutorialMenuTitle" xml:space="preserve">
+    <value>Tutorial</value>
+  </data>
 </root>

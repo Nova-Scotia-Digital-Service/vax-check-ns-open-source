@@ -11,7 +11,7 @@
     
     <Shell.TitleView>
         <Image Source="Headerbg.png"
-               TranslationX="80"
+               TranslationX="84"
                HorizontalOptions="End"
                VerticalOptions="Center" />
     </Shell.TitleView>
