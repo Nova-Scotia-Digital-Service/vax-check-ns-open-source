@@ -24,12 +24,5 @@ namespace ProofOfVaccine.Mobile.iOS.Renderers
                 NSLayoutConstraint.Create(Control.ImageView, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, Control.ImageView.Superview, NSLayoutAttribute.CenterY, 1.0f, 0f).Active = true;
             }
         }
-
-        public override void LayoutSubviews()
-        {
-            base.LayoutSubviews();
-
-
-        }
     }
 }
