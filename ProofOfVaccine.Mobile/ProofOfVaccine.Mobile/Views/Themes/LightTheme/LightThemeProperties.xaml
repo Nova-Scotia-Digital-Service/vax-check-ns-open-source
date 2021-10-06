@@ -105,7 +105,6 @@
                 Value="40" />
         <Setter Property="BackgroundColor"
                 Value="{DynamicResource PrimaryColor}" />
-
         <Setter Property="TextColor"
                 Value="{DynamicResource AltTextColor}" />
     </Style>
