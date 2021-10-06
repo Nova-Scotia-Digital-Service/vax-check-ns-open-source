@@ -9,12 +9,12 @@ namespace ProofOfVaccine.Mobile.UITests
 {
     [TestFixture(Platform.Android)]
     //[TestFixture(Platform.iOS)]
-    public class Tests
+    public class AppLaunchTests
     {
         IApp app;
         Platform platform;
 
-        public Tests(Platform platform)
+        public AppLaunchTests(Platform platform)
         {
             this.platform = platform;
         }
@@ -26,11 +26,9 @@ namespace ProofOfVaccine.Mobile.UITests
         }
 
         [Test]
-        public void WelcomeTextIsDisplayed()
+        public void LaunchTest()
         {
-            AppResult[] results = app.WaitForElement(c => c.Marked("Welcome to Xamarin.Forms!"));
-            app.Screenshot("Welcome screen.");
-
+            AppResult[] results = app.WaitForElement(c => c.Marked("AppLogo"));
             Assert.IsTrue(results.Any());
         }
     }

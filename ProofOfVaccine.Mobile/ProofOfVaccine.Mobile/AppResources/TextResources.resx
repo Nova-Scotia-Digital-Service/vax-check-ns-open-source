@@ -192,4 +192,7 @@
   <data name="VaccineInvalidSHCCodeText" xml:space="preserve">
     <value>Could not validate code issuer</value>
   </data>
+  <data name="CancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

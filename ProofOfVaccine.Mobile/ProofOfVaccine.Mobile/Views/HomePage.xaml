@@ -7,7 +7,8 @@
              xmlns:helpers="clr-namespace:ProofOfVaccine.Mobile.Helpers"
 			 ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="True"
-			 Shell.NavBarHasShadow="False">
+			 Shell.NavBarHasShadow="False"
+             AutomationId="HomePage">
 
 
     <Shell.TitleView>
@@ -41,7 +42,8 @@
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
 
-            <Image Source="nsflag_colour.png"
+            <Image AutomationId="AppLogo"
+                   Source="nsflag_colour.png"
                    Aspect="AspectFit"
                    FlexLayout.Basis="15%"
                    FlexLayout.Shrink="1"/>
@@ -79,7 +81,8 @@
                          FlexLayout.Shrink="0">
 
                 <!--TODO: Text from translator, add style to ThemeProperties-->
-                <Button Text="{helpers:TranslationHelper ScanButtonText}"
+                <Button AutomationId="ScanButtonText"
+                        Text="{helpers:TranslationHelper ScanButtonText}"
                         ImageSource="metroqrcode.png"
                         ContentLayout="Left, 0"
                         Padding="20,10"
