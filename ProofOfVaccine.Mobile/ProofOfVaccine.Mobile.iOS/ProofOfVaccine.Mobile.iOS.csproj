@@ -71,9 +71,12 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <BundleResource Include="Resources\Fonts\FontAwesome5Brands.otf" />
-    <BundleResource Include="Resources\Fonts\FontAwesome5Regular.otf" />
-    <BundleResource Include="Resources\Fonts\FontAwesome5Solid.otf" />
+    <Compile Include="Renderers\CustomShellRenderer.cs" />
+    <Compile Include="Renderers\CustomShellPageTrackerRenderer.cs" />
+    <Compile Include="Renderers\CustomButtonRenderer.cs" />
+    <BundleResource Include="Resources\FontAwesome5Brands.otf" />
+    <BundleResource Include="Resources\FontAwesome5Regular.otf" />
+    <BundleResource Include="Resources\FontAwesome5Solid.otf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -118,15 +121,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <BundleResource Include="Resources\icon_about.png" />
-    <BundleResource Include="Resources\icon_about%402x.png" />
-    <BundleResource Include="Resources\icon_about%403x.png" />
-    <BundleResource Include="Resources\icon_feed.png" />
-    <BundleResource Include="Resources\icon_feed%402x.png" />
-    <BundleResource Include="Resources\icon_feed%403x.png" />
-    <BundleResource Include="Resources\xamarin_logo.png" />
-    <BundleResource Include="Resources\xamarin_logo%402x.png" />
-    <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
@@ -161,127 +155,103 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\checkcircle.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-Portrait.png" />
+    <BundleResource Include="Resources\checkcircle%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\checkcircle%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\notesmedical1.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\notesmedical1%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Group 12.png" />
+    <BundleResource Include="Resources\notesmedical1%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Group 12%402x.png" />
+    <BundleResource Include="Resources\notesmedical.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Group 12%403x.png" />
+    <BundleResource Include="Resources\notesmedical%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon awesome-check-circle.png" />
+    <BundleResource Include="Resources\notesmedical%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon awesome-check-circle%402x.png" />
+    <BundleResource Include="Resources\arrowleft.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon awesome-check-circle%403x.png" />
+    <BundleResource Include="Resources\arrowleft%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon awesome-notes-medical-1.png" />
+    <BundleResource Include="Resources\arrowleft%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon awesome-notes-medical-1%402x.png" />
+    <BundleResource Include="Resources\home.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon awesome-notes-medical-1%403x.png" />
+    <BundleResource Include="Resources\home%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon awesome-notes-medical.png" />
+    <BundleResource Include="Resources\home%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon awesome-notes-medical%402x.png" />
+    <BundleResource Include="Resources\cake.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon awesome-notes-medical%403x.png" />
+    <BundleResource Include="Resources\cake%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon feather-arrow-left.png" />
+    <BundleResource Include="Resources\cake%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon feather-arrow-left%402x.png" />
+    <BundleResource Include="Resources\cancel.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon feather-arrow-left%403x.png" />
+    <BundleResource Include="Resources\cancel%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon ionic-md-home.png" />
+    <BundleResource Include="Resources\cancel%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon ionic-md-home%402x.png" />
+    <BundleResource Include="Resources\metrocancel.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon ionic-md-home%403x.png" />
+    <BundleResource Include="Resources\metrocancel%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon material-cake.png" />
+    <BundleResource Include="Resources\metrocancel%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon material-cake%402x.png" />
+    <BundleResource Include="Resources\metroqrcode1.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon material-cake%403x.png" />
+    <BundleResource Include="Resources\metroqrcode1%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon material-cancel.png" />
+    <BundleResource Include="Resources\metroqrcode1%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon material-cancel%402x.png" />
+    <BundleResource Include="Resources\metroqrcode2.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon material-cancel%403x.png" />
+    <BundleResource Include="Resources\metroqrcode2%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-cancel.png" />
+    <BundleResource Include="Resources\metroqrcode2%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-cancel%402x.png" />
+    <BundleResource Include="Resources\metroqrcode.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-cancel%403x.png" />
+    <BundleResource Include="Resources\metroqrcode%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-qrcode-1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-qrcode-1%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-qrcode-1%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-qrcode-2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-qrcode-2%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-qrcode-2%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-qrcode.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-qrcode%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Icon metro-qrcode%403x.png" />
+    <BundleResource Include="Resources\metroqrcode%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\nsflag_colour.png" />
@@ -330,5 +300,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\nsflag_white%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
 </Project>

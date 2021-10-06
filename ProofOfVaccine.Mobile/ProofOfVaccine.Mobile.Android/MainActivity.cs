@@ -16,6 +16,8 @@ namespace ProofOfVaccine.Mobile.Droid
         {
             base.SetTheme(Resource.Style.MainTheme);
 
+            ToolbarResource = Resource.Layout.Toolbar;
+
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
