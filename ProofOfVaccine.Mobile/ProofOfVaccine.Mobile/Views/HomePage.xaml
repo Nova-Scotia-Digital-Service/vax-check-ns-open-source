@@ -79,7 +79,6 @@
                          FlexLayout.Shrink="0">
 
                 <!--TODO: Text from translator, add style to ThemeProperties-->
-
                 <Button Text="{helpers:TranslationHelper ScanButtonText}"
                         ImageSource="metroqrcode.png"
                         ContentLayout="Left, 0"
@@ -87,12 +86,15 @@
 						FontSize="16"
 						FontAttributes="Bold"
 						CornerRadius="16"
+                        BorderWidth="1"
+                        BorderColor="{StaticResource PrimaryColor}"
 						BackgroundColor="{StaticResource PrimaryColor}"
 						TextColor="{StaticResource AltTextColor}"
 						Command="{Binding ScanCommand}"
 						VerticalOptions="EndAndExpand"
                         HorizontalOptions="Fill"
-						WidthRequest="300"/>
+						WidthRequest="300"
+                        HeightRequest="60"/>
 
                 <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
                         ImageSource="notesmedical.png"
@@ -105,11 +107,12 @@
                         BorderColor="{StaticResource PrimaryColor}"
 						BackgroundColor="{StaticResource BackgroundColor}"
 						TextColor="{StaticResource PrimaryColor}"
-						Clicked="CrashApp_Clicked"
+						Command="{Binding OpenInBroswerCommand}"
+                        CommandParameter="https://novascotia.ca/reopening-plan/"
 						VerticalOptions="Start"
                         HorizontalOptions="Fill"
-						WidthRequest="300">
-                </Button>
+						WidthRequest="300"
+                        HeightRequest="60"/>
 
             </StackLayout>
 
