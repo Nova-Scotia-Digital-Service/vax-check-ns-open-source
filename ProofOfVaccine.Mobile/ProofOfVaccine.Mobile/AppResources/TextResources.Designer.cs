@@ -185,7 +185,19 @@ namespace ProofOfVaccine.Mobile.AppResources {
             }
         }
         
-        internal static string TutorialMenuTitle {
+        /// <summary>
+        ///   Looks up a localized string similar to Could not validate code issuer.
+        /// </summary>
+        internal static string VaccineInvalidSHCCodeText {
+            get {
+                return ResourceManager.GetString("VaccineInvalidSHCCodeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Guidelines.
+        /// </summary>
+        internal static string ViewGuideButtonText {
             get {
                 return ResourceManager.GetString("TutorialMenuTitle", resourceCulture);
             }

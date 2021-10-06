@@ -8,6 +8,7 @@ namespace ProofOfVaccine.Rules.NS.Models
         InvalidOccuranceDate,
         InvalidDosageCount,
         InvalidFormat,
-        RulesNotInitialized
+        RulesNotInitialized,
+        InvalidIssuer
     }
 }
