@@ -142,7 +142,7 @@
     <value>Confirmed!</value>
   </data>
   <data name="ViewGuideButtonText" xml:space="preserve">
-    <value>View Guidlines</value>
+    <value>View Guidelines</value>
   </data>
   <data name="VaccineCodeInvalidText" xml:space="preserve">
     <value>Does not meet public health guidelines</value>
@@ -188,5 +188,8 @@
   </data>
   <data name="TutorialMenuTitle" xml:space="preserve">
     <value>Tutorial</value>
+  </data>
+  <data name="VaccineInvalidSHCCodeText" xml:space="preserve">
+    <value>Could not validate code issuer</value>
   </data>
 </root>
