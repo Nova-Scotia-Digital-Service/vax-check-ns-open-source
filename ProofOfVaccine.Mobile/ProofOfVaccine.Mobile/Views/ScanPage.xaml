@@ -9,7 +9,8 @@
              ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="False"
 			 Shell.NavBarHasShadow="False"
-             Shell.PresentationMode="Modal">
+             Shell.PresentationMode="Modal"
+             AutomationId="ScanPage">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -50,20 +51,21 @@
                                HorizontalOptions="CenterAndExpand"/>
 
 
-            <Button Text="Cancel"
-						FontSize="16"
-						FontAttributes="Bold"
-						CornerRadius="16"
-                        BorderWidth="1"
-                        BorderColor="{StaticResource BackgroundColor}"
-						BackgroundColor="#43FFFFFF"
-						TextColor="{StaticResource BackgroundColor}"
-						Command="{Binding LeaveCommand}"
-						VerticalOptions="EndAndExpand"
-						Margin="20,40"
-						HorizontalOptions="Fill"
-						WidthRequest="300"
-						HeightRequest="60">
+            <Button AutomationId="CancelButtonText" 
+                    Text="Cancel"
+					FontSize="16"
+					FontAttributes="Bold"
+					CornerRadius="16"
+                    BorderWidth="1"
+                    BorderColor="{StaticResource BackgroundColor}"
+					BackgroundColor="#43FFFFFF"
+					TextColor="{StaticResource BackgroundColor}"
+					Command="{Binding LeaveCommand}"
+					VerticalOptions="EndAndExpand"
+					Margin="20,40"
+					HorizontalOptions="Fill"
+					WidthRequest="300"
+					HeightRequest="60">
             </Button>
         </Grid>
 
