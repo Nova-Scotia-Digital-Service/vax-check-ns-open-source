@@ -6,7 +6,7 @@ namespace ProofOfVaccine.Mobile.Themes.Fonts
 	{
 		public static string FontFamily => Device.RuntimePlatform == Device.Android
 			? "Fonts/FontAwesome5Regular.otf#Regular"
-			: "FontAwesome5Free-Regular";
+			: "FontAwesome5Brands-Regular";
 		
 		public const string Space = "\u0020";
 		public const string Hyphen = "\u002d";

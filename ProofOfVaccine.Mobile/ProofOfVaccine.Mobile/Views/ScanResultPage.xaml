@@ -76,7 +76,6 @@
 
                         <Button Text="{helpers:TranslationHelper NewScanButtonText}"
                                 Image="metroqrcode2.png"  
-                                ContentLayout="Left,0"
                                 Padding="20,10"
 						        FontSize="16"
 						        FontAttributes="Bold"
@@ -90,7 +89,7 @@
 						        HeightRequest="60"/>
 
                         <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
-                                Image="notesmedical1.png"  
+                                Image="notesmedical1.png"
 						        FontSize="16"
 						        FontAttributes="Bold"
 						        CornerRadius="16"
@@ -158,7 +157,7 @@
 
                         <Button Text="{helpers:TranslationHelper NewScanButtonText}"
                                 Image="metroqrcode1.png"  
-                                ContentLayout="Left,0"
+                                ContentLayout="Left, 0"
                                 Padding="20,10"
 						        FontSize="16"
 						        FontAttributes="Bold"
@@ -172,7 +171,8 @@
 						        HeightRequest="60"/>
 
                         <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
-                                Image="notesmedical1.png"  
+                                Image="notesmedical1.png"
+                                ContentLayout="Left, 0"
 						        FontSize="16"
 						        FontAttributes="Bold"
 						        CornerRadius="16"
