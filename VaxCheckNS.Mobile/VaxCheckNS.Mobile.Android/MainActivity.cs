@@ -7,7 +7,7 @@ using Android.OS;
 
 namespace VaxCheckNS.Mobile.Droid
 {
-    [Activity(Label = "Proof Of Vaccine", Icon = "@mipmap/icon", Theme = "@style/Theme.Splash", MainLauncher = true, 
+    [Activity(Label = "VaxCheckNS", Icon = "@mipmap/icon", Theme = "@style/Theme.Splash", MainLauncher = true, 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, 
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
