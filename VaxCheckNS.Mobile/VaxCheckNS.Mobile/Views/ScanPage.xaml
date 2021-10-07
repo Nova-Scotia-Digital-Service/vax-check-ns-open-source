@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="VaxCheckNS.Mobile.Views.ScanPage"
+			 xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
+			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+			 xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
+             xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
+             ios:Page.UseSafeArea="True"
+			 Shell.NavBarIsVisible="False"
+			 Shell.NavBarHasShadow="False"
+             Shell.PresentationMode="Modal"
+             AutomationId="ScanPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <vm:ScanViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid Padding="0"
+              Margin="0"
+              ColumnSpacing="0"
+              RowSpacing="0">
+
+            <zxing:ZXingScannerView IsScanning="{Binding IsBusy,Converter={StaticResource InvertedBoolConverter}}"                          
+                                    ScanResultCommand="{Binding AnalyseScanResultCommand}"/>
+
+            <Image Source="ScanFrame"
+                   Aspect="AspectFit"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   Margin="20,100"/> 
+            
+
+            <Label Text="{Binding CountdownText}"
+                   TextColor="{StaticResource BackgroundColor}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"
+                               IsEnabled="{Binding IsBusy}"
+                               Style="{StaticResource BusyIndicator}"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"/>
+
+
+            <Button AutomationId="CancelButtonText" 
+                    Text="Cancel"
+					FontSize="16"
+					FontAttributes="Bold"
+					CornerRadius="16"
+                    BorderWidth="1"
+                    BorderColor="{StaticResource BackgroundColor}"
+					BackgroundColor="#43FFFFFF"
+					TextColor="{StaticResource BackgroundColor}"
+					Command="{Binding LeaveCommand}"
+					VerticalOptions="EndAndExpand"
+					Margin="20,40"
+					HorizontalOptions="Fill"
+					WidthRequest="300"
+					HeightRequest="60">
+            </Button>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

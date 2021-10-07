@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="VaxCheckNS.Mobile.Views.HomePage"
+			 xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
+			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers"
+			 ios:Page.UseSafeArea="True"
+			 Shell.NavBarIsVisible="True"
+			 Shell.NavBarHasShadow="False"
+             AutomationId="HomePage">
+
+
+    <Shell.TitleView>
+        <StackLayout HeightRequest="50"
+                     Spacing="0"
+                     Padding="0"
+                     Margin="0">
+            <Image Source="Headerbg.png"
+                   TranslationX="5"
+                   HorizontalOptions="EndAndExpand"
+                   VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <FlexLayout Direction="Column"
+                    Margin="0"
+                    BackgroundColor="{StaticResource BackgroundColor}">
+
+            <BoxView Color="{StaticResource PrimaryColor}"
+                     FlexLayout.Basis="2.5%"
+                     FlexLayout.AlignSelf="Stretch"
+                     FlexLayout.Shrink="0"/>
+
+            <BoxView Color="Transparent"
+                     FlexLayout.Basis="5%" 
+                     FlexLayout.AlignSelf="Stretch"
+                     FlexLayout.Shrink="0"/>
+
+            <Image AutomationId="AppLogo"
+                   Source="nsflag_colour.png"
+                   Aspect="AspectFit"
+                   FlexLayout.Basis="15%"
+                   FlexLayout.Shrink="1"/>
+
+            <Label Text="{helpers:TranslationHelper AppTitle}"
+                   TextColor="{StaticResource PrimaryColor}"
+                   FlexLayout.AlignSelf="Center"
+                   FlexLayout.Basis="4%"
+                   FlexLayout.Shrink="0"
+                   FontSize="20"
+                   TranslationY="-15"
+                   FontAttributes="Bold"/>
+
+            <BoxView Color="Transparent"
+                     FlexLayout.Basis="2.5%" 
+                     FlexLayout.AlignSelf="Stretch"
+                     FlexLayout.Shrink="0"/>
+
+            <Image Source="VaccineBottle.png" 
+                   Aspect="AspectFit"
+                   HorizontalOptions="Center"
+                   FlexLayout.Basis="35%"
+                   FlexLayout.Grow="1"
+                   FlexLayout.Shrink="1"/>
+
+            <BoxView Color="Transparent"
+                     FlexLayout.Basis="7%" 
+                     FlexLayout.AlignSelf="Stretch"
+                     FlexLayout.Shrink="1"/>
+
+            <StackLayout Spacing="15"
+                         Margin="40, 0"
+                         FlexLayout.Basis="15%"
+                         FlexLayout.Grow="0.5"
+                         FlexLayout.Shrink="0">
+
+                <!--TODO: Text from translator, add style to ThemeProperties-->
+                <Button AutomationId="ScanButtonText"
+                        Text="{helpers:TranslationHelper ScanButtonText}"
+                        ImageSource="metroqrcode.png"
+                        ContentLayout="Left, 0"
+                        Padding="20,10"
+						FontSize="16"
+						FontAttributes="Bold"
+						CornerRadius="16"
+                        BorderWidth="1"
+                        BorderColor="{StaticResource PrimaryColor}"
+						BackgroundColor="{StaticResource PrimaryColor}"
+						TextColor="{StaticResource AltTextColor}"
+						Command="{Binding ScanCommand}"
+						VerticalOptions="EndAndExpand"
+                        HorizontalOptions="Fill"
+						WidthRequest="300"
+                        HeightRequest="60"/>
+
+                <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
+                        ImageSource="notesmedical.png"
+                        ContentLayout="Left, 0"
+                        Padding="20,10"
+						FontSize="16"
+						FontAttributes="Bold"
+						CornerRadius="16"
+                        BorderWidth="1"
+                        BorderColor="{StaticResource PrimaryColor}"
+						BackgroundColor="{StaticResource BackgroundColor}"
+						TextColor="{StaticResource PrimaryColor}"
+						Command="{Binding OpenInBroswerCommand}"
+                        CommandParameter="https://novascotia.ca/reopening-plan/"
+						VerticalOptions="Start"
+                        HorizontalOptions="Fill"
+						WidthRequest="300"
+                        HeightRequest="60"/>
+
+            </StackLayout>
+
+            <BoxView Color="Transparent"
+                     FlexLayout.Basis="5%" 
+                     FlexLayout.AlignSelf="Stretch"
+                     FlexLayout.Shrink="0"/>
+
+            <BoxView Color="{StaticResource PrimaryColor}"
+                     FlexLayout.Basis="2.5%" 
+                     FlexLayout.AlignSelf="Stretch"
+                     FlexLayout.Shrink="0"/>
+        </FlexLayout>
+
+    </ContentPage.Content>
+</ContentPage>

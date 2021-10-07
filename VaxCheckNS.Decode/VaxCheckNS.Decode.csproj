@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="VaxCheckNS.Token" />
+    <None Remove="Decoder\" />
+    <None Remove="DataStore\" />
+    <None Remove="Exceptions\" />
+    <None Remove="Polly" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Providers\" />
+    <Folder Include="DataStore\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Decoder\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VaxCheckNS.Token\VaxCheckNS.Token.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Polly" Version="7.2.2" />
+  </ItemGroup>
+</Project>
