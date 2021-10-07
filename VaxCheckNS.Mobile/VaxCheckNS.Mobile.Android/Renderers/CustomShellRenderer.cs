@@ -1,11 +1,11 @@
 ﻿using Android.Content;
-using ProofOfVaccine.Mobile;
-using ProofOfVaccine.Mobile.Droid.Renderers;
+using VaxCheckNS.Mobile;
+using VaxCheckNS.Mobile.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(AppShell), typeof(CustomShellRenderer))]
-namespace ProofOfVaccine.Mobile.Droid.Renderers
+namespace VaxCheckNS.Mobile.Droid.Renderers
 {
     public class CustomShellRenderer : ShellRenderer
     {

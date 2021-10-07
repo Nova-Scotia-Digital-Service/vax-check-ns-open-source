@@ -5,7 +5,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 
-namespace ProofOfVaccine.Mobile.Droid
+namespace VaxCheckNS.Mobile.Droid
 {
     [Activity(Label = "Proof Of Vaccine", Icon = "@mipmap/icon", Theme = "@style/Theme.Splash", MainLauncher = true, 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, 
