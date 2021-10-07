@@ -29,7 +29,8 @@
               RowSpacing="0">
 
             <zxing:ZXingScannerView IsScanning="{Binding IsBusy,Converter={StaticResource InvertedBoolConverter}}"                          
-                                    ScanResultCommand="{Binding AnalyseScanResultCommand}"/>
+                                    ScanResultCommand="{Binding AnalyseScanResultCommand}"
+                                    IsTorchOn="{Binding IsTorchOn}"/>
 
             <Image Source="ScanFrame"
                    Aspect="AspectFit"
@@ -50,6 +51,22 @@
                                VerticalOptions="CenterAndExpand"
                                HorizontalOptions="CenterAndExpand"/>
 
+            <Button AutomationId="TorchButtonText" 
+                    Text="Torch"
+					FontSize="16"
+					FontAttributes="Bold"
+					CornerRadius="16"
+                    BorderWidth="1"
+                    BorderColor="{StaticResource BackgroundColor}"
+					BackgroundColor="#43FFFFFF"
+					TextColor="{StaticResource BackgroundColor}"
+					Command="{Binding ToggleTorchCommand}"
+					VerticalOptions="Start"
+					Margin="20, 40"
+                    Padding="20"
+					HorizontalOptions="End"
+					HeightRequest="60">
+            </Button>
 
             <Button AutomationId="CancelButtonText" 
                     Text="Cancel"

@@ -19,7 +19,15 @@ namespace VaxCheckNS.Mobile.ViewModels
             set { SetProperty(ref _countdownText, value); }
         }
 
+        private bool _isTorchOn = false;
+        public bool IsTorchOn
+        {
+            get { return _isTorchOn; }
+            set { SetProperty(ref _isTorchOn, value); }
+        }
+
         public Command AnalyseScanResultCommand { get; set; }
+        public Command ToggleTorchCommand { get; set; }
         public Command LeaveCommand { get; set; }
 
         protected readonly ISHCService _shcService;
@@ -29,6 +37,7 @@ namespace VaxCheckNS.Mobile.ViewModels
 
             LeaveCommand = new Command(GoBack);
             AnalyseScanResultCommand = new Command<ZXing.Result>(async result => await AnalyseScanAsync(result));
+            ToggleTorchCommand = new Command(() => IsTorchOn = !IsTorchOn);
 
             StartTimer();
         }
