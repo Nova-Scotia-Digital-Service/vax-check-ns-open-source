@@ -4,7 +4,7 @@ using AndroidX.AppCompat.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-namespace ProofOfVaccine.Mobile.Droid.Renderers
+namespace VaxCheckNS.Mobile.Droid.Renderers
 {
     public class CustomShellToolbarAppearanceTracker : ShellToolbarAppearanceTracker
     {
