@@ -16,6 +16,7 @@ namespace VaxCheckNS.Mobile.UITests
                     .StartApp();
             }
 
+
             return ConfigureApp.iOS.StartApp();
         }
     }
