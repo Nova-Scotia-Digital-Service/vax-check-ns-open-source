@@ -36,7 +36,7 @@ namespace VaxCheckNS.Mobile
 		}
 
 		private void RegisterMockServices()
-		{//TODO: replace services with mock
+		{//TODO: replace services with mock service implementations
 			DependencyService.RegisterSingleton<IErrorManagementService>(new ErrorManagementService());
 			DependencyService.RegisterSingleton<IDataService>(new DataService());
 			DependencyService.RegisterSingleton<IConnectivityService>(new ConnectivityService());
