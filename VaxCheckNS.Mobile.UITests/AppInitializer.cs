@@ -11,7 +11,7 @@ namespace VaxCheckNS.Mobile.UITests
             if (platform == Platform.Android)
             {
                 return ConfigureApp.Android
-                    .InstalledApp("com.proofofvaccine.mobile")
+                    .InstalledApp("ca.novascotia.vaxcheckns.mobile")
                     .EnableLocalScreenshots()
                     .StartApp();
             }
