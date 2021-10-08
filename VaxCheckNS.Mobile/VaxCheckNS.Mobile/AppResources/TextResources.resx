@@ -154,7 +154,7 @@
     <value>Does not meet public health guidelines</value>
   </data>
   <data name="FhirFormatInvalidText" xml:space="preserve">
-    <value>Does not meet public health guidelines</value>
+    <value>Invalid QR code</value>
   </data>
   <data name="InvalidScanText" xml:space="preserve">
     <value>Invalid QR code</value>

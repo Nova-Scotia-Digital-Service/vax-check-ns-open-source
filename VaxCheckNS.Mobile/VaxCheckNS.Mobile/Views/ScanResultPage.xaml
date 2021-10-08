@@ -30,6 +30,11 @@
                       IsVisible="{Binding ProofOfVaccineData.IsValidProof, Converter={StaticResource InvertedBoolConverter}}">
                     <FlexLayout Direction="Column"
                                 Margin="0">
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="2.5%"
+                                 FlexLayout.Shrink="0"/>
+
                         <Label Text="{x:Static fonts:FontAwesomeSolid.Home}"
                                FontFamily="{StaticResource FontAwesomeSolid}"
                                TextColor="{DynamicResource BackgroundColor}"
@@ -38,8 +43,9 @@
                                FlexLayout.AlignSelf="Start"
                                VerticalTextAlignment="Start"
                                HorizontalTextAlignment="Start"
-                               Padding="20"
-                               FlexLayout.Basis="7%">
+                               Padding="20, 0"
+                               FlexLayout.Basis="7%"
+                               FlexLayout.Shrink="0">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding GoToCommand}"
                                                       CommandParameter="//HomePage"/>
@@ -55,15 +61,20 @@
                         <BoxView BackgroundColor="Transparent"
                                  FlexLayout.AlignSelf="Stretch"
                                  FlexLayout.Basis="5%"
-                                 FlexLayout.Grow="1"/>
+                                 FlexLayout.Grow="0.4"
+                                 FlexLayout.Shrink="1"/>
 
                         <Image Source="cancel.png" 
                                Aspect="AspectFit"
                                FlexLayout.AlignSelf="Center"
-                               Margin="10"
                                FlexLayout.Basis="25%"
                                FlexLayout.Grow="1"
                                FlexLayout.Shrink="1"/>
+
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="2%"
+                                 FlexLayout.Shrink="0"/>
 
                         <Label Text="{helpers:TranslationHelper ScanErrorMessage}"
                                FlexLayout.AlignSelf="Center"
@@ -80,7 +91,8 @@
                         <BoxView BackgroundColor="Transparent"
                                  FlexLayout.AlignSelf="Stretch"
                                  FlexLayout.Basis="10%"
-                                 FlexLayout.Grow="1"/>
+                                 FlexLayout.Grow="0.4"
+                                 FlexLayout.Shrink="1"/>
 
                         <StackLayout Spacing="15"
                                  Margin="40, 0" 
@@ -132,6 +144,12 @@
 
                     <FlexLayout Direction="Column"
                                 Margin="0">
+
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="2.5%"
+                                 FlexLayout.Shrink="0"/>
+
                         <Label Text="{x:Static fonts:FontAwesomeSolid.Home}"
                                FontFamily="{StaticResource FontAwesomeSolid}"
                                TextColor="{DynamicResource BackgroundColor}"
@@ -140,8 +158,9 @@
                                FlexLayout.AlignSelf="Start"
                                VerticalTextAlignment="Start"
                                HorizontalTextAlignment="Start"
-                               Padding="20"
-                               FlexLayout.Basis="7%">
+                               Padding="20, 0"
+                               FlexLayout.Basis="7%"
+                               FlexLayout.Shrink="0">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding GoToCommand}"
                                                       CommandParameter="//HomePage"/>
@@ -157,15 +176,20 @@
                         <BoxView BackgroundColor="Transparent"
                                  FlexLayout.AlignSelf="Stretch"
                                  FlexLayout.Basis="5%"
-                                 FlexLayout.Grow="1"/>
+                                 FlexLayout.Grow="0.4"
+                                 FlexLayout.Shrink="1"/>
 
                         <Image Source="checkcircle.png" 
                                Aspect="AspectFit"
                                FlexLayout.AlignSelf="Center"
-                               Margin="10"
                                FlexLayout.Basis="25%"
                                FlexLayout.Grow="1"
                                FlexLayout.Shrink="1"/>
+
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="2%"
+                                 FlexLayout.Shrink="0"/>
 
                         <Label Text="{helpers:TranslationHelper ScanSuccessTitleText}"
                                FlexLayout.AlignSelf="Center"
@@ -177,12 +201,13 @@
                                FlexLayout.AlignSelf="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="20"
-                               FlexLayout.Basis="6%"/>
+                               FlexLayout.Basis="4%"/>
 
                         <BoxView BackgroundColor="Transparent"
                                  FlexLayout.AlignSelf="Stretch"
                                  FlexLayout.Basis="10%"
-                                 FlexLayout.Grow="1"/>
+                                 FlexLayout.Grow="0.4"
+                                 FlexLayout.Shrink="1"/>
 
                         <StackLayout Spacing="15"
                                  Margin="40, 0" 
