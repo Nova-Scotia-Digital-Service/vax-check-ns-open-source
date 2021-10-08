@@ -8,7 +8,7 @@ using Xamarin.UITest.Queries;
 namespace VaxCheckNS.Mobile.UITests
 {
     [TestFixture(Platform.Android)]
-    [TestFixture(Platform.iOS)]
+    //[TestFixture(Platform.iOS)]
     public class AppLaunchTests
     {
         IApp app;
