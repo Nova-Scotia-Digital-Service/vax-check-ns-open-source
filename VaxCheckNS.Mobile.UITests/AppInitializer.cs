@@ -17,7 +17,10 @@ namespace VaxCheckNS.Mobile.UITests
             }
 
 
-            return ConfigureApp.iOS.StartApp();
+            return ConfigureApp.iOS
+                .InstalledApp("ca.novascotia.vaxcheckns.mobile")
+                .EnableLocalScreenshots()
+                .StartApp();
         }
     }
 }
