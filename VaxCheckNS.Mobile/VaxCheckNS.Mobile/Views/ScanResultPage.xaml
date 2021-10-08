@@ -22,21 +22,30 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
+
         <ScrollView>
 
             <Grid>
                 <Grid BackgroundColor="{StaticResource NegativeColor}"
                       IsVisible="{Binding ProofOfVaccineData.IsValidProof, Converter={StaticResource InvertedBoolConverter}}">
-                    <StackLayout>
-                        <Label Padding="24"
-                               Text="{x:Static fonts:FontAwesomeSolid.Home}"
+                    <FlexLayout Direction="Column"
+                                Margin="0">
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="2.5%"
+                                 FlexLayout.Shrink="0"/>
+
+                        <Label Text="{x:Static fonts:FontAwesomeSolid.Home}"
                                FontFamily="{StaticResource FontAwesomeSolid}"
                                TextColor="{DynamicResource BackgroundColor}"
                                FontSize="32"
                                WidthRequest="200"
-                               VerticalOptions="Start"
+                               FlexLayout.AlignSelf="Start"
                                VerticalTextAlignment="Start"
-                               HorizontalTextAlignment="Start">
+                               HorizontalTextAlignment="Start"
+                               Padding="20, 0"
+                               FlexLayout.Basis="7%"
+                               FlexLayout.Shrink="0">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding GoToCommand}"
                                                       CommandParameter="//HomePage"/>
@@ -44,149 +53,204 @@
                         </Label>
 
                         <Label Text="{helpers:TranslationHelper ScanErrorTitleText}"
-                               HorizontalOptions="Center"
+                               FlexLayout.AlignSelf="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="36"
-                               Padding="20"/>
+                               FlexLayout.Basis="7%"/>
+
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="5%"
+                                 FlexLayout.Grow="0.4"
+                                 FlexLayout.Shrink="1"/>
 
                         <Image Source="cancel.png" 
-                               HeightRequest="200"
                                Aspect="AspectFit"
-                               HorizontalOptions="Center"
-                               Margin="20,24,20,10"/>
+                               FlexLayout.AlignSelf="Center"
+                               FlexLayout.Basis="25%"
+                               FlexLayout.Grow="1"
+                               FlexLayout.Shrink="1"/>
+
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="2%"
+                                 FlexLayout.Shrink="0"/>
 
                         <Label Text="{helpers:TranslationHelper ScanErrorMessage}"
-                               HorizontalOptions="Center"
+                               FlexLayout.AlignSelf="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="36"
-                               Padding="20,0"/>
+                               FlexLayout.Basis="6%"/>
 
                         <Label Text="{Binding ProofOfVaccineData.Code, Converter={StaticResource vaccineStatusToResourceConverter}}"
-                               HorizontalOptions="Center"
+                               FlexLayout.AlignSelf="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="20"
-                               Padding="20,0"/>
-                    </StackLayout>
+                               FlexLayout.Basis="6%"/>
 
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="10%"
+                                 FlexLayout.Grow="0.4"
+                                 FlexLayout.Shrink="1"/>
 
+                        <StackLayout Spacing="15"
+                                 Margin="40, 0" 
+                                 FlexLayout.Basis="15%"
+                                 FlexLayout.Shrink="0">
 
-                    <StackLayout Spacing="15"
-                                 Margin="40" 
-                                 VerticalOptions="EndAndExpand">
+                            <Button Text="{helpers:TranslationHelper NewScanButtonText}"
+                                    Image="metroqrcode2.png"
+                                    ContentLayout="Left, 0"
+                                    Padding="20,10"
+						            FontSize="16"
+						            FontAttributes="Bold"
+						            CornerRadius="8"
+						            BackgroundColor="{StaticResource BackgroundColor}"
+						            TextColor="{StaticResource NegativeColor}"
+						            Command="{Binding NewScanCommand}"
+						            VerticalOptions="EndAndExpand"
+						            HorizontalOptions="CenterAndExpand"
+						            WidthRequest="300"/>
 
-                        <Button Text="{helpers:TranslationHelper NewScanButtonText}"
-                                Image="metroqrcode2.png"  
-                                Padding="20,10"
-						        FontSize="16"
-						        FontAttributes="Bold"
-						        CornerRadius="16"
-						        BackgroundColor="{StaticResource BackgroundColor}"
-						        TextColor="{StaticResource NegativeColor}"
-						        Command="{Binding NewScanCommand}"
-						        VerticalOptions="EndAndExpand"
-						        HorizontalOptions="Fill"
-						        WidthRequest="300"
-						        HeightRequest="60"/>
+                            <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
+                                    Image="notesmedical1.png"
+                                    ContentLayout="Left, 0"
+						            FontSize="16"
+						            FontAttributes="Bold"
+						            CornerRadius="8"
+                                    BorderWidth="1"
+                                    BorderColor="{StaticResource BackgroundColor}"
+						            BackgroundColor="{StaticResource TransparentBackgroundColor}"
+						            TextColor="{StaticResource BackgroundColor}"
+						            Command="{Binding ViewGuideCommand}"
+						            VerticalOptions="Start"
+						            HorizontalOptions="CenterAndExpand"
+						            WidthRequest="300">
+                            </Button>
 
-                        <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
-                                Image="notesmedical1.png"
-						        FontSize="16"
-						        FontAttributes="Bold"
-						        CornerRadius="16"
-                                BorderWidth="1"
-                                BorderColor="{StaticResource BackgroundColor}"
-						        BackgroundColor="{StaticResource TransparentBackgroundColor}"
-						        TextColor="{StaticResource BackgroundColor}"
-						        Command="{Binding ViewGuideCommand}"
-						        VerticalOptions="Start"
-						        HorizontalOptions="Fill"
-						        WidthRequest="300"
-						        HeightRequest="60">
-                        </Button>
+                        </StackLayout>
 
-                    </StackLayout>
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="5%"
+                                 FlexLayout.Shrink="0"/>
+
+                    </FlexLayout>
                 </Grid>
 
                 <Grid BackgroundColor="{StaticResource PositiveColor}"
                       IsVisible="{Binding ProofOfVaccineData.IsValidProof}">
-                    <StackLayout>
-                        <Label Padding="24"
-                               Text="{x:Static fonts:FontAwesomeSolid.Home}"
+
+                    <FlexLayout Direction="Column"
+                                Margin="0">
+
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="2.5%"
+                                 FlexLayout.Shrink="0"/>
+
+                        <Label Text="{x:Static fonts:FontAwesomeSolid.Home}"
                                FontFamily="{StaticResource FontAwesomeSolid}"
                                TextColor="{DynamicResource BackgroundColor}"
                                FontSize="32"
                                WidthRequest="200"
-                               VerticalOptions="Start"
+                               FlexLayout.AlignSelf="Start"
                                VerticalTextAlignment="Start"
-                               HorizontalTextAlignment="Start">     
+                               HorizontalTextAlignment="Start"
+                               Padding="20, 0"
+                               FlexLayout.Basis="7%"
+                               FlexLayout.Shrink="0">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                                <TapGestureRecognizer Command="{Binding GoToCommand}"
+                                                      CommandParameter="//HomePage"/>
                             </Label.GestureRecognizers>
                         </Label>
 
                         <Label Text="{Binding ProofOfVaccineData.Name}"
-                               HorizontalOptions="Center"
+                               FlexLayout.AlignSelf="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="36"
-                               Padding="20"/>
+                               FlexLayout.Basis="7%"/>
+
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="5%"
+                                 FlexLayout.Grow="0.4"
+                                 FlexLayout.Shrink="1"/>
 
                         <Image Source="checkcircle.png" 
-                               HeightRequest="200"
                                Aspect="AspectFit"
-                               HorizontalOptions="Center"
-                               Margin="20,24,20,10"/>
+                               FlexLayout.AlignSelf="Center"
+                               FlexLayout.Basis="25%"
+                               FlexLayout.Grow="1"
+                               FlexLayout.Shrink="1"/>
+
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="2%"
+                                 FlexLayout.Shrink="0"/>
 
                         <Label Text="{helpers:TranslationHelper ScanSuccessTitleText}"
-                               HorizontalOptions="Center"
+                               FlexLayout.AlignSelf="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="36"
-                               Padding="20,0"/>
+                               FlexLayout.Basis="6%"/>
 
                         <Label Text="{helpers:TranslationHelper ScanSuccessDetailText}"
-                               HorizontalOptions="Center"
+                               FlexLayout.AlignSelf="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="20"
-                               Padding="20,0"/>
-                    </StackLayout>
+                               FlexLayout.Basis="4%"/>
 
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="10%"
+                                 FlexLayout.Grow="0.4"
+                                 FlexLayout.Shrink="1"/>
 
+                        <StackLayout Spacing="15"
+                                 Margin="40, 0" 
+                                 FlexLayout.Basis="15%"
+                                 FlexLayout.Shrink="0">
 
-                    <StackLayout Spacing="15"
-                                 Margin="40" 
-                                 VerticalOptions="EndAndExpand">
+                            <Button Text="{helpers:TranslationHelper NewScanButtonText}"
+                                    Image="metroqrcode1.png"
+                                    ContentLayout="Left, 0"
+                                    Padding="20,10"
+						            FontSize="16"
+						            FontAttributes="Bold"
+						            CornerRadius="8"
+						            BackgroundColor="{StaticResource BackgroundColor}"
+						            TextColor="{StaticResource PositiveColor}"
+						            Command="{Binding NewScanCommand}"
+						            VerticalOptions="EndAndExpand"
+						            HorizontalOptions="CenterAndExpand"
+						            WidthRequest="300"/>
 
-                        <Button Text="{helpers:TranslationHelper NewScanButtonText}"
-                                Image="metroqrcode1.png"  
-                                ContentLayout="Left, 0"
-                                Padding="20,10"
-						        FontSize="16"
-						        FontAttributes="Bold"
-						        CornerRadius="16"
-						        BackgroundColor="{StaticResource BackgroundColor}"
-						        TextColor="{StaticResource PositiveColor}"
-						        Command="{Binding NewScanCommand}"
-						        VerticalOptions="EndAndExpand"
-						        HorizontalOptions="Fill"
-						        WidthRequest="300"
-						        HeightRequest="60"/>
+                            <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
+                                    Image="notesmedical1.png"
+                                    ContentLayout="Left, 0"
+						            FontSize="16"
+						            FontAttributes="Bold"
+						            CornerRadius="8"
+                                    BorderWidth="1"
+                                    BorderColor="{StaticResource BackgroundColor}"
+						            BackgroundColor="{StaticResource TransparentBackgroundColor}"
+						            TextColor="{StaticResource BackgroundColor}"
+						            Command="{Binding ViewGuideCommand}"
+						            VerticalOptions="Start"
+						            HorizontalOptions="CenterAndExpand"
+						            WidthRequest="300">
+                            </Button>
 
-                        <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
-                                Image="notesmedical1.png"
-                                ContentLayout="Left, 0"
-						        FontSize="16"
-						        FontAttributes="Bold"
-						        CornerRadius="16"
-                                BorderWidth="1"
-                                BorderColor="{StaticResource BackgroundColor}"
-						        BackgroundColor="{StaticResource TransparentBackgroundColor}"
-						        TextColor="{StaticResource BackgroundColor}"
-						        Command="{Binding ViewGuideCommand}"
-						        VerticalOptions="Start"
-						        HorizontalOptions="Fill"
-						        WidthRequest="300"
-						        HeightRequest="60">
-                        </Button>
-                    </StackLayout>
+                        </StackLayout>
+
+                        <BoxView BackgroundColor="Transparent"
+                                 FlexLayout.AlignSelf="Stretch"
+                                 FlexLayout.Basis="5%"
+                                 FlexLayout.Shrink="0"/>
+                    </FlexLayout>
                 </Grid>
             </Grid>
         </ScrollView>

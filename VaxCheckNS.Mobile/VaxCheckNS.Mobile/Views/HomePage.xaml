@@ -88,16 +88,15 @@
                         Padding="20,10"
 						FontSize="16"
 						FontAttributes="Bold"
-						CornerRadius="16"
+						CornerRadius="8"
                         BorderWidth="1"
                         BorderColor="{StaticResource PrimaryColor}"
 						BackgroundColor="{StaticResource PrimaryColor}"
 						TextColor="{StaticResource AltTextColor}"
 						Command="{Binding ScanCommand}"
 						VerticalOptions="EndAndExpand"
-                        HorizontalOptions="Fill"
-						WidthRequest="300"
-                        HeightRequest="60"/>
+                        HorizontalOptions="CenterAndExpand"
+						WidthRequest="300"/>
 
                 <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
                         ImageSource="notesmedical.png"
@@ -105,7 +104,7 @@
                         Padding="20,10"
 						FontSize="16"
 						FontAttributes="Bold"
-						CornerRadius="16"
+						CornerRadius="8"
                         BorderWidth="1"
                         BorderColor="{StaticResource PrimaryColor}"
 						BackgroundColor="{StaticResource BackgroundColor}"
@@ -113,9 +112,8 @@
 						Command="{Binding OpenInBroswerCommand}"
                         CommandParameter="https://novascotia.ca/reopening-plan/"
 						VerticalOptions="Start"
-                        HorizontalOptions="Fill"
-						WidthRequest="300"
-                        HeightRequest="60"/>
+                        HorizontalOptions="CenterAndExpand"
+						WidthRequest="300"/>
 
             </StackLayout>
 

@@ -18,6 +18,11 @@ namespace VaxCheckNS.Mobile.iOS.Renderers
         {
             var titleView = Shell.GetTitleView(Page);
 
+            if(ViewController.NavigationController == null)
+            {
+                return;
+            }
+
             if (titleView == null)
             {
                 var view = ViewController.NavigationController.NavigationBar.Subviews.FirstOrDefault(v => v is TitleViewContainer);
