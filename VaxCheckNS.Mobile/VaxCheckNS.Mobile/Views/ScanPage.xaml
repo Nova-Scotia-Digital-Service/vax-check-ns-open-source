@@ -79,8 +79,8 @@
 					TextColor="{StaticResource BackgroundColor}"
 					Command="{Binding LeaveCommand}"
 					VerticalOptions="EndAndExpand"
+                    HorizontalOptions="CenterAndExpand"
 					Margin="20,40"
-					HorizontalOptions="Fill"
 					WidthRequest="300"
 					HeightRequest="60">
             </Button>

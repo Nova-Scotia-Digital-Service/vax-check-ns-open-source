@@ -95,7 +95,7 @@
 						TextColor="{StaticResource AltTextColor}"
 						Command="{Binding ScanCommand}"
 						VerticalOptions="EndAndExpand"
-                        HorizontalOptions="Fill"
+                        HorizontalOptions="CenterAndExpand"
 						WidthRequest="300"/>
 
                 <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
@@ -112,7 +112,7 @@
 						Command="{Binding OpenInBroswerCommand}"
                         CommandParameter="https://novascotia.ca/reopening-plan/"
 						VerticalOptions="Start"
-                        HorizontalOptions="Fill"
+                        HorizontalOptions="CenterAndExpand"
 						WidthRequest="300"/>
 
             </StackLayout>

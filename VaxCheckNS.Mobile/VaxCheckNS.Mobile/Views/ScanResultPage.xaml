@@ -110,7 +110,7 @@
 						            TextColor="{StaticResource NegativeColor}"
 						            Command="{Binding NewScanCommand}"
 						            VerticalOptions="EndAndExpand"
-						            HorizontalOptions="Fill"
+						            HorizontalOptions="CenterAndExpand"
 						            WidthRequest="300"/>
 
                             <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
@@ -125,7 +125,7 @@
 						            TextColor="{StaticResource BackgroundColor}"
 						            Command="{Binding ViewGuideCommand}"
 						            VerticalOptions="Start"
-						            HorizontalOptions="Fill"
+						            HorizontalOptions="CenterAndExpand"
 						            WidthRequest="300">
                             </Button>
 
@@ -225,7 +225,7 @@
 						            TextColor="{StaticResource PositiveColor}"
 						            Command="{Binding NewScanCommand}"
 						            VerticalOptions="EndAndExpand"
-						            HorizontalOptions="Fill"
+						            HorizontalOptions="CenterAndExpand"
 						            WidthRequest="300"/>
 
                             <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
@@ -240,7 +240,7 @@
 						            TextColor="{StaticResource BackgroundColor}"
 						            Command="{Binding ViewGuideCommand}"
 						            VerticalOptions="Start"
-						            HorizontalOptions="Fill"
+						            HorizontalOptions="CenterAndExpand"
 						            WidthRequest="300">
                             </Button>
 
