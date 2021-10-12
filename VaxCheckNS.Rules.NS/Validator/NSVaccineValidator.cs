@@ -28,6 +28,7 @@ namespace VaxCheckNS.Rules.NS.Validator
             = $"$..entry[?({VaccineResourceTypeKey}=={VaccineResourceTypeValue} && {VaccineStatusKey}=={VaccineStatusValue})]";
 
         private const int MinimumDaysVaccinated = 14;
+        private const int MinimumMultipleDosageCount = 2;
         private const string OccuranceDateTimeKey = "$..occurrenceDateTime";
 
         private readonly IList<ValidVaccine> _vaccineList;
@@ -52,14 +53,14 @@ namespace VaxCheckNS.Rules.NS.Validator
         }
 
         /// <summary>
-        /// Validate all codes are valid in NS.
+        /// Validates that any of the codes are valid in NS.
         /// </summary>
         /// <param name="completedImmunizationResources">Each of the immunization entries.</param>
         /// <returns></returns>
         private bool ValidateVaccineCode(List<JToken> completedImmunizationResources)
         {
             return completedImmunizationResources
-                .All(j => _vaccineList
+                .Any(j => _vaccineList
                     .Select(v => v.Code)
                     .Contains(j
                         .SelectToken(VaccineCodeKey)
@@ -86,19 +87,25 @@ namespace VaxCheckNS.Rules.NS.Validator
         /// <returns></returns>
         private bool ValidateVaccineCount(List<JToken> completedImmunizationResources) {
 
-            var vaccinesCodes = completedImmunizationResources
+            var vaccineCodesFromQR = completedImmunizationResources
                 .Select(j => j.SelectToken(VaccineCodeKey).ToString());
 
             var singleDosageVaccineCodes = _vaccineList
                 .Where(v => v.DosageCountRequirement == 1)
                 .Select(v => v.Code);
 
-            bool isSingleDose = singleDosageVaccineCodes
-                .Intersect(vaccinesCodes)
-                .Count() > 0;
+            var multiDosageVaccineCodes = _vaccineList
+                .Where(v => v.DosageCountRequirement > 1)
+                .Select(v => v.Code);
 
-            // If is a single dose vaccine, return true, otherwise check if it has at least 2.
-            return isSingleDose || completedImmunizationResources.Count >= 2;  
+            bool hasValidSingleDose = vaccineCodesFromQR
+                .Any(v => singleDosageVaccineCodes.Contains(v));
+
+            bool hasValidMultiDose = vaccineCodesFromQR
+                    .Where(v => multiDosageVaccineCodes.Contains(v))
+                    .Count() >= MinimumMultipleDosageCount;
+
+            return hasValidSingleDose || hasValidMultiDose;  
         }
 
         public Result<VaccineStatus> Validate()

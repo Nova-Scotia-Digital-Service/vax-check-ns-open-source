@@ -163,15 +163,15 @@ namespace VaxCheckNS.Mobile.Services
         private ProofOfVaccinationData CreateProofOfVaccineData(JObject fhir)
         {
             var givenName = fhir
-                .SelectToken("$....given")
-                .FirstOrDefault()
-                .ToString();
+                ?.SelectToken("$....given")
+                ?.FirstOrDefault()
+                ?.ToString();
             string familyName = fhir
-                .SelectToken("$....family")
-                .ToString();
+                ?.SelectToken("$....family")
+                ?.ToString();
             var birthDate = fhir
-                .SelectToken("$....birthDate")
-                .ToString();
+                ?.SelectToken("$....birthDate")
+                ?.ToString();
 
             using (var vaccineValidator = new NSVaccineValidator(fhir, _validVaccines))
             {
