@@ -1,6 +1,5 @@
 {
-  "https://pvc.novascotia.ca/issuer/.well-known/jwks.json":
-  {
+  "https://pvc.novascotia.ca/issuer/.well-known/jwks.json": {
     "keys": [
       {
         "kty": "EC",
@@ -13,8 +12,7 @@
       }
     ]
   },
-  "https://pvc.service.yukon.ca/issuer/.well-known/jwks.json":
-  {
+  "https://pvc.service.yukon.ca/issuer/.well-known/jwks.json": {
     "keys": [
       {
         "kty": "EC",
@@ -32,8 +30,7 @@
       }
     ]
   },
-  "https://sask-csfw-iphr.qa.chbase.com/.well-known/jwks.json":
-  {
+  "https://sask-csfw-iphr.qa.chbase.com/.well-known/jwks.json": {
     "keys": [
       {
         "kty": "EC",
@@ -46,8 +43,7 @@
       }
     ]
   },
-  "https://skphr.prd.telushealthspace.com/.well-known/jwks.json":
-  {
+  "https://skphr.prd.telushealthspace.com/.well-known/jwks.json": {
     "keys": [
       {
         "kty": "EC",
@@ -60,8 +56,7 @@
       }
     ]
   },
-  "https://commons.ehealthsask.ca/.well-known/jwks.json":
-  {
+  "https://commons.ehealthsask.ca/.well-known/jwks.json": {
     "keys": [
       {
         "alg": "ES256",
@@ -74,8 +69,7 @@
       }
     ]
   },
-  "https://pvc.gov.nu.ca/pvc/.well-known/jwks.json":
-  {
+  "https://pvc.gov.nu.ca/pvc/.well-known/jwks.json": {
     "keys": [
       {
         "kty": "EC",
@@ -85,6 +79,47 @@
         "crv": "P-256",
         "x": "TW2mjeWs2JRBDblltiq2W00M_Q3gXnCl5FlLKIKV3oQ",
         "y": "sbraf7XcT2iH7uLUtH_grf5eVF7LltpVb9z8E31WGj4"
+      }
+    ]
+  },
+  "https://immunizationcard.manitoba.ca/api/national/.well-known/jwks.json": {
+    "keys": [
+      {
+        "alg": "ES256",
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "E2mScyP_Iwm0gn1nAYldT0MbWFUeapIsuh9ebqCJgkQ",
+        "y": "AePVDo-_XxQDJ_25BW4txoLPzuu7CQ65C2oLJIN4DxI",
+        "kid": "YnYeVk1pCtYvnmOytVTq09igCGdu_SyJM2Wn29AV7AQ",
+        "use": "sig"
+      }
+    ]
+  },
+  "https://www.hss.gov.nt.ca/covax/.well-known/jwks.json": {
+    "keys": [
+      {
+        "kty": "EC",
+        "kid": "8C-9TNgyGuOqc-3FXyNRq6m5U9S1wyhCS1TvpgjzkoU",
+        "use": "sig",
+        "alg": "ES256",
+        "crv": "P-256",
+        "x": "C-9Lltax_iU6iYdK8DdCZzv4cQN6SFVUG7ACaCT_MKM",
+        "y": "_qaENBMJz6iLf1qyYMx2_D6fXxbbNoHbLcfdPF9rUI0",
+        "date": 1631112755371
+      }
+    ]
+  },
+  "https://www.gov.nl.ca/covid-19/life-during-covid-19/vaccination-record/prod/.well-known/jwks.json": {
+    "keys": [
+      {
+        "kty": "EC",
+        "kid": "UboztS3pE1mr0dnG7Rv24kRNqlYbHrbxd-qBFerpZvI",
+        "use": "sig",
+        "alg": "ES256",
+        "crv": "P-256",
+        "x": "mB0PKTVRnr3JCtyucEjCHXkXW3COg5KP0y4gKCNJxWc",
+        "y": "PTpxiYECNiuyRwpwqjme8OIFdG7N-HwN2XH02phdZCs",
+        "date": 1632779181394
       }
     ]
   },
@@ -101,8 +136,7 @@
       }
     ]
   },
-  "https://pvc.service.yukon.ca/test/issuer/.well-known/jwks.json":
-  {
+  "https://pvc.service.yukon.ca/test/issuer/.well-known/jwks.json": {
     "keys": [
       {
         "kty": "EC",
@@ -120,8 +154,7 @@
       }
     ]
   },
-  "https://uat-commons.ehealthsask.ca/.well-known/jwks.json":
-  {
+  "https://uat-commons.ehealthsask.ca/.well-known/jwks.json": {
     "keys": [
       {
         "alg": "ES256",
@@ -131,6 +164,75 @@
         "use": "sig",
         "x": "p9Rf7Wh1_vCMTK4i4XLQFI6_LR0ZhISQVJ2PAy2yEdA",
         "y": "ai71citYuk72ldpGiwRZ0NfZGJPzKZBVulaUv_74IjY"
+      }
+    ]
+  },
+  "https://fd-mbvaxcard-qa.azurefd.net/api/national/.well-known/jwks.json": {
+    "keys": [
+      {
+        "alg": "ES256",
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "bab9914296b3a43b89e19b6dac46a630c67f9b49607b87f141b8416638c9a2fb",
+        "y": "c67037f625e4f204ee6179cfd01a696dc557120ff2fdbdf074f332683876f8ae",
+        "kid": "Y18v9GEZR-5qy96OecXBMpT2mccivsOyjgjCuVLupWA",
+        "use": "sig"
+      },
+      {
+        "alg": "ES256",
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "ch1qBI_ZNowoRIs4sAenuaA3ae10vcYqa-3pv3xYjyQ",
+        "y": "YXtyalY7vV_fww8gZVPeBOJDsdxfoMxTMTqP7th9zjE",
+        "kid": "klR-x5CSizLaFs0wS9ukXDd9W9AhnseO5t_pSB9kny0",
+        "use": "sig"
+      }
+    ]
+  },
+  "https://bearnet.gov.nt.ca/s/covax/.well-known/jwks.json": {
+    "keys": [
+      {
+        "kty": "EC",
+        "kid": "ZeD_6x_KU8DJBTjvQVeSJe1rgHf6PjunL8mJe_FAq9Q",
+        "use": "sig",
+        "alg": "ES256",
+        "crv": "P-256",
+        "x": "zII4yXkfH1-JcvNi1gX38SYfV80_mMa5zu66up1hs_c",
+        "y": "0uJUfCjHqbXWri4TETN8ggS6k10Q265zUe-Oqy00_fE"
+      },
+      {
+        "kty": "EC",
+        "kid": "UxwGTzYBXftOKnTFuyMlpiY0JpYTGv_EgDlJzU5Rxk8",
+        "use": "sig",
+        "alg": "ES256",
+        "crv": "P-256",
+        "x": "k5kzwH1SINtrzFvICdIMvlLMUnRcj71dBl4IRYt32vk",
+        "y": "wSK07ooXO1DmR54zQxe19WW57HzEy0SB-zRLPd2_uxQ",
+        "date": 1632494508098
+      },
+      {
+        "kty": "EC",
+        "kid": "Qi6LN6vmrftdZz_Do9Xr6-rsLDcvKxbxPBhyfoiRcMY",
+        "use": "sig",
+        "alg": "ES256",
+        "crv": "P-256",
+        "x": "gqxxBKD8Z5u87np28NMMxnk39Uf_o3ENQ4csU9_4iRg",
+        "y": "iPwJ7puGN_Fqlx6eGLFBvmfIygz58sSAb5Ym9t0fOX0",
+        "date": 1632947114175
+      }
+    ]
+  },
+  "https://www.gov.nl.ca/covid-19/life-during-covid-19/vaccination-record/test/.well-known/jwks.json": {
+    "keys": [
+      {
+        "kty": "EC",
+        "kid": "UBJ4JXvZ4UBbie9kTvymFOhcHKZwsscE-77Y3m_2nic",
+        "use": "sig",
+        "alg": "ES256",
+        "crv": "P-256",
+        "x": "GQOOsH4SPngJU7SKn1unvt2QCXWjSIgLK0A89l3tw8Q",
+        "y": "2wPb5fDHJwGNblRZc8YA1YTNpXfwEd2pKRuZ70sYo30",
+        "date": 1632145689889
       }
     ]
   }
