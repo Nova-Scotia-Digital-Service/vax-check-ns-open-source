@@ -8,13 +8,15 @@ namespace VaxCheckNS.Mobile.Services
 {
     public class MockDataService : IDataService
     {
+        public event DataService.DataStoredHandler DataStored;
+
         public DateTime? LastOnlineDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public int? DaysSinceLastOnline => throw new NotImplementedException();
 
         public DateTime? LastJWKSUpdateDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public Task<Dictionary<Uri, JWKeySet>> GetJWKSLocallyAsync()
+		public Task<Dictionary<Uri, JWKeySet>> GetJWKSLocallyAsync()
         {
             throw new NotImplementedException();
         }
