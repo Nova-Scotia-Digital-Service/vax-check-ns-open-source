@@ -26,7 +26,7 @@ namespace VaxCheckNS.Token.Model.Shc
         }
         else
         {
-          throw new SmartHealthCardPayloadException($"One of the VerifiableCredentialTypes (vc.type) was not an allowed value, type found was: {VerifiableCredentialTypeString}. The supported types are: {GetSupportedVerifiableCredentialTypeUriStringList()}");
+          return VerifiableCredentialType.Unknown;
         }
       }
       else
