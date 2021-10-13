@@ -16,8 +16,10 @@ namespace VaxCheckNS.Token.Model.Shc
     [EnumInfo(literal: "https://smarthealth.cards#immunization", description: "Immunization")]
     Immunization,
     [EnumInfo(literal: "https://smarthealth.cards#laboratory", description: "Laboratory")]
-    Laboratory
-  }
+    Laboratory,
+    [EnumInfo(literal: "unknown", description: "Unknown")]
+    Unknown
+    }
 
   public static class VerifiableCredentialTypeSupport
   {
@@ -26,7 +28,8 @@ namespace VaxCheckNS.Token.Model.Shc
           { VerifiableCredentialType.Covid19.GetLiteral(), VerifiableCredentialType.Covid19 },
           { VerifiableCredentialType.HealthCard.GetLiteral(), VerifiableCredentialType.HealthCard },
           { VerifiableCredentialType.Immunization.GetLiteral(), VerifiableCredentialType.Immunization },
-          { VerifiableCredentialType.Laboratory.GetLiteral(), VerifiableCredentialType.Laboratory }
+          { VerifiableCredentialType.Laboratory.GetLiteral(), VerifiableCredentialType.Laboratory },
+          { VerifiableCredentialType.Unknown.GetLiteral(), VerifiableCredentialType.Unknown }
         };
   }
 
