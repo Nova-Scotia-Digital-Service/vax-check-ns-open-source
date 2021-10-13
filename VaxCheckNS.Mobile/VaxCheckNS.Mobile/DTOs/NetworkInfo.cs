@@ -19,15 +19,19 @@ namespace VaxCheckNS.Mobile.DTOs
 						   bool isJWKSOutdated = false)
 		{
 			IsNetworkAvailable = isNetworkAvailable;
-			LastOnline = lastOnline.Value.ToLocalTime();
-			LastJWKSUpdate = lastJWKSUpdate.Value.ToLocalTime();
 			IsJWKSOutdated = isJWKSOutdated;
 
 			if (lastOnline.HasValue)
+			{
+				LastOnline = lastOnline.Value.ToLocalTime();
 				SinceLastOnline = DateTime.UtcNow - lastOnline.Value;
+			}
 
 			if (lastJWKSUpdate.HasValue)
+			{
+				LastJWKSUpdate = lastJWKSUpdate.Value.ToLocalTime();
 				SinceLastJWKSUpdate = DateTime.UtcNow - lastJWKSUpdate.Value;
+			}
 		}
 
 		public NetworkInfo(NetworkInfo data)
