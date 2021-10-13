@@ -3,6 +3,7 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Xamarin.Forms;
+using VaxCheckNS.Mobile.Helpers;
 
 namespace VaxCheckNS.Mobile
 {
@@ -64,8 +65,8 @@ namespace VaxCheckNS.Mobile
 
 		private void InitializeAppCenter()
 		{
-			AppCenter.Start("android=c8da9da7-50dd-42a8-b7f4-312370215d5a;" +
-							"ios=b680b5fc-214c-49a1-9bce-5decfe8b445a;",
+			AppCenter.Start("android="+ AppSettings.AppCenterAndroidKey+";" +
+							"ios="+ AppSettings.AppCenteriOSKey +";",
 							typeof(Analytics), typeof(Crashes));
 		}
 	}
