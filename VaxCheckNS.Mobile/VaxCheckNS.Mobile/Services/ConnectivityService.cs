@@ -84,7 +84,8 @@ namespace VaxCheckNS.Mobile.Services
 
 		private void OnConnectivityChanged(object sender, ConnectivityChangedEventArgs args)
 		{
-			TryUpdateLastOnline(!IsNetworkAvailable);
+			if (IsNetworkAvailable)
+				TryUpdateLastOnline(true);
 		}
 
 		public void TryUpdateLastOnline(bool JWKSUpdateRequired = false)

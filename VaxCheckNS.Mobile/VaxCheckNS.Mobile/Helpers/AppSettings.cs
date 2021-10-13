@@ -12,6 +12,6 @@ namespace VaxCheckNS.Mobile.Helpers
         public static string AppCenterAndroidKey = "c8da9da7-50dd-42a8-b7f4-312370215d5a";
         public static string AppCenteriOSKey = "b680b5fc-214c-49a1-9bce-5decfe8b445a";
 
-        public static TimeSpan JWKSUpdateThreshold => new TimeSpan(0, 0, 1, 0, 0);
+        public static TimeSpan JWKSUpdateThreshold => new TimeSpan(0, 0, 1, 0, 0); //TODO: make 7 days
     }
 }
