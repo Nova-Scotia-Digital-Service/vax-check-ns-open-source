@@ -40,5 +40,7 @@
 	<string>VaxCheckNS</string>
 	<key>CFBundleVersion</key>
 	<string>0.1</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
