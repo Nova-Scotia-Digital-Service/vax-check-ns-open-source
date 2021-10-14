@@ -3,6 +3,7 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="VaxCheckNS.Mobile.Views.HomePage"
 			 xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
+             xmlns:fonts="clr-namespace:VaxCheckNS.Mobile.Themes.Fonts"            
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers"
 			 ios:Page.UseSafeArea="True"
@@ -36,12 +37,50 @@
                      FlexLayout.Basis="2.5%"
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
+            
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="{StaticResource HighlightColor}"
+                         Spacing="0"
+                         IsVisible="{Binding ShowUpdateMessage}"
+                         VerticalOptions="StartAndExpand">
+                <Label TextColor="{StaticResource PrimaryColor}"
+                       Padding="20,5"
+                       LineHeight="1.2"
+                       FontSize="16"
+                       VerticalTextAlignment="Center"
+                       HorizontalOptions="Start">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Update required. "
+                                  FontAttributes="Bold"/>
+                            <Span Text="Please connect to a network."/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
 
+                <Label  Text="{x:Static fonts:FontAwesomeSolid.Times}"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        TextColor="{DynamicResource PrimaryColor}"
+                        FontSize="20"
+                        WidthRequest="65"
+                               Padding="5,5,20,5"
+
+                       VerticalOptions="Center"
+
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="End"
+>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CloseBannerCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            
             <BoxView Color="Transparent"
                      FlexLayout.Basis="5%" 
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
-
+          
             <Image AutomationId="AppLogo"
                    Source="nsflag_colour.png"
                    Aspect="AspectFit"
@@ -88,16 +127,15 @@
                         Padding="20,10"
 						FontSize="16"
 						FontAttributes="Bold"
-						CornerRadius="16"
+						CornerRadius="8"
                         BorderWidth="1"
                         BorderColor="{StaticResource PrimaryColor}"
 						BackgroundColor="{StaticResource PrimaryColor}"
 						TextColor="{StaticResource AltTextColor}"
 						Command="{Binding ScanCommand}"
 						VerticalOptions="EndAndExpand"
-                        HorizontalOptions="Fill"
-						WidthRequest="300"
-                        HeightRequest="60"/>
+                        HorizontalOptions="CenterAndExpand"
+						WidthRequest="300"/>
 
                 <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
                         ImageSource="notesmedical.png"
@@ -105,7 +143,7 @@
                         Padding="20,10"
 						FontSize="16"
 						FontAttributes="Bold"
-						CornerRadius="16"
+						CornerRadius="8"
                         BorderWidth="1"
                         BorderColor="{StaticResource PrimaryColor}"
 						BackgroundColor="{StaticResource BackgroundColor}"
@@ -113,9 +151,8 @@
 						Command="{Binding OpenInBroswerCommand}"
                         CommandParameter="https://novascotia.ca/reopening-plan/"
 						VerticalOptions="Start"
-                        HorizontalOptions="Fill"
-						WidthRequest="300"
-                        HeightRequest="60"/>
+                        HorizontalOptions="CenterAndExpand"
+						WidthRequest="300"/>
 
             </StackLayout>
 

@@ -10,10 +10,15 @@
              x:Class="VaxCheckNS.Mobile.Views.AboutPage">
 
     <Shell.TitleView>
-        <Image Source="Headerbg.png"
-               TranslationX="84"
-               HorizontalOptions="End"
-               VerticalOptions="Center" />
+        <StackLayout HeightRequest="50"
+                     Spacing="0"
+                     Padding="0"
+                     Margin="0">
+            <Image Source="Headerbg.png"
+                   TranslationX="5"
+                   HorizontalOptions="EndAndExpand"
+                   VerticalOptions="EndAndExpand"/>
+        </StackLayout>
     </Shell.TitleView>
     
     <ContentPage.BindingContext>
