@@ -123,7 +123,8 @@
                                     BorderColor="{StaticResource BackgroundColor}"
 						            BackgroundColor="{StaticResource TransparentBackgroundColor}"
 						            TextColor="{StaticResource BackgroundColor}"
-						            Command="{Binding ViewGuideCommand}"
+						            Command="{Binding OpenInBroswerCommand}"
+                                    CommandParameter="https://novascotia.ca/reopening-plan/"
 						            VerticalOptions="Start"
 						            HorizontalOptions="CenterAndExpand"
 						            WidthRequest="300">
