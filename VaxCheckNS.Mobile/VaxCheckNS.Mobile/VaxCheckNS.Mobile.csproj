@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-    <Configurations>Debug;Release;Test</Configurations>
+    <Configurations>Test;Debug;Release</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|AnyCPU'">
@@ -55,13 +55,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Animations\" />
     <None Remove="AppResources\ValidVaccines.json" />
     <None Remove="AppResources\WhiteList.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BindableModels\" />
-    <Folder Include="Animations\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\VaxCheckNS.Decode\VaxCheckNS.Decode.csproj" />
