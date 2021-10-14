@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="0.1" package="ca.novascotia.vaxcheckns.mobile" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="24" android:targetSdkVersion="30" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="0.2" package="ca.novascotia.vaxcheckns.mobile" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="30" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.FLASHLIGHT" />
 	<uses-permission android:name="android.permission.CAMERA" />
@@ -14,5 +14,5 @@
 			<data android:scheme="https" />
 		</intent>
 	</queries>
-	<application android:label="VaxCheckNS" android:theme="@style/MainTheme"></application>
+	<application android:label="VaxCheckNS" android:theme="@style/MainTheme" android:icon="@drawable/icon"></application>
 </manifest>

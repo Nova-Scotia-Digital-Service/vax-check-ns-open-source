@@ -37,7 +37,7 @@
                      FlexLayout.Basis="2.5%"
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
-            
+
             <StackLayout Orientation="Horizontal"
                          BackgroundColor="{StaticResource HighlightColor}"
                          Spacing="0"
@@ -75,12 +75,12 @@
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
-            
+
             <BoxView Color="Transparent"
                      FlexLayout.Basis="5%" 
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
-          
+
             <Image AutomationId="AppLogo"
                    Source="nsflag_colour.png"
                    Aspect="AspectFit"

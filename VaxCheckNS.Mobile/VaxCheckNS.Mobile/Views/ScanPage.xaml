@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="VaxCheckNS.Mobile.Views.ScanPage"
+             xmlns:fonts="clr-namespace:VaxCheckNS.Mobile.Themes.Fonts"
 			 xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 			 xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
@@ -36,8 +37,8 @@
                    Aspect="AspectFit"
                    HorizontalOptions="FillAndExpand"
                    VerticalOptions="FillAndExpand"
-                   Margin="20,100"/> 
-            
+                   Margin="20,100"/>
+
 
             <Label Text="{Binding CountdownText}"
                    TextColor="{StaticResource BackgroundColor}"
@@ -52,8 +53,9 @@
                                HorizontalOptions="CenterAndExpand"/>
 
             <Button AutomationId="TorchButtonText" 
-                    Text="Torch"
-					FontSize="16"
+                    Text="{x:Static fonts:FontAwesomeSolid.Bolt}"
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+					FontSize="20"
 					FontAttributes="Bold"
 					CornerRadius="16"
                     BorderWidth="1"
@@ -63,9 +65,10 @@
 					Command="{Binding ToggleTorchCommand}"
 					VerticalOptions="Start"
 					Margin="20, 40"
-                    Padding="20"
+                    Padding="0,10"
 					HorizontalOptions="End"
-					HeightRequest="60">
+					WidthRequest="60"
+                    HeightRequest="60">
             </Button>
 
             <Button AutomationId="CancelButtonText" 
