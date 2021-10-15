@@ -119,8 +119,12 @@ namespace VaxCheckNS.Mobile.ViewModels
             if (availableResolutions == null || availableResolutions.Count < 1)
                 return new CameraResolution() { Width = 800, Height = 600 };
 
-            var resolutionDictionary = availableResolutions.ToDictionary(r => r.Height, r => r);
-            var highestResolutionKey = resolutionDictionary.Max(r => r.Key);
+            var resolutionDictionary = availableResolutions
+                .GroupBy(r => r.Height+r.Width)
+                .ToDictionary(r => r.Key, r => r.First());
+
+            var highestResolutionKey = resolutionDictionary
+                .Max(r => r.Key);
             return resolutionDictionary[highestResolutionKey];
         }
     }
