@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using ZXing.Mobile;
 using System.Collections.Generic;
 using ZXing;
+using System.Linq;
 
 namespace VaxCheckNS.Mobile.ViewModels
 {
@@ -118,9 +119,9 @@ namespace VaxCheckNS.Mobile.ViewModels
             if (availableResolutions == null || availableResolutions.Count < 1)
                 return new CameraResolution() { Width = 800, Height = 600 };
 
-            //Debugging revealed that the last element in the list
-            //expresses the highest resolution. This could probably be more thorough.
-            return availableResolutions[availableResolutions.Count - 1];
+            var resolutionDictionary = availableResolutions.ToDictionary(r => r.Height, r => r);
+            var highestResolutionKey = resolutionDictionary.Max(r => r.Key);
+            return resolutionDictionary[highestResolutionKey];
         }
     }
 }
