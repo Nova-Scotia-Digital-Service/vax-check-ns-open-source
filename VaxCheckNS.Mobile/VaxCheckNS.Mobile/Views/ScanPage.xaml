@@ -31,7 +31,8 @@
 
             <zxing:ZXingScannerView IsScanning="{Binding IsBusy,Converter={StaticResource InvertedBoolConverter}}"                          
                                     ScanResultCommand="{Binding AnalyseScanResultCommand}"
-                                    IsTorchOn="{Binding IsTorchOn}"/>
+                                    IsTorchOn="{Binding IsTorchOn}"
+                                    Options="{Binding ScannerOptions}"/>
 
             <Image Source="ScanFrame"
                    Aspect="AspectFit"
