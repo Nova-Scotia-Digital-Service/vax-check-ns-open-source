@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;
 using Xamarin.Forms;
+using ZXing.Mobile;
+using System.Collections.Generic;
+using ZXing;
 
 namespace VaxCheckNS.Mobile.ViewModels
 {
@@ -26,6 +29,13 @@ namespace VaxCheckNS.Mobile.ViewModels
             set { SetProperty(ref _isTorchOn, value); }
         }
 
+        private MobileBarcodeScanningOptions _scannerOptions;
+        public MobileBarcodeScanningOptions ScannerOptions
+        {
+            get { return _scannerOptions; }
+            set { SetProperty(ref _scannerOptions, value); }
+        }
+
         public Command AnalyseScanResultCommand { get; set; }
         public Command ToggleTorchCommand { get; set; }
         public Command LeaveCommand { get; set; }
@@ -38,6 +48,12 @@ namespace VaxCheckNS.Mobile.ViewModels
             LeaveCommand = new Command(GoBack);
             AnalyseScanResultCommand = new Command<ZXing.Result>(async result => await AnalyseScanAsync(result));
             ToggleTorchCommand = new Command(() => IsTorchOn = !IsTorchOn);
+            ScannerOptions = new MobileBarcodeScanningOptions
+            {
+                TryHarder = true,
+                CameraResolutionSelector = HandleCameraResolutionSelectorDelegate,
+                PossibleFormats = new List<BarcodeFormat> { BarcodeFormat.QR_CODE }
+            };
 
             StartTimer();
         }
@@ -94,6 +110,17 @@ namespace VaxCheckNS.Mobile.ViewModels
                         _errorManagementService.HandleError(ex);
                 }
             }
+        }
+
+        private CameraResolution HandleCameraResolutionSelectorDelegate(List<CameraResolution> availableResolutions)
+        {
+            //Don't know if this will ever be null or empty
+            if (availableResolutions == null || availableResolutions.Count < 1)
+                return new CameraResolution() { Width = 800, Height = 600 };
+
+            //Debugging revealed that the last element in the list
+            //expresses the highest resolution. This could probably be more thorough.
+            return availableResolutions[availableResolutions.Count - 1];
         }
     }
 }
