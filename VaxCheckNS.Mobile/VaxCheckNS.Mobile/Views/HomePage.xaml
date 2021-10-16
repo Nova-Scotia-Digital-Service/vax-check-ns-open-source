@@ -133,6 +133,11 @@
                      FlexLayout.Basis="5%" 
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
+
+            <BoxView Color="{StaticResource PrimaryColor}"
+                     FlexLayout.Basis="2.5%"
+                     FlexLayout.AlignSelf="Stretch"
+                     FlexLayout.Shrink="0"/>
         </FlexLayout>
 
     </ContentPage.Content>
