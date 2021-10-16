@@ -256,5 +256,41 @@ namespace VaxCheckNS.Mobile.AppResources {
                 return ResourceManager.GetString("FAQ6Text", resourceCulture);
             }
         }
+        
+        internal static string Tutorial1Text {
+            get {
+                return ResourceManager.GetString("Tutorial1Text", resourceCulture);
+            }
+        }
+        
+        internal static string Tutorial2Text {
+            get {
+                return ResourceManager.GetString("Tutorial2Text", resourceCulture);
+            }
+        }
+        
+        internal static string Tutorial3Text {
+            get {
+                return ResourceManager.GetString("Tutorial3Text", resourceCulture);
+            }
+        }
+        
+        internal static string Tutorial4Text {
+            get {
+                return ResourceManager.GetString("Tutorial4Text", resourceCulture);
+            }
+        }
+        
+        internal static string TutorialSkipText {
+            get {
+                return ResourceManager.GetString("TutorialSkipText", resourceCulture);
+            }
+        }
+        
+        internal static string TutorialDoneButtonText {
+            get {
+                return ResourceManager.GetString("TutorialDoneButtonText", resourceCulture);
+            }
+        }
     }
 }

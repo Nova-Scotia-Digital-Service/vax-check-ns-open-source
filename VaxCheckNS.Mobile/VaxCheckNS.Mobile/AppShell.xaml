@@ -20,13 +20,16 @@
         <vm:BaseViewModel x:Name="vm" />
     </Shell.BindingContext>
 
-    <TabBar IsVisible="{Binding PrivacyAccepted, Converter={StaticResource InvertedBoolConverter}}">
+    <TabBar IsVisible="{Binding TutorialComplete, Converter={StaticResource InvertedBoolConverter}}">
         <ShellContent Route="TermsOfUsePage"
                       IsVisible="{Binding ToUAccepted, Converter={StaticResource InvertedBoolConverter}}"
                       ContentTemplate="{DataTemplate views:TermsOfUsePage}"/>
         <ShellContent Route="PrivacyPage"
                       IsVisible="{Binding PrivacyAccepted, Converter={StaticResource InvertedBoolConverter}}"
                       ContentTemplate="{DataTemplate views:PrivacyPage}"/>
+        <ShellContent Route="TutorialPage"
+                      IsVisible="{Binding TutorialComplete, Converter={StaticResource InvertedBoolConverter}}"
+                      ContentTemplate="{DataTemplate views:TutorialPage}"/>
     </TabBar>
 
     <FlyoutItem Title="{helpers:TranslationHelper HomeMenuTitle}" Route="MainFlow">

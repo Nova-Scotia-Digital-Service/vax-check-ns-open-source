@@ -5,21 +5,101 @@
              xmlns:fonts="clr-namespace:VaxCheckNS.Mobile.Themes.Fonts"
 			 xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers"
+             xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
              ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="True"
              Shell.PresentationMode="Modal"
 			 Shell.NavBarHasShadow="False">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.BindingContext>
-        <vm:BaseViewModel x:Name="vm" />
+        <vm:TutorialViewModel x:Name="vm" />
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-        <ScrollView>
-            <Grid>
-                <CarouselView>
-                </CarouselView>
+        <FlexLayout Direction="Column"
+                    JustifyContent="Center"
+                    AlignContent="Center">
+
+            <CarouselView x:Name="TutorialView"
+                          ItemsSource="{Binding TutorialItems}"
+                          HorizontalScrollBarVisibility="Never"
+                          IsBounceEnabled="False"
+                          Loop="False"
+                          IndicatorView="indicatorView"
+                          FlexLayout.Grow="1"
+                          PositionChangedCommand="{Binding TutorialPositionChangedCommand}"
+                          PositionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=Position}">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                       SnapPointsAlignment="Center"
+                                       SnapPointsType="Mandatory"/>
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <FlexLayout Direction="Column"
+                                    JustifyContent="Center"
+                                    AlignContent="Center">
+                            <Label Text="{Binding Caption}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   FlexLayout.Basis="30%"/>
+                            <Image Source="{Binding ImageSource}"
+                                   Margin="20, 0"
+                                   FlexLayout.Basis="70%"/>
+                        </FlexLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <IndicatorView x:Name="indicatorView"
+                           IndicatorColor="{StaticResource AltBackgroundColor}"
+                           SelectedIndicatorColor="{StaticResource PrimaryColor}"
+                           IndicatorSize="20"
+                           MaximumVisible="4"
+                           WidthRequest="300"
+                           FlexLayout.AlignSelf="Center"
+                           FlexLayout.Basis="60"
+                           FlexLayout.Shrink="0">
+            </IndicatorView>
+
+            <Grid FlexLayout.Basis="80"
+                  FlexLayout.Shrink="0">
+
+                <Button Text="{helpers:TranslationHelper TutorialSkipText}"
+                        BorderColor="Transparent"
+                        BackgroundColor="Transparent"
+                        TextColor="{StaticResource PrimaryColor}"
+                        Command="{Binding SkipCommand}"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"
+                        IsVisible="{Binding IsFinalTutorialPosition, Converter={StaticResource InvertedBoolConverter}}"/>
+
+                <Button Text="{helpers:TranslationHelper TutorialDoneButtonText}"
+                        Padding="20,10"
+                        Margin="10, 0"
+					    FontSize="16"
+						FontAttributes="Bold"
+						CornerRadius="8"
+                        BorderWidth="1"
+                        BorderColor="{StaticResource PrimaryColor}"
+						BackgroundColor="{StaticResource PrimaryColor}"
+						TextColor="{StaticResource BackgroundColor}"
+                        IsVisible="{Binding IsFinalTutorialPosition}"
+                        WidthRequest="300"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"
+                        Command="{Binding DoneCommand}"/>
             </Grid>
-        </ScrollView>
+
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

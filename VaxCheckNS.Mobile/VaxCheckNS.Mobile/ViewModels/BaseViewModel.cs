@@ -42,6 +42,13 @@ namespace VaxCheckNS.Mobile.ViewModels
             set { SetProperty(ref _privacyAccepted, value); }
         }
 
+        private bool _tutorialComplete;
+        public bool TutorialComplete
+        {
+            get { return _tutorialComplete; }
+            set { SetProperty(ref _tutorialComplete, value); }
+        }
+
         public string VersionNumber => VersionTracking.CurrentVersion;
         public NetworkInfo CurrentNetworkInfo { get; private set; }
 
@@ -68,6 +75,7 @@ namespace VaxCheckNS.Mobile.ViewModels
 
             ToUAccepted = _dataService.VerifyTermsOfUseAccepted();
             PrivacyAccepted = _dataService.VerifyPrivacyAccepted();
+            TutorialComplete = _dataService.VerifyTutorialComplete();
 
             _connectivityService.NetworkConnectivityChanged += OnNetworkConnectivityChanged;
             SetNetworkInfo(_connectivityService.GetNetworkInfo);

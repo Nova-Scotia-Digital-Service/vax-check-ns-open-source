@@ -262,5 +262,16 @@ namespace VaxCheckNS.Mobile.Services
         {
 			return Preferences.Get(tou_accepted, false);
 		}
+
+		private readonly string tutorial_complete = nameof(tutorial_complete);
+		public void CompleteTutorial()
+        {
+			Preferences.Set(tutorial_complete, true);
+		}
+
+        public bool VerifyTutorialComplete()
+        {
+			return Preferences.Get(tutorial_complete, false);
+		}
     }
 }

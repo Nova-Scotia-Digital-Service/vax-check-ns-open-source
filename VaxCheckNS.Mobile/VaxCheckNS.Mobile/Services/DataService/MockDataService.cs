@@ -70,5 +70,15 @@ namespace VaxCheckNS.Mobile.Services
         {
             throw new NotImplementedException();
         }
+
+        public void CompleteTutorial()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyTutorialComplete()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

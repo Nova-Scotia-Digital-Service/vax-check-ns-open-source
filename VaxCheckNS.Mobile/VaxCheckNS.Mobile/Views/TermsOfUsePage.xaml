@@ -5,9 +5,11 @@
         xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers" 
     xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
 	Shell.NavBarIsVisible="False"
 	Shell.NavBarHasShadow="False"
     Shell.TabBarIsVisible="False"
+    BackgroundColor="Transparent"
     x:Class="VaxCheckNS.Mobile.Views.TermsOfUsePage">
 
     <ContentPage.BindingContext>
@@ -19,27 +21,38 @@
         <FlexLayout Direction="Column"
                     Margin="0">
 
-            <BoxView Color="Transparent"
-                     FlexLayout.Basis="5%"
+            <BoxView Color="{StaticResource PrimaryColor}"
+                     FlexLayout.Basis="1"
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
 
             <WebView FlexLayout.Basis="70%"
                      Source="https://support.novascotia.ca/privacy/verify-pov-application/"
-                     FlexLayout.Grow="1"/>
+                     FlexLayout.Grow="1"
+                     BackgroundColor="{StaticResource BackgroundColor}"/>
 
             <BoxView Color="{StaticResource PrimaryColor}"
-                     FlexLayout.Basis="2.5%"
+                     FlexLayout.Basis="1"
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
 
             <StackLayout Spacing="15"
-                         FlexLayout.Basis="10%"
-                         BackgroundColor="{StaticResource PrimaryColor}">
+                         FlexLayout.Basis="80"
+                         FlexLayout.AlignSelf="Center">
+
+                <StackLayout.BackgroundColor>
+                    <OnPlatform x:TypeArguments="Color">
+                        <On Platform="iOS" Value="Transparent" />
+                        <On Platform="Android" Value="{StaticResource BackgroundColor}" />
+                    </OnPlatform>
+                </StackLayout.BackgroundColor>
 
                 <FlexLayout Direction="Row"
                             Margin="0"
-                            BackgroundColor="{StaticResource PrimaryColor}">
+                            BackgroundColor="Transparent"
+                            AlignContent="Center"
+                            JustifyContent="Center"
+                            VerticalOptions="CenterAndExpand">
 
                     <Button FlexLayout.Basis="50%"
                             AutomationId="DeclineButtonText"
@@ -50,11 +63,10 @@
 						    FontAttributes="Bold"
 						    CornerRadius="8"
                             BorderWidth="1"
-                            BorderColor="{StaticResource BackgroundColor}"
-						    BackgroundColor="{StaticResource PrimaryColor}"
-						    TextColor="{StaticResource BackgroundColor}"
-						    Command="{Binding DeclineCommand}"
-						    FlexLayout.AlignSelf="Center"/>
+                            BorderColor="{StaticResource PrimaryColor}"
+						    BackgroundColor="{StaticResource BackgroundColor}"
+						    TextColor="{StaticResource PrimaryColor}"
+						    Command="{Binding DeclineCommand}"/>
 
                     <Button FlexLayout.Basis="50%"
                             AutomationId="AcceptButtonText"
@@ -65,20 +77,13 @@
 						    FontAttributes="Bold"
 						    CornerRadius="8"
                             BorderWidth="1"
-                            BorderColor="{StaticResource BackgroundColor}"
-						    BackgroundColor="{StaticResource BackgroundColor}"
-						    TextColor="{StaticResource PrimaryColor}"
-						    Command="{Binding AcceptCommand}"
-						    FlexLayout.AlignSelf="Center"/>
+                            BorderColor="{StaticResource PrimaryColor}"
+						    BackgroundColor="{StaticResource PrimaryColor}"
+						    TextColor="{StaticResource BackgroundColor}"
+						    Command="{Binding AcceptCommand}"/>
 
                 </FlexLayout>
             </StackLayout>
-
-            <BoxView Color="{StaticResource PrimaryColor}"
-                     FlexLayout.Basis="2.5%"
-                     FlexLayout.AlignSelf="Stretch"
-                     FlexLayout.Shrink="0"/>
-
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

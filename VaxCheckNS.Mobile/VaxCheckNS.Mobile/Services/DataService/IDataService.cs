@@ -25,7 +25,11 @@ namespace VaxCheckNS.Mobile.Services
 
 		void AcceptPrivacy();
 		bool VerifyPrivacyAccepted();
+
 		void AcceptTermsOfUse();
 		bool VerifyTermsOfUseAccepted();
+
+		void CompleteTutorial();
+		bool VerifyTutorialComplete();
 	}
 }

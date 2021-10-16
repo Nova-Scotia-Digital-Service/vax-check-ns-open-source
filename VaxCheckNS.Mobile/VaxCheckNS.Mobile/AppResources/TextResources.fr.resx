@@ -222,4 +222,22 @@
    <data name="FAQ6Text" xml:space="preserve">
     <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
   </data>
+  <data name="Tutorial1Text" xml:space="preserve">
+    <value>Demandez à l'usager de présenter une preuve de son carnet de vaccination</value>
+  </data>
+  <data name="Tutorial2Text" xml:space="preserve">
+    <value>Appuyez sur le bouton 'Scanner un code'</value>
+  </data>
+  <data name="Tutorial3Text" xml:space="preserve">
+    <value>Positionner le code QR au centre de l'écran</value>
+  </data>
+  <data name="Tutorial4Text" xml:space="preserve">
+    <value>Afficher les résultats du scan</value>
+  </data>
+  <data name="TutorialSkipText" xml:space="preserve">
+    <value>Sauter</value>
+  </data>
+  <data name="TutorialDoneButtonText" xml:space="preserve">
+    <value>Terminé</value>
+  </data>
 </root>

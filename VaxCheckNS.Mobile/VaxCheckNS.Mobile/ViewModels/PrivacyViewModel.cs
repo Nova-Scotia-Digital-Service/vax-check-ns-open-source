@@ -27,7 +27,7 @@ namespace VaxCheckNS.Mobile.ViewModels
         public void Accept()
         {
             _dataService.AcceptPrivacy();
-            GoTo("///MainFlow");
+            GoTo("///TutorialPage");
         }
 
         public void Decline()
