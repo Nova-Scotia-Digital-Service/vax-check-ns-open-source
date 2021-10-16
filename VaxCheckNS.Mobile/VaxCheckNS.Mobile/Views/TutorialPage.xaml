@@ -8,7 +8,7 @@
              xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers"
              xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
              ios:Page.UseSafeArea="True"
-			 Shell.NavBarIsVisible="True"
+			 Shell.NavBarIsVisible="False"
              Shell.PresentationMode="Modal"
 			 Shell.NavBarHasShadow="False">
 
