@@ -64,9 +64,9 @@
 						    FontAttributes="Bold"
 						    CornerRadius="8"
                             BorderWidth="1"
-                            BorderColor="{StaticResource BackgroundColor}"
-						    BackgroundColor="{StaticResource PrimaryColor}"
-						    TextColor="{StaticResource BackgroundColor}"
+                            BorderColor="{StaticResource PrimaryColor}"
+						    BackgroundColor="{StaticResource BackgroundColor}"
+						    TextColor="{StaticResource PrimaryColor}"
 						    Command="{Binding DeclineCommand}"/>
 
                     <Button FlexLayout.Basis="50%"
@@ -79,8 +79,8 @@
 						    CornerRadius="8"
                             BorderWidth="1"
                             BorderColor="{StaticResource PrimaryColor}"
-						    BackgroundColor="{StaticResource BackgroundColor}"
-						    TextColor="{StaticResource PrimaryColor}"
+						    BackgroundColor="{StaticResource PrimaryColor}"
+						    TextColor="{StaticResource BackgroundColor}"
 						    Command="{Binding AcceptCommand}"/>
 
                 </FlexLayout>

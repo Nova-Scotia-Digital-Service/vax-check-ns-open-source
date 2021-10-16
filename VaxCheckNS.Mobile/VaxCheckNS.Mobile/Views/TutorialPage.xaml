@@ -39,7 +39,7 @@
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal"
                                        SnapPointsAlignment="Center"
-                                       SnapPointsType="Mandatory"/>
+                                       SnapPointsType="MandatorySingle"/>
                 </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
@@ -71,8 +71,9 @@
                            FlexLayout.Shrink="0">
             </IndicatorView>
 
-            <Grid FlexLayout.Basis="80"
-                  FlexLayout.Shrink="0">
+            <Grid FlexLayout.Basis="100"
+                  FlexLayout.Shrink="0"
+                  FlexLayout.AlignSelf="Center">
 
                 <Button Text="{helpers:TranslationHelper TutorialSkipText}"
                         BorderColor="Transparent"
