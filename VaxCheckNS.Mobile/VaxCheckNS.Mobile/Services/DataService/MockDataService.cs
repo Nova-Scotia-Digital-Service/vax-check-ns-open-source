@@ -50,5 +50,25 @@ namespace VaxCheckNS.Mobile.Services
         {
             throw new NotImplementedException();
         }
+
+        public void AcceptPrivacy()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyPrivacyAccepted()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AcceptTermsOfUse()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyTermsOfUseAccepted()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

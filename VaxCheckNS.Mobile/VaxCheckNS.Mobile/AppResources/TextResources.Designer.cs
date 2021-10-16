@@ -185,9 +185,9 @@ namespace VaxCheckNS.Mobile.AppResources {
             }
         }
         
-        internal static string TutorialMenuTitle {
+        internal static string PrivacyTitle {
             get {
-                return ResourceManager.GetString("TutorialMenuTitle", resourceCulture);
+                return ResourceManager.GetString("PrivacyTitle", resourceCulture);
             }
         }
         
@@ -200,6 +200,18 @@ namespace VaxCheckNS.Mobile.AppResources {
         internal static string CancelButtonText {
             get {
                 return ResourceManager.GetString("CancelButtonText", resourceCulture);
+            }
+        }
+        
+        internal static string AcceptButtonText {
+            get {
+                return ResourceManager.GetString("AcceptButtonText", resourceCulture);
+            }
+        }
+        
+        internal static string DeclineButtonText {
+            get {
+                return ResourceManager.GetString("DeclineButtonText", resourceCulture);
             }
         }
     }

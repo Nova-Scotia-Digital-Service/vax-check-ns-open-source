@@ -82,30 +82,10 @@
                      FlexLayout.Shrink="0"/>
 
             <Image AutomationId="AppLogo"
-                   Source="nsflag_colour.png"
+                   Source="HomeLogo.png"
+                   Margin="40, 0, 40, 0"
                    Aspect="AspectFit"
-                   FlexLayout.Basis="15%"
-                   FlexLayout.Shrink="1"/>
-
-            <Label Text="{helpers:TranslationHelper AppTitle}"
-                   TextColor="{StaticResource PrimaryColor}"
-                   FlexLayout.AlignSelf="Center"
-                   FlexLayout.Basis="4%"
-                   FlexLayout.Shrink="0"
-                   FontSize="20"
-                   TranslationY="-15"
-                   FontAttributes="Bold"/>
-
-            <BoxView Color="Transparent"
-                     FlexLayout.Basis="2.5%" 
-                     FlexLayout.AlignSelf="Stretch"
-                     FlexLayout.Shrink="0"/>
-
-            <Image Source="VaccineBottle.png" 
-                   Aspect="AspectFit"
-                   HorizontalOptions="Center"
-                   FlexLayout.Basis="35%"
-                   FlexLayout.Grow="1"
+                   FlexLayout.Basis="55%"
                    FlexLayout.Shrink="1"/>
 
             <BoxView Color="Transparent"
@@ -149,7 +129,7 @@
 						BackgroundColor="{StaticResource BackgroundColor}"
 						TextColor="{StaticResource PrimaryColor}"
 						Command="{Binding OpenInBroswerCommand}"
-                        CommandParameter="https://novascotia.ca/reopening-plan/"
+                        CommandParameter="https://novascotia.ca/coronavirus/docs/COVID-19-Protocol-for-proof-full-vaccination-events-activities-en.pdf"
 						VerticalOptions="Start"
                         HorizontalOptions="CenterAndExpand"
 						WidthRequest="300"/>

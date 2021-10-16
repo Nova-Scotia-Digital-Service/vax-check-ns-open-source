@@ -184,15 +184,21 @@
     <value>New Scan</value>
   </data>
   <data name="TermsMenuTitle" xml:space="preserve">
-    <value>Terms &amp; Conditions</value>
+    <value>Terms of Use</value>
   </data>
-  <data name="TutorialMenuTitle" xml:space="preserve">
-    <value>Tutorial</value>
+  <data name="PrivacyTitle" xml:space="preserve">
+    <value>Privacy</value>
   </data>
   <data name="VaccineInvalidSHCCodeText" xml:space="preserve">
     <value>Could not validate code issuer</value>
   </data>
   <data name="CancelButtonText" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="AcceptButtonText" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="DeclineButtonText" xml:space="preserve">
+    <value>Decline</value>
   </data>
 </root>

@@ -241,5 +241,26 @@ namespace VaxCheckNS.Mobile.Services
 			return _whitelistedIssuerKeySets;
 		}
 
-	}
+		private readonly string privacy_accepted = nameof(privacy_accepted);
+        public void AcceptPrivacy()
+        {
+			Preferences.Set(privacy_accepted, true);
+		}
+
+        public bool VerifyPrivacyAccepted()
+        {
+			return Preferences.Get(privacy_accepted, false);
+        }
+
+		private readonly string tou_accepted = nameof(tou_accepted);
+		public void AcceptTermsOfUse()
+        {
+			Preferences.Set(tou_accepted, true);
+		}
+
+        public bool VerifyTermsOfUseAccepted()
+        {
+			return Preferences.Get(tou_accepted, false);
+		}
+    }
 }
