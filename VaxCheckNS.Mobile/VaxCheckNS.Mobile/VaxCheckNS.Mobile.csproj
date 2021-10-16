@@ -57,9 +57,11 @@
   <ItemGroup>
     <None Remove="AppResources\ValidVaccines.json" />
     <None Remove="AppResources\WhiteList.json" />
+    <None Remove="Views\ContentViews\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BindableModels\" />
+    <Folder Include="Views\ContentViews\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\VaxCheckNS.Decode\VaxCheckNS.Decode.csproj" />

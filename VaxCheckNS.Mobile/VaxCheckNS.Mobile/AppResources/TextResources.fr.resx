@@ -196,9 +196,9 @@
     <value>Annuler</value>
   </data>
   <data name="AcceptButtonText" xml:space="preserve">
-    <value>Accept</value>
+    <value>J'accepte</value>
   </data>
   <data name="DeclineButtonText" xml:space="preserve">
-    <value>Decline</value>
+    <value>Déclin</value>
   </data>
 </root>

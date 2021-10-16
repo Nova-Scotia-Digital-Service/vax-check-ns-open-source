@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="VaxCheckNS.Mobile.Views.ContentViews.MainTitleView">
+    <ContentView.Content>
+        <StackLayout HeightRequest="50"
+                     Spacing="0"
+                     Padding="0"
+                     Margin="0">
+            <Image Source="Headerbg.png"
+                   TranslationX="5"
+                   HorizontalOptions="EndAndExpand"
+                   VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

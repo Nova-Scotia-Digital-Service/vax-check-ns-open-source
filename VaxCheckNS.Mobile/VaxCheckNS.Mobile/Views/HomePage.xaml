@@ -6,6 +6,7 @@
              xmlns:fonts="clr-namespace:VaxCheckNS.Mobile.Themes.Fonts"            
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers"
+             xmlns:cv="clr-namespace:VaxCheckNS.Mobile.Views.ContentViews"
 			 ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="True"
 			 Shell.NavBarHasShadow="False"
@@ -13,15 +14,7 @@
 
 
     <Shell.TitleView>
-        <StackLayout HeightRequest="50"
-                     Spacing="0"
-                     Padding="0"
-                     Margin="0">
-            <Image Source="Headerbg.png"
-                   TranslationX="5"
-                   HorizontalOptions="EndAndExpand"
-                   VerticalOptions="EndAndExpand"/>
-        </StackLayout>
+        <cv:MainTitleView />
     </Shell.TitleView>
 
     <ContentPage.BindingContext>
@@ -138,11 +131,6 @@
 
             <BoxView Color="Transparent"
                      FlexLayout.Basis="5%" 
-                     FlexLayout.AlignSelf="Stretch"
-                     FlexLayout.Shrink="0"/>
-
-            <BoxView Color="{StaticResource PrimaryColor}"
-                     FlexLayout.Basis="2.5%" 
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
         </FlexLayout>
