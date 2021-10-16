@@ -18,6 +18,7 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />  
     <PackageReference Include="ZXing.Net.Mobile.Forms" Version="3.1.0-beta2" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.3.0-pre2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,10 +59,15 @@
     <None Remove="AppResources\ValidVaccines.json" />
     <None Remove="AppResources\WhiteList.json" />
     <None Remove="Views\ContentViews\" />
+    <None Remove="Xamarin.CommunityToolkit" />
+    <None Remove="Behaviors\" />
+    <None Remove="Views\Themes\DarkTheme\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BindableModels\" />
     <Folder Include="Views\ContentViews\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Views\Themes\DarkTheme\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\VaxCheckNS.Decode\VaxCheckNS.Decode.csproj" />

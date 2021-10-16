@@ -44,8 +44,8 @@
               Command="{Binding GoToCommand}"
               CommandParameter="//HomePage/AboutPage" />
     <MenuItem Text="{helpers:TranslationHelper FAQMenuTitle}"
-              Command="{Binding OpenInBroswerCommand}"
-              CommandParameter="https://novascotia.ca/reopening-plan/phase-five"  />
+              Command="{Binding GoToCommand}"
+              CommandParameter="//HomePage/FAQPage"  />
     <MenuItem Text="{helpers:TranslationHelper PrivacyTitle}"
               Command="{Binding OpenInBroswerCommand}"
               CommandParameter="https://support.novascotia.ca/privacy/verify-pov-application/"  />

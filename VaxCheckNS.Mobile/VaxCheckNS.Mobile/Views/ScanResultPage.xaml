@@ -4,8 +4,8 @@
 			 x:Class="VaxCheckNS.Mobile.Views.ScanResultPage"
              xmlns:fonts="clr-namespace:VaxCheckNS.Mobile.Themes.Fonts"
 			 xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
-			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers" xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
-             ios:Page.UseSafeArea="True"
+			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers" xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
 			 Shell.NavBarIsVisible="True"
              Shell.PresentationMode="Modal"
 			 Shell.NavBarHasShadow="False">

@@ -30,12 +30,13 @@
                              BackgroundColor="{StaticResource BackgroundColor}">
 
                     <BoxView Color="{StaticResource PrimaryColor}"
-                             HeightRequest="20"
+                             HeightRequest="1"
                              HorizontalOptions="Fill"/>
 
 
                     <Label Text="{helpers:TranslationHelper AboutPageTitle}"
                            TextColor="{StaticResource PrimaryTextColor}"
+                           FontAttributes="Bold"
                            FontSize="30"
                            Padding="32,20"/>
 
@@ -74,13 +75,6 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                
-                
-                
-                    <BoxView Color="{StaticResource PrimaryColor}"
-                             HeightRequest="20"
-                             HorizontalOptions="Fill"/>
-
                 </StackLayout>
             </ScrollView>
         </FlexLayout>

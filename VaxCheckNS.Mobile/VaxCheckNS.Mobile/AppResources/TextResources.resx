@@ -201,4 +201,25 @@
   <data name="DeclineButtonText" xml:space="preserve">
     <value>Decline</value>
   </data>
+  <data name="FAQPageTitle" xml:space="preserve">
+    <value>Frequently Asked Questions</value>
+  </data>
+  <data name="FAQ1Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ2Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ3Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ4Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ5Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+   <data name="FAQ6Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
 </root>

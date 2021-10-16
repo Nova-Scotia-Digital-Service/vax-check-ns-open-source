@@ -7,7 +7,6 @@
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 			 xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
              xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
-             ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="False"
 			 Shell.NavBarHasShadow="False"
              Shell.PresentationMode="Modal"

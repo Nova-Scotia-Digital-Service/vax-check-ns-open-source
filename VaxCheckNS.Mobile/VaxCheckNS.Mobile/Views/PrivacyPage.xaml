@@ -5,7 +5,6 @@
     xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers" 
     xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-	ios:Page.UseSafeArea="True"
 	Shell.NavBarIsVisible="False"
 	Shell.NavBarHasShadow="False"
     Shell.TabBarIsVisible="False"
@@ -20,13 +19,14 @@
         <FlexLayout Direction="Column"
                     Margin="0">
 
-            <BoxView Color="{StaticResource PrimaryColor}"
-                     FlexLayout.Basis="2.5%"
+            <BoxView Color="Transparent"
+                     FlexLayout.Basis="5%"
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
 
-            <WebView FlexLayout.Basis="85%"
-                     Source="https://support.novascotia.ca/privacy/verify-pov-application/"/>
+            <WebView FlexLayout.Basis="70%"
+                     Source="https://support.novascotia.ca/privacy/verify-pov-application/"
+                     FlexLayout.Grow="1"/>
 
             <BoxView Color="{StaticResource PrimaryColor}"
                      FlexLayout.Basis="2.5%"
@@ -34,7 +34,7 @@
                      FlexLayout.Shrink="0"/>
 
             <StackLayout Spacing="15"
-                         FlexLayout.Basis="7.5%"
+                         FlexLayout.Basis="10%"
                          BackgroundColor="{StaticResource PrimaryColor}">
 
                 <FlexLayout Direction="Row"
