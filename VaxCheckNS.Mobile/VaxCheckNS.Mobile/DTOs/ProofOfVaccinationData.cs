@@ -16,5 +16,7 @@ namespace VaxCheckNS.Mobile.DTOs
         public string SHCCode { get; set; }
 
         public VaccineStatus Code { get; set; }
+
+        public string Issuer { get; set; }
     }
 }

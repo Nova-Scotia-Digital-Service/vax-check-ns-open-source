@@ -29,7 +29,7 @@ namespace VaxCheckNS.Mobile.Services
 		Task<ProofOfVaccinationData> ValidateQRCode(string QRCode);
 		Task<ProofOfVaccinationData> ValidateVaccination(string SHCCode);
 		ProofOfVaccinationData LastScanData { get; }
-		ProofOfVaccinationData InvalidScan(VaccineStatus? code);
+		ProofOfVaccinationData InvalidScan(VaccineStatus? code, string message);
 	}
 
 	public class SHCService : ISHCService
@@ -147,10 +147,12 @@ namespace VaxCheckNS.Mobile.Services
 				var IsSCHCode = string.Equals(QRCode.Substring(0, 3), "shc");
 
 				if (IsSCHCode)
+				{
 					return await ValidateVaccination(QRCode);
+				}
 				else
 				{
-					return InvalidScan();
+					return InvalidScan(VaccineStatus.InvalidFormat, "Not a valid Smart Health Card QR code.");
 				}
 			}
 			catch (Exception ex)
@@ -162,13 +164,17 @@ namespace VaxCheckNS.Mobile.Services
 
 		}
 
-		public ProofOfVaccinationData InvalidScan(VaccineStatus? code = null)
+		public ProofOfVaccinationData InvalidScan(VaccineStatus? code = null, string message = "")
 		{
-			return LastScanData = new ProofOfVaccinationData()
+			LastScanData = new ProofOfVaccinationData()
 			{
 				IsValidProof = false,
 				Code = code == null ? VaccineStatus.InvalidFormat : code.Value,
 			};
+
+			_errorManagementService.BadScan(LastScanData, message);
+
+			return LastScanData;
 		}
 
 		public async Task<ProofOfVaccinationData> ValidateVaccination(string SHCCode)
@@ -187,15 +193,15 @@ namespace VaxCheckNS.Mobile.Services
 
 				if (ex is SmartHealthCardDecoderException)
 				{
-					return InvalidScan();
+					return InvalidScan(VaccineStatus.InvalidIssuer, ex.Message);
 				}
 				else if (ex is SmartHealthCardException)
 				{
-					return InvalidScan(VaccineStatus.InvalidIssuer);
+					return InvalidScan(VaccineStatus.InvalidIssuer, ex.Message);
 				}
 				else if (ex is SmartHealthCardPayloadException)
 				{
-					return InvalidScan(VaccineStatus.InvalidIssuer);
+					return InvalidScan(VaccineStatus.InvalidIssuer, ex.Message);
 				}
 				return null;
 			}
@@ -222,6 +228,8 @@ namespace VaxCheckNS.Mobile.Services
 			var birthDate = fhir
 				.SelectToken("$....birthDate")
 				.ToString();
+
+			//TODO:Add issuer ProofOfVaccinationData.Issuer
 
 			using (var vaccineValidator = new NSVaccineValidator(fhir, _validVaccines))
 			{
