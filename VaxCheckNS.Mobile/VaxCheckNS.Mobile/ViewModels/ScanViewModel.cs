@@ -15,6 +15,7 @@ namespace VaxCheckNS.Mobile.ViewModels
 	{
 		private int _timeOutSeconds = 10;
 		private Timer _timer;
+		private bool _isTimerEnabled = false;
 
 		private string _countdownText = string.Empty;
 		public string CountdownText
@@ -56,12 +57,13 @@ namespace VaxCheckNS.Mobile.ViewModels
 				PossibleFormats = new List<BarcodeFormat> { BarcodeFormat.QR_CODE }
 			};
 
-			StartTimer();
+			//StartTimer();
 		}
 
 		public override void GoBack()
 		{
-			_timer.Elapsed -= UpdateCount;
+			if (_isTimerEnabled)
+				_timer.Elapsed -= UpdateCount;
 
 			base.GoBack();
 			Shell.Current.FlyoutIsPresented = false;
@@ -69,12 +71,17 @@ namespace VaxCheckNS.Mobile.ViewModels
 
 		public override void BackAndNavigateTo(string page, bool hasAnimation = true)
 		{
-			_timer.Elapsed -= UpdateCount;
+			if (_isTimerEnabled)
+				_timer.Elapsed -= UpdateCount;
+
 			base.BackAndNavigateTo(page);
 		}
 
 		private void StartTimer()
 		{
+			if (_isTimerEnabled)
+				_isTimerEnabled = true;
+
 			_timer = new Timer(1000);
 			_timer.Elapsed += UpdateCount;
 			_timer.Start();
