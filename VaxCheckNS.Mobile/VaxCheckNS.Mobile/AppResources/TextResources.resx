@@ -184,15 +184,60 @@
     <value>New Scan</value>
   </data>
   <data name="TermsMenuTitle" xml:space="preserve">
-    <value>Terms &amp; Conditions</value>
+    <value>Terms of Use</value>
   </data>
-  <data name="TutorialMenuTitle" xml:space="preserve">
-    <value>Tutorial</value>
+  <data name="PrivacyTitle" xml:space="preserve">
+    <value>Privacy</value>
   </data>
   <data name="VaccineInvalidSHCCodeText" xml:space="preserve">
     <value>Could not validate code issuer</value>
   </data>
   <data name="CancelButtonText" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="AcceptButtonText" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="DeclineButtonText" xml:space="preserve">
+    <value>Decline</value>
+  </data>
+  <data name="FAQPageTitle" xml:space="preserve">
+    <value>Frequently Asked Questions</value>
+  </data>
+  <data name="FAQ1Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ2Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ3Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ4Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ5Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ6Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="Tutorial1Text" xml:space="preserve">
+    <value>Ask patron to present proof of vaccination record</value>
+  </data>
+  <data name="Tutorial2Text" xml:space="preserve">
+    <value>Tap 'Scan Code' button</value>
+  </data>
+  <data name="Tutorial3Text" xml:space="preserve">
+    <value>Position QR code in center of the screen</value>
+  </data>
+  <data name="Tutorial4Text" xml:space="preserve">
+    <value>View scan results</value>
+  </data>
+  <data name="TutorialSkipText" xml:space="preserve">
+    <value>Skip</value>
+  </data>
+  <data name="TutorialDoneButtonText" xml:space="preserve">
+    <value>Done</value>
   </data>
 </root>

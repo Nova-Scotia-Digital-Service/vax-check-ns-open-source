@@ -6,6 +6,7 @@
              xmlns:fonts="clr-namespace:VaxCheckNS.Mobile.Themes.Fonts"            
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers"
+             xmlns:cv="clr-namespace:VaxCheckNS.Mobile.Views.ContentViews"
 			 ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="True"
 			 Shell.NavBarHasShadow="False"
@@ -13,15 +14,7 @@
 
 
     <Shell.TitleView>
-        <StackLayout HeightRequest="50"
-                     Spacing="0"
-                     Padding="0"
-                     Margin="0">
-            <Image Source="Headerbg.png"
-                   TranslationX="5"
-                   HorizontalOptions="EndAndExpand"
-                   VerticalOptions="EndAndExpand"/>
-        </StackLayout>
+        <cv:MainTitleView />
     </Shell.TitleView>
 
     <ContentPage.BindingContext>
@@ -34,7 +27,7 @@
                     BackgroundColor="{StaticResource BackgroundColor}">
 
             <BoxView Color="{StaticResource PrimaryColor}"
-                     FlexLayout.Basis="2.5%"
+                     FlexLayout.Basis="1"
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
 
@@ -82,30 +75,10 @@
                      FlexLayout.Shrink="0"/>
 
             <Image AutomationId="AppLogo"
-                   Source="nsflag_colour.png"
+                   Source="HomeLogo.png"
+                   Margin="40, 0, 40, 0"
                    Aspect="AspectFit"
-                   FlexLayout.Basis="15%"
-                   FlexLayout.Shrink="1"/>
-
-            <Label Text="{helpers:TranslationHelper AppTitle}"
-                   TextColor="{StaticResource PrimaryColor}"
-                   FlexLayout.AlignSelf="Center"
-                   FlexLayout.Basis="4%"
-                   FlexLayout.Shrink="0"
-                   FontSize="20"
-                   TranslationY="-15"
-                   FontAttributes="Bold"/>
-
-            <BoxView Color="Transparent"
-                     FlexLayout.Basis="2.5%" 
-                     FlexLayout.AlignSelf="Stretch"
-                     FlexLayout.Shrink="0"/>
-
-            <Image Source="VaccineBottle.png" 
-                   Aspect="AspectFit"
-                   HorizontalOptions="Center"
-                   FlexLayout.Basis="35%"
-                   FlexLayout.Grow="1"
+                   FlexLayout.Basis="55%"
                    FlexLayout.Shrink="1"/>
 
             <BoxView Color="Transparent"
@@ -149,7 +122,7 @@
 						BackgroundColor="{StaticResource BackgroundColor}"
 						TextColor="{StaticResource PrimaryColor}"
 						Command="{Binding OpenInBroswerCommand}"
-                        CommandParameter="https://novascotia.ca/reopening-plan/"
+                        CommandParameter="https://novascotia.ca/coronavirus/docs/COVID-19-Protocol-for-proof-full-vaccination-events-activities-en.pdf"
 						VerticalOptions="Start"
                         HorizontalOptions="CenterAndExpand"
 						WidthRequest="300"/>
@@ -158,11 +131,6 @@
 
             <BoxView Color="Transparent"
                      FlexLayout.Basis="5%" 
-                     FlexLayout.AlignSelf="Stretch"
-                     FlexLayout.Shrink="0"/>
-
-            <BoxView Color="{StaticResource PrimaryColor}"
-                     FlexLayout.Basis="2.5%" 
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
         </FlexLayout>

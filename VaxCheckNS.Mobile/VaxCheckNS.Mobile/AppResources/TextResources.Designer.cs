@@ -185,9 +185,9 @@ namespace VaxCheckNS.Mobile.AppResources {
             }
         }
         
-        internal static string TutorialMenuTitle {
+        internal static string PrivacyTitle {
             get {
-                return ResourceManager.GetString("TutorialMenuTitle", resourceCulture);
+                return ResourceManager.GetString("PrivacyTitle", resourceCulture);
             }
         }
         
@@ -200,6 +200,96 @@ namespace VaxCheckNS.Mobile.AppResources {
         internal static string CancelButtonText {
             get {
                 return ResourceManager.GetString("CancelButtonText", resourceCulture);
+            }
+        }
+        
+        internal static string AcceptButtonText {
+            get {
+                return ResourceManager.GetString("AcceptButtonText", resourceCulture);
+            }
+        }
+        
+        internal static string DeclineButtonText {
+            get {
+                return ResourceManager.GetString("DeclineButtonText", resourceCulture);
+            }
+        }
+        
+        internal static string FAQPageTitle {
+            get {
+                return ResourceManager.GetString("FAQPageTitle", resourceCulture);
+            }
+        }
+        
+        internal static string FAQ1Text {
+            get {
+                return ResourceManager.GetString("FAQ1Text", resourceCulture);
+            }
+        }
+        
+        internal static string FAQ2Text {
+            get {
+                return ResourceManager.GetString("FAQ2Text", resourceCulture);
+            }
+        }
+        
+        internal static string FAQ3Text {
+            get {
+                return ResourceManager.GetString("FAQ3Text", resourceCulture);
+            }
+        }
+        
+        internal static string FAQ4Text {
+            get {
+                return ResourceManager.GetString("FAQ4Text", resourceCulture);
+            }
+        }
+        
+        internal static string FAQ5Text {
+            get {
+                return ResourceManager.GetString("FAQ5Text", resourceCulture);
+            }
+        }
+        
+        internal static string FAQ6Text {
+            get {
+                return ResourceManager.GetString("FAQ6Text", resourceCulture);
+            }
+        }
+        
+        internal static string Tutorial1Text {
+            get {
+                return ResourceManager.GetString("Tutorial1Text", resourceCulture);
+            }
+        }
+        
+        internal static string Tutorial2Text {
+            get {
+                return ResourceManager.GetString("Tutorial2Text", resourceCulture);
+            }
+        }
+        
+        internal static string Tutorial3Text {
+            get {
+                return ResourceManager.GetString("Tutorial3Text", resourceCulture);
+            }
+        }
+        
+        internal static string Tutorial4Text {
+            get {
+                return ResourceManager.GetString("Tutorial4Text", resourceCulture);
+            }
+        }
+        
+        internal static string TutorialSkipText {
+            get {
+                return ResourceManager.GetString("TutorialSkipText", resourceCulture);
+            }
+        }
+        
+        internal static string TutorialDoneButtonText {
+            get {
+                return ResourceManager.GetString("TutorialDoneButtonText", resourceCulture);
             }
         }
     }
