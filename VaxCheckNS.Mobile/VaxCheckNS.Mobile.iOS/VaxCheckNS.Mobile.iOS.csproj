@@ -107,6 +107,8 @@
     <BundleResource Include="Resources\HomeLogo.png" />
     <BundleResource Include="Resources\HomeLogo%402x.png" />
     <BundleResource Include="Resources\HomeLogo%403x.png" />
+    <BundleResource Include="Base.lproj\InfoPlist.strings" />
+    <BundleResource Include="Resources\fr.lproj\InfoPlist.strings" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -317,4 +319,8 @@
     <BundleResource Include="Resources\nsflag_white%403x.png" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Base.lproj\" />
+    <Folder Include="Resources\fr.lproj\" />
+  </ItemGroup>
 </Project>
