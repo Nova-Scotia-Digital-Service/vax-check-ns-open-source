@@ -19,13 +19,20 @@
 
     <ContentPage.Content>
         <FlexLayout Direction="Column"
-                    Margin="0">
+                    Margin="0"
+                    BackgroundColor="{StaticResource BackgroundColor}">
 
-            
             <BoxView Color="{StaticResource PrimaryColor}"
                      FlexLayout.Basis="1"
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
+
+            <Grid Padding="32,20">
+                <Label Text="{helpers:TranslationHelper PrivacyTitle}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       FontAttributes="Bold"
+                       FontSize="30"/>
+            </Grid>
 
             <WebView FlexLayout.Basis="70%"
                      Source="https://support.novascotia.ca/privacy/verify-pov-application/"

@@ -20,7 +20,9 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <FlexLayout Direction="Column">
+        <FlexLayout Direction="Column"
+                    BackgroundColor="{StaticResource BackgroundColor}">
+
             <BoxView BackgroundColor="{StaticResource PrimaryColor}"
                      FlexLayout.Basis="1"
                      FlexLayout.AlignSelf="Stretch"/>
