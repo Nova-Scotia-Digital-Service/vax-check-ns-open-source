@@ -4,8 +4,9 @@
 			 x:Class="VaxCheckNS.Mobile.Views.ScanResultPage"
              xmlns:fonts="clr-namespace:VaxCheckNS.Mobile.Themes.Fonts"
 			 xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
-			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers" xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
-             ios:Page.UseSafeArea="True"
+			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers"
+             xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
 			 Shell.NavBarIsVisible="True"
              Shell.PresentationMode="Modal"
 			 Shell.NavBarHasShadow="False">
@@ -54,6 +55,8 @@
 
                         <Label Text="{helpers:TranslationHelper ScanErrorTitleText}"
                                FlexLayout.AlignSelf="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="36"
                                FlexLayout.Basis="7%"/>
@@ -67,9 +70,7 @@
                         <Image Source="cancel.png" 
                                Aspect="AspectFit"
                                FlexLayout.AlignSelf="Center"
-                               FlexLayout.Basis="25%"
-                               FlexLayout.Grow="1"
-                               FlexLayout.Shrink="1"/>
+                               FlexLayout.Grow="2"/>
 
                         <BoxView BackgroundColor="Transparent"
                                  FlexLayout.AlignSelf="Stretch"
@@ -78,20 +79,22 @@
 
                         <Label Text="{helpers:TranslationHelper ScanErrorMessage}"
                                FlexLayout.AlignSelf="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
                                TextColor="{StaticResource BackgroundColor}"
-                               FontSize="36"
-                               FlexLayout.Basis="6%"/>
+                               FontSize="36"/>
 
                         <Label Text="{Binding ProofOfVaccineData.Code, Converter={StaticResource vaccineStatusToResourceConverter}}"
                                FlexLayout.AlignSelf="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
                                TextColor="{StaticResource BackgroundColor}"
-                               FontSize="20"
-                               FlexLayout.Basis="6%"/>
+                               FontSize="20"/>
 
                         <BoxView BackgroundColor="Transparent"
                                  FlexLayout.AlignSelf="Stretch"
-                                 FlexLayout.Basis="10%"
-                                 FlexLayout.Grow="0.4"
+                                 FlexLayout.Basis="5%"
+                                 FlexLayout.Grow="1"
                                  FlexLayout.Shrink="1"/>
 
                         <StackLayout Spacing="15"
@@ -124,7 +127,7 @@
 						            BackgroundColor="{StaticResource TransparentBackgroundColor}"
 						            TextColor="{StaticResource BackgroundColor}"
 						            Command="{Binding OpenInBroswerCommand}"
-                                    CommandParameter="https://novascotia.ca/reopening-plan/"
+                                    CommandParameter="https://novascotia.ca/coronavirus/docs/COVID-19-Protocol-for-proof-full-vaccination-events-activities-en.pdf"
 						            VerticalOptions="Start"
 						            HorizontalOptions="CenterAndExpand"
 						            WidthRequest="300">
@@ -170,6 +173,8 @@
 
                         <Label Text="{Binding ProofOfVaccineData.Name}"
                                FlexLayout.AlignSelf="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
                                TextColor="{StaticResource BackgroundColor}"
                                FontSize="36"
                                FlexLayout.Basis="7%"/>
@@ -183,9 +188,7 @@
                         <Image Source="checkcircle.png" 
                                Aspect="AspectFit"
                                FlexLayout.AlignSelf="Center"
-                               FlexLayout.Basis="25%"
-                               FlexLayout.Grow="1"
-                               FlexLayout.Shrink="1"/>
+                               FlexLayout.Grow="2"/>
 
                         <BoxView BackgroundColor="Transparent"
                                  FlexLayout.AlignSelf="Stretch"
@@ -194,20 +197,22 @@
 
                         <Label Text="{helpers:TranslationHelper ScanSuccessTitleText}"
                                FlexLayout.AlignSelf="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
                                TextColor="{StaticResource BackgroundColor}"
-                               FontSize="36"
-                               FlexLayout.Basis="6%"/>
+                               FontSize="36"/>
 
                         <Label Text="{helpers:TranslationHelper ScanSuccessDetailText}"
                                FlexLayout.AlignSelf="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
                                TextColor="{StaticResource BackgroundColor}"
-                               FontSize="20"
-                               FlexLayout.Basis="4%"/>
+                               FontSize="20"/>
 
                         <BoxView BackgroundColor="Transparent"
                                  FlexLayout.AlignSelf="Stretch"
                                  FlexLayout.Basis="10%"
-                                 FlexLayout.Grow="0.4"
+                                 FlexLayout.Grow="1"
                                  FlexLayout.Shrink="1"/>
 
                         <StackLayout Spacing="15"
@@ -239,7 +244,8 @@
                                     BorderColor="{StaticResource BackgroundColor}"
 						            BackgroundColor="{StaticResource TransparentBackgroundColor}"
 						            TextColor="{StaticResource BackgroundColor}"
-						            Command="{Binding ViewGuideCommand}"
+						            Command="{Binding OpenInBroswerCommand}"
+                                    CommandParameter="https://novascotia.ca/coronavirus/docs/COVID-19-Protocol-for-proof-full-vaccination-events-activities-en.pdf"
 						            VerticalOptions="Start"
 						            HorizontalOptions="CenterAndExpand"
 						            WidthRequest="300">

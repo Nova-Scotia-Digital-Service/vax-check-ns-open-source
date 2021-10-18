@@ -74,10 +74,38 @@ namespace VaxCheckNS.Rules.NS.Validator
         /// <returns></returns>
         private bool ValidateVaccineDate(List<JToken> completedImmunizationResources)
         {
-            return completedImmunizationResources
-                .All(t => DateTimeOffset.Now.Subtract(DateTimeOffset
-                    .Parse(t.SelectToken(OccuranceDateTimeKey).ToString()))
-                         >= TimeSpan.FromDays(MinimumDaysVaccinated));
+            var vaccineCodesFromQR = completedImmunizationResources
+                .Select(j => j.SelectToken(VaccineCodeKey).ToString());
+
+            var singleDosageVaccineCodes = _vaccineList
+                .Where(v => v.DosageCountRequirement == 1)
+                .Select(v => v.Code);
+
+            bool hasValidSingleDose = vaccineCodesFromQR
+                .Any(v => singleDosageVaccineCodes.Contains(v));
+
+            if (hasValidSingleDose)
+            {
+                return completedImmunizationResources
+                    .Where(t => singleDosageVaccineCodes
+                        .Contains(t.SelectToken(VaccineCodeKey).ToString()))
+                    .Select(t => DateTimeOffset
+                        .Parse(t.SelectToken(OccuranceDateTimeKey).ToString()))
+                    .OrderBy(t => t)
+                    .Take(1)
+                    .All(t => DateTimeOffset.Now.Subtract(t)
+                             >= TimeSpan.FromDays(MinimumDaysVaccinated));
+            }
+            else
+            {
+                return completedImmunizationResources
+                    .Select(t => DateTimeOffset
+                        .Parse(t.SelectToken(OccuranceDateTimeKey).ToString()))
+                    .OrderBy(t => t)
+                    .Take(2)
+                    .All(t => DateTimeOffset.Now.Subtract(t)
+                             >= TimeSpan.FromDays(MinimumDaysVaccinated));
+            }
         }
 
         /// <summary>

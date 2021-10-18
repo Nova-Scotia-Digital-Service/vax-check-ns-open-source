@@ -7,7 +7,6 @@
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 			 xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
              xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
-             ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="False"
 			 Shell.NavBarHasShadow="False"
              Shell.PresentationMode="Modal"
@@ -31,7 +30,8 @@
 
             <zxing:ZXingScannerView IsScanning="{Binding IsBusy,Converter={StaticResource InvertedBoolConverter}}"                          
                                     ScanResultCommand="{Binding AnalyseScanResultCommand}"
-                                    IsTorchOn="{Binding IsTorchOn}"/>
+                                    IsTorchOn="{Binding IsTorchOn}"
+                                    Options="{Binding ScannerOptions}"/>
 
             <Image Source="ScanFrame"
                    Aspect="AspectFit"

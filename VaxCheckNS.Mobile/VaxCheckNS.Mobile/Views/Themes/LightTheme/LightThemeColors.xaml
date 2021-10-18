@@ -10,7 +10,7 @@
 
     <Color x:Key="BackgroundColor">#FFFFFF</Color>
     <Color x:Key="TransparentBackgroundColor">#33FFFFFF</Color>
-    <Color x:Key="AltBackgroundColor">#F9F9FA</Color>
+    <Color x:Key="AltBackgroundColor">#EBF9FD</Color>
 
     <Color x:Key="PrimaryColor">#0A5EA1</Color>
     <Color x:Key="SecondaryColor">#40C6F180</Color>

@@ -23,5 +23,13 @@ namespace VaxCheckNS.Mobile.Services
 		DateTime? LastJWKSUpdateDate { get; set; }
 		TimeSpan? SinceLastOnline();
 
+		void AcceptPrivacy();
+		bool VerifyPrivacyAccepted();
+
+		void AcceptTermsOfUse();
+		bool VerifyTermsOfUseAccepted();
+
+		void CompleteTutorial();
+		bool VerifyTutorialComplete();
 	}
 }

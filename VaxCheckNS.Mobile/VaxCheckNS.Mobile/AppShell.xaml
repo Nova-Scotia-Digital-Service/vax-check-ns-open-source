@@ -3,36 +3,55 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:views="clr-namespace:VaxCheckNS.Mobile.Views" 
        xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers" 
-       xmlns:essentials="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials" xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
+       xmlns:essentials="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
+       xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
+       xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
        Title="{helpers:TranslationHelper AppName}"
        FlyoutBackgroundColor="{StaticResource PrimaryColor}"
        x:Class="VaxCheckNS.Mobile.AppShell">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </Shell.Resources>
 
     <Shell.BindingContext>
         <vm:BaseViewModel x:Name="vm" />
     </Shell.BindingContext>
 
+    <TabBar IsVisible="{Binding PrivacyAccepted, Converter={StaticResource InvertedBoolConverter}}">
+        <ShellContent Route="TermsOfUsePage"
+                      IsVisible="{Binding ToUAccepted, Converter={StaticResource InvertedBoolConverter}}"
+                      ContentTemplate="{DataTemplate views:TermsOfUsePage}"/>
+        <ShellContent Route="PrivacyPage"
+                      IsVisible="{Binding PrivacyAccepted, Converter={StaticResource InvertedBoolConverter}}"
+                      ContentTemplate="{DataTemplate views:PrivacyPage}"/>
+        <!--<ShellContent Route="TutorialPage"
+                      IsVisible="{Binding TutorialComplete, Converter={StaticResource InvertedBoolConverter}}"
+                      ContentTemplate="{DataTemplate views:TutorialPage}"/>-->
+    </TabBar>
 
-    <FlyoutItem Title="{helpers:TranslationHelper HomeMenuTitle}">
+    <FlyoutItem Title="{helpers:TranslationHelper HomeMenuTitle}" Route="MainFlow">
         <ShellContent Route="HomePage" ContentTemplate="{DataTemplate views:HomePage}" />
     </FlyoutItem>
     <MenuItem Text="{helpers:TranslationHelper ScanMenuTitle}"
               Command="{Binding ScanCommand}" />
-    <MenuItem Text="{helpers:TranslationHelper TutorialMenuTitle}"
-              Command="{Binding GoToCommand}"
-              CommandParameter="TutorialPage" />
     <MenuItem Text="{helpers:TranslationHelper GuideMenuTitle}"
               Command="{Binding OpenInBroswerCommand}"
-              CommandParameter="https://novascotia.ca/reopening-plan/" />
-    <MenuItem Text="{helpers:TranslationHelper TermsMenuTitle}"
-              Command="{Binding OpenInBroswerCommand}"
-              CommandParameter="https://novascotia.ca/reopening-plan/phase-five" />
+              CommandParameter="https://novascotia.ca/coronavirus/docs/COVID-19-Protocol-for-proof-full-vaccination-events-activities-en.pdf" />
     <MenuItem Text="{helpers:TranslationHelper AboutMenuTitle}"
               Command="{Binding GoToCommand}"
               CommandParameter="//HomePage/AboutPage" />
-    <MenuItem Text="{helpers:TranslationHelper FAQMenuTitle}"
+    <MenuItem Text="{helpers:TranslationHelper TermsMenuTitle}"
+            Command="{Binding GoToCommand}"
+            CommandParameter="//HomePage/TermsOfUseViewingPage" />
+    <!--<MenuItem Text="{helpers:TranslationHelper FAQMenuTitle}"
+              Command="{Binding GoToCommand}"
+              CommandParameter="//HomePage/FAQPage"  />-->
+    <MenuItem Text="{helpers:TranslationHelper PrivacyTitle}"
               Command="{Binding OpenInBroswerCommand}"
-              CommandParameter="https://novascotia.ca/reopening-plan/phase-five"  />
+              CommandParameter="https://support.novascotia.ca/privacy/verify-pov-application/"  />
     <!--<FlyoutItem Title="Feedback">
         <ShellContent Route="FeedbackPage" ContentTemplate="{DataTemplate views:FeedbackPage}" />
     </FlyoutItem>-->

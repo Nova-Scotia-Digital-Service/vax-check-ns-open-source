@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    xmlns:bhvr="clr-namespace:VaxCheckNS.Mobile.Behaviors"
+    xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers" 
+    xmlns:fonts="clr-namespace:VaxCheckNS.Mobile.Themes.Fonts"
+    x:Class="VaxCheckNS.Mobile.Views.FAQPage">
+    <ContentPage.Content>
+        <FlexLayout Direction="Column"
+                    BackgroundColor="{StaticResource BackgroundColor}">
+
+            <BoxView BackgroundColor="{StaticResource PrimaryColor}"
+                     FlexLayout.Basis="1"
+                     FlexLayout.AlignSelf="Stretch"/>
+
+            <BoxView BackgroundColor="Transparent"
+                     FlexLayout.Basis="5%"
+                     FlexLayout.AlignSelf="Stretch"/>
+
+            <Grid Margin="32,0"
+                  FlexLayout.Basis="15%">
+                <Label Text="{helpers:TranslationHelper FAQPageTitle}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       FontAttributes="Bold"
+                       FontSize="30"/>
+            </Grid>
+
+            <BoxView BackgroundColor="Transparent"
+                     FlexLayout.Basis="7.5%"
+                     FlexLayout.AlignSelf="Stretch"/>
+
+            <ScrollView Padding="20, 0"
+                        FlexLayout.Basis="60%"
+                        FlexLayout.Grow="1">
+
+                <StackLayout Orientation="Vertical"
+                             Spacing="0">
+
+                    <!--FAQ 1-->
+                    <xct:Expander ExpandAnimationEasing="CubicIn"
+                                  ExpandAnimationLength="250"
+                                  CollapseAnimationEasing="CubicOut"
+                                  CollapseAnimationLength="250"
+                                  BackgroundColor="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ColourChangedBehavior="{Binding Source={RelativeSource Self}, Path=IsExpanded}"
+                                  bhvr:ColourChangeBehavior.OriginalColour="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ChangedColour="{StaticResource AltBackgroundColor}">
+                        <xct:Expander.Header>
+                            <Grid HeightRequest="40"
+                                  Padding="10, 0">
+                                <Label Text="This is FAQ Question #1?"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       FontSize="20" />
+                                <Label Text="{x:Static fonts:FontAwesomeSolid.ChevronDown}"
+                                       FontFamily="{StaticResource FontAwesomeSolid}"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center"
+                                       bhvr:FlipBehavior.IsFlippedBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}">
+                                </Label>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <xct:Expander.ContentTemplate>
+                            <DataTemplate>
+                                <Grid Padding="15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{helpers:TranslationHelper FAQ1Text}"
+                                           TextColor="{StaticResource PrimaryTextColor}"
+                                           Opacity="0"
+                                           bhvr:FadeBehavior.IsFadedInBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </xct:Expander.ContentTemplate>
+                    </xct:Expander>
+                    <BoxView HeightRequest="1"
+                             Margin="0,5"
+                             BackgroundColor="DarkGray"
+                             HorizontalOptions="FillAndExpand"/>
+
+                    <!--FAQ 2-->
+                    <xct:Expander ExpandAnimationEasing="CubicIn"
+                                  ExpandAnimationLength="250"
+                                  CollapseAnimationEasing="CubicOut"
+                                  CollapseAnimationLength="250"
+                                  BackgroundColor="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ColourChangedBehavior="{Binding Source={RelativeSource Self}, Path=IsExpanded}"
+                                  bhvr:ColourChangeBehavior.OriginalColour="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ChangedColour="{StaticResource AltBackgroundColor}">
+                        <xct:Expander.Header>
+                            <Grid HeightRequest="40"
+                                  Padding="10, 0">
+                                <Label Text="This is FAQ Question #2?"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       FontSize="20" />
+                                <Label Text="{x:Static fonts:FontAwesomeSolid.ChevronDown}"
+                                       FontFamily="{StaticResource FontAwesomeSolid}"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center"
+                                       bhvr:FlipBehavior.IsFlippedBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}">
+                                </Label>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <xct:Expander.ContentTemplate>
+                            <DataTemplate>
+                                <Grid Padding="15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{helpers:TranslationHelper FAQ2Text}"
+                                           TextColor="{StaticResource PrimaryTextColor}"
+                                           Opacity="0"
+                                           bhvr:FadeBehavior.IsFadedInBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </xct:Expander.ContentTemplate>
+                    </xct:Expander>
+                    <BoxView HeightRequest="1"
+                             Margin="0,5"
+                             BackgroundColor="DarkGray"
+                             HorizontalOptions="FillAndExpand"/>
+
+                    <!--FAQ 3-->
+                    <xct:Expander ExpandAnimationEasing="CubicIn"
+                                  ExpandAnimationLength="250"
+                                  CollapseAnimationEasing="CubicOut"
+                                  CollapseAnimationLength="250"
+                                  BackgroundColor="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ColourChangedBehavior="{Binding Source={RelativeSource Self}, Path=IsExpanded}"
+                                  bhvr:ColourChangeBehavior.OriginalColour="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ChangedColour="{StaticResource AltBackgroundColor}">
+                        <xct:Expander.Header>
+                            <Grid HeightRequest="40"
+                                  Padding="10, 0">
+                                <Label Text="This is FAQ Question #3?"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       FontSize="20" />
+                                <Label Text="{x:Static fonts:FontAwesomeSolid.ChevronDown}"
+                                       FontFamily="{StaticResource FontAwesomeSolid}"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center"
+                                       bhvr:FlipBehavior.IsFlippedBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}">
+                                </Label>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <xct:Expander.ContentTemplate>
+                            <DataTemplate>
+                                <Grid Padding="15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{helpers:TranslationHelper FAQ3Text}"
+                                           TextColor="{StaticResource PrimaryTextColor}"
+                                           Opacity="0"
+                                           bhvr:FadeBehavior.IsFadedInBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </xct:Expander.ContentTemplate>
+                    </xct:Expander>
+                    <BoxView HeightRequest="1"
+                             Margin="0,5"
+                             BackgroundColor="DarkGray"
+                             HorizontalOptions="FillAndExpand"/>
+
+                    <!--FAQ 4-->
+                    <xct:Expander ExpandAnimationEasing="CubicIn"
+                                  ExpandAnimationLength="250"
+                                  CollapseAnimationEasing="CubicOut"
+                                  CollapseAnimationLength="250"
+                                  BackgroundColor="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ColourChangedBehavior="{Binding Source={RelativeSource Self}, Path=IsExpanded}"
+                                  bhvr:ColourChangeBehavior.OriginalColour="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ChangedColour="{StaticResource AltBackgroundColor}">
+                        <xct:Expander.Header>
+                            <Grid HeightRequest="40"
+                                  Padding="10, 0">
+                                <Label Text="This is FAQ Question #4?"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       FontSize="20" />
+                                <Label Text="{x:Static fonts:FontAwesomeSolid.ChevronDown}"
+                                       FontFamily="{StaticResource FontAwesomeSolid}"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center"
+                                       bhvr:FlipBehavior.IsFlippedBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}">
+                                </Label>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <xct:Expander.ContentTemplate>
+                            <DataTemplate>
+                                <Grid Padding="15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{helpers:TranslationHelper FAQ4Text}"
+                                           TextColor="{StaticResource PrimaryTextColor}"
+                                           Opacity="0"
+                                           bhvr:FadeBehavior.IsFadedInBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </xct:Expander.ContentTemplate>
+                    </xct:Expander>
+                    <BoxView HeightRequest="1"
+                             Margin="0,5"
+                             BackgroundColor="DarkGray"
+                             HorizontalOptions="FillAndExpand"/>
+
+                    <!--FAQ 5-->
+                    <xct:Expander ExpandAnimationEasing="CubicIn"
+                                  ExpandAnimationLength="250"
+                                  CollapseAnimationEasing="CubicOut"
+                                  CollapseAnimationLength="250"
+                                  BackgroundColor="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ColourChangedBehavior="{Binding Source={RelativeSource Self}, Path=IsExpanded}"
+                                  bhvr:ColourChangeBehavior.OriginalColour="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ChangedColour="{StaticResource AltBackgroundColor}">
+                        <xct:Expander.Header>
+                            <Grid HeightRequest="40"
+                                  Padding="10, 0">
+                                <Label Text="This is FAQ Question #5?"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       FontSize="20" />
+                                <Label Text="{x:Static fonts:FontAwesomeSolid.ChevronDown}"
+                                       FontFamily="{StaticResource FontAwesomeSolid}"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center"
+                                       bhvr:FlipBehavior.IsFlippedBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}">
+                                </Label>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <xct:Expander.ContentTemplate>
+                            <DataTemplate>
+                                <Grid Padding="15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{helpers:TranslationHelper FAQ5Text}"
+                                           TextColor="{StaticResource PrimaryTextColor}"
+                                           Opacity="0"
+                                           bhvr:FadeBehavior.IsFadedInBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </xct:Expander.ContentTemplate>
+                    </xct:Expander>
+                    <BoxView HeightRequest="1"
+                             Margin="0,5"
+                             BackgroundColor="DarkGray"
+                             HorizontalOptions="FillAndExpand"/>
+
+                    <!--FAQ 6-->
+                    <xct:Expander ExpandAnimationEasing="CubicIn"
+                                  ExpandAnimationLength="250"
+                                  CollapseAnimationEasing="CubicOut"
+                                  CollapseAnimationLength="250"
+                                  BackgroundColor="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ColourChangedBehavior="{Binding Source={RelativeSource Self}, Path=IsExpanded}"
+                                  bhvr:ColourChangeBehavior.OriginalColour="{StaticResource BackgroundColor}"
+                                  bhvr:ColourChangeBehavior.ChangedColour="{StaticResource AltBackgroundColor}">
+                        <xct:Expander.Header>
+                            <Grid HeightRequest="40"
+                                  Padding="10, 0">
+                                <Label Text="This is FAQ Question #6?"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       FontSize="20" />
+                                <Label Text="{x:Static fonts:FontAwesomeSolid.ChevronDown}"
+                                       FontFamily="{StaticResource FontAwesomeSolid}"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center"
+                                       bhvr:FlipBehavior.IsFlippedBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}">
+                                </Label>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <xct:Expander.ContentTemplate>
+                            <DataTemplate>
+                                <Grid Padding="15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{helpers:TranslationHelper FAQ6Text}"
+                                           TextColor="{StaticResource PrimaryTextColor}"
+                                           Opacity="0"
+                                           bhvr:FadeBehavior.IsFadedInBehavior="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </xct:Expander.ContentTemplate>
+                    </xct:Expander>
+                    <BoxView HeightRequest="1"
+                             Margin="0,5"
+                             BackgroundColor="DarkGray"
+                             HorizontalOptions="FillAndExpand"/>
+
+                </StackLayout>
+            </ScrollView>
+          
+            <BoxView BackgroundColor="Transparent"
+                     FlexLayout.Basis="10%"
+                     FlexLayout.AlignSelf="Stretch"/>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>
