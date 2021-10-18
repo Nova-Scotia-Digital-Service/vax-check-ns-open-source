@@ -117,82 +117,132 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutMenuTitle" xml:space="preserve">
-    <value />
-  </data>
-  <data name="AboutPageContent" xml:space="preserve">
-    <value />
-  </data>
-  <data name="AboutPageTitle" xml:space="preserve">
-    <value />
-  </data>
   <data name="AppName" xml:space="preserve">
     <value>VaxCheckNS</value>
   </data>
   <data name="AppTitle" xml:space="preserve">
     <value>VaxCheckNS</value>
   </data>
-  <data name="FAQMenuTitle" xml:space="preserve">
-    <value />
-  </data>
-  <data name="FeedbackMenuTitle" xml:space="preserve">
-    <value />
-  </data>
-  <data name="GuideMenuTitle" xml:space="preserve">
-    <value />
-  </data>
-  <data name="HomeMenuTitle" xml:space="preserve">
-    <value />
-  </data>
-  <data name="InvalidScanText" xml:space="preserve">
-    <value>Code QR invalide</value>
-  </data>
   <data name="NewScanButtonText" xml:space="preserve">
     <value>Nouveau scan</value>
   </data>
   <data name="ScanButtonText" xml:space="preserve">
-    <value>Scanner le code</value>
+    <value>Scanner un code</value>
   </data>
   <data name="ScanErrorMessage" xml:space="preserve">
-    <value />
+    <value>Impossible de confirmer</value>
   </data>
   <data name="ScanErrorTitleText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ScanMenuTitle" xml:space="preserve">
-    <value />
+    <value>Désolé!</value>
   </data>
   <data name="ScanSuccessDetailText" xml:space="preserve">
-    <value />
+    <value>Merci</value>
   </data>
   <data name="ScanSuccessTitleText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TermsMenuTitle" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TutorialMenuTitle" xml:space="preserve">
-    <value />
-  </data>
-  <data name="VaccineCodeInvalidText" xml:space="preserve">
-    <value>Ne respecte pas les directives de santé publique</value>
-  </data>
-  <data name="VaccineDateInvalidText" xml:space="preserve">
-    <value>Ne respecte pas les directives de santé publique</value>
-  </data>
-  <data name="VaccineDosageInvalidText" xml:space="preserve">
-    <value>Ne respecte pas les directives de santé publique</value>
+    <value>Confirmé!</value>
   </data>
   <data name="ViewGuideButtonText" xml:space="preserve">
     <value>Voir les directives</value>
   </data>
+  <data name="VaccineCodeInvalidText" xml:space="preserve">
+    <value>Ne répond pas aux directives de santé publique</value>
+  </data>
+  <data name="VaccineDateInvalidText" xml:space="preserve">
+    <value>Ne répond pas aux directives de santé publique</value>
+  </data>
+  <data name="VaccineDosageInvalidText" xml:space="preserve">
+    <value>Ne répond pas aux directives de santé publique</value>
+  </data>
   <data name="FhirFormatInvalidText" xml:space="preserve">
-    <value>Ne respecte pas les directives de santé publique</value>
+    <value>Code QR non valide</value>
+  </data>
+  <data name="InvalidScanText" xml:space="preserve">
+    <value>Code QR non valide</value>
+  </data>
+  <data name="AboutMenuTitle" xml:space="preserve">
+    <value>À propos de</value>
+  </data>
+  <data name="AboutPageContent" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh.</value>
+  </data>
+  <data name="AboutPageTitle" xml:space="preserve">
+    <value>À propos de cette application</value>
+  </data>
+  <data name="FAQMenuTitle" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="FeedbackMenuTitle" xml:space="preserve">
+    <value>Commentaires</value>
+  </data>
+  <data name="GuideMenuTitle" xml:space="preserve">
+    <value>Directives</value>
+  </data>
+  <data name="HomeMenuTitle" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="ScanMenuTitle" xml:space="preserve">
+    <value>Nouveau scan</value>
+  </data>
+  <data name="TermsMenuTitle" xml:space="preserve">
+    <value>Conditions d'utilisation</value>
+  </data>
+  <data name="PrivacyTitle" xml:space="preserve">
+    <value>Vie privée</value>
   </data>
   <data name="VaccineInvalidSHCCodeText" xml:space="preserve">
-    <value>unknown issuer</value>
+    <value>Impossible de valider l'émetteur du code</value>
   </data>
   <data name="CancelButtonText" xml:space="preserve">
-    <value>##Cancel</value>
+    <value>Annuler</value>
+  </data>
+  <data name="AcceptButtonText" xml:space="preserve">
+    <value>J'accepte</value>
+  </data>
+  <data name="DeclineButtonText" xml:space="preserve">
+    <value>Déclin</value>
+  </data>
+  <data name="FAQPageTitle" xml:space="preserve">
+    <value>Questions fréquemment posées</value>
+  </data>
+  <data name="FAQ1Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ2Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ3Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ4Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="FAQ5Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+   <data name="FAQ6Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim.</value>
+  </data>
+  <data name="Tutorial1Text" xml:space="preserve">
+    <value>Demandez à l'usager de présenter une preuve de son carnet de vaccination</value>
+  </data>
+  <data name="Tutorial2Text" xml:space="preserve">
+    <value>Appuyez sur le bouton 'Scanner un code'</value>
+  </data>
+  <data name="Tutorial3Text" xml:space="preserve">
+    <value>Positionner le code QR au centre de l'écran</value>
+  </data>
+  <data name="Tutorial4Text" xml:space="preserve">
+    <value>Afficher les résultats du scan</value>
+  </data>
+  <data name="TutorialSkipText" xml:space="preserve">
+    <value>Sauter</value>
+  </data>
+  <data name="TutorialDoneButtonText" xml:space="preserve">
+    <value>Terminé</value>
+  </data>
+  <data name="TermsOfUseContentText" xml:space="preserve">
+    <value>The Province makes no warranties of any kind whatsoever to [this Application’s] users, expressed or implied.  This includes any representations or warranties with respect to the accuracy, completeness, merchantability or fitness for a particular purpose of the [Application] or of any [vaccination data] contained therein. All such data is for information purposes only.  Where there is any conflict between any data, information or document available electronically through the [Application] and any information, data or document available in physical form, the information, data or document in physical form prevails.
+In addition, the Province specifically makes no warranties that access to the [Application] or any content or information obtained from or through the use of the [Application] will be provided on an uninterrupted, timely, secure or error-free basis, or that it will meet users’ requirements or expectations.
+Users of the [Application] hereby agree that the Province will not be liable to any user or other person or entity for any direct, indirect or consequential damages whatsoever as a result of using the [Application], or as a result of relying on any vaccination or other information that is provided to users by the [Application]. Users assume all risk associated with their access to, use of, and reliance upon the [Application] and any [vaccination data] contained therein. As such, each user of the [Application] agrees to defend, indemnify and hold harmless the Province, and the Province’s officers, employees and agents, from and against any and all claims, damages, obligations, losses, liabilities, costs, debt, or expenses (including but not limited to legal fees) arising from: (1) users’ access to and use of the [Application]; and (2) users’ violation of any term or condition contained in the [Application’s] [accompanying Privacy Policy].</value>
   </data>
 </root>

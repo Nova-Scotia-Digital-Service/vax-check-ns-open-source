@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers" 
+    xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
+	Shell.NavBarIsVisible="False"
+	Shell.NavBarHasShadow="False"
+    Shell.TabBarIsVisible="False"
+    BackgroundColor="Transparent"
+    x:Class="VaxCheckNS.Mobile.Views.TermsOfUsePage">
+
+    <ContentPage.BindingContext>
+        <vm:TermsOfUseViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Content>
+        <FlexLayout Direction="Column"
+                    BackgroundColor="{StaticResource BackgroundColor}"
+                    Margin="0">
+
+            <BoxView Color="{StaticResource PrimaryColor}"
+                     FlexLayout.Basis="1"
+                     FlexLayout.AlignSelf="Stretch"
+                     FlexLayout.Shrink="0"/>
+
+            <Grid Padding="32,20">
+                <Label Text="{helpers:TranslationHelper TermsMenuTitle}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       FontAttributes="Bold"
+                       FontSize="30"/>
+            </Grid>
+
+            <ScrollView FlexLayout.Basis="70%"
+                        FlexLayout.Grow="1"
+                        BackgroundColor="{StaticResource BackgroundColor}">
+
+                <Grid Padding="32,20">
+                    <Label Text="{helpers:TranslationHelper TermsOfUseContentText}"
+                           TextColor="{StaticResource PrimaryTextColor}"
+                           FontSize="16"
+                           VerticalOptions="FillAndExpand"/>
+                </Grid>
+            </ScrollView>
+
+            <BoxView Color="{StaticResource PrimaryColor}"
+                     FlexLayout.Basis="1"
+                     FlexLayout.AlignSelf="Stretch"
+                     FlexLayout.Shrink="0"/>
+
+            <StackLayout Spacing="15"
+                         FlexLayout.Basis="80"
+                         FlexLayout.AlignSelf="Center">
+
+                <StackLayout.BackgroundColor>
+                    <OnPlatform x:TypeArguments="Color">
+                        <On Platform="iOS" Value="Transparent" />
+                        <On Platform="Android" Value="{StaticResource BackgroundColor}" />
+                    </OnPlatform>
+                </StackLayout.BackgroundColor>
+
+                <FlexLayout Direction="Row"
+                            Margin="0"
+                            BackgroundColor="Transparent"
+                            AlignContent="Center"
+                            JustifyContent="Center"
+                            VerticalOptions="CenterAndExpand">
+
+                    <Button FlexLayout.Basis="50%"
+                            AutomationId="DeclineButtonText"
+                            Text="{helpers:TranslationHelper DeclineButtonText}"
+                            Padding="20,10"
+                            Margin="10, 0"
+						    FontSize="16"
+						    FontAttributes="Bold"
+						    CornerRadius="8"
+                            BorderWidth="1"
+                            BorderColor="{StaticResource PrimaryColor}"
+						    BackgroundColor="{StaticResource BackgroundColor}"
+						    TextColor="{StaticResource PrimaryColor}"
+						    Command="{Binding DeclineCommand}"/>
+
+                    <Button FlexLayout.Basis="50%"
+                            AutomationId="AcceptButtonText"
+                            Text="{helpers:TranslationHelper AcceptButtonText}"
+                            Padding="20,10"
+                            Margin="10, 0"
+						    FontSize="16"
+						    FontAttributes="Bold"
+						    CornerRadius="8"
+                            BorderWidth="1"
+                            BorderColor="{StaticResource PrimaryColor}"
+						    BackgroundColor="{StaticResource PrimaryColor}"
+						    TextColor="{StaticResource BackgroundColor}"
+						    Command="{Binding AcceptCommand}"/>
+
+                </FlexLayout>
+            </StackLayout>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>
