@@ -292,5 +292,11 @@ namespace VaxCheckNS.Mobile.AppResources {
                 return ResourceManager.GetString("TutorialDoneButtonText", resourceCulture);
             }
         }
+        
+        internal static string TermsOfUseContentText {
+            get {
+                return ResourceManager.GetString("TermsOfUseContentText", resourceCulture);
+            }
+        }
     }
 }

@@ -2,7 +2,7 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers" 
+    xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers" 
     xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="True"
@@ -26,10 +26,24 @@
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
 
-            <WebView FlexLayout.Basis="70%"
-                     Source="https://support.novascotia.ca/privacy/verify-pov-application/"
-                     FlexLayout.Grow="1"
-                     BackgroundColor="{StaticResource BackgroundColor}"/>
+            <Grid Padding="32,20">
+                <Label Text="{helpers:TranslationHelper TermsMenuTitle}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       FontAttributes="Bold"
+                       FontSize="30"/>
+            </Grid>
+
+            <ScrollView FlexLayout.Basis="70%"
+                         FlexLayout.Grow="1"
+                         BackgroundColor="{StaticResource BackgroundColor}">
+
+                <Grid Padding="32,20">
+                    <Label Text="{helpers:TranslationHelper TermsOfUseContentText}"
+                           TextColor="{StaticResource PrimaryTextColor}"
+                           FontSize="16"
+                           VerticalOptions="FillAndExpand"/>
+                </Grid>
+            </ScrollView>
 
             <BoxView Color="{StaticResource PrimaryColor}"
                      FlexLayout.Basis="1"

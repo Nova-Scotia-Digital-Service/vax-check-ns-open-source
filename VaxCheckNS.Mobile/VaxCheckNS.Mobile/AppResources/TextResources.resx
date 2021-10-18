@@ -163,7 +163,9 @@
     <value>About</value>
   </data>
   <data name="AboutPageContent" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae gravida metus. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh. Donec sem turpis, pulvinar ac ligula quis, fringilla rhoncus enim. Vestibulum elit quam, placerat ut sollicitudin luctus, consectetur in nibh.</value>
+    <value>VaxCheckNS Vaccine Card Verifier is the official mobile application from the Government of Nova Scotia for businesses to verify Nova Scotia Vaccine Cards.
+
+The app allows businesses to validate the COVID-19 vaccination status from Nova Scotia issued vaccination records by scanning a QR code. Once scanned the app will show whether a resident has met the conditions by showing a green or red status.</value>
   </data>
   <data name="AboutPageTitle" xml:space="preserve">
     <value>About this App</value>
@@ -239,5 +241,12 @@
   </data>
   <data name="TutorialDoneButtonText" xml:space="preserve">
     <value>Done</value>
+  </data>
+  <data name="TermsOfUseContentText" xml:space="preserve">
+    <value>The Province makes no warranties of any kind whatsoever to [this Application’s] users, expressed or implied.  This includes any representations or warranties with respect to the accuracy, completeness, merchantability or fitness for a particular purpose of the [Application] or of any [vaccination data] contained therein. All such data is for information purposes only.  Where there is any conflict between any data, information or document available electronically through the [Application] and any information, data or document available in physical form, the information, data or document in physical form prevails.
+
+In addition, the Province specifically makes no warranties that access to the [Application] or any content or information obtained from or through the use of the [Application] will be provided on an uninterrupted, timely, secure or error-free basis, or that it will meet users’ requirements or expectations.
+
+Users of the [Application] hereby agree that the Province will not be liable to any user or other person or entity for any direct, indirect or consequential damages whatsoever as a result of using the [Application], or as a result of relying on any vaccination or other information that is provided to users by the [Application]. Users assume all risk associated with their access to, use of, and reliance upon the [Application] and any [vaccination data] contained therein. As such, each user of the [Application] agrees to defend, indemnify and hold harmless the Province, and the Province’s officers, employees and agents, from and against any and all claims, damages, obligations, losses, liabilities, costs, debt, or expenses (including but not limited to legal fees) arising from: (1) users’ access to and use of the [Application]; and (2) users’ violation of any term or condition contained in the [Application’s] [accompanying Privacy Policy].</value>
   </data>
 </root>
