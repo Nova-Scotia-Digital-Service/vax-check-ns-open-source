@@ -19,64 +19,65 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <FlexLayout Direction="Column">
+        <FlexLayout Direction="Column"
+                    BackgroundColor="{StaticResource BackgroundColor}">
+
             <BoxView BackgroundColor="{StaticResource PrimaryColor}"
                      FlexLayout.Basis="1"
                      FlexLayout.AlignSelf="Stretch"/>
-            <ScrollView Margin="0"
-                        FlexLayout.Grow="1">
-                <StackLayout Margin="0" 
-                             Spacing="0"
-                             BackgroundColor="{StaticResource BackgroundColor}">
 
-                    <BoxView Color="{StaticResource PrimaryColor}"
-                             HeightRequest="1"
-                             HorizontalOptions="Fill"/>
-
-
+            <Grid Padding="32,20"
+                  FlexLayout.Shrink="0">
                     <Label Text="{helpers:TranslationHelper AboutPageTitle}"
-                           TextColor="{StaticResource PrimaryTextColor}"
-                           FontAttributes="Bold"
-                           FontSize="30"
-                           Padding="32,20"/>
+                            TextColor="{StaticResource PrimaryTextColor}"
+                            FontAttributes="Bold"
+                            FontSize="30"/>
+            </Grid>
 
-                    <Label Text="{helpers:TranslationHelper AboutPageContent}"
-                           TextColor="{StaticResource PrimaryTextColor}"
-                           FontSize="16"
-                           Padding="32,20"/>
+            <ScrollView FlexLayout.Basis="50%"
+                        FlexLayout.Grow="1">
 
-
-
-
-                    <Image Source="nsflag_colour.png" 
-                           HeightRequest="115"
-                           Aspect="AspectFit"
-                           HorizontalOptions="Fill"
-                           VerticalOptions="EndAndExpand"
-                           Margin="0,0"/>
-                
-                    <Label Text="{helpers:TranslationHelper AppTitle}"
-                           TextColor="{StaticResource PrimaryColor}"
-                           HorizontalOptions="Center"
-                           FontSize="20"
-                           TranslationY="-20"
-                           FontAttributes="Bold"/>
-
-
-                    <Label TextColor="{StaticResource PrimaryTextColor}"
-                           HorizontalOptions="Center"
-                           FontSize="16"
-                           TranslationY="-15">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Version" />
-                                <Span Text=" " />
-                                <Span Text="{Binding VersionNumber}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </StackLayout>
+                    <Grid Padding="32,20">
+                        <Label Text="{helpers:TranslationHelper AboutPageContent}"
+                                TextColor="{StaticResource PrimaryTextColor}"
+                                FontSize="16"/>
+                    </Grid>
             </ScrollView>
+
+            <StackLayout Margin="0" 
+                         Spacing="0"
+                         BackgroundColor="{StaticResource BackgroundColor}"
+                         FlexLayout.Shrink="0">
+
+                <Image Source="nsflag_colour.png" 
+                        HeightRequest="115"
+                        Aspect="AspectFit"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="EndAndExpand"
+                        Margin="0,0"/>
+                
+                <Label Text="{helpers:TranslationHelper AppTitle}"
+                        TextColor="{StaticResource PrimaryColor}"
+                        HorizontalOptions="Center"
+                        FontSize="20"
+                        TranslationY="-20"
+                        FontAttributes="Bold"/>
+
+
+                <Label TextColor="{StaticResource PrimaryTextColor}"
+                        HorizontalOptions="Center"
+                        FontSize="16"
+                        TranslationY="-15">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Version" />
+                            <Span Text=" " />
+                            <Span Text="{Binding VersionNumber}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
         </FlexLayout>
     </ContentPage.Content>
     
