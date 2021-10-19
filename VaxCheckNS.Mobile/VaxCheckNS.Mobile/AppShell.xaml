@@ -20,16 +20,16 @@
         <vm:BaseViewModel x:Name="vm" />
     </Shell.BindingContext>
 
-    <TabBar IsVisible="{Binding TutorialComplete, Converter={StaticResource InvertedBoolConverter}}">
+    <TabBar IsVisible="{Binding PrivacyAccepted, Converter={StaticResource InvertedBoolConverter}}">
         <ShellContent Route="TermsOfUsePage"
                       IsVisible="{Binding ToUAccepted, Converter={StaticResource InvertedBoolConverter}}"
                       ContentTemplate="{DataTemplate views:TermsOfUsePage}"/>
         <ShellContent Route="PrivacyPage"
                       IsVisible="{Binding PrivacyAccepted, Converter={StaticResource InvertedBoolConverter}}"
                       ContentTemplate="{DataTemplate views:PrivacyPage}"/>
-        <ShellContent Route="TutorialPage"
+        <!--<ShellContent Route="TutorialPage"
                       IsVisible="{Binding TutorialComplete, Converter={StaticResource InvertedBoolConverter}}"
-                      ContentTemplate="{DataTemplate views:TutorialPage}"/>
+                      ContentTemplate="{DataTemplate views:TutorialPage}"/>-->
     </TabBar>
 
     <FlyoutItem Title="{helpers:TranslationHelper HomeMenuTitle}" Route="MainFlow">
@@ -40,15 +40,15 @@
     <MenuItem Text="{helpers:TranslationHelper GuideMenuTitle}"
               Command="{Binding OpenInBroswerCommand}"
               CommandParameter="https://novascotia.ca/coronavirus/docs/COVID-19-Protocol-for-proof-full-vaccination-events-activities-en.pdf" />
-    <MenuItem Text="{helpers:TranslationHelper TermsMenuTitle}"
-              Command="{Binding OpenInBroswerCommand}"
-              CommandParameter="https://novascotia.ca/reopening-plan/phase-five" />
     <MenuItem Text="{helpers:TranslationHelper AboutMenuTitle}"
               Command="{Binding GoToCommand}"
               CommandParameter="//HomePage/AboutPage" />
-    <MenuItem Text="{helpers:TranslationHelper FAQMenuTitle}"
+    <MenuItem Text="{helpers:TranslationHelper TermsMenuTitle}"
+            Command="{Binding GoToCommand}"
+            CommandParameter="//HomePage/TermsOfUseViewingPage" />
+    <!--<MenuItem Text="{helpers:TranslationHelper FAQMenuTitle}"
               Command="{Binding GoToCommand}"
-              CommandParameter="//HomePage/FAQPage"  />
+              CommandParameter="//HomePage/FAQPage"  />-->
     <MenuItem Text="{helpers:TranslationHelper PrivacyTitle}"
               Command="{Binding OpenInBroswerCommand}"
               CommandParameter="https://support.novascotia.ca/privacy/verify-pov-application/"  />

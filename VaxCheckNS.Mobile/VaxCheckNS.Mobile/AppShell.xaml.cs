@@ -24,6 +24,7 @@ namespace VaxCheckNS.Mobile
             Routing.RegisterRoute(nameof(ScanResultPage), typeof(ScanResultPage));
             Routing.RegisterRoute(nameof(HomePage)+"/"+nameof(AboutPage), typeof(AboutPage));
             Routing.RegisterRoute(nameof(HomePage) + "/" + nameof(FAQPage), typeof(FAQPage));
+            Routing.RegisterRoute(nameof(HomePage) + "/" + nameof(TermsOfUseViewingPage), typeof(TermsOfUseViewingPage));
         }
 
     }

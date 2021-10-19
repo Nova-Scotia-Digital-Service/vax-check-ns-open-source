@@ -70,7 +70,7 @@
             </StackLayout>
 
             <BoxView Color="Transparent"
-                     FlexLayout.Basis="5%" 
+                     FlexLayout.Basis="10%" 
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
 
@@ -78,13 +78,8 @@
                    Source="HomeLogo.png"
                    Margin="40, 0, 40, 0"
                    Aspect="AspectFit"
-                   FlexLayout.Basis="55%"
+                   FlexLayout.Basis="60%"
                    FlexLayout.Shrink="1"/>
-
-            <BoxView Color="Transparent"
-                     FlexLayout.Basis="7%" 
-                     FlexLayout.AlignSelf="Stretch"
-                     FlexLayout.Shrink="1"/>
 
             <StackLayout Spacing="15"
                          Margin="40, 0"

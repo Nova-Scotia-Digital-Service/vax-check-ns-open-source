@@ -10,6 +10,7 @@
     <ContentPage.Content>
         <FlexLayout Direction="Column"
                     BackgroundColor="{StaticResource BackgroundColor}">
+
             <BoxView BackgroundColor="{StaticResource PrimaryColor}"
                      FlexLayout.Basis="1"
                      FlexLayout.AlignSelf="Stretch"/>
@@ -18,11 +19,13 @@
                      FlexLayout.Basis="5%"
                      FlexLayout.AlignSelf="Stretch"/>
 
-            <Label Text="{helpers:TranslationHelper FAQPageTitle}"
-                   TextColor="{StaticResource PrimaryTextColor}"
-                   FontAttributes="Bold"
-                   FontSize="30"
-                   Padding="32,0"/>
+            <Grid Margin="32,0"
+                  FlexLayout.Basis="15%">
+                <Label Text="{helpers:TranslationHelper FAQPageTitle}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       FontAttributes="Bold"
+                       FontSize="30"/>
+            </Grid>
 
             <BoxView BackgroundColor="Transparent"
                      FlexLayout.Basis="7.5%"
