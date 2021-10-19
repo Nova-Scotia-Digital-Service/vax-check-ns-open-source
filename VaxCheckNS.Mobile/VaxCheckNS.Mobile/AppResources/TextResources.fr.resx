@@ -245,4 +245,27 @@
 In addition, the Province specifically makes no warranties that access to the [Application] or any content or information obtained from or through the use of the [Application] will be provided on an uninterrupted, timely, secure or error-free basis, or that it will meet users’ requirements or expectations.
 Users of the [Application] hereby agree that the Province will not be liable to any user or other person or entity for any direct, indirect or consequential damages whatsoever as a result of using the [Application], or as a result of relying on any vaccination or other information that is provided to users by the [Application]. Users assume all risk associated with their access to, use of, and reliance upon the [Application] and any [vaccination data] contained therein. As such, each user of the [Application] agrees to defend, indemnify and hold harmless the Province, and the Province’s officers, employees and agents, from and against any and all claims, damages, obligations, losses, liabilities, costs, debt, or expenses (including but not limited to legal fees) arising from: (1) users’ access to and use of the [Application]; and (2) users’ violation of any term or condition contained in the [Application’s] [accompanying Privacy Policy].</value>
   </data>
+  <data name="PrivacyContentText" xml:space="preserve">
+    <value>VaxCheckNS is the official mobile application from the Government of Nova Scotia for verification of the Nova Scotia Proof of Vaccination QR (Quick Response) code.&#x00B9;
+
+Businesses and organizations are encouraged to review the Public Health COVID-19 protocol for vaccine verification.
+
+When a patron consents to provide their QR code for scanning, VaxCheckNS allows businesses and organizations to view a patron’s proof of vaccination status.
+
+VaxCheckNS requires access to a business’s or organization’s scanning device’s camera to scan the QR code.   On scanning a valid QR code, VaxCheckNS will show whether a patron is fully or partially vaccinated. VaxCheckNS will display the vaccination status along with the name of the patron. Verification is done locally on the scanning device without connecting to the internet.  No personal health information or personal information from the QR code is stored in VaxCheckNS or transmitted outside of the Mobile Verifier.
+
+VaxCheckNS leverages Microsoft Application Center Diagnostics and Analytics to collect limited non-personal and de-identified diagnostic and usage data for support purposes. While offline, this data may be temporarily cached on the scanning device prior to it being transmitted. Diagnostic and usage data captured includes:
+
+Scanning device Information such as device type, and Operating System (OS) information
+De-identified usage data including daily sessions per device, session duration and language
+Details for QR code failure scenarios including the issuer of the QR code (e.g. Province, Country) and reason for failure (e.g. does not meet public health guidelines, invalid QR code)
+Application code details triggered by unexpected errors.
+VaxCheckNS will periodically check for updated vaccine protection rules.    An offline, built-in computer process will present a warning message if the scanning device is unable to check for updates after seven days.   To ensure that the guidelines and technical requirements are kept up to date, businesses and organizations are asked to connect their scanning device(s) to the internet to complete the update.
+
+The Nova Scotia Personal Health Information Act (PHIA) prevents businesses and organizations from keeping records about patron’s health unless the patron provides informed consent.   The Personal Information Protection and Electronic Documents Act (PIPEDA) additionally requires businesses and organizations involved in commercial activities to protect a patron’s privacy and only collect personal information with the patron’s consent.  It is important to note that if businesses and organizations fail to comply with the Public Health Order and noted privacy legislation, financial penalties and legal action may result.
+
+For additional information on personal health information protection  or privacy-related matters, please forward enquiries to PHIA@novascotia.ca.  
+
+&#x00B9; Quick Response (QR) code is a machine-readable code consisting of an array of black and white squares, typically used for storing URLs or other information for reading by the camera on a smartphone.</value>
+  </data>
 </root>
