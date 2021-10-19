@@ -9,7 +9,6 @@
 	Shell.NavBarIsVisible="False"
 	Shell.NavBarHasShadow="False"
     Shell.TabBarIsVisible="False"
-    BackgroundColor="Transparent"
     x:Class="VaxCheckNS.Mobile.Views.PrivacyPage">
 
     <ContentPage.BindingContext>
@@ -19,25 +18,32 @@
 
     <ContentPage.Content>
         <FlexLayout Direction="Column"
-                    Margin="0"
-                    BackgroundColor="{StaticResource BackgroundColor}">
+                    Margin="0">
 
             <BoxView Color="{StaticResource PrimaryColor}"
                      FlexLayout.Basis="1"
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
 
-            <Grid Padding="32,20">
+            <Grid Padding="32,20"
+                  BackgroundColor="{StaticResource BackgroundColor}">
                 <Label Text="{helpers:TranslationHelper PrivacyTitle}"
                        TextColor="{StaticResource PrimaryTextColor}"
                        FontAttributes="Bold"
                        FontSize="30"/>
             </Grid>
 
-            <WebView FlexLayout.Basis="70%"
-                     Source="https://support.novascotia.ca/privacy/verify-pov-application/"
-                     FlexLayout.Grow="1"
-                     BackgroundColor="{StaticResource BackgroundColor}"/>
+            <ScrollView FlexLayout.Basis="70%"
+                    FlexLayout.Grow="1"
+                    BackgroundColor="{StaticResource BackgroundColor}">
+
+                <Grid Padding="25,20">
+                    <Label Text="{helpers:TranslationHelper PrivacyContentText}"
+                            TextColor="{StaticResource PrimaryTextColor}"
+                            FontSize="12"
+                            VerticalOptions="FillAndExpand"/>
+                </Grid>
+            </ScrollView>
 
             <BoxView Color="{StaticResource PrimaryColor}"
                      FlexLayout.Basis="1"
@@ -61,20 +67,6 @@
                             AlignContent="Center"
                             JustifyContent="Center"
                             VerticalOptions="CenterAndExpand">
-
-                    <Button FlexLayout.Basis="50%"
-                            AutomationId="DeclineButtonText"
-                            Text="{helpers:TranslationHelper DeclineButtonText}"
-                            Padding="20,10"
-                            Margin="10, 0"
-						    FontSize="16"
-						    FontAttributes="Bold"
-						    CornerRadius="8"
-                            BorderWidth="1"
-                            BorderColor="{StaticResource PrimaryColor}"
-						    BackgroundColor="{StaticResource BackgroundColor}"
-						    TextColor="{StaticResource PrimaryColor}"
-						    Command="{Binding DeclineCommand}"/>
 
                     <Button FlexLayout.Basis="50%"
                             AutomationId="AcceptButtonText"
