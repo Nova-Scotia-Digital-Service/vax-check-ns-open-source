@@ -22,6 +22,26 @@ namespace VaxCheckNS.Mobile.UITests
                 return false;
         }
 
+        private bool AcceptPrivacyPolicy(bool accept)
+        {
+
+            if (accept)
+            {
+                app.Tap(e => e.Marked("AcceptButtonText"));
+                app.Tap(e => e.Marked("AcceptButtonText"));
+                return true;
+                //return CanTapNavigate("AcceptButtonText", "TutorialPage");
+            }
+            else
+                return false;
+        }
+
+        [Test]
+        public void AcceptPrivacyPolicyTest()
+        {
+            Assert.IsTrue(AcceptPrivacyPolicy(true));
+        }
+
         [Test]
         public void ScanPageNavigatedTest()
         {

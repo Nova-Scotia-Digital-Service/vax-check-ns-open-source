@@ -10,7 +10,8 @@
 	Shell.NavBarHasShadow="False"
     Shell.TabBarIsVisible="False"
     BackgroundColor="Transparent"
-    x:Class="VaxCheckNS.Mobile.Views.PrivacyPage">
+    x:Class="VaxCheckNS.Mobile.Views.PrivacyPage"
+    AutomationId="PrivacyPage">
 
     <ContentPage.BindingContext>
         <vm:PrivacyViewModel x:Name="vm" />
