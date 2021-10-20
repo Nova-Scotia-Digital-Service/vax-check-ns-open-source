@@ -69,6 +69,12 @@
 					HorizontalOptions="End"
 					WidthRequest="60"
                     HeightRequest="60">
+                <Button.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean">
+                        <On Platform="iOS">true</On>
+                        <On Platform="Android">false</On>
+                    </OnPlatform>
+                </Button.IsVisible>
             </Button>
 
             <Button AutomationId="CancelButtonText" 
