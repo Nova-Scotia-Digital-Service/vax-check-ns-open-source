@@ -16,30 +16,36 @@ namespace VaxCheckNS.Mobile.UITests
 
         private bool NavigateToScanPage()
         {
+            AcceptTermsOfUseAndPrivacyPolicy("TermsOfUsePage", "PrivacyPage");
+            AcceptTermsOfUseAndPrivacyPolicy("PrivacyPage", "HomePage");
+            
             if (IsOnPage("HomePage"))
                 return CanTapNavigate("ScanButtonText", "ScanPage");
             else
                 return false;
         }
 
-        private bool AcceptPrivacyPolicy(bool accept)
+        private bool AcceptTermsOfUseAndPrivacyPolicy(string currentPage, string nextPage)
         {
-
-            if (accept)
+            if (IsOnPage(currentPage)) 
             {
-                app.Tap(e => e.Marked("AcceptButtonText"));
-                app.Tap(e => e.Marked("AcceptButtonText"));
-                return true;
-                //return CanTapNavigate("AcceptButtonText", "TutorialPage");
+                return CanTapNavigate("AcceptButtonText", nextPage);
             }
             else
                 return false;
         }
 
         [Test]
+        public void AcceptTermsOfUseTest()
+        {
+            Assert.IsTrue(AcceptTermsOfUseAndPrivacyPolicy("TermsOfUsePage", "PrivacyPage"));
+        }
+
+        [Test]
         public void AcceptPrivacyPolicyTest()
         {
-            Assert.IsTrue(AcceptPrivacyPolicy(true));
+            AcceptTermsOfUseAndPrivacyPolicy("TermsOfUsePage", "PrivacyPage");
+            Assert.IsTrue(AcceptTermsOfUseAndPrivacyPolicy("PrivacyPage", "HomePage"));
         }
 
         [Test]
