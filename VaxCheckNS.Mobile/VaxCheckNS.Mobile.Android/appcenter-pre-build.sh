@@ -15,16 +15,15 @@ then
     exit
 fi
 
-echo "Looking to update version to '$MAJOR'.'$MINOR'.'$APPCENTER_BUILD_ID'"
-echo "'$APPCENTER_SOURCE_DIRECTORY'"
+echo "Looking to update version to '$MAJOR.$MINOR.$APPCENTER_BUILD_ID'"
 
-ANDROID_MANIFEST_FILE=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile.Android/Properties/AndroidManifest.xml
-INFO_PLIST_FILE=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile.iOS/Info.plist
+ANDROID_MANIFEST_FILE=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile/VaxCheckNS.Mobile.Android/Properties/AndroidManifest.xml
+INFO_PLIST_FILE=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile/VaxCheckNS.Mobile.iOS/Info.plist
 
 if [ -e "$ANDROID_MANIFEST_FILE" ]
 then
-    echo "Updating version name to '$MAJOR'.'$MINOR'.'$APPCENTER_BUILD_ID' in AndroidManifest.xml"
-    sed -i '' 's/versionName="[0-9.]*"/versionName="'MAJOR'.'$MINOR'.'$APPCENTER_BUILD_ID'"/' $ANDROID_MANIFEST_FILE
+    echo "Updating version name to '$MAJOR.$MINOR.$APPCENTER_BUILD_ID' in AndroidManifest.xml"
+    sed -i '' 's/versionName="[0-9.]*"/versionName="'$MAJOR.$MINOR.$APPCENTER_BUILD_ID'"/' $ANDROID_MANIFEST_FILE
 
     echo "File content:"
     cat $ANDROID_MANIFEST_FILE
