@@ -28,7 +28,7 @@ namespace VaxCheckNS.Mobile.UITests
         [Test]
         public void LaunchTest()
         {
-            AppResult[] results = app.WaitForElement(c => c.Marked("AppLogo"));
+            AppResult[] results = app.WaitForElement(c => c.Marked("AcceptButtonText"));
             Assert.IsTrue(results.Any());
         }
     }

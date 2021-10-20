@@ -4,7 +4,6 @@
 			 x:Class="VaxCheckNS.Mobile.Views.ScanPage"
              xmlns:fonts="clr-namespace:VaxCheckNS.Mobile.Themes.Fonts"
 			 xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
-			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 			 xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
              xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
 			 Shell.NavBarIsVisible="False"
@@ -69,6 +68,12 @@
 					HorizontalOptions="End"
 					WidthRequest="60"
                     HeightRequest="60">
+                <Button.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean">
+                        <On Platform="iOS">false</On>
+                        <On Platform="Android">true</On>
+                    </OnPlatform>
+                </Button.IsVisible>
             </Button>
 
             <Button AutomationId="CancelButtonText" 
