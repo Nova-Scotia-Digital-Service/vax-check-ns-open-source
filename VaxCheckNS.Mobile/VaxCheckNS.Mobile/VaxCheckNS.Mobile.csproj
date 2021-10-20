@@ -58,16 +58,7 @@
   <ItemGroup>
     <None Remove="AppResources\ValidVaccines.json" />
     <None Remove="AppResources\WhiteList.json" />
-    <None Remove="Views\ContentViews\" />
     <None Remove="Xamarin.CommunityToolkit" />
-    <None Remove="Behaviors\" />
-    <None Remove="Views\Themes\DarkTheme\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BindableModels\" />
-    <Folder Include="Views\ContentViews\" />
-    <Folder Include="Behaviors\" />
-    <Folder Include="Views\Themes\DarkTheme\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\VaxCheckNS.Decode\VaxCheckNS.Decode.csproj" />
