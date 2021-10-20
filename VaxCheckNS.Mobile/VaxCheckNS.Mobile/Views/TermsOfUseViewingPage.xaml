@@ -9,7 +9,8 @@
     xmlns:cv="clr-namespace:VaxCheckNS.Mobile.Views.ContentViews"
 	ios:Page.UseSafeArea="True"
 	Shell.NavBarIsVisible="True"
-	Shell.NavBarHasShadow="False">
+	Shell.NavBarHasShadow="False"
+    AutomationId="TermsOfUseViewingPage">
 
     <Shell.TitleView>
         <cv:MainTitleView/>

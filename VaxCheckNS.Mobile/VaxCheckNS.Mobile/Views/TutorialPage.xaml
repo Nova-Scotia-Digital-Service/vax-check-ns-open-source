@@ -10,7 +10,8 @@
              ios:Page.UseSafeArea="True"
 			 Shell.NavBarIsVisible="False"
              Shell.PresentationMode="Modal"
-			 Shell.NavBarHasShadow="False">
+			 Shell.NavBarHasShadow="False"
+             AutomationId="TutorialPage">
 
     <ContentPage.Resources>
         <ResourceDictionary>
