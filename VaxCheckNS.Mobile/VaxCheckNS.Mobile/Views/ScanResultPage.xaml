@@ -9,7 +9,9 @@
              xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
 			 Shell.NavBarIsVisible="True"
              Shell.PresentationMode="Modal"
-			 Shell.NavBarHasShadow="False">
+			 Shell.NavBarHasShadow="False"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="{StaticResource PositiveColor}">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -17,6 +19,14 @@
             <converters:VaccineStatusToResourceConverter x:Key="vaccineStatusToResourceConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+
+    <ContentPage.Triggers>
+        <DataTrigger TargetType="ContentPage"
+                     Binding="{Binding ProofOfVaccineData.IsValidProof}"
+                     Value="False">
+            <Setter Property="BackgroundColor" Value="{StaticResource NegativeColor}" />
+        </DataTrigger>
+    </ContentPage.Triggers>
 
     <ContentPage.BindingContext>
         <vm:ScanResultViewModel x:Name="vm" />
@@ -27,8 +37,7 @@
         <ScrollView>
 
             <Grid>
-                <Grid BackgroundColor="{StaticResource NegativeColor}"
-                      IsVisible="{Binding ProofOfVaccineData.IsValidProof, Converter={StaticResource InvertedBoolConverter}}">
+                <Grid IsVisible="{Binding ProofOfVaccineData.IsValidProof, Converter={StaticResource InvertedBoolConverter}}">
                     <FlexLayout Direction="Column"
                                 Margin="0">
                         <BoxView BackgroundColor="Transparent"
@@ -143,8 +152,7 @@
                     </FlexLayout>
                 </Grid>
 
-                <Grid BackgroundColor="{StaticResource PositiveColor}"
-                      IsVisible="{Binding ProofOfVaccineData.IsValidProof}">
+                <Grid IsVisible="{Binding ProofOfVaccineData.IsValidProof}">
 
                     <FlexLayout Direction="Column"
                                 Margin="0">
