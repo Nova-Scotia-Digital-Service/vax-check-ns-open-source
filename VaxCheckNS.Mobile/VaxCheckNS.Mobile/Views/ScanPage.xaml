@@ -4,8 +4,6 @@
 			 x:Class="VaxCheckNS.Mobile.Views.ScanPage"
              xmlns:fonts="clr-namespace:VaxCheckNS.Mobile.Themes.Fonts"
 			 xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
-             xmlns:views="clr-namespace:VaxCheckNS.Mobile.Views"
-			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 			 xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
              xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
 			 Shell.NavBarIsVisible="False"
@@ -22,10 +20,6 @@
     <ContentPage.BindingContext>
         <vm:ScanViewModel x:Name="vm" />
     </ContentPage.BindingContext>
-
-    <ContentPage.Behaviors>
-
-    </ContentPage.Behaviors>
 
     <ContentPage.Content>
         <Grid Padding="0"
