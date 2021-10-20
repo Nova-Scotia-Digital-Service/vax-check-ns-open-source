@@ -22,7 +22,7 @@ INFO_PLIST_FILE=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile/VaxCheckNS.Mobile.
 if [ -e "$INFO_PLIST_FILE" ]
 then
     echo "Updating version name to '$MAJOR.$MINOR.$APPCENTER_BUILD_ID' in Info.plist"
-    plutil -replace CFBundleShortVersionString -string $VERSION_NAME $INFO_PLIST_FILE
+    plutil -replace CFBundleShortVersionString -string "{$MAJOR}.{$MINOR}.{$APPCENTER_BUILD_ID}" $INFO_PLIST_FILE
     plutil -replace CFBundleVersion -string "{$MAJOR}.{$MINOR}.{$APPCENTER_BUILD_ID}" $INFO_PLIST_FILE
 
     echo "File content:"
