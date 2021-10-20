@@ -15,6 +15,9 @@ then
     exit
 fi
 
+echo "Looking to update version to '$MAJOR'.'$MINOR'.'$APPCENTER_BUILD_ID'"
+echo "'$APPCENTER_SOURCE_DIRECTORY'"
+
 ANDROID_MANIFEST_FILE=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile.Android/Properties/AndroidManifest.xml
 INFO_PLIST_FILE=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile.iOS/Info.plist
 
