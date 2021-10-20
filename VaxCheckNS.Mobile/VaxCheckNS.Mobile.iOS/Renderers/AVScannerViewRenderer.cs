@@ -32,6 +32,13 @@ namespace VaxCheckNS.Mobile.iOS.Renderers
 			if (avView == null)
 			{
 
+				var cameraPermission = await Xamarin.Essentials.Permissions.RequestAsync<Xamarin.Essentials.Permissions.Camera>();
+				if (cameraPermission != Xamarin.Essentials.PermissionStatus.Granted)
+				{
+					Console.WriteLine("Missing Camera Permission");
+					return;
+				}
+
 				// Process requests for autofocus
 				formsView.AutoFocusRequested += (x, y) =>
 				{
@@ -43,13 +50,6 @@ namespace VaxCheckNS.Mobile.iOS.Renderers
 							avView.AutoFocus(x, y);
 					}
 				};
-
-				var cameraPermission = await Xamarin.Essentials.Permissions.RequestAsync<Xamarin.Essentials.Permissions.Camera>();
-				if (cameraPermission != Xamarin.Essentials.PermissionStatus.Granted)
-				{
-					Console.WriteLine("Missing Camera Permission");
-					return;
-				}
 
 				avView = new ZXing.Mobile.AVCaptureScannerView()
 				{
