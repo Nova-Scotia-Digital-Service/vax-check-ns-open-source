@@ -28,16 +28,16 @@
               ColumnSpacing="0"
               RowSpacing="0">
 
-            <zxing:ZXingScannerView IsScanning="{Binding IsBusy,Converter={StaticResource InvertedBoolConverter}}"                          
+            <zxing:ZXingScannerView IsScanning="True"                          
                                     ScanResultCommand="{Binding AnalyseScanResultCommand}"
                                     IsTorchOn="{Binding IsTorchOn}"
                                     Options="{Binding ScannerOptions}"/>
 
-            <Image Source="ScanFrame"
+            <Image x:Name="Guide"
+                   Source="ScanFrame"
                    Aspect="AspectFit"
-                   HorizontalOptions="FillAndExpand"
-                   VerticalOptions="FillAndExpand"
-                   Margin="20,100"/>
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
 
 
             <Label Text="{Binding CountdownText}"

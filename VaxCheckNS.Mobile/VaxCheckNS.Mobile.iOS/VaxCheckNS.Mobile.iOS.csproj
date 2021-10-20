@@ -109,6 +109,7 @@
     <BundleResource Include="Resources\HomeLogo%403x.png" />
     <BundleResource Include="Base.lproj\InfoPlist.strings" />
     <BundleResource Include="Resources\fr.lproj\InfoPlist.strings" />
+    <Compile Include="Renderers\AVScannerViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
