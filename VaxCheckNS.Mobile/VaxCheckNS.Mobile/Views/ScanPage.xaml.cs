@@ -52,10 +52,5 @@ namespace VaxCheckNS.Mobile.Views
             vm.LeaveCommand.Execute(null);
             return true;
         }
-        protected override bool OnBackButtonPressed()
-        {
-            vm.LeaveCommand.Execute(null);
-            return true;
-        }
     }
 }
