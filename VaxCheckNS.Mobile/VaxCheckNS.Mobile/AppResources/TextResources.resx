@@ -272,4 +272,16 @@ For additional information on personal health information protection  or privacy
 
 &#x00B9; Quick Response (QR) code is a machine-readable code consisting of an array of black and white squares, typically used for storing URLs or other information for reading by the camera on a smartphone.</value>
   </data>
+  <data name="PermissionsTitle" xml:space="preserve">
+    <value>Permissions</value>
+  </data>
+  <data name="PermissionsContent1Text" xml:space="preserve">
+    <value>VaxCheckNS requires the camera to scan QR codes. Please accept camera permissions to continue.</value>
+  </data>
+  <data name="PermissionsContent2Text" xml:space="preserve">
+    <value>If permissions are denied, you can enable from the app settings.</value>
+  </data>
+   <data name="PermissionsOpenSettingText" xml:space="preserve">
+    <value>Open App Settings</value>
+  </data>
 </root>

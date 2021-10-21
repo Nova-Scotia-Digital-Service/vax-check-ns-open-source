@@ -20,7 +20,7 @@ namespace VaxCheckNS.Mobile.ViewModels
         {
             _dataService.AcceptPrivacy();
             //GoTo("///TutorialPage");
-            GoTo("///MainFlow");
+            GoTo("///PermissionsPage");
         }
     }
 }
