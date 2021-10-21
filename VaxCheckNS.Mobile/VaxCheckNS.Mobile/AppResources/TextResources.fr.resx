@@ -190,7 +190,7 @@
     <value>Vie privée</value>
   </data>
   <data name="VaccineInvalidSHCCodeText" xml:space="preserve">
-    <value>Impossible de valider l'émetteur du code</value>
+    <value>Impossible de valider l'émetteur</value>
   </data>
   <data name="CancelButtonText" xml:space="preserve">
     <value>Annuler</value>
