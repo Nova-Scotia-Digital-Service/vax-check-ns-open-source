@@ -23,7 +23,6 @@ if [ -e "$ANDROID_MANIFEST_FILE" ]
 then
     echo "Updating version name to '$MAJOR.$MINOR.$APPCENTER_BUILD_ID' in AndroidManifest.xml"
     sed -i '' 's/versionName="[0-9.]*"/versionName="'$MAJOR.$MINOR.$APPCENTER_BUILD_ID'"/' $ANDROID_MANIFEST_FILE
-    sed -i '' 's/versionCode="[0-9.]*"/versionCode="'$APPCENTER_BUILD_ID'"/' $ANDROID_MANIFEST_FILE
 
     echo "File content:"
     cat $ANDROID_MANIFEST_FILE
