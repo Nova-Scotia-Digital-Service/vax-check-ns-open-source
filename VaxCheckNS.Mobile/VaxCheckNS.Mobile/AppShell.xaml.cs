@@ -16,7 +16,12 @@ namespace VaxCheckNS.Mobile
             RegisterPages();
         }
 
-        
+        protected override async void OnParentSet()
+        {
+            base.OnParentSet();
+            await ((BaseViewModel)BindingContext).Initialize();
+        }
+
         private void RegisterPages()
         {
             Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));

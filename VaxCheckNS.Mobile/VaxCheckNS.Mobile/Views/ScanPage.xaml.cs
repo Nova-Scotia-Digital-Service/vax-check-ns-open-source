@@ -28,21 +28,6 @@ namespace VaxCheckNS.Mobile.Views
             } 
         }
 
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            var status = await Permissions.CheckStatusAsync<Permissions.Camera>();
-            if (status != PermissionStatus.Granted)
-            {
-                var requestedStatus = await Permissions.RequestAsync<Permissions.Camera>();
-                if (requestedStatus != PermissionStatus.Granted)
-                {
-                    vm.LeaveCommand.Execute(null);
-                }
-            }
-
-        }
-
         protected override bool OnBackButtonPressed()
         {
             vm.LeaveCommand.Execute(null);
