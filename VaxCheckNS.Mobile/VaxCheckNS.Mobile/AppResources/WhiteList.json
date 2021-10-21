@@ -30,19 +30,6 @@
       }
     ]
   },
-  "https://sask-csfw-iphr.qa.chbase.com/.well-known/jwks.json": {
-    "keys": [
-      {
-        "kty": "EC",
-        "use": "sig",
-        "crv": "P-256",
-        "kid": "1OhrDmFvON5KNOIreyF7YmAz3xFLr97XAFMthrdqLoY",
-        "x": "fiQm1Yfd5OCxIlQbPY0fyFm_b286rZHmpgKrl5ygMg4",
-        "y": "G_-20ROJCnPWRi9PWk0p6bz4UlQuQ9eQKEAetd7KLW4",
-        "alg": "ES256"
-      }
-    ]
-  },
   "https://skphr.prd.telushealthspace.com/.well-known/jwks.json": {
     "keys": [
       {
@@ -257,16 +244,29 @@
       }
     ]
   },
-  "https://www.gnb.ca/smarthealthtest/.well-known/jwks.json": {
+  "https://www.gnb.ca/smarthealth/.well-known/jwks.json": {
     "keys": [
       {
         "kty": "EC",
-        "kid": "Ejfp2WH3RU8aUzNGNt4Fq1UNrk6U9FqCh9jMoIWkMZI",
+        "kid": "NMwao3P02vRkBBnLMF7ADSZ6hNI3BtNWvKDCyO91uaQ",
         "use": "sig",
         "alg": "ES256",
         "crv": "P-256",
-        "x": "YZ63EV46E38Kc0fjRkyiu2yO9MrJKpN2p_vZ6z92-Gw",
-        "y": "D20zqHuCHj1lB3BHB7Ux8awWkED-EnXJaLXJsKL-o-o"
+        "x": "mhX32vpPTNdOr4J5L6ZC6RpQTWfyjXNvkI53L8c_Hms",
+        "y": "lkkpLDxEX3oVPjCs4nApQsI-jpsjvhgOZQx1IVY5dsY"
+      }
+    ]
+  },
+  "https://prd.pkey.dhdp.ontariohealth.ca/.well-known/jwks.json": {
+    "keys": [
+      {
+        "kty": "EC",
+        "kid": "Nlgwb6GUrU_f0agdYKc77sXM9U8en1gBu94plufPUj8",
+        "use": "sig",
+        "alg": "ES256",
+        "crv": "P-256",
+        "x": "ibapbMkHMlkR3D-AU0VTFDsiidQ49oD9Ha7VY8Gao3s",
+        "y": "arXU5frZGOvTZpvg045rHC7y0fqVOS3dKqJbUYhW5gw"
       }
     ]
   },
