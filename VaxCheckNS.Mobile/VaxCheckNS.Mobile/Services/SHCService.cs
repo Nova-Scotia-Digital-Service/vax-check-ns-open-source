@@ -219,15 +219,15 @@ namespace VaxCheckNS.Mobile.Services
 		private ProofOfVaccinationData CreateProofOfVaccineData(JObject fhir)
 		{
 			var givenName = fhir
-				.SelectToken("$....given")
-				.FirstOrDefault()
-				.ToString();
+				?.SelectToken("$....given")
+				?.FirstOrDefault()
+				?.ToString() ?? string.Empty;
 			string familyName = fhir
-				.SelectToken("$....family")
-				.ToString();
+				?.SelectToken("$....family")
+				?.ToString() ?? string.Empty;
 			var birthDate = fhir
-				.SelectToken("$....birthDate")
-				.ToString();
+				?.SelectToken("$....birthDate")
+				?.ToString() ?? string.Empty;
 
 			//TODO:Add issuer ProofOfVaccinationData.Issuer
 
