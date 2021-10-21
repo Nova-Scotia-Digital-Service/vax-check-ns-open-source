@@ -42,6 +42,13 @@ namespace VaxCheckNS.Mobile.ViewModels
             set { SetProperty(ref _privacyAccepted, value); }
         }
 
+        private bool _hasPermissions;
+        public bool HasPermissions
+        {
+            get { return _hasPermissions; }
+            set { SetProperty(ref _hasPermissions, value); }
+        }
+
         private bool _tutorialComplete;
         public bool TutorialComplete
         {
@@ -150,6 +157,11 @@ namespace VaxCheckNS.Mobile.ViewModels
                 await Shell.Current.GoToAsync("../" + page, hasAnimation);
                 IsBusy = false;
             });
+        }
+
+        public virtual async Task Initialize()
+        {
+            HasPermissions = await Permissions.CheckStatusAsync<Permissions.Camera>() == PermissionStatus.Granted;
         }
 
         #region Busy Mechanism

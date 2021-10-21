@@ -304,5 +304,29 @@ namespace VaxCheckNS.Mobile.AppResources {
                 return ResourceManager.GetString("PrivacyContentText", resourceCulture);
             }
         }
+        
+        internal static string PermissionsTitle {
+            get {
+                return ResourceManager.GetString("PermissionsTitle", resourceCulture);
+            }
+        }
+        
+        internal static string PermissionsContent1Text {
+            get {
+                return ResourceManager.GetString("PermissionsContent1Text", resourceCulture);
+            }
+        }
+        
+        internal static string PermissionsContent2Text {
+            get {
+                return ResourceManager.GetString("PermissionsContent2Text", resourceCulture);
+            }
+        }
+        
+        internal static string PermissionsOpenSettingText {
+            get {
+                return ResourceManager.GetString("PermissionsOpenSettingText", resourceCulture);
+            }
+        }
     }
 }

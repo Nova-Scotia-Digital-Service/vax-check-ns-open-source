@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:helpers="clr-namespace:VaxCheckNS.Mobile.Helpers" xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
+    x:Class="VaxCheckNS.Mobile.Views.PermissionsPage"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
+	Shell.NavBarIsVisible="False"
+	Shell.NavBarHasShadow="False"
+    Shell.TabBarIsVisible="False"
+    AutomationId="PermissionsPage">
+
+    <ContentPage.BindingContext>
+        <vm:PermissionsViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <FlexLayout Direction="Column"
+                    Margin="0">
+
+            <BoxView Color="{StaticResource PrimaryColor}"
+                     FlexLayout.Basis="1"
+                     FlexLayout.AlignSelf="Stretch"
+                     FlexLayout.Shrink="0"/>
+
+            <Grid Padding="32,20"
+                  BackgroundColor="{StaticResource BackgroundColor}">
+                <Label Text="{helpers:TranslationHelper PermissionsTitle}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       FontAttributes="Bold"
+                       FontSize="30"/>
+            </Grid>
+
+            <Grid Padding="25,20"
+                  FlexLayout.Basis="70%"
+                  FlexLayout.Grow="1"
+                  BackgroundColor="{StaticResource BackgroundColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="{helpers:TranslationHelper PermissionsContent1Text}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       FontSize="20"
+                       VerticalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center" 
+                       Grid.Row="0"/>
+                <Label Text="{helpers:TranslationHelper PermissionsContent2Text}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       FontSize="20"
+                       VerticalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center" 
+                       Grid.Row="1"/>
+                <Button Text="{helpers:TranslationHelper PermissionsOpenSettingText}"
+                    BorderColor="Transparent"
+                    BackgroundColor="Transparent"
+                    TextColor="{StaticResource PrimaryColor}"
+                    Command="{Binding OpenPlatormAppSettingsCommand}"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    Grid.Row="2"/>
+            </Grid>
+
+            <BoxView Color="{StaticResource PrimaryColor}"
+                     FlexLayout.Basis="1"
+                     FlexLayout.AlignSelf="Stretch"
+                     FlexLayout.Shrink="0"/>
+
+            <StackLayout Spacing="15"
+                         FlexLayout.Basis="80"
+                         FlexLayout.AlignSelf="Center">
+
+                <StackLayout.BackgroundColor>
+                    <OnPlatform x:TypeArguments="Color">
+                        <On Platform="iOS" Value="Transparent" />
+                        <On Platform="Android" Value="{StaticResource BackgroundColor}" />
+                    </OnPlatform>
+                </StackLayout.BackgroundColor>
+
+                <FlexLayout Direction="Row"
+                            Margin="0"
+                            BackgroundColor="Transparent"
+                            AlignContent="Center"
+                            JustifyContent="Center"
+                            VerticalOptions="CenterAndExpand">
+
+                    <Button FlexLayout.Basis="50%"
+                            AutomationId="AcceptButtonText"
+                            Text="{helpers:TranslationHelper AcceptButtonText}"
+                            Padding="20,10"
+                            Margin="10, 0"
+						    FontSize="16"
+						    FontAttributes="Bold"
+						    CornerRadius="8"
+						    BackgroundColor="{StaticResource PrimaryColor}"
+						    TextColor="{StaticResource BackgroundColor}"
+						    Command="{Binding AcceptCommand}"
+                            IsEnabled="{Binding CanContinue}"/>
+
+                </FlexLayout>
+            </StackLayout>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>
