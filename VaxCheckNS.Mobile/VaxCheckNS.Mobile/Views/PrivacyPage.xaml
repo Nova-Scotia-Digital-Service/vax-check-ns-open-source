@@ -41,7 +41,7 @@
                 <Grid Padding="25,20">
                     <Label Text="{helpers:TranslationHelper PrivacyContentText}"
                             TextColor="{StaticResource PrimaryTextColor}"
-                            FontSize="12"
+                            FontSize="14"
                             VerticalOptions="FillAndExpand"/>
                 </Grid>
             </ScrollView>
