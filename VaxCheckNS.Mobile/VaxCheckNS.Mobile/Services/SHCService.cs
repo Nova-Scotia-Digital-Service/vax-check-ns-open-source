@@ -221,13 +221,13 @@ namespace VaxCheckNS.Mobile.Services
 			var givenName = fhir
 				?.SelectToken("$....given")
 				?.FirstOrDefault()
-				?.ToString();
+				?.ToString() ?? string.Empty;
 			string familyName = fhir
 				?.SelectToken("$....family")
-				?.ToString();
+				?.ToString() ?? string.Empty;
 			var birthDate = fhir
 				?.SelectToken("$....birthDate")
-				?.ToString();
+				?.ToString() ?? string.Empty;
 
 			//TODO:Add issuer ProofOfVaccinationData.Issuer
 
