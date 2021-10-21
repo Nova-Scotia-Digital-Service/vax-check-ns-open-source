@@ -110,7 +110,6 @@
     <BundleResource Include="Base.lproj\InfoPlist.strings" />
     <BundleResource Include="Resources\fr.lproj\InfoPlist.strings" />
     <Compile Include="Renderers\AVScannerViewRenderer.cs" />
-    <None Include="appcenter-pre-build.sh" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
