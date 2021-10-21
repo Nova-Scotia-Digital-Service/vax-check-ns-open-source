@@ -270,6 +270,33 @@
       }
     ]
   },
+  "https://covid19.quebec.ca/PreuveVaccinaleApi/issuer/.well-known/jwks.json": {
+    "keys": [
+      {
+        "kty": "EC",
+        "kid": "2XlWk1UQMqavMtLt-aX35q_q9snFtGgdjH4-Y1gfH1M",
+        "use": "sig",
+        "alg": "ES256",
+        "crv": "P-256",
+        "x": "XSxuwW_VI_s6lAw6LAlL8N7REGzQd_zXeIVDHP_j_Do",
+        "y": "88-aI4WAEl4YmUpew40a9vq_w5OcFvsuaKMxJRLRLL0"
+      }
+    ]
+  },
+  "https://pvc.cloud.forces.gc.ca/.well-known/jwks.json": {
+    "keys": [
+      {
+        "kty": "EC",
+        "kid": "3zoSBkAOp1USaREch8xyR9rvnpWTUu953BxPowxObJI",
+        "use": "sig",
+        "alg": "ES256",
+        "crv": "P-256",
+        "x": "vlE5Mlm6duYGxREZKC3kJ-oOYunADOKnlE-_76BUh0g",
+        "y": "U0IggXw7Eh1w_5rJo_JkpKK93hXaKYaTHj-WpKEQR1c",
+        "date": 1632317800346
+      }
+    ]
+  },
   "https://pvc-dev.novascotia.ca/issuer/.well-known/jwks.json": {
     "keys": [
       {
