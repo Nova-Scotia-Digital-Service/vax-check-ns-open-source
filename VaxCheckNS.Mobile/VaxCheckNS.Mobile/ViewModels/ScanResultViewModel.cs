@@ -20,7 +20,7 @@ namespace VaxCheckNS.Mobile.ViewModels
         {
             _shcService = DependencyService.Resolve<ISHCService>();
 
-            NewScanCommand = new Command(async () => await Shell.Current.GoToAsync("//HomePage/ScanPage", true));
+            NewScanCommand = new Command(() => BackAndNavigateTo("ScanPage"));
 
             LoadScanData();
         }

@@ -154,7 +154,22 @@ namespace VaxCheckNS.Mobile.ViewModels
             {
                 //using (Busy())
                 IsBusy = true;
-                await Shell.Current.GoToAsync("../" + page, hasAnimation);
+
+                // BUG: Android doesn't completely animate the closing of the page in time.
+                // Appearing animation starting causes strange visual artifacts.
+                // Adding a delay and splitting the GoTo into two pieces helps.
+                // Ultimately needs to be fixed by the Xamarin Forms team.
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    await Shell.Current.GoToAsync("..", hasAnimation);
+                    await Task.Delay(100);
+                    await Shell.Current.GoToAsync("/" + page, hasAnimation);
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync("../" + page, hasAnimation);
+                }
+
                 IsBusy = false;
             });
         }
