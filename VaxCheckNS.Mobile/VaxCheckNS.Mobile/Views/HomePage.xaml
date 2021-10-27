@@ -103,7 +103,8 @@
 						Command="{Binding ScanCommand}"
 						VerticalOptions="EndAndExpand"
                         HorizontalOptions="CenterAndExpand"
-						WidthRequest="300"/>
+						WidthRequest="300"
+                        HeightRequest="45"/>
 
                 <Button Text="{helpers:TranslationHelper ViewGuideButtonText}"
                         ImageSource="notesmedical.png"
@@ -120,7 +121,8 @@
                         CommandParameter="https://novascotia.ca/coronavirus/docs/COVID-19-Protocol-for-proof-full-vaccination-events-activities-en.pdf"
 						VerticalOptions="Start"
                         HorizontalOptions="CenterAndExpand"
-						WidthRequest="300"/>
+						WidthRequest="300"
+                        HeightRequest="45"/>
 
             </StackLayout>
 
