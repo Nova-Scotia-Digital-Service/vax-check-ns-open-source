@@ -27,7 +27,8 @@
               ColumnSpacing="0"
               RowSpacing="0">
 
-            <zxing:ZXingScannerView IsScanning="True"                          
+            <zxing:ZXingScannerView x:Name="scanner"
+                                    IsScanning="True"                         
                                     ScanResultCommand="{Binding AnalyseScanResultCommand}"
                                     IsTorchOn="{Binding IsTorchOn}"
                                     Options="{Binding ScannerOptions}"/>
@@ -80,7 +81,7 @@
                     Text="Cancel"
 					FontSize="16"
 					FontAttributes="Bold"
-					CornerRadius="16"
+					CornerRadius="8"
                     BorderWidth="1"
                     BorderColor="{StaticResource BackgroundColor}"
 					BackgroundColor="#43FFFFFF"
@@ -90,7 +91,7 @@
                     HorizontalOptions="CenterAndExpand"
 					Margin="20,40"
 					WidthRequest="300"
-					HeightRequest="60">
+					HeightRequest="45">
             </Button>
         </Grid>
 
