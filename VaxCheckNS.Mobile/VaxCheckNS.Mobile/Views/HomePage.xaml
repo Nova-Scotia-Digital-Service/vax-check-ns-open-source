@@ -70,19 +70,18 @@
             </StackLayout>
 
             <BoxView Color="Transparent"
-                     FlexLayout.Basis="10%" 
+                     FlexLayout.Basis="20%" 
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
 
             <Image AutomationId="AppLogo"
                    Source="HomeLogo.png"
-                   Margin="40, 0, 40, 0"
+                   Margin="50, 0, 50, 0"
                    Aspect="AspectFit"
-                   FlexLayout.Basis="60%"
                    FlexLayout.Shrink="1"/>
 
-            <StackLayout Spacing="15"
-                         Margin="40, 0"
+            <StackLayout Spacing="25"
+                         Margin="70, 0, 70, 0"
                          FlexLayout.Basis="15%"
                          FlexLayout.Grow="0.5"
                          FlexLayout.Shrink="0">
@@ -127,7 +126,7 @@
             </StackLayout>
 
             <BoxView Color="Transparent"
-                     FlexLayout.Basis="5%" 
+                     FlexLayout.Basis="8%" 
                      FlexLayout.AlignSelf="Stretch"
                      FlexLayout.Shrink="0"/>
         </FlexLayout>
