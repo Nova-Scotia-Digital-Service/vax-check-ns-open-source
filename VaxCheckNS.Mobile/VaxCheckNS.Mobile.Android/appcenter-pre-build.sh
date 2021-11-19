@@ -33,9 +33,12 @@
 #     cat $ANDROID_MANIFEST_FILE
 # fi
 
+echo "Starting script"
+
 fi
 
 APP_SETTINGS_FILE=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile/VaxCheckNS.Mobile/Helpers/AppSettings.cs
+echo $APP_SETTINGS_FILE;
 
 if [ -e "$APP_SETTINGS_FILE" ]
 then
