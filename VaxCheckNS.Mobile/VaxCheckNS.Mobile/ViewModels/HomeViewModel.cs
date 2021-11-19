@@ -23,6 +23,8 @@ namespace VaxCheckNS.Mobile.ViewModels
         public HomeViewModel()
         {
             _localDataService = DependencyService.Resolve<ILocalDataService>();
+
+            _errorManagementService.HandleError(new Exception("Test error : app key pre build injection"));
         }
     }
 }
