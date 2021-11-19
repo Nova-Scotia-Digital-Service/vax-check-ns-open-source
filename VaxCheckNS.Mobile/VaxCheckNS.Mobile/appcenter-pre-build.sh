@@ -38,6 +38,7 @@ echo "Starting script"
 fi
 
 APP_SETTINGS_FILE=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile/VaxCheckNS.Mobile/Helpers/AppSettings.cs
+echo $APPCENTER_SOURCE_DIRECTORY;
 echo $APP_SETTINGS_FILE;
 
 if [ -e "$APP_SETTINGS_FILE" ]
