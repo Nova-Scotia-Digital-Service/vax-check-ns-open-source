@@ -5,10 +5,9 @@ using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
 
-namespace VaxCheckNS.Mobile.UITests
+namespace VaxCheckNS.Mobile.UITests.iOS
 {
-    [TestFixture(Platform.Android)]
-    //[TestFixture(Platform.iOS)]
+    [TestFixture(Platform.iOS)]
     public class AppLaunchTests
     {
         IApp app;

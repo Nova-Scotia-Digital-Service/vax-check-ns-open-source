@@ -1,26 +1,27 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using NUnit.Framework;
 using Xamarin.UITest;
-using Xamarin.UITest.Queries;
 
-namespace VaxCheckNS.Mobile.UITests
+namespace VaxCheckNS.Mobile.UITests.Android
 {
     [TestFixture(Platform.Android)]
-    //[TestFixture(Platform.iOS)]
     public class ScanFlowTests : BaseTests
     {
         public ScanFlowTests(Platform platform) : base(platform) { }
 
         private bool NavigateToScanPage()
         {
-            AcceptTermsOfUseAndPrivacyPolicy("TermsOfUsePage", "PrivacyPage");
-            AcceptTermsOfUseAndPrivacyPolicy("PrivacyPage", "HomePage");
-            
+            //AcceptTermsOfUseAndPrivacyPolicy("TermsOfUsePage", "PrivacyPage");
+            //AcceptTermsOfUseAndPrivacyPolicy("PrivacyPage", "HomePage");
+
             if (IsOnPage("HomePage"))
-                return CanTapNavigate("ScanButtonText", "ScanPage");
+            {
+                app.Tap("ScanButtonText");
+                Thread.Sleep(10000);
+                return IsOnPage("ScanPage");
+
+                //return CanTapNavigate("ScanButtonText", "ScanPage");
+            }
             else
                 return false;
         }
@@ -36,16 +37,19 @@ namespace VaxCheckNS.Mobile.UITests
         }
 
         [Test]
-        public void AcceptTermsOfUseTest()
+        public void AcceptPrivacyPolicyAndTermsOfUseTest()
         {
-            Assert.IsTrue(AcceptTermsOfUseAndPrivacyPolicy("TermsOfUsePage", "PrivacyPage"));
-        }
-
-        [Test]
-        public void AcceptPrivacyPolicyTest()
-        {
-            AcceptTermsOfUseAndPrivacyPolicy("TermsOfUsePage", "PrivacyPage");
-            Assert.IsTrue(AcceptTermsOfUseAndPrivacyPolicy("PrivacyPage", "HomePage"));
+           
+                Assert.IsTrue(AcceptTermsOfUseAndPrivacyPolicy("TermsOfUsePage", "PrivacyPage"));
+                if (CanTapNavigate("AcceptButtonText", "PermissionsPage"))
+                {
+                    Assert.IsTrue(IsOnPage("PermissionsPage"));
+                    Assert.IsTrue(CanTapNavigate("AcceptButtonText", "HomePage"));
+                }
+                else
+                {
+                    Assert.IsTrue(AcceptTermsOfUseAndPrivacyPolicy("PrivacyPage", "HomePage"));
+                }
         }
 
         [Test]

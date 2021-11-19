@@ -502,7 +502,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
