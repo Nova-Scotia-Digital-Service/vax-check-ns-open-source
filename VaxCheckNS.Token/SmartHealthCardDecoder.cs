@@ -112,7 +112,7 @@ namespace VaxCheckNS.Token
       SmartHealthCardModel SmartHealthCardModel = await DecodeAsync(Token, Verify);
       Result<string> ToJsonResult = JsonSerializer.ToJson(SmartHealthCardModel, Minified: false);
       if (ToJsonResult.Failure)
-        throw new SmartHealthCardDecoderException(ToJsonResult.Message);
+        throw new SmartHealthCardDecoderException(ToJsonResult.Message, SmartHealthCardModel.Issuer.ToString());
 
       return ToJsonResult.Value;
     }
@@ -138,7 +138,7 @@ namespace VaxCheckNS.Token
           this.JwsPayloadValidator);
         Result<SmartHealthCardModel> DecodePayloadResult = await JwsDecoder.DecodePayloadAsync<SmartHealthCareJWSHeaderModel, SmartHealthCardModel>(Token: Token, Verity: Verify);
         if (DecodePayloadResult.Failure)
-          throw new SmartHealthCardDecoderException(DecodePayloadResult.Message);
+          throw new SmartHealthCardDecoderException(DecodePayloadResult.Message, DecodePayloadResult.Value.Issuer.ToString());
 
         return DecodePayloadResult.Value;
       }
@@ -150,7 +150,7 @@ namespace VaxCheckNS.Token
 
         Result<SmartHealthCardModel> DecodePayloadResult = await JwsDecoder.DecodePayloadAsync<SmartHealthCareJWSHeaderModel, SmartHealthCardModel>(Token: Token, Verity: Verify);
         if (DecodePayloadResult.Failure)
-          throw new SmartHealthCardDecoderException(DecodePayloadResult.Message);
+          throw new SmartHealthCardDecoderException(DecodePayloadResult.Message, DecodePayloadResult.Value.Issuer.ToString());
 
         return DecodePayloadResult.Value;
       }
