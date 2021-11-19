@@ -3,7 +3,7 @@
 # For Xamarin Android or iOS, change the version name located in AndroidManifest.xml and Info.plist. 
 # AN IMPORTANT THING: YOU NEED DECLARE VERSION_NAME ENVIRONMENT VARIABLE IN APP CENTER BUILD CONFIGURATION.
 
-echo "No work to be done."
+#echo "No work to be done."
 
 # echo "Looking to update version to '$MAJOR.$MINOR.$APPCENTER_BUILD_ID'"
 
@@ -32,3 +32,16 @@ echo "No work to be done."
 #     echo "File content:"
 #     cat $ANDROID_MANIFEST_FILE
 # fi
+
+fi
+
+APP_SETTINGS_FILE=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile/VaxCheckNS.Mobile/Helpers/AppSettings.cs
+
+if [ -e "$APP_SETTINGS_FILE" ]
+then
+    echo "Updating AppCenterAndroidKey to $AppCenterAndroidKey in AppSettings.cs"
+    sed -i '' 's#AppCenterAndroidKey = "[-A-Za-z0-9:_./]*"#AppCenterAndroidKey = "'$AppCenterAndroidKey'"#' $APP_SETTINGS_FILE
+
+    echo "File content:"
+    cat $APP_SETTINGS_FILE
+fi
