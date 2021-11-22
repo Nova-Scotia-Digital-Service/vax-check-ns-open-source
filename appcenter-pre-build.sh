@@ -19,11 +19,15 @@
 #
 # AN IMPORTANT THING: FOR THIS SAMPLE YOU NEED DECLARE API_URL ENVIRONMENT VARIABLE IN APP CENTER BUILD CONFIGURATION.
 
-if [ -z "$API_URL" ]
+echo "Start pre-build"
+
+if [ -z "$AppCenterAndroidKey" ]
 then
-    echo "You need define the API_URL variable in App Center"
+    echo "You need define the AppCenterAndroidKey variable in App Center"
     exit
 fi
+
+echo $APPCENTER_SOURCE_DIRECTORY
 
 APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/Core/AppConstant.cs
 echo $APP_CONSTANT_FILE
