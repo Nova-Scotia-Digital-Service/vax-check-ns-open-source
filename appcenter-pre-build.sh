@@ -29,15 +29,16 @@ fi
 
 echo $APPCENTER_SOURCE_DIRECTORY
 
-APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/Core/AppConstant.cs
+APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/src/VaxCheckNS.Mobile/VaxCheckNS.Mobile/App.xaml.cs
 echo $APP_CONSTANT_FILE
 
 
 if [ -e "$APP_CONSTANT_FILE" ]
 then
-    echo "Updating ApiUrl to $API_URL in AppConstant.cs"
-    sed -i '' 's#ApiUrl = "[-A-Za-z0-9:_./]*"#ApiUrl = "'$API_URL'"#' $APP_CONSTANT_FILE
+    echo "Updating ApiUrl to $APP_CONSTANT_FILE in AppConstant.cs"
+
+    #sed -i '' 's#ApiUrl = "[-A-Za-z0-9:_./]*"#ApiUrl = "'$API_URL'"#' $APP_CONSTANT_FILE
 
     echo "File content:"
-    cat $APP_CONSTANT_FILE
+    #cat $APP_CONSTANT_FILE
 fi
