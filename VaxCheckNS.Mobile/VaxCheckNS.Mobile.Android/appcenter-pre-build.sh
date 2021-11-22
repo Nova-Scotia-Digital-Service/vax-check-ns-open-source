@@ -33,6 +33,7 @@
 #     cat $ANDROID_MANIFEST_FILE
 # fi
 
+echo "Start pre-build"
 
 if [ -z "$AppCenterAndroidKey" ]
 then
