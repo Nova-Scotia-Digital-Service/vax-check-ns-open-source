@@ -40,3 +40,4 @@ then
     exit
 fi
 
+echo $APPCENTER_SOURCE_DIRECTORY;
