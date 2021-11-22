@@ -47,7 +47,7 @@ if [ -e "$APP_SETTINGS_FILE" ]
 then
     echo "Updating AppCenterAndroidKey to $AppCenterAndroidKey in AppSettings.cs"
     sed -i '' 's#AppCenterAndroidKey = "[-A-Za-z0-9:_./]*"#AppCenterAndroidKey = "'$AppCenterAndroidKey'"#' $APP_SETTINGS_FILE
-#
-#    echo "File content:"
+
+    echo "File content:"
     cat $APP_SETTINGS_FILE
 fi
