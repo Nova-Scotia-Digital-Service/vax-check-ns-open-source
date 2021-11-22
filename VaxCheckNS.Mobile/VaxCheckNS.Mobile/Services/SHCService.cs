@@ -188,21 +188,45 @@ namespace VaxCheckNS.Mobile.Services
 			}
 			catch (Exception ex)
 			{
-				if (_errorManagementService != null)
-					_errorManagementService.HandleError(ex);
+				ProofOfVaccinationData data = new ProofOfVaccinationData();
 
 				if (ex is SmartHealthCardDecoderException)
 				{
-					return InvalidScan(VaccineStatus.InvalidIssuer, ex.Message);
+					var e = ex as SmartHealthCardDecoderException;
+					var msg = "Issuer: " + e.IssuerURL + ex.Message;
+
+					if (_errorManagementService != null)
+						_errorManagementService.HandleError(e);
+
+					return InvalidScan(VaccineStatus.InvalidIssuer, msg);
 				}
 				else if (ex is SmartHealthCardException)
 				{
-					return InvalidScan(VaccineStatus.InvalidIssuer, ex.Message);
+					var e = ex as SmartHealthCardDecoderException;
+					var msg = "Issuer: " + e.IssuerURL + ex.Message;
+
+					if (_errorManagementService != null)
+						_errorManagementService.HandleError(e);
+
+					return InvalidScan(VaccineStatus.InvalidIssuer, msg);
 				}
 				else if (ex is SmartHealthCardPayloadException)
 				{
-					return InvalidScan(VaccineStatus.InvalidIssuer, ex.Message);
+					var e = ex as SmartHealthCardDecoderException;
+					var msg = "Issuer: " + e.IssuerURL + ex.Message;
+
+					if (_errorManagementService != null)
+						_errorManagementService.HandleError(e);
+
+					return InvalidScan(VaccineStatus.InvalidIssuer, msg);
 				}
+				else
+				{
+					if (_errorManagementService != null)
+						_errorManagementService.HandleError(ex);
+				}
+
+
 				return null;
 			}
 		}
