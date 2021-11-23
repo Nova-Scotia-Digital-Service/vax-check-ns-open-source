@@ -1,3 +1,9 @@
+
+
+echo "$pwd"
+
+echo $APPCENTER_SOURCE_DIRECTORY
+
 echo "Looking to update version to '$MAJOR.$MINOR.$APPCENTER_BUILD_ID'"
 
 if [ -z "$MAJOR" ]
