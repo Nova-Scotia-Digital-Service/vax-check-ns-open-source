@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 echo "WE ARE STARTING SCRIPT"
-printf "WE ARE STARTING SCRIPT"
 
 echo "$PWD"
 
@@ -9,7 +8,22 @@ echo $APPCENTER_SOURCE_DIRECTORY
 
 AppSettingFile=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile/VaxCheckNS.Mobile/Helpers/AppSettings.cs
 
-printf $AppSettingFile
+echo $AppSettingFile
 
+
+if [ -z "$AppCenterAndroidKey" ]
+then
+    echo "You need define the API_URL variable in App Center"
+    exit
+fi
+
+if [ -e "$AppSettingFile" ]
+then
+    echo "Updating AppCenter Key to $AppCenterAndroidKey in AppSetting.cs"
+    sed -i '' 's#AppCenterAndroidKey = "[-A-Za-z0-9:_./]*"#AppCenterAndroidKey = "'$AppCenterAndroidKey'"#' $$AppSettingFile
+
+    echo "File content:"
+    cat $$AppSettingFile
+fi
 echo "END-SCRIPT"
 printf "END-SCRIPT"
