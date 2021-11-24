@@ -13,6 +13,7 @@ namespace VaxCheckNS.Mobile.Services
 	{
 		void HandleError(Exception ex);
 		void BadScan(ProofOfVaccinationData data, string message);
+		void ReportEvent(string eventName, string message);
 	}
 
 	public class ErrorManagementService : IErrorManagementService
@@ -52,9 +53,18 @@ namespace VaxCheckNS.Mobile.Services
 					{ "Version", VersionTracking.CurrentVersion},
 					{ "Platform", DeviceInfo.Platform.ToString()}
 				  });
+		}
 
-
-
+		public void ReportEvent(string eventName, string message)
+		{
+			Analytics.TrackEvent(eventName,
+				  new Dictionary<string, string>
+				  {
+					{ "Time", DateTime.UtcNow.ToString() },
+					{ "Message", message},
+					{ "Version", VersionTracking.CurrentVersion},
+					{ "Platform", DeviceInfo.Platform.ToString()}
+				  });
 		}
 	}
 }
