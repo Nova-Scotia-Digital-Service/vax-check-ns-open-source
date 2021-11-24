@@ -22,4 +22,8 @@
     "name": "Sinovac",
     "code": "511",
     "dosage_count": 2
+}, {
+    "name": "Covaxin",
+    "code": "502",
+    "dosage_count": 2
 }]
