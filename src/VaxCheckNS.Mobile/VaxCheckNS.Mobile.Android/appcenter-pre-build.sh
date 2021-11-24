@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "START Pre-Build Script"
-printf "START Pre-Build Script"
+printf "START Pre-Build Script. \n"
 
 echo "$PWD"
 echo $APPCENTER_SOURCE_DIRECTORY
@@ -34,6 +34,7 @@ then
     cat $AppSettingFile
 else
     echo "Did not find AppSettings file."
+    printf "Did not find AppSettings file. \n"
 fi
 
 echo "END-SCRIPT"
