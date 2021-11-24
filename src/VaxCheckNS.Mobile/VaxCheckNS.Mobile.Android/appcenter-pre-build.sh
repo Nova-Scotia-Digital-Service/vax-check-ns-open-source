@@ -13,7 +13,13 @@ echo $AppSettingFile
 
 if [ -z "$AppCenterAndroidKey" ]
 then
-    echo "You need define the AppSettingFile variable in App Center"
+    echo "You need define the AppSettingFile variable in App Center - AppCenterAndroidKey"
+    exit
+fi
+
+if [ -z "$AppCenteriOSKey" ]
+then
+    echo "You need define the AppSettingFile variable in App Center - AppCenteriOSKey"
     exit
 fi
 
@@ -22,7 +28,10 @@ then
     echo "Updating AppCenter Key to $AppCenterAndroidKey in AppSetting.cs"
     sed -i '' 's#AppCenterAndroidKey = "[-A-Za-z0-9:_./]*"#AppCenterAndroidKey = "'$AppCenterAndroidKey'"#' $AppSettingFile
 
-    echo "File content:"
+    echo "Updating AppCenter Key to $AppCenteriOSKey in AppSetting.cs"
+    sed -i '' 's#AppCenteriOSKey = "[-A-Za-z0-9:_./]*"#AppCenteriOSKey = "'$AppCenteriOSKey'"#' $AppSettingFile
+
+    echo "File content: "
     cat $AppSettingFile
 else
     echo "Did not find AppSettings file."
