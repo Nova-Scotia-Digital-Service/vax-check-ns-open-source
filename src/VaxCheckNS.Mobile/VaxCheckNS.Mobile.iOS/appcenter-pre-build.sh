@@ -1,31 +1,40 @@
 ﻿#!/usr/bin/env bash
-#
-# For Xamarin Android or iOS, change the version name located in AndroidManifest.xml and Info.plist. 
-# AN IMPORTANT THING: YOU NEED DECLARE VERSION_NAME ENVIRONMENT VARIABLE IN APP CENTER BUILD CONFIGURATION.
 
-echo "No work to be done."
+echo "WE ARE STARTING SCRIPT"
 
-# if [ -z "$MAJOR" ]
-# then
-#     echo "You need define the MAJOR variable in App Center"
-#     exit
-# fi
+echo "$PWD"
 
-# if [ -z "$MINOR" ]
-# then
-#     echo "You need define the MINOR variable in App Center"
-#     exit
-# fi
+echo $APPCENTER_SOURCE_DIRECTORY
 
-# echo "Looking to update version to '$MAJOR.$MINOR.$APPCENTER_BUILD_ID'"
+AppSettingFile=$APPCENTER_SOURCE_DIRECTORY/src/VaxCheckNS.Mobile/VaxCheckNS.Mobile/Helpers/AppSettings.cs
 
-# INFO_PLIST_FILE=$APPCENTER_SOURCE_DIRECTORY/VaxCheckNS.Mobile/VaxCheckNS.Mobile.iOS/Info.plist
+echo $AppSettingFile
 
-# if [ -e "$INFO_PLIST_FILE" ]
-# then
-#     echo "Updating version name to '$MAJOR.$MINOR.$APPCENTER_BUILD_ID' in Info.plist"
-#     plutil -replace CFBundleShortVersionString -string "$MAJOR.$MINOR.$APPCENTER_BUILD_ID" $INFO_PLIST_FILE
-# 
-#     echo "File content:"
-#     cat $INFO_PLIST_FILE
-# fi
+
+if [ -z "$AppCenterAndroidKey" ]
+then
+    echo "You need define the AppSettingFile variable in App Center - AppCenterAndroidKey"
+    exit
+fi
+
+if [ -z "$AppCenteriOSKey" ]
+then
+    echo "You need define the AppSettingFile variable in App Center - AppCenteriOSKey"
+    exit
+fi
+
+if [ -e "$AppSettingFile" ]
+then
+    echo "Updating AppCenter Key to $AppCenterAndroidKey in AppSetting.cs"
+    sed -i '' 's#AppCenterAndroidKey = "[-A-Za-z0-9:_./]*"#AppCenterAndroidKey = "'$AppCenterAndroidKey'"#' $AppSettingFile
+
+    echo "Updating AppCenter Key to $AppCenteriOSKey in AppSetting.cs"
+    sed -i '' 's#AppCenteriOSKey = "[-A-Za-z0-9:_./]*"#AppCenteriOSKey = "'$AppCenteriOSKey'"#' $AppSettingFile
+
+    echo "File content: "
+    cat $AppSettingFile
+else
+    echo "Did not find AppSettings file."
+fi
+
+echo "END-SCRIPT"
