@@ -112,32 +112,11 @@ namespace VaxCheckNS.Mobile.Services
 
 			await Task.Run(async () => await _persistentJwksProvider.TryInitializeJwksAsync(hasConnectivity));
 			_connectivityService.TryUpdateLastOnline(NeedsJWKSUpdate());
-
-			//TODO: Implement logic
-
-			// Load whitelist of issuer and keys from json resource (embedded) 
-			// Check network connection
-			// if online, get JWkeyset for whitelisted issuers and locally store via DataService
-			// else -> Load Previously Stored JWKeyset
-			// if no previous stored JWKeyset -> Load JWKetset from json resource (embedded) 
-			// initillize SmartHealthCardDecoder with new JWKeyset
 		}
 
 		public async Task TryUpdateKeyset()
 		{
-
 			await InitializeAsync();
-			//TODO: Implement logic
-
-			// Load whitelist of issuer and keys from RAM (should be handdled in DataService, so load from DataService)
-			// Check network connection
-			// if online, get JWkeyset for whitelisted issuers
-			// Load previously stored JWKeyset from disk (should be handdled in DataService, so load from DataService)
-			// check if KID matches for each issuer 
-			// if the two KIDs does not match
-			// Locally store new KID
-			// re-initillize SmartHealthCardDecoder with new JWKeyset
-
 		}
 
 		public async Task<ProofOfVaccinationData> ValidateQRCode(string QRCode)
@@ -252,8 +231,6 @@ namespace VaxCheckNS.Mobile.Services
 			var birthDate = fhir
 				?.SelectToken("$....birthDate")
 				?.ToString() ?? string.Empty;
-
-			//TODO:Add issuer ProofOfVaccinationData.Issuer
 
 			using (var vaccineValidator = new NSVaccineValidator(fhir, _validVaccines))
 			{

@@ -112,56 +112,6 @@ namespace VaxCheckNS.Mobile.Services
 
 			LastJWKSUpdateDate = DateTime.UtcNow;
 
-
-			//var request = new HttpRequestMessage(HttpMethod.Get, WellKnownUrl);
-			//try
-			//{
-			//    using (HttpResponseMessage Response = await HttpClient.SendAsync(request, new CancellationToken()))
-			//    {
-			//        if (Response.StatusCode == HttpStatusCode.OK)
-			//        {
-			//            if (Response.Content == null)
-			//            {
-			//                return Result<JsonWebKeySet>.Fail("HttpClient response content was null");
-			//            }
-			//            using System.IO.Stream ResponseStream = await Response.Content.ReadAsStreamAsync();
-			//            Result<JsonWebKeySet> JsonWebKeySetResult = JsonSerializer.FromJsonStream<JsonWebKeySet>(ResponseStream);
-			//            if (JsonWebKeySetResult.Failure)
-			//                return Result<JsonWebKeySet>.Fail($"Failed to deserialize the JsonWebKeySet (JWKS) which was returned from the endpoint {WellKnownUrl.OriginalString}. {JsonWebKeySetResult.Message}");
-
-			//            return JsonWebKeySetResult;
-			//        }
-			//        else
-			//        {
-			//            string Message = string.Empty;
-			//            if (Response.Content != null)
-			//            {
-			//                var ErrorResponseContent = await Response.Content.ReadAsStringAsync();
-			//                return Result<JsonWebKeySet>.Fail($"Response status: {Response.StatusCode}, Content: {ErrorResponseContent}");
-			//            }
-			//            else
-			//            {
-			//                return Result<JsonWebKeySet>.Fail($"Response status: {Response.StatusCode}, Content: [None]");
-			//            }
-			//        }
-			//    }
-			//}
-			//catch (HttpRequestException HttpRequestException)
-			//{
-			//    return Result<JsonWebKeySet>.Retry($"HttpRequestException when calling the API: {HttpRequestException.Message}");
-			//}
-			//catch (TimeoutException)
-			//{
-			//    return Result<JsonWebKeySet>.Retry("TimeoutException during call to API");
-			//}
-			//catch (OperationCanceledException)
-			//{
-			//    return Result<JsonWebKeySet>.Retry("Task was canceled during call to API");
-			//}
-			//catch (Exception e)
-			//{
-			//    return Result<JsonWebKeySet>.Retry($"Task failed with due to unexpected exception of type {e.GetType()}.");
-			//}
 			return null;
 		}
 		public async Task<Dictionary<Uri, JWKeySet>> GetJWKSLocallyAsync()
