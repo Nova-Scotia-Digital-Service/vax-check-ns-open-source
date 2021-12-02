@@ -1,0 +1,29 @@
+[{
+    "name": "Moderna",
+    "code": "207",
+    "dosage_count": 2
+}, {
+    "name": "Pfizer",
+    "code": "208",
+    "dosage_count": 2
+}, {
+    "name": "AstraZeneca",
+    "code": "210",
+    "dosage_count": 2
+}, {
+    "name": "J&J",
+    "code": "212",
+    "dosage_count": 1
+}, {
+    "name": "Sinopharm",
+    "code": "510",
+    "dosage_count": 2
+}, {
+    "name": "Sinovac",
+    "code": "511",
+    "dosage_count": 2
+}, {
+    "name": "Covaxin",
+    "code": "502",
+    "dosage_count": 2
+}]

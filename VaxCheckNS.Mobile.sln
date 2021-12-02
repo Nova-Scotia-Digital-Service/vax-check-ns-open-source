@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaxCheckNS.Mobile.Android", "VaxCheckNS.Mobile\VaxCheckNS.Mobile.Android\VaxCheckNS.Mobile.Android.csproj", "{C970B031-EDC7-414B-91B0-9CC68C5DF625}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaxCheckNS.Mobile.Android", "src\VaxCheckNS.Mobile\VaxCheckNS.Mobile.Android\VaxCheckNS.Mobile.Android.csproj", "{C970B031-EDC7-414B-91B0-9CC68C5DF625}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaxCheckNS.Mobile.iOS", "VaxCheckNS.Mobile\VaxCheckNS.Mobile.iOS\VaxCheckNS.Mobile.iOS.csproj", "{4DA03629-B4D2-42B8-8929-312006375B4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaxCheckNS.Mobile.iOS", "src\VaxCheckNS.Mobile\VaxCheckNS.Mobile.iOS\VaxCheckNS.Mobile.iOS.csproj", "{4DA03629-B4D2-42B8-8929-312006375B4F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Mobile", "VaxCheckNS.Mobile\VaxCheckNS.Mobile\VaxCheckNS.Mobile.csproj", "{B6CF8822-F092-49E2-A32E-CD939EF88892}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Mobile", "src\VaxCheckNS.Mobile\VaxCheckNS.Mobile\VaxCheckNS.Mobile.csproj", "{B6CF8822-F092-49E2-A32E-CD939EF88892}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Decode", "VaxCheckNS.Decode\VaxCheckNS.Decode.csproj", "{5EF82DC4-25A8-4434-AD02-BD77F861BF34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Decode", "src\VaxCheckNS.Decode\VaxCheckNS.Decode.csproj", "{5EF82DC4-25A8-4434-AD02-BD77F861BF34}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Decode.Tests", "VaxCheckNS.Decode.Tests\VaxCheckNS.Decode.Tests.csproj", "{7414F268-C502-4BA5-A1CC-5F2A4AAFA7DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Decode.Tests", "src\VaxCheckNS.Decode.Tests\VaxCheckNS.Decode.Tests.csproj", "{7414F268-C502-4BA5-A1CC-5F2A4AAFA7DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Token", "VaxCheckNS.Token\VaxCheckNS.Token.csproj", "{AA7E70A2-93F6-4346-8C03-74FFF6BE5929}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Token", "src\VaxCheckNS.Token\VaxCheckNS.Token.csproj", "{AA7E70A2-93F6-4346-8C03-74FFF6BE5929}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Token.Tests", "VaxCheckNS.Token.Tests\VaxCheckNS.Token.Tests.csproj", "{E29D9546-02B5-4833-9843-317083DEEC1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Token.Tests", "src\VaxCheckNS.Token.Tests\VaxCheckNS.Token.Tests.csproj", "{E29D9546-02B5-4833-9843-317083DEEC1D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Decode", "Decode", "{4C6C8482-2018-4327-A180-5BC417B005C3}"
 EndProject
@@ -23,17 +23,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Token", "Token", "{099340F2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{88F877D2-3091-4BE9-8DC4-B441A27310A1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Rules", "VaxCheckNS.Rules\VaxCheckNS.Rules.csproj", "{15D2874A-1192-44F7-B6AC-DCFE3A1FD16A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Rules", "src\VaxCheckNS.Rules\VaxCheckNS.Rules.csproj", "{15D2874A-1192-44F7-B6AC-DCFE3A1FD16A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Rules.Tests", "VaxCheckNS.Rules.Tests\VaxCheckNS.Rules.Tests.csproj", "{641A4569-50AA-4B8A-9189-1AB7703A78F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Rules.Tests", "src\VaxCheckNS.Rules.Tests\VaxCheckNS.Rules.Tests.csproj", "{641A4569-50AA-4B8A-9189-1AB7703A78F5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Rules.NS", "VaxCheckNS.Rules.NS\VaxCheckNS.Rules.NS.csproj", "{00388F58-C236-433A-AF71-F614A7492BE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Rules.NS", "src\VaxCheckNS.Rules.NS\VaxCheckNS.Rules.NS.csproj", "{00388F58-C236-433A-AF71-F614A7492BE9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Rules.NS.Tests", "VaxCheckNS.Rules.NS.Tests\VaxCheckNS.Rules.NS.Tests.csproj", "{9715C664-DCEB-4D39-9485-288B9FE428FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaxCheckNS.Rules.NS.Tests", "src\VaxCheckNS.Rules.NS.Tests\VaxCheckNS.Rules.NS.Tests.csproj", "{9715C664-DCEB-4D39-9485-288B9FE428FD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules.NS", "Rules.NS", "{D77C0ABD-2C9D-4AF6-BB4B-FA01927D6E18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaxCheckNS.Mobile.UITests", "VaxCheckNS.Mobile.UITests\VaxCheckNS.Mobile.UITests.csproj", "{3367B909-9FA4-4EB3-AE93-6C85B5112C00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaxCheckNS.Mobile.UITests", "src\VaxCheckNS.Mobile.UITests\VaxCheckNS.Mobile.UITests.csproj", "{3367B909-9FA4-4EB3-AE93-6C85B5112C00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{C34844CD-77D2-4F0D-AA97-C697BBFBB026}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
