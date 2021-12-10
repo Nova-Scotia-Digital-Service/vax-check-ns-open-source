@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BarcodeScanner.XF" Version="6.1.1.2-pre" />
     <PackageReference Include="Microsoft.AppCenter" Version="4.4.0" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.4.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.4.0" />
