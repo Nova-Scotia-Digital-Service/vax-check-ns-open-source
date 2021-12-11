@@ -18,6 +18,7 @@ namespace VaxCheckNS.Mobile.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
+            GoogleVisionBarCodeScanner.Droid.RendererInitializer.Init();
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

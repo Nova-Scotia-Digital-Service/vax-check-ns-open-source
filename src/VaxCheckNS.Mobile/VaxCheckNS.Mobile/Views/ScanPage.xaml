@@ -5,8 +5,9 @@
              xmlns:fonts="clr-namespace:VaxCheckNS.Mobile.Themes.Fonts"
 			 xmlns:vm="clr-namespace:VaxCheckNS.Mobile.ViewModels"
 			 xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
-             xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters"
-			 Shell.NavBarIsVisible="False"
+             xmlns:converters="clr-namespace:VaxCheckNS.Mobile.Converters" 
+             xmlns:gv="clr-namespace:GoogleVisionBarCodeScanner;assembly=BarcodeScanner.XF"
+             Shell.NavBarIsVisible="False"
 			 Shell.NavBarHasShadow="False"
              Shell.PresentationMode="Modal"
              AutomationId="ScanPage">
@@ -27,11 +28,24 @@
               ColumnSpacing="0"
               RowSpacing="0">
 
-            <zxing:ZXingScannerView x:Name="scanner"
+            <OnPlatform x:TypeArguments="View">
+                <On Platform="iOS">
+                    <zxing:ZXingScannerView x:Name="scanner"
                                     IsScanning="True"                         
                                     ScanResultCommand="{Binding AnalyseScanResultCommand}"
                                     IsTorchOn="{Binding IsTorchOn}"
                                     Options="{Binding ScannerOptions}"/>
+                </On>
+                <On Platform="Android">
+                    <gv:CameraView HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="FillAndExpand" 
+                           OnDetectedCommand="{Binding AnalyseScanResultAndroidCommand}"
+                           TorchOn="{Binding IsTorchOn}"
+                           VibrationOnDetected="True" 
+                           IsScanning="True" />
+                </On>
+            </OnPlatform>
+
 
             <Image x:Name="Guide"
                    Source="ScanFrame"
