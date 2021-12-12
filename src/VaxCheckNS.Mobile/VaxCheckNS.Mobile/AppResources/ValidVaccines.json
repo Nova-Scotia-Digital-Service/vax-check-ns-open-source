@@ -26,4 +26,8 @@
     "name": "Covaxin",
     "code": "502",
     "dosage_count": 2
-}]
+}, {
+    "name": "ChildPfizer",
+    "code": "218",
+    "dosage_count": 2
+}
