@@ -28,7 +28,7 @@
               ColumnSpacing="0"
               RowSpacing="0">
 
-            <OnPlatform x:TypeArguments="View">
+            <!--<OnPlatform x:TypeArguments="View">
                 <On Platform="iOS">
                     <zxing:ZXingScannerView x:Name="scanner"
                                     IsScanning="True"                         
@@ -44,8 +44,13 @@
                            VibrationOnDetected="True" 
                            IsScanning="True" />
                 </On>
-            </OnPlatform>
+            </OnPlatform>-->
 
+            <zxing:ZXingScannerView x:Name="scanner"
+                                    IsScanning="True"                         
+                                    ScanResultCommand="{Binding AnalyseScanResultCommand}"
+                                    IsTorchOn="{Binding IsTorchOn}"
+                                    Options="{Binding ScannerOptions}"/>
 
             <Image x:Name="Guide"
                    Source="ScanFrame"

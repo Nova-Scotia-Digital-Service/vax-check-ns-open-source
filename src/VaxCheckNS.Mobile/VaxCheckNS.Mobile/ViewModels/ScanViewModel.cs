@@ -8,7 +8,7 @@ using ZXing.Mobile;
 using System.Collections.Generic;
 using ZXing;
 using System.Linq;
-using GoogleVisionBarCodeScanner;
+
 
 namespace VaxCheckNS.Mobile.ViewModels
 {
@@ -53,7 +53,6 @@ namespace VaxCheckNS.Mobile.ViewModels
             ToggleTorchCommand = new Command(() => IsTorchOn = !IsTorchOn);
 
             AnalyseScanResultCommand = new Command<ZXing.Result>(async result => await AnalyseScanAsync(result));
-            AnalyseScanResultAndroidCommand = new Command<OnDetectedEventArg>(async result => await AnalyseScanAndroidAsync(result));
 
             ScannerOptions = new MobileBarcodeScanningOptions
             {
@@ -125,30 +124,6 @@ namespace VaxCheckNS.Mobile.ViewModels
             }
         }
 
-        private async Task AnalyseScanAndroidAsync(OnDetectedEventArg result)
-        {
-            if (result == null || result.BarcodeResults.Count < 1) return;
-
-            IsBusy = true;
-            try
-            {
-                var scannedCode = result.BarcodeResults.First().RawValue;
-
-                var SHCdata = await _shcService.ValidateQRCode(scannedCode);
-
-                if (SHCdata == null) return;
-
-                BackAndNavigateTo("ScanResultPage");
-
-
-            }
-            catch (Exception ex)
-            {
-                if (_errorManagementService != null)
-                    _errorManagementService.HandleError(ex);
-            }
-            IsBusy = false;
-        }
 
         private CameraResolution HandleCameraResolutionSelectorDelegate(List<CameraResolution> availableResolutions)
         {
